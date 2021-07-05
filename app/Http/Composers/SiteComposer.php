@@ -12,14 +12,19 @@ class SiteComposer
 {
     public function compose(View $view)
     {
+        /**
+         * non-cached data
+         */
         $view->with('aod_announcements', (new RssReader())->setPath(
             config('services.aod.announcements_rss_feed')
         )->getItems());
 
+        /**
+         * cached data points
+         */
         $view->with('aod_divisions', cache()->remember('aod_divisions', 300, function () {
             return $this->getDivisions();
         }));
-
         $view->with('aod_tweets', cache()->remember('aod_tweets', 300, function () {
             return (new Twitter())->getfeed();
         }));
