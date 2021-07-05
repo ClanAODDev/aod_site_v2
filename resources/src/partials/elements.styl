@@ -1,0 +1,372 @@
+body
+  background-color body_background_color
+  margin 0
+  padding 0
+  height 100%
+
+ul, ol
+  list-style none
+
+.section-sub-section ul li
+  list-style none
+  font-family font_face
+  color rgba(255, 255, 255, .4)
+  padding-bottom 10px
+
+  &:before
+    content "\f061"
+    font-family FontAwesome
+    display inline-block
+    margin-left -1.3em
+    width 1.3em
+
+strong
+  color link_color
+
+h1, h2, h3, h4
+  font-family font_face
+  color header_color
+  line-height 1.2em
+  text-transform uppercase
+
+h1
+  font-size 36px
+  font-weight 500
+
+h2
+  &.subtitle
+    font normal 24px / 1em MuseoSans, "century gothic", arial
+    text-transform none
+
+section
+  padding 30px 0
+  width 100%
+  min-height 50vh
+  margin 0 auto
+  display flex
+  align-items center
+
+  &.with-shadow
+    box-shadow 0 0 10px #000
+
+  .section--short-width
+    display flex
+    flex-direction row
+    flex-wrap wrap
+
+    .section-blurb, .section-image
+      flex 50%
+
+    .section-image
+      text-align center
+
+  a
+    font-weight 700
+    transition 0.6s
+
+  .section-content-container
+    position relative
+    width 960px
+    margin 0 auto
+    vertical-align middle
+
+    .section-sub-section
+      margin-bottom 60px
+
+  .section--centered
+    text-align center
+
+p
+  color body_color
+  font normal 16px / 1.8em "MuseoSans", "century gothic", arial
+  line-height 26px
+
+a
+  color link_color
+  text-decoration none
+  transition color 0.6s
+
+  &:hover
+    color link_hover_color
+    transition 0.6s
+
+a.call-to-action-button
+  border solid 3px #fff
+  padding 20px
+  border-radius 40px
+  color #fff
+  margin-top 20px
+  display inline-block
+  font-family font_face
+  font-size 24px
+  text-transform uppercase
+
+  &.is-small
+    padding 10px
+    margin-top 10px
+    font-size 14px
+
+  &:hover
+    background-color #ffffff
+    color #000000
+
+/** nav bar **/
+
+.clan-logo
+  filter drop-shadow(0 0 5px #000)
+  -webkit-filter drop-shadow(0 0 5px #000)
+  cursor pointer
+
+.mobile-nav .nav-items, .mobile-nav .clan-logo, .mobile-nav .hamburger
+  display none
+
+.mobile-nav .clan-logo
+  padding 10px 0 0 20px
+
+.mobile-nav .hamburger
+  position fixed
+  top 20px
+  right 20px
+  cursor pointer
+  color #888
+
+  &:hover
+    color #999
+
+.primary-nav
+  z-index 50
+  width 100%
+  height 69px
+  background url('../images/navbar-bg.jpg') repeat-x 0 0 body_background_color
+  box-shadow 0 1px 10px #000
+  position relative
+  transition all 0.4s ease
+
+  .nav-texture
+    background url('../images/navbar-texture.png') no-repeat center 0
+
+  .full-nav ul
+    text-align center
+    margin 0 auto
+    padding 0
+    min-width 1000px
+    overflow hidden
+
+    li
+      display inline-block
+      text-align center
+      background url('../images/divider.jpg') no-repeat left bottom
+      z-index 10
+      height 68px
+
+      img
+        display block
+        opacity 0
+        margin-top -70px
+        margin-right 20px
+
+      &:first-of-type
+        background none
+
+        &.show-logo
+          text-indent -9999px
+
+          img
+            transition all 0.4s ease
+            opacity 100
+
+      a
+        display inline-block
+        padding 26px 45px 25px 45px
+        color nav_link_color
+        font normal 16px / 1.8em "MuseoSans", "century gothic", arial
+        text-transform uppercase
+        text-shadow 0 0 5px rgba(0, 0, 0, .5)
+
+        &:hover
+          color link_hover_color
+          text-decoration none
+
+        &.active a, &.current-menu-item a
+          color #fff
+
+section.primary-footer
+  background url(footer_bg_image) no-repeat footer_section_bg_color center 0
+  display block
+
+  h1
+    font-family font_face
+    font-size 18px
+
+  p
+    font-size 16px
+
+  .section-content-container
+    display flex
+    flex-direction row
+    flex-wrap wrap
+
+    .section-blurb
+      flex 100%
+      display flex
+      padding 0 30px 20px 0
+
+      .logo
+        display flex
+        align-items center
+        justify-content center
+        flex 20%
+
+        img
+          width 150px
+          filter drop-shadow(0px 0px 5px #000)
+          -webkit-filter drop-shadow(0px 0px 5px #000)
+
+      .blurb-text
+        flex 80%
+
+.footer-section
+  font-family Tahoma, sans-serif
+  color #6c7384
+  flex 50%
+  padding-top 20px
+
+  &.full-width
+    flex 100%
+
+  &.qtr-width
+    flex 33%
+
+  ul
+    margin 0
+    padding 0
+
+  ul li
+    line-height 25px
+    display block
+    font-size 16px
+    padding-bottom 15px
+    color rgba(255, 255, 255, .2)
+
+    .meta
+      display block
+
+  a
+    font-weight lighter
+
+.site-meta ul li
+  display inline-block
+  text-align center
+
+.sitemap
+  .sitemap-links ul
+    display flex
+    flex 50%
+    flex-wrap wrap
+
+    li
+      padding 0
+      flex 1 0 50%
+
+  .social-media, a
+    color footer_link_color
+
+    &:hover
+      color link_hover_color
+
+    ul li
+      display inline-block
+
+.fixed, .stay-fixed
+  position fixed
+  top 0
+
+.apply-form
+  padding 0 30px 20px
+  background-color #111
+  border solid 4px #555
+  border-radius 4px
+  text-align center
+  width 50%
+
+  hr
+    opacity .1
+
+a
+  &.tooltips
+    position relative
+    display inline
+
+    span
+      font-size 13px
+      font-family font_face
+      position absolute
+      width 140px
+      color #FFFFFF
+      background #333333
+      height 30px
+      line-height 30px
+      text-align center
+      visibility hidden
+      border-radius 6px
+
+      &:after
+        content ''
+        position absolute
+        top 100%
+        left 50%
+        margin-left -4px
+        width 0
+        height 0
+        border-top 8px solid #333333
+        border-right 8px solid transparent
+        border-left 8px solid transparent
+
+  &:hover
+    &.tooltips
+      span
+        visibility visible
+        opacity 0.8
+        bottom 70px
+        left 50%
+        margin-left -76px
+        z-index 999
+
+.push
+  clear both
+
+.has-two-columns
+  display flex
+
+.has-two-columns > div
+  padding 5px 10px
+
+.margin-top-20
+  margin-top 20px
+
+.current-menu-item a
+  color #fff
+
+.primary-nav .commo-bar
+  display none
+
+.primary-nav.fixed .commo-bar
+  display flex
+
+
+.commo-bar
+  width 100%
+  padding 5px
+  height 25px
+  position fixed
+  top 0
+  background-color #590201
+  display flex
+  align-items center
+  justify-content center
+  border-bottom 1px solid rgba(255,255,255,.10)
+
+.commo-item
+  width 175px
+  text-align center
+  font-size 12px

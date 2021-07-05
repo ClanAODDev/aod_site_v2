@@ -1,0 +1,195 @@
+/**
+ * ----------------
+ * HERO AREA
+ * ----------------
+ **/
+
+@import "partials/games"
+
+.aod-logo
+  filter drop-shadow(0px 0px 5px #000)
+  -webkit-filter drop-shadow(0px 0px 5px #000)
+  width 250px
+
+.hero-video
+  min-height 800px
+  max-width 1920px
+
+  .hero-text
+    color #fff
+    z-index 3
+    position relative
+    margin 40px auto
+    text-align center
+
+    .play-button
+      background url('../images/play-button.png') no-repeat
+      width 53px
+      height 61px
+      margin 0 auto
+      margin-top 60px
+      text-indent -9999px
+      transition filter 0.6s ease
+
+      &:hover
+        filter drop-shadow(0px 0px 10px #fff)
+        -webkit-filter drop-shadow(0px 0px 10px #fff)
+        transition filter 0.6s ease
+        cursor pointer
+
+    h1
+      font-size 48px
+      text-shadow 0 0 2px rgba(0, 0, 0, .4)
+
+.twitch-live
+  right 40px
+  color #df4545
+  position relative
+
+.intro-video iframe
+  width 100vw
+  height 75vh
+
+.grid
+  position absolute
+  top 0
+  left 0
+  min-height 700px
+  width 100vw
+  z-index 2
+  background-image url('../images/grid.png') , url('../images/video-overlay.png')
+  background-color rgba(0, 0, 0, .5)
+  background-repeat repeat, repeat-x
+
+.video-container
+  object-fit cover
+  position absolute
+  height 700px
+  width 100%
+  overflow hidden
+  top 0
+  right 0
+  left 0
+  margin 0 auto
+
+#video, .ie8-poster
+  object-fit cover
+  z-index 1
+  top 0
+  left 0
+  position absolute
+  overflow hidden
+  padding-bottom 60px
+
+.video-background
+  background #000
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index -99
+
+.video-foreground, .video-background iframe
+  position absolute
+  top 0
+  z-index 20
+  left 0
+  width 100vw
+  height 100%
+
+.close-video
+  position absolute
+  top 20px
+  right 20px
+  z-index 9999
+  color #fff
+
+/**
+ * ----------------
+ * SUPPORTED GAMES
+ * ----------------
+ **/
+section.supported-games
+  background url(supported_games_bg_image) supported_games_bg_color no-repeat center 0
+  overflow visible
+
+  .section-content-container
+    padding 40px 0
+
+.games-listing
+  padding-left 0
+  img
+    text-align center
+    display inline-block
+    margin 15px
+
+/**
+ * ----------------
+ * FOUNDED AREA
+ * ----------------
+ **/
+section.founded-info
+  background-image url(founded_bg_image) , url(founded_bg_top_border_image)
+  background-color founded_info_bg_color
+  background-position center 0, center 0
+  background-repeat no-repeat, repeat-x
+  position relative
+
+  .section-blurb
+    width 50%
+    flex none
+
+  .section-image
+    position absolute
+    right -150px
+    top -175px
+
+/**
+ * ----------------
+ * SOCIAL MEDIA
+ * ----------------
+ **/
+section.social-media
+  background url(social_media_bg_image) social_media_section_bg_color no-repeat center 0
+
+.social-media ul
+  margin-top 20px
+
+ul.social-media-sites li
+  display inline-block
+  background-image url('../images/social-media-sprite.png')
+  background-repeat no-repeat
+  margin 0 30px 0 0
+  width 62px
+  height 63px
+  text-indent -9999px
+
+  &.steam
+    background-position -5px -5px
+  &.twitch
+    background-position -77px -5px
+  &.twitter
+    background-position -5px -78px
+  &.youtube
+    background-position -78px -78px
+  &:hover
+    filter drop-shadow(0px 0px 5px #fff)
+    -webkit-filter drop-shadow(0px 0px 5px #fff)
+    cursor pointer
+
+/**
+ * ----------------
+ * HONOR CLAN AREA
+ * ----------------
+ **/
+section.honor-info
+  background url(honor_bg_image) honor_section_bg_color repeat-x top
+
+/**
+ * ----------------
+ * APPLY AREA
+ * ----------------
+ **/
+section.apply-info
+  background url(apply_bg_image) apply_section_bg_color no-repeat center 0
