@@ -28,10 +28,10 @@ return [
 
     'twitter' => [
         'auth' => [
-            'oauth_access_token' => env('oauth_access_token'),
-            'oauth_access_token_secret' => env('oauth_access_token_secret'),
-            'consumer_key' => env('consumer_key'),
-            'consumer_secret' => env('consumer_secret'),
+            'oauth_access_token' => env('TWITTER_ACCESS_TOKEN'),
+            'oauth_access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+            'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+            'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
         ],
 
         'stream_config' => [
