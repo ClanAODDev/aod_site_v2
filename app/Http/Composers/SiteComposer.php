@@ -17,14 +17,26 @@ class SiteComposer
         )->getItems());
 
         $view->with('aod_divisions', cache()->remember('aod_divisions', 300, function () {
-            return Http::withToken(config('services.aod.access_token'))
-                ->acceptJson()
-                ->get('//4f688d40a360.ngrok.io/api/v1/divisions/')
-                ->json('data');
+            return $this->getDivisions();
         }));
 
         $view->with('aod_tweets', cache()->remember('aod_tweets', 300, function () {
             return (new Twitter())->getfeed();
         }));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDivisions(): array
+    {
+        try {
+            return Http::withToken(config('services.aod.access_token'))
+                    ->acceptJson()
+                    ->get(config('services.aod.tracker_url')."/api/v1/divisions")
+                    ->json('data') ?? [];
+        } catch (\Exception $exception) {
+            return [];
+        }
     }
 }
