@@ -11,9 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.stylus('resources/src/main.styl', 'css/app.css');
-
-// mix.js('resources/js/app.js', 'public/js')
-//     .postCss('resources/css/app.css', 'public/css', [
-//         //
-//     ]);
+mix
+    .js(['resources/js/app.js'], 'public/js/app.js')
+    .stylus('resources/src/main.styl', 'css/app.css')
+    .postCss('resources/fonts/fonts.css', 'public/css');
