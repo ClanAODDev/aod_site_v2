@@ -10,25 +10,25 @@ class SmokeTest extends TestCase
     /** @test */
     public function the_home_page_returns_200_ok()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->get('/')->assertOk();
     }
 
     /** @test */
     public function the_divisions_index_returns_200_ok()
     {
-        $response = $this->get('/divisions');
-
-        $response->assertStatus(200);
+        $this->get('/divisions')->assertOk();
     }
 
     /** @test */
-    public function a_single_division_page_returns_200_ok()
+    public function a_known_valid_single_division_page_returns_200_ok()
     {
-        // matches a division in our test data
-        $response = $this->get('/divisions/tom-clancy');
+        $this->get('/divisions/tom-clancy')->assertOk();
+    }
 
-        $response->assertStatus(200);
+    /** @test */
+    public function a_known_invalid_single_division_page_returns_404_not_found()
+    {
+        $this->get('divisions/not-a-real-division')
+            ->assertNotFound();
     }
 }
