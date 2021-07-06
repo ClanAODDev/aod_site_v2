@@ -31,4 +31,10 @@ class SmokeTest extends TestCase
         $this->get('divisions/not-a-real-division')
             ->assertNotFound();
     }
+
+    /** @test */
+    public function the_history_page_returns_200_ok()
+    {
+        $this->get('/history')->assertOk();
+    }
 }
