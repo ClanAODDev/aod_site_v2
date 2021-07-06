@@ -5,16 +5,29 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class SmokeTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    /** @test */
+    public function the_home_page_returns_200_ok()
     {
-        $response = $this->withoutExceptionHandling()->get('/');
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function the_divisions_index_returns_200_ok()
+    {
+        $response = $this->get('/divisions');
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function a_single_division_page_returns_200_ok()
+    {
+        // matches a division in our test data
+        $response = $this->get('/divisions/tom-clancy');
 
         $response->assertStatus(200);
     }

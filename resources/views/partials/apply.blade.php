@@ -6,14 +6,16 @@
     <hr class="margin-top-20"/>
     <h2 class="margin-top-20">2. Apply to a division</h2>
     <div class="games-listing">
-        @forelse ($aod_divisions as $division)
-            <a href="#" data-application-id="{{ $division['forum_app_id'] }}"
-               data-application-link class="tooltips">
-                <img class="game" src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
-                <span>{{ $division['name'] }}</span>
-            </a>
-        @empty
+        @if ($aod_divisions)
+            @foreach ($aod_divisions as $division)
+                <a href="#" data-application-id="{{ $division['forum_app_id'] }}"
+                   data-application-link class="tooltips">
+                    <img class="game" src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
+                    <span>{{ $division['name'] }}</span>
+                </a>
+            @endforeach
+        @else
             <p class="text-muted">No divisions available</p>
-        @endforelse
+        @endif
     </div>
 </div>

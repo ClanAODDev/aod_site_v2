@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::view('/', 'pages.home')->name('home');
+
+Route::get('/divisions', 'DivisionController@index')->name('division.index');
+Route::get('/divisions/{division}', 'DivisionController@show')->name('division.show');

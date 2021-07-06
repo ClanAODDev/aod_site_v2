@@ -1,4 +1,5 @@
-@extends ('partials.base')
+@extends ('application.base')
+
 @section('content')
 
     <div class="intro-video" style="display: none;">
@@ -8,7 +9,6 @@
         <iframe src="https://www.youtube.com/embed/mrKdx7mDsPw?autoplay=0&amp;showinfo=0&amp;enablejsapi=1"
                 id="video-iframe" allowfullscreen style="border: none;"></iframe>
     </div>
-
 
     <div class="hero-video video-background">
         <div class="video-container video-foreground">
