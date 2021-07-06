@@ -26,7 +26,7 @@
                 <li id="menu-item-269" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-269"><a
                         href="/forums">Forums</a></li>
                 <li><a href="https://www.clanaod.net/divisions/">Divisions</a></li>
-                <li><a href="https://www.clanaod.net/twitch/">Stream</a></li>
+                <li><a href="https://www.twitch.tv/clanaodstream">Stream</a></li>
                 <li><a href="https://www.clanaod.net/history/">History</a></li>
                 <li><a href="#">Apply</a></li>
             </ul>

@@ -8,7 +8,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 
 
-<body>
+<body class="{{ request()->is('history') ? 'page-template-page-history' : null }}">
 
 @include('partials.apply')
 
@@ -22,7 +22,6 @@
             <strong>DISCORD</strong> {{ 50 + 39 + 12 }} / {{ 390 }}
         </p>
     </div>
-
     <div class="push" style="margin-top: 700px;"></div>
 @endif
 
