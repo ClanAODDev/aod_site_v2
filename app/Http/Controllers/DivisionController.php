@@ -11,6 +11,10 @@ class DivisionController extends Controller
 
     public function show($division)
     {
+        if (!view()->exists("division.content.{$division}")) {
+            abort(404, 'Page not found');
+        }
+
         return view('division.show', compact('division'));
     }
 }
