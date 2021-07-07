@@ -1,6 +1,6 @@
 <div class="announcements footer-section">
     <h1>Clan Announcements</h1>
-    @if($aod_announcements)
+    @if($aod_announcements->count())
         <ul>
             @for ($i = 0;$i < 4;$i ++)
                 <li>
