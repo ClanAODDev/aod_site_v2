@@ -6,8 +6,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content">
@@ -30,8 +29,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content">
@@ -61,8 +59,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location fade-in">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content fade-in">
@@ -93,8 +90,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location fade-in">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content fade-in">
@@ -122,8 +118,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location fade-in">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content fade-in">
@@ -156,8 +151,7 @@
         <div class="timeline-block">
 
             <div class="timeline-bullet cd-location fade-in">
-                <img src="https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/cd-icon-location.svg"
-                     alt="Picture">
+                <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
             </div>
 
             <div class="timeline-content fade-in">
