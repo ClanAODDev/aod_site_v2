@@ -13,7 +13,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="{{ asset('images/division-icons/ws.png') }}">
+            <img class="game" src="{{ asset('images/division-icons/wows.png') }}">
             <h1>World of Warships Division</h1>
         </div>
 
