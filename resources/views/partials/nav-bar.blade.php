@@ -11,9 +11,10 @@
         </div>
     </div>
     <div class="mobile-nav">
-        <a href="/">
-            <img class="clan-logo" src="{{ asset('images/aod_new.png') }}"/>
-        </a>
+        <img class="clan-logo" src="{{ asset('images/aod_new.png') }}"
+             alt="Clan AOD Logo"
+             onclick="window.location.href = '/';"/>
+
         <div class="hamburger"><i class="fa fa-bars fa-2x"></i></div>
         <div class="nav-items">
             <ul id="menu-mobile" class="menu">
