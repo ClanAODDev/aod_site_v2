@@ -1,4 +1,4 @@
-<section class="division" data-application-id="64" style="background: url(https://www.clanaod.net/wp-content/uploads/2016/11/swb.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+<section class="division" data-application-id="64" style="background: url({{ asset('images/division-headers/swb.jpg') }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav"><ul><li><a href="#matches-and-events" class="smooth-scroll">
                         Matches and Events
@@ -9,7 +9,7 @@
                     </a></li></ul></div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://clanaod.net/wp-content/uploads/2016/12/swb.png">
+            <img class="game" src="{{ asset('images/division-icons/swb.png') }}">
             <h1>Battlefront II Division</h1>
         </div>
 

@@ -1,5 +1,5 @@
 <section class="division" data-application-id="23"
-         style="background: url(https://clanaod.net/wp-content/uploads/2016/11/ps2.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/ps2.jpg') }}) no-repeat, url('{{ asset('images/division-bg-border.jpg') }}') repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav">
             <ul>
@@ -13,7 +13,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://clanaod.net/wp-content/uploads/2016/12/ps2.png">
+            <img class="game" src="{{ asset('images/division-icons/ps2.png') }}">
             <h1>Planetside 2 Division</h1>
         </div>
 

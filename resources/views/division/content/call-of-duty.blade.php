@@ -1,4 +1,4 @@
-<section class="division" data-application-id="67" style="background: url(https://www.clanaod.net/wp-content/uploads/2018/10/cod.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+<section class="division" data-application-id="67" style="background: url({{ asset('images/division-headers/cod.jpg') }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav"><ul><li><a href="#events-&amp;-badges" class="smooth-scroll">
                         Events &amp; Badges
@@ -9,7 +9,7 @@
                     </a></li></ul></div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://www.clanaod.net/wp-content/uploads/2018/10/cod-2.png">
+            <img class="game" src="{{ asset('images/division-icons/cod.png') }}">
             <h1>Call of Duty Division</h1>
         </div>
 

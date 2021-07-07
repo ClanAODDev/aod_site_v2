@@ -49,13 +49,13 @@
 
                 </div>
                 <div class="section-image">
-                    <img width="700" height="700" src="https://www.clanaod.net/wp-content/uploads/2016/10/dude.png" class="attachment-full size-full" alt="">
+                    <img width="700" height="700" src="{{ asset('images/dude.png') }}" class="attachment-full size-full" alt="">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section with-shadow" style="background: url(https://www.clanaod.net/wp-content/uploads/2016/10/belong-section-bg.jpg) #050505 no-repeat center 0">
+    <section class="section with-shadow" style="background: url({{ asset('images/belong-section-bg.jpg') }}) #050505 no-repeat center 0">
         <div class="section-content-container section--centered ">
             <h1>Belong to something <strong>unique</strong> and<br>worldwide that <strong>endures</strong> through time </h1>
             <div class="section-blurb">

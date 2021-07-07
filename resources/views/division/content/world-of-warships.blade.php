@@ -1,5 +1,5 @@
 <section class="division" data-application-id="65"
-         style="background: url(https://www.clanaod.net/wp-content/uploads/2018/03/ws.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/ws.jpg') }}) no-repeat, url('{{ asset('images/division-bg-border.jpg') }}') repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav">
             <ul>
@@ -13,7 +13,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://www.clanaod.net/wp-content/uploads/2018/03/ws.png">
+            <img class="game" src="{{ asset('images/division-icons/ws.png') }}">
             <h1>World of Warships Division</h1>
         </div>
 

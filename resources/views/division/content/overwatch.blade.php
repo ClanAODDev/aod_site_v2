@@ -1,5 +1,5 @@
 <section class="division" data-application-id="54"
-         style="background: url(https://www.clanaod.net/wp-content/uploads/2016/12/ow-1.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/ow.jpg') }}) no-repeat, url('{{ asset('images/division-bg-border.jpg') }}') repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav">
             <ul>
@@ -16,7 +16,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://www.clanaod.net/wp-content/uploads/2016/12/ow.png">
+            <img class="game" src="{{ asset('images/division-icons/ow.png') }}">
             <h1>Overwatch Division</h1>
         </div>
 

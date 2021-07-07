@@ -1,5 +1,5 @@
 <section class="division" data-application-id="63"
-         style="background: url(https://www.clanaod.net/wp-content/uploads/2017/10/d2-banner.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/d2.jpg') }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav">
             <ul>
@@ -19,7 +19,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://www.clanaod.net/wp-content/uploads/2017/10/d248.png">
+            <img class="game" src="{{ asset('images/division-icons/d2.png') }}">
             <h1>Destiny 2 Division</h1>
         </div>
 

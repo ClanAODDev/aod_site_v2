@@ -1,5 +1,5 @@
 <section class="division" data-application-id="87"
-         style="background: url(https://www.clanaod.net/wp-content/uploads/2020/06/val.jpg) no-repeat, url('https://www.clanaod.net/wp-content/themes/ClanAOD/public/images/division-bg-border.jpg') repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/val.jpg') }}) no-repeat, url('{{ asset('images/division-bg-border.jpg') }}') repeat-x; background-position: top center;">
     <div class="section-content-container">
         <div id="sub-nav">
             <ul>
@@ -13,7 +13,7 @@
         </div>
 
         <div id="general" class="game-header">
-            <img class="game" src="https://www.clanaod.net/wp-content/uploads/2020/06/download.png">
+            <img class="game" src="{{ asset('images/division-icons/val.png') }}">
             <h1>Valorant Division</h1>
         </div>
 
