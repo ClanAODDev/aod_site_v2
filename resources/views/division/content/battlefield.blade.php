@@ -1,24 +1,15 @@
 <section class="division" data-application-id="34"
-         style="background: url({{ asset('images/division-icons/bf.jpg') }} no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
+         style="background: url({{ asset('images/division-headers/bf.jpg') }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
     <div class="section-content-container">
-        <div id="sub-nav">
-            <ul>
-                <li><a href="#servers-and-events" class="smooth-scroll">
-                        Servers and Events
-                    </a></li>
-                <li><a href="#apply-to-division" class="smooth-scroll">
-                        Apply to division
-                    </a></li>
-            </ul>
-        </div>
+        <div id="sub-nav"></div>
 
         <div id="general" class="game-header">
             <img class="game" src="{{ asset('images/division-icons/bf.png') }}">
             <h1>Battlefield Division</h1>
         </div>
 
-        <div class="section-sub-section automenu">
 
+        <div class="section-sub-section automenu">
             <p>There are over 600 members in the Battlefield Division of Clan AOD. While we are a casual gaming group,
                 we also enjoy and embody the competitive spirit of the first-person shooter. Engaging in intense battles
                 over massive maps, we endeavor to create a true community environment of good sportsmanship and absolute
@@ -27,6 +18,17 @@
                 Battlefield Division, you will play with 4 DICE Friend Tags holders, 3 EA Game Changers, 1 Official DICE
                 Battlefield Streamer and 2 r/BattlefieldV Reddit mods. With over 600 members in the Battlefield
                 Division, you will always find someone to squad up.</p>
+        </div>
+
+        <div class="section-sub-section automenu">
+            <h2 id="bf2042-teaser">
+                BF2042 Teaser
+            </h2>
+
+            <iframe class="youtube-embed margin-top-20" src="https://www.youtube.com/embed/trkPcMHO30k"
+                    title="Clan AOD Battlefield Division - BF2042" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
 
         </div>
         <div class="section-sub-section automenu">
