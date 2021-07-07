@@ -49,7 +49,7 @@ class SiteComposer
                     ->get(config('services.aod.tracker_url')."/api/v1/divisions")
                     ->json('data') ?? [];
         } catch (\Exception $exception) {
-            \Log::error('Unable to fetch division information');
+            \Log::error('Unable to fetch division information.', $exception->getMessage());
             return [];
         }
     }
