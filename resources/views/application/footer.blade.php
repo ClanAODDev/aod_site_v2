@@ -62,7 +62,7 @@
                 @foreach ($aod_tweets as $tweet)
                     <li>
                         <a href="https://twitter.com/officialclanaod" target="_blank">@officialclanaod</a>
-                        {!! (new \VStelmakh\UrlHighlight\UrlHighlight())->highlightUrls($tweet->text) !!}
+                        {!! urlify($tweet->text) !!}
                     </li>
                 @endforeach
             </ul>
