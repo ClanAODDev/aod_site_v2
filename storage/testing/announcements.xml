@@ -1,34 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-    <channel>
-        <title>ClanAOD.net Forums - News and Announcements</title>
-        <link>https://www.clanaod.net/forums/</link>
-        <description>Clan or Forum News
+	<channel>
+		<title>ClanAOD.net Forums - News and Announcements</title>
+		<link>https://www.clanaod.net/forums/</link>
+		<description>Clan or Forum News
 
-            Any new topics in here appear on the front page.</description>
-        <language>en</language>
-        <lastBuildDate>Mon, 05 Jul 2021 21:10:07 GMT</lastBuildDate>
-        <generator>vBulletin</generator>
-        <ttl>60</ttl>
-        <image>
-            <url>https://www.clanaod.net/forums/images/styles/Mechanical/misc/rss.png</url>
-            <title>ClanAOD.net Forums - News and Announcements</title>
-            <link>https://www.clanaod.net/forums/</link>
-        </image>
-        <item>
-            <title>Spooky Ops 3 7/9/21</title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=249042&amp;goto=newpost</link>
-            <pubDate>Sun, 27 Jun 2021 04:32:24 GMT</pubDate>
-            <description>Spooky Ops 3
-                July 9th 2021 (Friday) 9pm-12am Est
-
-
-                Image: https://i.imgur.com/RNskDz1.png
-                Image: https://i.imgur.com/ygDq5kv.png
-                Image: https://i.imgur.com/OBPXSxX.png
-
-
-                Hosted by :...</description>
-            <content:encoded><![CDATA[<div><div style="text-align: center;"><font size="5"><font color="#FF0000"><span style="font-family: Times New Roman"><span style="font-family: Franklin Gothic Medium">Spooky Ops 3 </span></span></font></font><br />
+Any new topics in here appear on the front page.</description>
+		<language>en</language>
+		<lastBuildDate>Wed, 07 Jul 2021 13:37:14 GMT</lastBuildDate>
+		<generator>vBulletin</generator>
+		<ttl>60</ttl>
+		<image>
+			<url>https://www.clanaod.net/forums/images/styles/Mechanical/misc/rss.png</url>
+			<title>ClanAOD.net Forums - News and Announcements</title>
+			<link>https://www.clanaod.net/forums/</link>
+		</image>
+		<item>
+			<title>Spooky Ops 3 7/9/21</title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=249042&amp;goto=newpost</link>
+			<pubDate>Sun, 27 Jun 2021 04:32:24 GMT</pubDate>
+			<description>Spooky Ops 3  
+July 9th 2021 (Friday) 9pm-12am Est  
+ 
+ 
+Image: https://i.imgur.com/RNskDz1.png  
+ Image: https://i.imgur.com/ygDq5kv.png  
+ Image: https://i.imgur.com/OBPXSxX.png  
+ 
+ 
+Hosted by :...</description>
+			<content:encoded><![CDATA[<div><div style="text-align: center;"><font size="5"><font color="#FF0000"><span style="font-family: Times New Roman"><span style="font-family: Franklin Gothic Medium">Spooky Ops 3 </span></span></font></font><br />
 <font color="#00FF00"><font size="3">July 9th 2021 (Friday) 9pm-12am Est</font></font> <br />
 <br />
 <br />
@@ -72,18 +74,18 @@ If YES then I have the event for you!</font></div><br />
 <font size="3">Hope to see you there!</font></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_Wegadins</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=249042</guid>
-        </item>
-        <item>
-            <title>Sea of Thieves Pirates Life Showcase Watch Party</title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248819&amp;goto=newpost</link>
-            <pubDate>Sun, 20 Jun 2021 15:53:00 GMT</pubDate>
-            <description>Hey all!
-
-                Today Rare will be premiering A deep dive look into the new Pirates Life and Sea of Thieves update. They will speak about their links with Disney and the Pirates of the Caribbean...</description>
-            <content:encoded><![CDATA[<div><font color="#FFFFFF"><font size="3">Hey all!<br />
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_Wegadins</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=249042</guid>
+		</item>
+		<item>
+			<title>Sea of Thieves Pirates Life Showcase Watch Party</title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248819&amp;goto=newpost</link>
+			<pubDate>Sun, 20 Jun 2021 15:53:00 GMT</pubDate>
+			<description>Hey all! 
+ 
+Today Rare will be premiering A deep dive look into the new Pirates Life and Sea of Thieves update. They will speak about their links with Disney and the Pirates of the Caribbean...</description>
+			<content:encoded><![CDATA[<div><font color="#FFFFFF"><font size="3">Hey all!<br />
 </font></font><br />
 Today Rare will be premiering A deep dive look into the new Pirates Life and Sea of Thieves update. They will speak about their links with Disney and the Pirates of the Caribbean franchise, the elements of the new season, and the exciting new tall tale adventure we have all been waiting so impatiently to learn more about. We have made a special channel in the Sea of Thieves division where we will be hosting a watch party.<br />
 <br />
@@ -98,18 +100,18 @@ I will be streaming my reaction LIVE as well so if you want to come watch along 
 Or if you would rather watch the event yourself you can find it <a href="https://www.youtube.com/watch?v=2Jb6A3HAo6g" target="_blank">here</a> on Youtube.</div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_thatNAVYguy</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248819</guid>
-        </item>
-        <item>
-            <title><![CDATA['Sus Sunday' "Town of us" mod 6/20 @7pm]]></title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248688&amp;goto=newpost</link>
-            <pubDate>Tue, 15 Jun 2021 21:58:29 GMT</pubDate>
-            <description><![CDATA[Image: https://i.ibb.co/jM8YVwZ/2021-05-17-01-21-31-Among-Us.png
-
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_thatNAVYguy</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248819</guid>
+		</item>
+		<item>
+			<title><![CDATA['Sus Sunday' "Town of us" mod 6/20 @7pm]]></title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248688&amp;goto=newpost</link>
+			<pubDate>Tue, 15 Jun 2021 21:58:29 GMT</pubDate>
+			<description><![CDATA[Image: https://i.ibb.co/jM8YVwZ/2021-05-17-01-21-31-Among-Us.png  
+ 
 Come join us in the Overwatch division for our monthly Among Us game night featuring the "Town of us" mod which adds tons of...]]></description>
-            <content:encoded><![CDATA[<div><div style="text-align: center;"><font color="#FF8C00"><img src="https://i.ibb.co/jM8YVwZ/2021-05-17-01-21-31-Among-Us.png" border="0" alt="" /><br />
+			<content:encoded><![CDATA[<div><div style="text-align: center;"><font color="#FF8C00"><img src="https://i.ibb.co/jM8YVwZ/2021-05-17-01-21-31-Among-Us.png" border="0" alt="" /><br />
 <br />
 Come join us in the Overwatch division for our monthly Among Us game night featuring the &quot;Town of us&quot; mod which adds tons of custom roles. It plays from a custom game folder on your desktop.  Instructions will be added below on how to download this.<br />
 Town of us download can be found <a href="https://github.com/polusgg/Town-Of-Us" target="_blank">&gt;&gt;Here&lt;&lt;</a><br />
@@ -121,9 +123,9 @@ Download instructions below<br />
 	<div class="smallfont" style="margin-bottom: 2px;border: 1px inset ; text-align:right;padding: 3px 5px 3px 5px;">
     	<span style="float:left; vertical-align:middle;"><strong>Spoiler</strong></span>
         <input value="Show" style="margin: 0px; padding: 0px; width: 80px; font-size: 10px;" onclick="
-        if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') {
-            this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';this.innerHTML = ''; this.value = 'Hide';
-        } else {
+        if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { 
+            this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';this.innerHTML = ''; this.value = 'Hide'; 
+        } else { 
             this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.value = 'Show';
         }" type="button">
     </div>
@@ -136,7 +138,7 @@ Download instructions below<br />
 	<div class="bbcode_description">Quote:</div>
 	<div class="bbcode_quote printable">
 		<hr />
-
+		
 			1. Create a new folder on Desktop, called Town of Us.<br />
 This can be created anywhere and be named anything, as long as this folder is easy to locate.<br />
 <br />
@@ -161,7 +163,7 @@ Something different might appear depending on the file manager being used. Make 
 <br />
 9. Launch the Among Us application that's inside, and start playing Town of Us!<br />
 A first launch may take up to 5 minutes, so be patient if it doesn't launch immediately.
-
+			
 		<hr />
 	</div>
 </div></td>
@@ -172,35 +174,35 @@ A first launch may take up to 5 minutes, so be patient if it doesn't launch imme
 </div></font></div></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_Haggis</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248688</guid>
-        </item>
-        <item>
-            <title><![CDATA[Squad's First Competitive Match]]></title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248623&amp;goto=newpost</link>
-            <pubDate>Sun, 13 Jun 2021 15:05:56 GMT</pubDate>
-            <description>Good morning AOD!! I am pleased to announce that the Squad Division competitive team will be participating, with our coalition, in our first real live Match against a European team called SPG. We...</description>
-            <content:encoded><![CDATA[<div>Good morning AOD!! I am pleased to announce that the Squad Division competitive team will be participating, with our coalition, in our first real live Match against a European team called SPG. We have been working hard and training for this and while there are not many of us, we have been training weekly for these matches. It will be broadcasted live on Twitch TV and I invite everyone to come and cheer us to victory! The match starts at 1:30pm CDT today!<br />
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_Haggis</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248688</guid>
+		</item>
+		<item>
+			<title><![CDATA[Squad's First Competitive Match]]></title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248623&amp;goto=newpost</link>
+			<pubDate>Sun, 13 Jun 2021 15:05:56 GMT</pubDate>
+			<description>Good morning AOD!! I am pleased to announce that the Squad Division competitive team will be participating, with our coalition, in our first real live Match against a European team called SPG. We...</description>
+			<content:encoded><![CDATA[<div>Good morning AOD!! I am pleased to announce that the Squad Division competitive team will be participating, with our coalition, in our first real live Match against a European team called SPG. We have been working hard and training for this and while there are not many of us, we have been training weekly for these matches. It will be broadcasted live on Twitch TV and I invite everyone to come and cheer us to victory! The match starts at 1:30pm CDT today!<br />
 <br />
 <a href="https://www.twitch.tv/gorlami14" target="_blank">https://www.twitch.tv/gorlami14</a><br />
 <br />
 <iframe src="https://player.twitch.tv/?video=https://www.twitch.tv/gorlami14&amp;autoplay=false&amp;parent=www.clanaod.net" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_Abract</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248623</guid>
-        </item>
-        <item>
-            <title>Watch E3 with the iRacing Division!!!</title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248478&amp;goto=newpost</link>
-            <pubDate>Wed, 09 Jun 2021 04:47:28 GMT</pubDate>
-            <description>This weekend the AOD iRacing division will host viewing parties for the Ubisoft, Gearbox, Microsoft/Bethesda and Square Enix press conference events.
-
-
-                We will have a dedicated channel in...</description>
-            <content:encoded><![CDATA[<div><font size="3"><font color="#ffffff">This weekend the AOD iRacing division will host viewing parties for the Ubisoft, Gearbox, Microsoft/Bethesda and Square Enix press conference events.<br />
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_Abract</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248623</guid>
+		</item>
+		<item>
+			<title>Watch E3 with the iRacing Division!!!</title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248478&amp;goto=newpost</link>
+			<pubDate>Wed, 09 Jun 2021 04:47:28 GMT</pubDate>
+			<description>This weekend the AOD iRacing division will host viewing parties for the Ubisoft, Gearbox, Microsoft/Bethesda and Square Enix press conference events. 
+ 
+ 
+We will have a dedicated channel in...</description>
+			<content:encoded><![CDATA[<div><font size="3"><font color="#ffffff">This weekend the AOD iRacing division will host viewing parties for the Ubisoft, Gearbox, Microsoft/Bethesda and Square Enix press conference events.<br />
 <br />
 <br />
 We will have a dedicated channel in TeamSpeak for people to come in an view and discus what is revealed!!</font><br />
@@ -227,41 +229,41 @@ We will have a dedicated channel in TeamSpeak for people to come in an view and 
 <font color="#ffffff"><font size="3">Please come say hello to fellow AOD friends and see what is coming ahead in the gaming industry</font></font></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_DerrickWW</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248478</guid>
-        </item>
-        <item>
-            <title>Come watch the reveal of the next Battlefield Game with us.</title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248451&amp;goto=newpost</link>
-            <pubDate>Tue, 08 Jun 2021 17:53:36 GMT</pubDate>
-            <description>*//.....Please join us in the Battlefield Division... TeamSpeak channel .....to watch the livestream ..as it happens.....//
-
-                //....June 9th, 10am ....Est...//*
-
-                Image:...</description>
-            <content:encoded><![CDATA[<div><div style="text-align: center;"><i><b><font color="#00FFFF"><font size="4">//.....Please join us in the Battlefield Division... TeamSpeak channel .....to watch the livestream ..as it happens.....// <br />
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_DerrickWW</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248478</guid>
+		</item>
+		<item>
+			<title>Come watch the reveal of the next Battlefield Game with us.</title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248451&amp;goto=newpost</link>
+			<pubDate>Tue, 08 Jun 2021 17:53:36 GMT</pubDate>
+			<description>*//.....Please join us in the Battlefield Division... TeamSpeak channel .....to watch the livestream ..as it happens.....//  
+ 
+//....June 9th, 10am ....Est...//* 
+ 
+Image:...</description>
+			<content:encoded><![CDATA[<div><div style="text-align: center;"><i><b><font color="#00FFFF"><font size="4">//.....Please join us in the Battlefield Division... TeamSpeak channel .....to watch the livestream ..as it happens.....// <br />
 <br />
 //....June 9th, 10am ....Est...//</font></font></b><br />
 <br />
 <img src="https://i.imgur.com/9Vsv8eQ.png" border="0" alt="" /></i></div></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_manimal_prime</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248451</guid>
-        </item>
-        <item>
-            <title>Stack Up Charity Stream Final Tally</title>
-            <link>https://www.clanaod.net/forums/showthread.php?t=248423&amp;goto=newpost</link>
-            <pubDate>Mon, 07 Jun 2021 21:41:56 GMT</pubDate>
-            <description>Image: https://i.imgur.com/Jb6XlfV.png</description>
-            <content:encoded><![CDATA[<div><div style="text-align: center;"><img src="https://i.imgur.com/Jb6XlfV.png" border="0" alt="" /></div></div>
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_manimal_prime</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248451</guid>
+		</item>
+		<item>
+			<title>Stack Up Charity Stream Final Tally</title>
+			<link>https://www.clanaod.net/forums/showthread.php?t=248423&amp;goto=newpost</link>
+			<pubDate>Mon, 07 Jun 2021 21:41:56 GMT</pubDate>
+			<description>Image: https://i.imgur.com/Jb6XlfV.png</description>
+			<content:encoded><![CDATA[<div><div style="text-align: center;"><img src="https://i.imgur.com/Jb6XlfV.png" border="0" alt="" /></div></div>
 
 ]]></content:encoded>
-            <category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
-            <dc:creator>AOD_Hainzy</dc:creator>
-            <guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248423</guid>
-        </item>
-    </channel>
+			<category domain="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements</category>
+			<dc:creator>AOD_Hainzy</dc:creator>
+			<guid isPermaLink="true">https://www.clanaod.net/forums/showthread.php?t=248423</guid>
+		</item>
+	</channel>
 </rss>

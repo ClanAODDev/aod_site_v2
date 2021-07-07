@@ -67,8 +67,6 @@ class SiteComposer
 
         $view->with('aod_tweets', json_decode(file_get_contents(storage_path('testing/tweets.json'))));
 
-        $view->with('aod_announcements',
-            simplexml_load_string(file_get_contents(storage_path('testing/announcements.xml')))
-        );
+        $view->with('aod_announcements', simplexml_load_file(storage_path('testing/announcements.xml'))->channel);
     }
 }
