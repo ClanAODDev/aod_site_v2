@@ -14,7 +14,7 @@ class SiteComposer
 {
     public function compose(View $view)
     {
-        if (App::environment('testing')) {
+        if (App::environment('test')) {
             $this->handleTestingEnvironment($view);
             return;
         }
@@ -29,10 +29,10 @@ class SiteComposer
         /**
          * cached data points
          */
-        $view->with('aod_divisions', cache()->remember('aod_divisions', 300, function () {
+        $view->with('aod_divisions', cache()->remember('aod_divisions', 30, function () {
             return $this->getDivisions();
         }));
-        $view->with('aod_tweets', cache()->remember('aod_tweets', 300, function () {
+        $view->with('aod_tweets', cache()->remember('aod_tweets', 30, function () {
             return (new Twitter())->getfeed();
         }));
     }
@@ -44,11 +44,12 @@ class SiteComposer
     {
         try {
             return Http::withToken(config('services.aod.access_token'))
+                    ->withOptions(['verify' => false,])
                     ->acceptJson()
                     ->get(config('services.aod.tracker_url')."/api/v1/divisions")
                     ->json('data') ?? [];
-
         } catch (\Exception $exception) {
+            \Log::error('Unable to fetch division information');
             return [];
         }
     }
@@ -60,7 +61,7 @@ class SiteComposer
      */
     private function handleTestingEnvironment(View $view)
     {
-        $view->with('aod_divisions',cache()->remember('aod_divisions', 300, function () {
+        $view->with('aod_divisions', cache()->remember('aod_divisions', 300, function () {
             return json_decode(file_get_contents(storage_path('testing/divisions.json')), true)['data'];
         }));
 
