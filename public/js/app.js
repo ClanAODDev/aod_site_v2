@@ -1911,6 +1911,13 @@ var ClanAOD = ClanAOD || {};
         e('.apply-form').trigger('openModal'), n.preventDefault();
       });
     },
+
+    /**
+     * Hero video play functionality
+     *
+     * @param e
+     * @returns {string}
+     */
     postYTMessage: function postYTMessage(e) {
       switch (e) {
         case 'start':
@@ -1920,6 +1927,13 @@ var ClanAOD = ClanAOD || {};
           return '{"event":"command","func":"stopVideo","args":""}';
       }
     },
+
+    /**
+     * Divisional sub-header links
+     *
+     * @param n
+     * @param t
+     */
     handleAutoMenu: function handleAutoMenu(n, t) {
       var o = document.getElementById(n),
           i = e('.automenu h2');
