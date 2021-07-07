@@ -35,17 +35,11 @@
             <h2 id="teaser-promo">
                 Teaser Promo
             </h2>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/i8S7Mi-tIww?feature=oembed"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""></iframe>
+        </div>
 
-            <p></p>
-            <p>&nbsp;</p>
-            <p>
-                <iframe class="youtube-embed" src="https://www.youtube.com/embed/i8S7Mi-tIww?feature=oembed"
-                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""></iframe>
-            </p>
-            <p>
-
-            </p></div>
         <div class="section-sub-section automenu">
             <h2 id="humanity-needs-guardians">
                 Humanity needs guardians
@@ -53,7 +47,7 @@
 
             <p>Destiny 2 offers an abundance of in-game activities for players to be a part of, and as a community we
                 are committed to providing the sort of matchmaking environment that you just won’t find anywhere else.
-                Every week, our members come on to link up, create fireteams, and dive in. Want to experience all the
+                Every week, our members come on to link up, create fire-teams, and dive in. Want to experience all the
                 content Destiny 2 has to offer? Our <strong>Raid Leaders</strong> are standing by to provide expert
                 guidance and support every step of the way as you plunge into any raid or dungeon.. In the mood for PVP?
                 Jump into a fireteam of three other AOD members, and enjoy the benefits of communication, coordination,
