@@ -15,25 +15,7 @@
     </div>
 
     <div class="section-content-container">
-        <div class="announcements footer-section">
-            <h1>Clan Announcements</h1>
-            @if($aod_announcements)
-                <ul>
-                    @foreach ($aod_announcements->item as $thread)
-                    <li>
-                        <a href="{{ $thread->guid }}">{{ $thread->title }}</a>
-                        <br/>Posted {{ $thread->pubDate }}
-                    </li>
-                    @endforeach
-                </ul>
-            @else
-                <div style="width: 90%; line-height: 1.5em">
-                    No announcements have been posted in the past 30 days! Check out the <a
-                        href="https://www.clanaod.net/forums/forumdisplay.php?f=102">News and Announcements forum</a>
-                    for older posts.
-                </div>
-            @endif
-        </div>
+        @include('partials.announcements')
 
         <div class="sitemap footer-section qtr-width">
             <h1>Site Map</h1>
@@ -78,10 +60,10 @@
             <h1>Twitter Activity</h1>
             <ul>
                 @foreach ($aod_tweets as $tweet)
-                <li>
-                    <a href="https://twitter.com/officialclanaod" target="_blank">@officialclanaod</a>
-                    {!! (new \VStelmakh\UrlHighlight\UrlHighlight())->highlightUrls($tweet->text) !!}
-                </li>
+                    <li>
+                        <a href="https://twitter.com/officialclanaod" target="_blank">@officialclanaod</a>
+                        {!! (new \VStelmakh\UrlHighlight\UrlHighlight())->highlightUrls($tweet->text) !!}
+                    </li>
                 @endforeach
             </ul>
         </div>
