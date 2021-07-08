@@ -16,6 +16,18 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
+     |--------------------------------------------------------------------------
+     | Cache Length (API calls)
+     |--------------------------------------------------------------------------
+     |
+     | Various calls are made to the AOD Tracker API. To mitigate load,
+     | the data returned is cached. This attribute defines in seconds
+     | the TTL (time to live) for that content.
+     |
+     */
+    'cache_length' => env('CACHE_LENGTH', 900),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------

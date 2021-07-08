@@ -22,7 +22,12 @@ class SmokeTest extends TestCase
     /** @test */
     public function a_known_valid_single_division_page_returns_200_ok()
     {
-        $this->get('/divisions/tom-clancy')->assertOk();
+        $division = 'tom-clancy';
+
+        // right now, we depend on division views to exist for content
+        $this->assertFileExists(resource_path("views/division/content/{$division}.blade.php"));
+
+        $this->get("/divisions/{$division}")->assertOk();
     }
 
     /** @test */
