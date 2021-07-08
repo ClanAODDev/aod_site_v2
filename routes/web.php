@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
 Route::view('/history', 'pages.history')->name('history');
+Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
 
 Route::get('/divisions', 'DivisionController@index')->name('division.index');
 Route::get('/divisions/{division}', 'DivisionController@show')->name('division.show');
