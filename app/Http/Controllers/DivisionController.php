@@ -33,8 +33,7 @@ class DivisionController extends Controller
                 ->acceptJson()
                 ->get(config('services.aod.tracker_url')
                     . $this->division_endpoint
-                    . 'bf'
-//                  . $division
+                    . $division
                 )->json('data');
 
             if (empty($data)) {
