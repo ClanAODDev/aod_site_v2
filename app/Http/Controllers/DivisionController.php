@@ -33,7 +33,7 @@ class DivisionController extends Controller
                 ->acceptJson()->get(config('services.aod.tracker_url')
                     . $this->division_endpoint
                     . $division
-                )->json()['data']['division'];
+                )->json('data.division');
 
             if (empty($response)) {
                 abort(404, 'Division request failed, malformed response');
