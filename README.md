@@ -28,3 +28,7 @@ npm install
 /vendor/bin/sail up -d
 
 # navigate to http://localhost
+
+# run tests
+# this execs into the web docker container and runs our phpunit tests
+sail test
