@@ -1,0 +1,218 @@
+{
+  "total": 98,
+  "per_page": 25,
+  "current_page": 1,
+  "last_page": 4,
+  "data": {
+    "division": {
+      "name": "Jedi Knight",
+      "slug": "jedi-knight",
+      "abbreviation": "jk",
+      "description": "Some random description here",
+      "forum_app_id": 8,
+      "members_count": 98
+    },
+    "members": [
+      {
+        "name": "Zuti",
+        "join_date": "2009-05-13",
+        "last_activity": "2021-06-14T23:59:44.000000Z",
+        "last_ts_activity": "2020-11-29 15:56:47",
+        "rank_id": 1,
+        "division_id": 8
+      },
+      {
+        "name": "Insane",
+        "join_date": "2008-11-30",
+        "last_activity": "2021-07-09T01:12:54.000000Z",
+        "last_ts_activity": "2021-07-08 20:46:57",
+        "rank_id": 12,
+        "division_id": 8
+      },
+      {
+        "name": "Mr.Alien",
+        "join_date": "2005-06-06",
+        "last_activity": "2021-07-08T00:58:38.000000Z",
+        "last_ts_activity": "2021-07-07 20:56:27",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "AgentGibbs",
+        "join_date": "2009-05-22",
+        "last_activity": "2021-07-09T00:44:21.000000Z",
+        "last_ts_activity": "2021-07-07 10:59:18",
+        "rank_id": 11,
+        "division_id": 8
+      },
+      {
+        "name": "Master Butters",
+        "join_date": "2010-07-02",
+        "last_activity": "2021-07-09T14:14:42.000000Z",
+        "last_ts_activity": "2021-07-05 21:33:46",
+        "rank_id": 9,
+        "division_id": 8
+      },
+      {
+        "name": "Rambo",
+        "join_date": "2011-01-27",
+        "last_activity": "2021-06-25T03:20:07.000000Z",
+        "last_ts_activity": "2020-08-28 02:29:54",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "tobiaszek",
+        "join_date": "2014-05-11",
+        "last_activity": "2021-05-22T06:55:08.000000Z",
+        "last_ts_activity": "2020-06-27 11:59:28",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Derek Jeter",
+        "join_date": "2008-11-21",
+        "last_activity": "2021-07-08T16:25:53.000000Z",
+        "last_ts_activity": "2021-07-02 13:05:55",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Fang",
+        "join_date": "2012-08-19",
+        "last_activity": "2021-07-09T03:47:01.000000Z",
+        "last_ts_activity": "2021-07-08 19:07:23",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Prime",
+        "join_date": "2012-09-03",
+        "last_activity": "2021-04-14T22:47:09.000000Z",
+        "last_ts_activity": "2021-05-06 00:05:27",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Caliber",
+        "join_date": "2015-10-19",
+        "last_activity": "2021-07-04T17:41:14.000000Z",
+        "last_ts_activity": "2021-03-29 17:22:47",
+        "rank_id": 4,
+        "division_id": 8
+      },
+      {
+        "name": "Midnight Marauder",
+        "join_date": "2015-02-21",
+        "last_activity": "2021-04-05T02:45:32.000000Z",
+        "last_ts_activity": "2021-07-04 03:29:54",
+        "rank_id": 4,
+        "division_id": 8
+      },
+      {
+        "name": "Jaden",
+        "join_date": "2008-06-18",
+        "last_activity": "2021-07-09T14:19:14.000000Z",
+        "last_ts_activity": "2021-07-05 02:46:38",
+        "rank_id": 6,
+        "division_id": 8
+      },
+      {
+        "name": "JamesHarden",
+        "join_date": "2015-07-26",
+        "last_activity": "2021-05-31T06:15:16.000000Z",
+        "last_ts_activity": "2021-07-08 15:32:31",
+        "rank_id": 6,
+        "division_id": 8
+      },
+      {
+        "name": "Vash",
+        "join_date": "2007-12-24",
+        "last_activity": "2021-06-19T16:30:35.000000Z",
+        "last_ts_activity": "2021-07-07 17:34:43",
+        "rank_id": 8,
+        "division_id": 8
+      },
+      {
+        "name": "Abel",
+        "join_date": "2008-04-11",
+        "last_activity": "2021-04-06T00:24:20.000000Z",
+        "last_ts_activity": "2021-01-19 19:30:57",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Anima",
+        "join_date": "2003-11-19",
+        "last_activity": "2021-07-08T13:18:43.000000Z",
+        "last_ts_activity": "2021-07-07 14:15:48",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Anni Skywalker",
+        "join_date": "2012-12-17",
+        "last_activity": "2021-07-02T05:25:37.000000Z",
+        "last_ts_activity": "2021-07-08 21:58:11",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Black Bolt",
+        "join_date": "2010-04-26",
+        "last_activity": "2021-04-25T18:40:48.000000Z",
+        "last_ts_activity": "2021-05-02 16:02:36",
+        "rank_id": 1,
+        "division_id": 8
+      },
+      {
+        "name": "CaptainAdmiral SPATULA",
+        "join_date": "2008-06-24",
+        "last_activity": "2021-07-02T02:53:40.000000Z",
+        "last_ts_activity": "2021-07-06 01:41:33",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Darth Bane",
+        "join_date": "2010-07-01",
+        "last_activity": "2021-03-31T09:18:05.000000Z",
+        "last_ts_activity": "2020-09-06 15:49:07",
+        "rank_id": 3,
+        "division_id": 8
+      },
+      {
+        "name": "Dekuhornets",
+        "join_date": "2015-06-14",
+        "last_activity": "2021-07-09T01:53:47.000000Z",
+        "last_ts_activity": "2021-07-08 20:07:18",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Hicks",
+        "join_date": "2012-05-20",
+        "last_activity": "2021-06-29T02:20:19.000000Z",
+        "last_ts_activity": "2021-06-08 23:35:04",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Hirman",
+        "join_date": "2009-09-23",
+        "last_activity": "2021-05-20T01:29:06.000000Z",
+        "last_ts_activity": "2021-06-27 00:47:10",
+        "rank_id": 5,
+        "division_id": 8
+      },
+      {
+        "name": "Ion",
+        "join_date": "2011-08-26",
+        "last_activity": "2021-06-29T22:38:00.000000Z",
+        "last_ts_activity": "2021-06-13 16:07:58",
+        "rank_id": 5,
+        "division_id": 8
+      }
+    ]
+  }
+}

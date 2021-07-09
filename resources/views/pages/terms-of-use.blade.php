@@ -14,7 +14,7 @@
 					do not register for the forums as explicit consent and agreement is required.</p>
                 <h2>Log Data</h2>
 				<p>We want to inform you that whenever you visit our Service, we collect information that your browser sends to
-					us that is called Log Data. This Log Data may include information such as your computer�s Internet Protocol
+					us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol
 					(IP) address, browser version, pages of our Service that you visit, the time and date of your visit, the time
 					spent on those pages, and other statistics.</p>
 				<h2>Data Collection</h2>
