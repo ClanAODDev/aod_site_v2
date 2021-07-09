@@ -26,7 +26,7 @@
                     information
                     that we request will be retained by us and used as described in this privacy policy.</p>
                 <p>The app does use third party services that may collect information used to identify you.</p>
-                <p><b>Link to privacy policy of third party service providers used by the app</b></p>
+                <p><strong>Link to privacy policy of third party service providers used by the app</strong></p>
                 <ul>
                     <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
                 </ul>
