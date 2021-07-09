@@ -25,7 +25,7 @@ class SiteComposer
 
     public function compose(View $view): void
     {
-        if (App::environment('test')) {
+        if (App::environment(['test', 'local'])) {
             $this->deferToLocallyStoredData($view);
             return;
         }

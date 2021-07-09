@@ -29,30 +29,29 @@ class DivisionController extends Controller
         }
 
         try {
-            $data = Http::withToken(config('services.aod.access_token'))
-                ->acceptJson()
-                ->get(config('services.aod.tracker_url')
+            $response = Http::withToken(config('services.aod.access_token'))
+                ->acceptJson()->get(config('services.aod.tracker_url')
                     . $this->division_endpoint
                     . $division
-                )->json('data');
+                )->json()['data']['division'];
 
-            if (empty($data)) {
-                abort(404, 'Division request failed');
+            if (empty($response)) {
+                abort(404, 'Division request failed, malformed response');
             }
 
             cache()->remember(
                 "{$this->cacheKey}{$division}",
                 config('app.cache_length'),
-                fn() => $data['division']
+                fn() => $response
             );
-
         } catch (\Exception $exception) {
             \Log::error($exception->getMessage());
-            abort(404, 'Division request failed');
+            abort(404, $exception->getMessage());
         }
 
-        return view('division.show', ['data' => cache()->get("{$this->cacheKey}{$division}")])
-            ->with('division');
+        return view('division.show', [
+            'data' => cache()->get("{$this->cacheKey}{$division}"),
+        ])->with('division');
     }
 
 }
