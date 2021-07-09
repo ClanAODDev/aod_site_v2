@@ -1,18 +1,20 @@
 {
   "data": [
     {
-      "name": "Tom Clancy",
-      "abbreviation": "tc",
-      "description": "Deleniti nobis sunt ut aut velit quis omnis.",
+      "name": "Jedi Knight",
+      "abbreviation": "jk",
+      "description": "A really old division that will probably last forever",
       "forum_app_id": 163,
-      "members_count": 69
+      "members_count": 198,
+      "slug": "tom-clancy"
     },
     {
-      "name": "Call of Duty",
-      "abbreviation": "cod",
-      "description": "Officiis dolorem dolores possimus rerum repellat quo qui.",
+      "name": "World of Warcraft",
+      "abbreviation": "wow",
+      "description": "Another really old division, which may or may not last forever",
       "forum_app_id": 935,
-      "members_count": 36
+      "members_count": 8,
+      "slug":  "world-of-warcraft"
     }
   ]
 }
