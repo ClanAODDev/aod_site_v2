@@ -1,9 +1,7 @@
 @extends ('application.base')
 
 @section('page-title', 'Gaming Divisions')
-@section('excerpt', 'Our gaming divisions are the lifeblood of the Angels of Death community. A great deal of effort
-                        goes into vetting each division request to ensure the game is a good fit and the new division
-                        will have the right leadership to support its progress.')
+@section('excerpt', 'Our gaming divisions are the lifeblood of the Angels of Death community. A great deal of effort goes into vetting each division request to ensure the game is a good fit and the new division will have the right leadership to support its progress.')
 
 @section('content')
     <section class="lobby">
@@ -23,7 +21,8 @@
                     @forelse ($aod_divisions as $division)
                         <a href="{{ route("division.show", \Str::slug($division['name'])) }}" class="item game-button">
                             <div class="icon">
-                                <img class="game" src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
+                                <img class="game"
+                                     src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
                             </div>
                             <div class="meta">
                                 <div class="title">{{ $division['name'] }}</div>
