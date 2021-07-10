@@ -2,7 +2,7 @@
 
 namespace App\Http\Composers;
 
-use App\Repositories\AOD\DivisionRepository as Divisions;
+use App\Repositories\AOD\DivisionRepository;
 use App\Support\RssReader;
 use App\Support\Twitter;
 use Illuminate\Support\Facades\App;
@@ -55,7 +55,7 @@ class SiteComposer
         }
 
         try {
-            return (new Divisions())->all()->json('data');
+            return (new DivisionRepository())->all()->json('data');
         } catch (\Exception $exception) {
             \Log::error('Unable to fetch division information.', $exception->getMessage());
             return [];
