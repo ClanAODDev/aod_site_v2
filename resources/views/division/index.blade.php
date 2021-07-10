@@ -1,6 +1,9 @@
 @extends ('application.base')
 
 @section('page-title', 'Gaming Divisions')
+@section('excerpt', 'Our gaming divisions are the lifeblood of the Angels of Death community. A great deal of effort
+                        goes into vetting each division request to ensure the game is a good fit and the new division
+                        will have the right leadership to support its progress.')
 
 @section('content')
     <section class="lobby">
