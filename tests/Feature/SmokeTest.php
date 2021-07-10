@@ -7,21 +7,23 @@ use Tests\TestCase;
 
 class SmokeTest extends TestCase
 {
-    /** @test */
-    public function the_home_page_returns_200_ok()
+    /**
+     * @test
+     * @dataProvider staticPageRouteProvider
+     */
+    public function static_pages_should_return_200_ok($route)
     {
-        $this->get('/')->assertOk();
+        $status = $this->get(route($route))->assertOk();
     }
 
-    /** @test */
-    public function the_divisions_index_returns_200_ok()
+    public function staticPageRouteProvider(): array
     {
-        $this->get('/divisions')->assertOk();
-    }
-
-    /** @test */
-    public function the_history_page_returns_200_ok()
-    {
-        $this->get('/history')->assertOk();
+        return [
+            'home' => ['home'],
+            'history' => ['history'],
+            'terms of use' => ['terms-of-use'],
+            'privacy policy' => ['privacy-policy'],
+            'android app privacy policy' => ['android-app-privacy-policy'],
+        ];
     }
 }

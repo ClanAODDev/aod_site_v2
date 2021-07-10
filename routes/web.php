@@ -19,4 +19,4 @@ Route::view('/history', 'pages.history')->name('history');
 Route::get('/divisions', 'DivisionController@index')->name('division.index');
 Route::get('/divisions/{division}', 'DivisionController@show')->name('division.show');
 
-require_once 'partials/policies.php';
+require 'partials/policies.php';
