@@ -2,6 +2,7 @@
 
 namespace App\Http\Composers;
 
+use App\Repositories\AOD\DivisionRepository;
 use App\Support\RssReader;
 use App\Support\Twitter;
 use Illuminate\Support\Facades\App;
@@ -22,19 +23,10 @@ class SiteComposer
      */
     const AOD_DIVISIONS = 'aod_divisions';
     const AOD_TWEETS = 'aod_tweets';
+    const AOD_ANNOUNCEMENTS = 'aod_announcements';
 
     public function compose(View $view): void
     {
-        if (App::environment(['test', 'local'])) {
-            $this->deferToLocallyStoredData($view);
-            return;
-        }
-
-        // no need to cache RSS feed
-        $view->with('aod_announcements', (new RssReader())->setPath(
-            config('services.aod.announcements_rss_feed')
-        )->getItems());
-
         $view->with(self::AOD_DIVISIONS, cache()->remember(
             self::AOD_DIVISIONS,
             config('app.cache_length'),
@@ -44,8 +36,11 @@ class SiteComposer
         $view->with(self::AOD_TWEETS, cache()->remember(
             self::AOD_TWEETS,
             config('app.cache_length'),
-            fn() => (new Twitter())->getfeed()
+            fn() => $this->getTwitterFeed()
         ));
+
+        // no need to cache RSS feed
+        $view->with(self::AOD_ANNOUNCEMENTS, $this->getAnnouncementsFeed());
     }
 
     /**
@@ -53,28 +48,45 @@ class SiteComposer
      */
     protected function getDivisions(): array
     {
+        if ($this->isLocal()) {
+            return json_decode(
+                file_get_contents(storage_path('testing/divisions.json')), true
+            )['data'];
+        }
+
         try {
-            return Http::withToken(config('services.aod.access_token'))
-                    ->acceptJson()
-                    ->get(config('services.aod.tracker_url') . "/api/v1/divisions")
-                    ->json('data') ?? [];
+            return (new DivisionRepository())->all()->json('data');
         } catch (\Exception $exception) {
             \Log::error('Unable to fetch division information.', $exception->getMessage());
             return [];
         }
     }
 
-    /**
-     * @param View $view
-     */
-    private function deferToLocallyStoredData(View $view)
+    private function getTwitterFeed()
     {
-        $view->with(self::AOD_DIVISIONS, json_decode(
-            file_get_contents(storage_path('testing/divisions.json')), true)['data']
-        );
+        if ($this->isLocal()) {
+            return json_decode(file_get_contents(storage_path('testing/tweets.json')));
+        }
 
-        $view->with(self::AOD_TWEETS, json_decode(file_get_contents(storage_path('testing/tweets.json'))));
+        return (new Twitter())->getfeed();
+    }
 
-        $view->with('aod_announcements', simplexml_load_file(storage_path('testing/announcements.xml'))->channel);
+    private function getAnnouncementsFeed()
+    {
+        if ($this->isLocal()) {
+            return simplexml_load_file(storage_path('testing/announcements.xml'))->channel;
+        }
+
+        return (new RssReader())->setPath(
+            config('services.aod.announcements_rss_feed')
+        )->getItems();
+    }
+
+    /**
+     * @return bool|string
+     */
+    private function isLocal()
+    {
+        return app()->environment(['test', 'local']);
     }
 }
