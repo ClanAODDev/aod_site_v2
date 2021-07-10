@@ -1,5 +1,5 @@
 <head>
-    <title>ClanAOD.net | @yield('page-title', 'Since 2003')</title>
+    <title>ClanAOD.net | @yield('page-title', 'Since 2001')</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css?v=2.2') }}"/>
     <link rel="stylesheet" href="{{ asset('css/fonts.css?v=2.2') }}"/>
