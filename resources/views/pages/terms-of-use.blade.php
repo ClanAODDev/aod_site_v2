@@ -1,5 +1,7 @@
 @extends ('application.base')
 
+@section('page-title', 'Terms of Use')
+
 @section('content')
 
     <section class="page"

@@ -1,4 +1,7 @@
 @extends ('application.base')
+
+@section('page-title', 'Gaming Divisions')
+
 @section('content')
     <section class="lobby">
         <div class="section-content-container">

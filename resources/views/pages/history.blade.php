@@ -1,5 +1,7 @@
 @extends('application.base')
 
+@section('page-title', 'History of AOD')
+
 @section('content')
 
     <div id="timeline" class="timeline-container">
