@@ -3,18 +3,18 @@
     {
       "name": "Jedi Knight",
       "abbreviation": "jk",
-      "description": "A really old division that will probably last forever",
+      "description": "A random description",
       "forum_app_id": 163,
       "members_count": 198,
-      "slug": "tom-clancy"
+      "slug": "jedi-knight"
     },
     {
-      "name": "World of Warcraft",
-      "abbreviation": "wow",
-      "description": "Another really old division, which may or may not last forever",
+      "name": "Battlefield",
+      "abbreviation": "bf",
+      "description": "A random description",
       "forum_app_id": 935,
       "members_count": 8,
-      "slug":  "world-of-warcraft"
+      "slug":  "Battlefield"
     }
   ]
 }
