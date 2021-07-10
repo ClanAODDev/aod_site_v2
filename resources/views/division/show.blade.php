@@ -1,4 +1,7 @@
 @extends ('application.base')
+
+@section('page-title', "{$data['name']} Division")
+
 @section('content')
 
     <section class="division" data-application-id="{{ $data['forum_app_id'] }}"

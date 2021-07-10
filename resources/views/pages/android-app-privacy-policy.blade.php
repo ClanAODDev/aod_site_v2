@@ -1,5 +1,7 @@
 @extends ('application.base')
 
+@section('page-title', 'Android App Privacy Policy')
+
 @section('content')
 
     <section class="page"

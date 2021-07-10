@@ -29,11 +29,13 @@ class DivisionController extends Controller
         }
 
         try {
-            $response = Http::withToken(config('services.aod.access_token'))
-                ->acceptJson()->get(config('services.aod.tracker_url')
-                    . $this->division_endpoint
-                    . $division
-                )->json('data.division');
+            $response = (app()->environment('local'))
+                ? $this->getDummyDivision()
+                : Http::withToken(config('services.aod.access_token'))
+                    ->acceptJson()->get(config('services.aod.tracker_url')
+                        . $this->division_endpoint
+                        . $division
+                    )->json('data.division');
 
             if (empty($response)) {
                 abort(404, 'Division request failed, malformed response');
@@ -52,6 +54,13 @@ class DivisionController extends Controller
         return view('division.show', [
             'data' => cache()->get("{$this->cacheKey}{$division}"),
         ])->with('division');
+    }
+
+    private function getDummyDivision()
+    {
+        $data = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+
+        return $data['data']['division'];
     }
 
 }

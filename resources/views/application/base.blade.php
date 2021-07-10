@@ -8,6 +8,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body class="{{ request()->is('history') ? 'page-template-page-history' : null }}">
+@include('partials.dev-banner')
 
 @include('partials.apply')
 
