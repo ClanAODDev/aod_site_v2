@@ -2,16 +2,15 @@
 <meta data-rh="true" property="og:title" content="ClanAOD.net | @yield('page-title', 'Angels of Death')">
 <meta data-rh="true" property="twitter:title" content="ClanAOD.net | @yield('page-title', 'Angels of Death')">
 
-<meta data-rh="true" name="description" content="@yield('og-description', 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other likeminded members.
-')">
-<meta data-rh="true" property="og:description" content="@yield('og-description', 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other likeminded members.
-')">
-<meta data-rh="true" property="twitter:description" content="@yield('og-description', 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other likeminded members.
-')">
+<?php
+// Inlining this for DRY purposes
+$description = 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other likeminded members.';
+?>
 
+<meta data-rh="true" name="description" content="@yield('og-description', $description)">
+<meta data-rh="true" property="og:description" content="@yield('og-description', $description)">
+<meta data-rh="true" property="twitter:description" content="@yield('og-description', $description)">
 <meta data-rh="true" property="og:image" content="@yield('og-image', asset('images/official-logo.png'))">
-
-
 
 
 <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicons/apple-icon-57x57.png') }}">
