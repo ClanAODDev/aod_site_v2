@@ -13,15 +13,6 @@
 @include('partials.apply')
 
 @if(request()->is('/'))
-    <div class="commo-bar">
-        <p class="commo-item"><i class="fab fa-teamspeak fa-lg"></i>
-            <strong>TEAMSPEAK </strong> 50 / 340
-        </p>
-        <p class="commo-item">
-            <i class="fab fa-discord fa-lg"></i>
-            <strong>DISCORD</strong> {{ 50 + 39 + 12 }} / {{ 390 }}
-        </p>
-    </div>
     <div class="push" style="margin-top: 700px;"></div>
 @endif
 

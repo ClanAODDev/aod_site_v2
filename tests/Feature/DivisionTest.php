@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
@@ -19,14 +17,12 @@ class DivisionTest extends TestCase
             resource_path("views/division/content/{$division}.blade.php")
         );
 
-        $divisionRoute = "*/api/v1/divisions/{$division}";
-
         $response = file_get_contents(storage_path(
             'testing/division.json'
         ));
 
         Http::fake([
-            $divisionRoute => Http::response($response, 200),
+            "*/api/v1/divisions/{$division}" => Http::response($response, 200),
         ]);
 
         $data = $this->get(route('division.show', compact('division')));
