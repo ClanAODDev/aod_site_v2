@@ -17,7 +17,7 @@ git clone git@github.com:clanaoddev/aod_site_v2
 # or with user/pass
 git clone https://github.com/clanaoddev/aod_site_v2
 
-# install composer dependencies (requires composer)
+# install composer dependencies (requires composer [v2!])
 composer install 
 
 # install front-end compilation tools (requires npm and NodeJS
