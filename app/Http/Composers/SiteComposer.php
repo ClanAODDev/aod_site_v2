@@ -87,6 +87,6 @@ class SiteComposer
      */
     private function isLocal()
     {
-        return app()->environment(['test', 'local']);
+        return app()->environment(['testing', 'local']);
     }
 }
