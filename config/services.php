@@ -23,7 +23,8 @@ return [
     'aod' => [
         'access_token' => env('AOD_TRACKER_TOKEN'),
         'announcements_rss_feed' => env('ANNOUNCEMENTS_RSS_FEED'),
-        'tracker_url' => env('TRACKER_URL', '//tracker.clanaod.net')
+        'tracker_url' => env('TRACKER_URL', '//tracker.clanaod.net'),
+        'twitter_rss_feed' => env('TWITTER_RSS_FEED'),
     ],
 
     'twitter' => [

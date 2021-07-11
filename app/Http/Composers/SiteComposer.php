@@ -64,11 +64,13 @@ class SiteComposer
 
     private function getTwitterFeed()
     {
-        if ($this->isLocal() || app()->environment('testing')) {
-            return json_decode(file_get_contents(storage_path('testing/tweets.json')));
+        if ($this->isLocal()) {
+            return simplexml_load_file(storage_path('testing/tweets.xml'));
         }
 
-        return Twitter::getfeed();
+        return (new RssReader())->setPath(
+            config('services.aod.twitter_rss_feed')
+        )->getItems();
     }
 
     private function getAnnouncementsFeed()
