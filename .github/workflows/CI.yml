@@ -23,12 +23,6 @@ jobs:
         with:
           php-version: "${{ matrix.php }}"
 
-      - uses: actions/download-artifact@v2
-        if: failure()
-        with:
-          name: laravel-failure-artifact
-          path: storage/logs/laravel.log
-
       - name: Copy .env configuration
         run: php -r "file_exists('.env') || copy('.env.github', '.env');"
 
@@ -43,6 +37,12 @@ jobs:
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: php vendor/bin/phpunit
+
+      - uses: actions/download-artifact@v2
+        if: failure()
+        with:
+          name: laravel-failure-artifact
+          path: storage/logs/laravel.log
 
       - uses: sarisia/actions-status-discord@v1
         if: always()
