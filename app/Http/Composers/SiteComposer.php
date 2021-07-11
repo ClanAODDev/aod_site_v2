@@ -36,7 +36,7 @@ class SiteComposer
         $view->with(self::AOD_TWEETS, cache()->remember(
             self::AOD_TWEETS,
             config('app.cache_length'),
-            fn() => Twitter::getfeed()
+            fn() => $this->getTwitterFeed()
         ));
 
         // no need to cache RSS feed
@@ -64,13 +64,12 @@ class SiteComposer
 
     private function getTwitterFeed()
     {
-        if ($this->isLocal()) {
-            return simplexml_load_file(storage_path('testing/tweets.xml'));
+        if ($this->isLocal() || app()->environment('testing')) {
+
+            return json_decode(file_get_contents(storage_path('testing/tweets.json')));
         }
 
-        return (new RssReader())->setPath(
-            config('services.aod.twitter_rss_feed')
-        )->getItems();
+        return Twitter::getfeed();
     }
 
     private function getAnnouncementsFeed()
