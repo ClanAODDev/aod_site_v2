@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Repositories\AOD\DivisionRepository;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Http;
 
 class DivisionController extends Controller
 {
@@ -24,7 +23,7 @@ class DivisionController extends Controller
     public function show($division): View
     {
         if (!view()->exists("division.content.{$division}")) {
-            abort(404, 'Page not found');
+            abort(404, 'Division not found');
         }
 
         $response = (app()->environment('local'))
