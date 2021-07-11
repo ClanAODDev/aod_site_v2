@@ -22,8 +22,8 @@ abstract class TestCase extends BaseTestCase
                 'testing/divisions.json'
             )), 200),
 
-            'rss.app/feeds/*' => Http::response(file_get_contents(storage_path(
-                'testing/tweets.xml'
+            'api.twitter.com/1.1/statuses/user_timeline.json' => Http::response(file_get_contents(storage_path(
+                'testing/tweets.json'
             )), 200),
         ]);
     }
