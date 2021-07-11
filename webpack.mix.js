@@ -12,6 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix
+    // build out our JS assets
     .js(['resources/js/app.js'], 'public/js/app.js')
+
+    // compile Stylus source to CSS
     .stylus('resources/src/main.styl', 'css/app.css')
+
+    // minify our font CSS
     .postCss('resources/fonts/fonts.css', 'public/css');
