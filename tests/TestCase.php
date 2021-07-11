@@ -26,9 +26,9 @@ abstract class TestCase extends BaseTestCase
         ));
 
         Http::fake([
-            '*/api/v1/divisions' => Http::response($divisionalData, 200),
-            '*/external.php?type=RSS2&forumids=102' => Http::response($announcementsData, 200),
-            '*/statuses/user_timeline.json' => Http::response($twitterData, 200),
+            'clanaod.net/forums/external.php*' => Http::response($announcementsData, 200),
+            'tracker.clanaod.net/api/v1/divisions' => Http::response($divisionalData, 200),
+            'api.twitter.com/1.1/statuses/user_timeline.json' => Http::response($twitterData, 200),
         ]);
     }
 }
