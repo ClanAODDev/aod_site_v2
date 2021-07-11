@@ -24,7 +24,7 @@ jobs:
           php-version: "${{ matrix.php }}"
 
       - name: Copy .env configuration
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.github', '.env');"
 
       - name: Install Dependencies
         run: php /usr/local/bin/composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
