@@ -19,9 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-    - uses: "shivammathur/setup-php@v2"
-      with:
-        php-version: "${{ matrix.php }}"
+      - uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php }}"
 
       - name: Copy .env configuration
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
