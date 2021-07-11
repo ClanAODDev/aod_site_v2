@@ -32,6 +32,7 @@ npm install
 # run tests
 # this execs into the web docker container and runs our phpunit tests
 sail test
+```
 
 #### Front-end assets
 
