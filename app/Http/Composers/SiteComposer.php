@@ -2,9 +2,9 @@
 
 namespace App\Http\Composers;
 
-use App\Repositories\AOD\DivisionRepository;
+use Facades\App\Repositories\AOD\DivisionRepository;
 use App\Support\RssReader;
-use App\Support\Twitter;
+use Facades\App\Support\Twitter;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
@@ -36,7 +36,7 @@ class SiteComposer
         $view->with(self::AOD_TWEETS, cache()->remember(
             self::AOD_TWEETS,
             config('app.cache_length'),
-            fn() => $this->getTwitterFeed()
+            fn() => Twitter::getfeed()
         ));
 
         // no need to cache RSS feed
@@ -55,7 +55,7 @@ class SiteComposer
         }
 
         try {
-            return (new DivisionRepository())->all()->json('data');
+            return DivisionRepository::all()->json('data');
         } catch (\Exception $exception) {
             \Log::error('Unable to fetch division information.', $exception->getMessage());
             return [];
@@ -68,7 +68,7 @@ class SiteComposer
             return json_decode(file_get_contents(storage_path('testing/tweets.json')));
         }
 
-        return (new Twitter())->getfeed();
+        return Twitter::getfeed();
     }
 
     private function getAnnouncementsFeed()
@@ -87,6 +87,6 @@ class SiteComposer
      */
     private function isLocal()
     {
-        return app()->environment(['testing', 'local']);
+        return app()->environment('local');
     }
 }
