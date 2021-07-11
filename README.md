@@ -32,3 +32,20 @@ npm install
 # run tests
 # this execs into the web docker container and runs our phpunit tests
 sail test
+
+#### Front-end assets
+
+`resources/src/main.styl` is the pivot template for the compiled CSS assets. I chose Stylus because it was easy to handle complicated rules and clean syntax, free of the technical debt that traditional CSS keeps. 
+
+Compiling Stylus to CSS is handled by Laravel Mix and webpack via `webpack.mix.js` and by running:
+
+```shell
+npx mix
+
+# or for production releases
+npx mix --production
+```
+
+Note that `webpack.mix.js` also handles the JS asset compilation. `app.js` is the pivot file, with `bootstrap.js` handling extra vendor-specific imports.
+
+
