@@ -1,8 +1,3 @@
-<div id="general" class="game-header">
-    <img class="game" src="{{ asset('images/division-icons/wt.png') }}">
-    <h1>War Thunder Division</h1>
-</div>
-
 <div class="section-sub-section automenu">
 
     <p>The Angels of Death operate five squadrons within War Thunder, comprising upwards of 300 full time
