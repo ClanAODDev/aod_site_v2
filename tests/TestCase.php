@@ -13,22 +13,18 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $divisionalData = file_get_contents(storage_path(
-            'testing/divisions.json'
-        ));
-
-        $announcementsData = file_get_contents(storage_path(
-            'testing/announcements.xml'
-        ));
-
-        $twitterData = file_get_contents(storage_path(
-            'testing/tweets.json'
-        ));
-
         Http::fake([
-            'clanaod.net/forums/external.php*' => Http::response($announcementsData, 200),
-            'tracker.clanaod.net/api/v1/divisions' => Http::response($divisionalData, 200),
-            'api.twitter.com/1.1/statuses/user_timeline.json' => Http::response($twitterData, 200),
+            'clanaod.net/forums/external.php*' => Http::response(file_get_contents(storage_path(
+                'testing/announcements.xml'
+            )), 200),
+
+            'tracker.clanaod.net/api/v1/divisions' => Http::response(file_get_contents(storage_path(
+                'testing/divisions.json'
+            )), 200),
+
+            'api.twitter.com/*' => Http::response(file_get_contents(storage_path(
+                'testing/tweets.json'
+            )), 200),
         ]);
     }
 }

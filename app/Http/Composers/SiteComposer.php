@@ -64,7 +64,7 @@ class SiteComposer
 
     private function getTwitterFeed()
     {
-        if ($this->isLocal()) {
+        if ($this->isLocal() || app()->environment('testing')) {
             return json_decode(file_get_contents(storage_path('testing/tweets.json')));
         }
 
