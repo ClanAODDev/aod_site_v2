@@ -1,5 +1,4 @@
 <div class="section-sub-section automenu">
-
     <p>Welcome, Soldier and thank you for your interest in the Angels of Death!</p>
     <p>The Angels of Death – Call of Duty Division currently supports War Zone, Modern Warfare, and Cold War. We’re a
         gaming community that knows how to win but prefers good people over skill. Our main goal is to create a diverse,
@@ -8,7 +7,6 @@
         time zone or experience, there is always someone online to squad up with. Everyone here is united by our love
         for gaming and the fun, mature, judgment free atmosphere we have created. So, if you’re looking for a community
         with members that play with honor and respect then you are in the right place.</p>
-
 </div>
 
 <div class="section-sub-section automenu">

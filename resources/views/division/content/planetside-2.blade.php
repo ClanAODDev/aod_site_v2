@@ -1,11 +1,9 @@
 <div class="section-sub-section automenu">
-
     <p>Angels of Death has made up an influential portion of the Emerald population in Planetside 2 since the
         game launched. We “move the map” by controlling territory and capturing enemy facilities on a daily
         basis. Full members currently make up around 350 of the nearly 3,700 in-game members who fight for the
         Terran Republic faction. Expect to see a platoon running during peak hours and multiple platoons during
         our Ops event every Sunday night.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="servers-and-events">

@@ -1,17 +1,13 @@
 <div class="section-sub-section automenu">
-
-    <p></p>
     <p>Eyes up, Guardians! The Angels of Death are looking for new faces to join the ranks of the <strong>Destiny
             2 Division</strong>.</p>
-    <p>
-
-    </p></div>
+</div>
 <div class="section-sub-section automenu">
     <h2 id="teaser-promo">
         Teaser Promo
     </h2>
     <iframe class="youtube-embed" src="https://www.youtube.com/embed/i8S7Mi-tIww?feature=oembed"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen=""></iframe>
 </div>
 

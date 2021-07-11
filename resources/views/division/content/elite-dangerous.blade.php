@@ -1,5 +1,4 @@
 <div class="section-sub-section automenu">
-
     <p>The Angels of Death, based out of 40 Ceti at Pailes Enterprises, acts as an independent enforcement
         organization focused on the mutual prosperity of its members through PVP and PVE. AOD’s reputation for
         accomplishing the toughest tasks under the most extreme conditions is well earned from 18 years of
@@ -16,7 +15,6 @@
         a place where people of equal caliber can play together and where newcomers can learn and grow. Our
         forums contains a library of useful information and resources. Our goal is to become a Triple-Elite
         minor faction and to form close ties with the Frontier team.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="servers-and-events">

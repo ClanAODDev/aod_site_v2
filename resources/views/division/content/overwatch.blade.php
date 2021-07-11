@@ -1,5 +1,4 @@
 <div class="section-sub-section automenu">
-
     <p>The Overwatch Division creates a dynamic atmosphere with more than 150 Angels of Death members. Built on
         the fronthold of the 2016 Game of the Year, the Overwatch Division fosters a family-like atmosphere with
         a friendly and welcoming core of players.</p>
@@ -7,7 +6,6 @@
         team. We offer an environment for both new and experienced members across the board. Whether it’s
         capturing the payload, circling Point B, traveling to Numbani Square and crushing the enemy team, the
         Overwatch Division is the place you want to be!</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="the-world-needs-more-heroes">
@@ -32,7 +30,7 @@
     <p></p>
     <p>&nbsp;<br>
         <iframe class="youtube-embed" src="https://www.youtube.com/embed/hPEl47sSz68?feature=oembed"
-                frameborder="0"
+
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen=""></iframe>
     </p>

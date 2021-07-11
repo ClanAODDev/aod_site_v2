@@ -1,10 +1,8 @@
 <div class="section-sub-section automenu">
-
     <p>
         Welcome to Clan AOD! Looking to end the dreadful solo queuing, or play ranked with folks who actually
         communicate? Well then the Valorant Division is the place for you. Our focus is to bring members
         together and have fun playing customs scrims, unranked and competitive.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="events-and-badges">

@@ -1,5 +1,4 @@
 <div class="section-sub-section automenu">
-
     <p>Welcome to the AOD Star Wars Battlefront Division. We are a casual clan with 100+ members and, with no skill
         requirements to apply, our aim is to embody a desire for friendly competition, fair play, and above all having a
         toxic free environment while having as much fun with the game as we can. Our division carries the will of the
@@ -7,7 +6,6 @@
         Star Wars Battlefront has to offer with members from all over the world, so regardless of where you’re from
         you’re sure to find someone to play with – whatever the game mode. Whether you’re new to the game or a seasoned
         pro you’ll find other members to both help and test your skills.</p>
-
 </div>
 
 <div class="section-sub-section automenu">

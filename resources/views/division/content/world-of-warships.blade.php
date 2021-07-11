@@ -1,5 +1,4 @@
 <div class="section-sub-section automenu">
-
     <p>Welcome to the World of Warships Division of AOD where we unleash hellfire and furious steel on the seas
         then bathe in the salty tears of those we vanquish. Whether it’s as the bulwark of the fleet in
         battleships, the offensive and defensive backbone in cruisers or engaging the enemy at close range in
@@ -8,7 +7,6 @@
         Battles, Clan Battles and other in-game events sponsored by Wargaming and the World of Warships
         community at large. Inexperienced, current and returning players are all equally welcome. We value the
         individual, not individual skill.</p>
-
 </div>
 
 <div class="section-sub-section automenu">

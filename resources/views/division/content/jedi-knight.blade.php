@@ -1,11 +1,9 @@
 <div class="section-sub-section automenu">
-
     <p>The Angels of Death entered the Jedi Knight genre sparking an impassioned presence that has lasted for
         more than 14 years. Throughout those years the Jedi Knight division has progressed through the likes of
         Jedi Knight Outcast, Jedi Academy, and Movie Battles II among other mods. This steadfast commitment to
         forge one of the most cohesive communities within the Star Wars genre is propelled by decisive leaders,
         devoted stewards of private game server, and a love for comradery.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="servers-and-events">

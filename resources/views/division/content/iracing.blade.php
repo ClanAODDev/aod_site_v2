@@ -1,8 +1,6 @@
 <div class="section-sub-section automenu">
-
     <p>Angels of Death Racing seeks members of all skill sets to be apart of our team. Our history goes back
         over 15 years across multiple NASCAR games including NASCAR Racing 2003 season.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="what-we-do">

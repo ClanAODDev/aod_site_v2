@@ -4,7 +4,6 @@
         listeners for your regular riflemen. The server features almost all Layers with RAAS and AAS game modes.<br>
         The server also features many custom triggers that ensure that the server is well organized. Engaging in
         fierce battles, we strive to forge a sense of companionship that could rival the military.</p>
-
 </div>
 <div class="section-sub-section automenu">
     <h2 id="what-you-need-to-do">
