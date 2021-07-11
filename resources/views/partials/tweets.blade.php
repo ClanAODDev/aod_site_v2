@@ -1,6 +1,6 @@
 <div class="footer-section full-width twitter-feed">
     <h1>Twitter Activity</h1>
-    @if ($tweets)
+    @if ($aod_tweets)
         <ul>
             @foreach ($aod_tweets as $tweet)
                 <li>
