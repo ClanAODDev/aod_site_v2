@@ -38,11 +38,11 @@ jobs:
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: php vendor/bin/phpunit
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: laravel-failure-artifact
-          path: storage/logs/laravel.log
+          path: storage/logs
 
       - uses: sarisia/actions-status-discord@v1
         if: always()
