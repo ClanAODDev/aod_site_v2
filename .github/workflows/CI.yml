@@ -22,6 +22,12 @@ jobs:
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php }}"
+          
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: laravel-failure-artifact
+          path: storage/logs/laravel.log
 
       - name: Copy .env configuration
         run: php -r "file_exists('.env') || copy('.env.github', '.env');"
