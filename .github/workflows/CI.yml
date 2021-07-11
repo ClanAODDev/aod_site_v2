@@ -22,8 +22,8 @@ jobs:
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php }}"
-          
-      - uses: actions/upload-artifact@v1
+
+      - uses: actions/download-artifact@v2
         if: failure()
         with:
           name: laravel-failure-artifact
