@@ -3,7 +3,7 @@
 namespace App\Http\Composers;
 
 use Facades\App\Repositories\AOD\DivisionRepository;
-use App\Support\RssReader;
+use Facades\App\Support\RssReader;
 use Facades\App\Support\Twitter;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
@@ -78,9 +78,13 @@ class SiteComposer
             return simplexml_load_file(storage_path('testing/announcements.xml'))->channel;
         }
 
-        return (new RssReader())->setPath(
-            config('services.aod.announcements_rss_feed')
-        )->getItems();
+        $feed = RssReader::setPath(config('services.aod.announcements_rss_feed'));
+
+        if (!$feed) {
+            return [];
+        }
+
+        return $feed->getItems();
     }
 
     /**
