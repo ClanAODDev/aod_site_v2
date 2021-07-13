@@ -61,4 +61,16 @@ class HomePageTest extends TestCase
 
         $data->assertOk();
     }
+
+    /** @test */
+    public function home_page_returns_200_ok_if_rss_announcements_lookup_fails()
+    {
+        Http::fake([
+            'clanaod.net/forums/external.php*' => Http::response([], 500)
+        ]);
+
+        $data = $this->get(route('home'));
+
+        $data->assertOk();
+    }
 }

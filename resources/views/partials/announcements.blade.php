@@ -1,15 +1,18 @@
 <div class="announcements footer-section">
     <h1>Clan Announcements</h1>
-    @if($aod_announcements->count())
+    @if($aod_announcements)
         <ul>
-            @for ($i = 0;$i < 4;$i ++)
+            @foreach ($aod_announcements->item as $announcement)
                 <li>
-                    <a href="{{ $aod_announcements->item[$i]->guid }}">
-                        {{ $aod_announcements->item[$i]->title }}
+                    <a href="{{ $announcement->guid }}">
+                        {{ $announcement->title }}
                     </a>
-                    <br/>Posted {{ $aod_announcements->item[$i]->pubDate }}
+                    <br/>Posted {{ $announcement->pubDate }}
                 </li>
-            @endfor
+                @if ($loop->iteration >= config('services.aod.max_announcements'))
+                    @break
+                @endif
+            @endforeach
         </ul>
     @else
         <div style="width: 90%; line-height: 1.5em">

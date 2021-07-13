@@ -17,7 +17,12 @@ class RssReader
             return false;
         }
 
-        $simpleXML = new SimpleXMLElement($data);
+        try {
+            $simpleXML = new SimpleXMLElement($data);
+        } catch (\Exception $exception) {
+            \Log::error($exception->getMessage());
+            return false;
+        }
 
         if (!property_exists($simpleXML, 'channel')) {
             return false;
