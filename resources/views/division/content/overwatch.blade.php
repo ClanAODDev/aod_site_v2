@@ -42,8 +42,7 @@
         Apply to division
     </h2>
 
-    <p>In order to be eligible for membership in the Blizzard Universe division, you must meet the following
-        criteria:</p>
+    <p>In order to be eligible for membership in the Overwatch division, you must meet the following criteria:</p>
     <ul>
         <li>Be at least 16 years of age</li>
         <li>Be on TeamSpeak whenever you are ingame</li>
