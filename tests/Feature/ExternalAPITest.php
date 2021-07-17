@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class RepositoryClientTest extends TestCase
+class ExternalAPITest extends TestCase
 {
     use WithFaker;
 
