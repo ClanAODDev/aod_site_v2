@@ -5,7 +5,12 @@ var ClanAOD = ClanAOD || {};
 !function (e) {
     ClanAOD = {
         setup: function () {
-            this.addDynamicLinks(), this.stickyNav(), this.handleModals(), this.initAutoMenu(), this.handleApplicationLinks();
+            this.addDynamicLinks();
+            this.stickyNav();
+            this.handleModals();
+            this.initAutoMenu();
+            this.handleApplicationLinks();
+            this.handleViewportAnimations();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -100,6 +105,48 @@ var ClanAOD = ClanAOD || {};
                 }
                 for (; o.hasChildNodes();) o.removeChild(o.firstChild);
                 o.appendChild(a);
+            }
+        },
+        handleViewportAnimations: function () {
+            // Detect request animation frame
+            var scroll = window.requestAnimationFrame ||
+                // IE Fallback
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60)
+                };
+            var elementsToShow = document.querySelectorAll('.animate');
+
+            function loop() {
+
+                Array.prototype.forEach.call(elementsToShow, function (element) {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('animated');
+                    } else {
+                        element.classList.remove('animated');
+                    }
+                });
+
+                scroll(loop);
+            }
+
+            loop();
+
+            function isElementInViewport(el) {
+                // special bonus for those using jQuery
+                if (typeof jQuery === "function" && el instanceof jQuery) {
+                    el = el[0];
+                }
+                var rect = el.getBoundingClientRect();
+                return (
+                    (rect.top <= 0
+                        && rect.bottom >= 0)
+                    ||
+                    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+                    ||
+                    (rect.top >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+                );
             }
         }
     };
