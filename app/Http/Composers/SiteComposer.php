@@ -57,7 +57,7 @@ class SiteComposer
         try {
             return DivisionRepository::all()->json('data');
         } catch (\Exception $exception) {
-            \Log::error('Unable to fetch division information.', $exception->getMessage());
+            \Log::error('Unable to fetch division information. -' . $exception->getMessage());
             return [];
         }
     }
