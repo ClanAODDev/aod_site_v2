@@ -13,9 +13,13 @@ class Repository
 
     public function __construct()
     {
-        $this->client = Http::withToken(
-            config('services.aod.access_token')
-        )->acceptJson();
+        $token = config('services.aod.access_token');
+
+        if (!$token) {
+            throw new \Exception('Tracker access token missing.');
+        }
+
+        $this->client = Http::withToken($token)->acceptJson();
     }
 
     /**
