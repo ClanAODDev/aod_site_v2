@@ -54,12 +54,8 @@ class SiteComposer
             )['data'];
         }
 
-        try {
-            return DivisionRepository::all()->json('data');
-        } catch (\Exception $exception) {
-            \Log::error('Unable to fetch division information. -' . $exception->getMessage());
-            return [];
-        }
+        return DivisionRepository::all()->json('data');
+
     }
 
     private function getTwitterFeed()
