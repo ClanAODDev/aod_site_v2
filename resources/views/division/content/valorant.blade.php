@@ -12,14 +12,12 @@
     <p>
         The Valorant Division hosts weekly events for its members to include the following:</p>
     <ul>
-        <li>In-House Scrims &amp; Custom Games on Saturdays @ 7pm EST</li>
+        <li>In-House Scrims & Custom Games on Thursdays @ 9pm and Saturdays @ 8pm EST</li>
         <li>Competitive Team tournaments &amp; scrims</li>
         <li>Random game nights</li>
         <li>Forum Badges</li>
     </ul>
-    <p>
-
-    </p></div>
+</div>
 <div class="section-sub-section automenu">
     <h2 id="what-you-need-to-do">
         What you need to do
