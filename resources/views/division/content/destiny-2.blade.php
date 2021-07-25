@@ -21,7 +21,7 @@
         Every week, our members come on to link up, create fire-teams, and dive in. Want to experience all the
         content Destiny 2 has to offer? Our <strong>Raid Leaders</strong> are standing by to provide expert
         guidance and support every step of the way as you plunge into any raid or dungeon.. In the mood for PVP?
-        Jump into a fireteam of three other AOD members, and enjoy the benefits of communication, coordination,
+        Jump into a fireteam of two or more other AOD members and enjoy the benefits of communication, coordination,
         and precision.</p>
 
 </div>
@@ -30,16 +30,16 @@
         Weekly Events and Milestones
     </h2>
 
-    <p>Come together on <strong>Fridays at 6PM EST</strong> to hear the latest news on the goings-on of the
+    <p>Come together on <strong>Tuesday Resets</strong> to hear the latest news on the goings-on of the
         division, as well as the newest promotions. It’s also a great chance to take advantage of the folks who
         are online to push that raid you’ve been meaning to get in on. And for every other day of the week, we
         provide a “Find a Fireteam” forum for those that want to coordinate events further in advance.</p>
     <p>On any given day, you can expect the following to be occurring:</p>
     <ul>
-        <li>Gambit and Gambit Prime</li>
+        <li>Gambit</li>
         <li>Weekly Clan XP reward</li>
         <li>Nightfall strike</li>
-        <li>Prestige Nightfall strike</li>
+        <li>Grand Master Nightfall</li>
         <li>Endgame raids</li>
         <li>Trials of Osiris</li>
     </ul>
@@ -56,7 +56,7 @@
         <li>Be at least 16 years of age</li>
         <li>Be on Teamspeak whenever you are ingame</li>
         <li>Wear AOD tags while you are ingame</li>
-        <li>Participate in impromptu vicious, bloodletting, fierce soccer matches at the tower and farm</li>
+        <li>Abide by our Code of Conduct (Don't be toxic)</li>
         <li>Contribute to the forums once a month to maintain activity</li>
         <li>Clan AOD is a PC-exclusive gaming community</li>
     </ul>
