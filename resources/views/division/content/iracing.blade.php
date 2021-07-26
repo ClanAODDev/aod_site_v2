@@ -1,6 +1,7 @@
 <div class="section-sub-section automenu">
-    <p>Angels of Death Racing seeks members of all skill sets to be apart of our team. Our history goes back
-        over 15 years across multiple NASCAR games including NASCAR Racing 2003 season.</p>
+    <p>AOD Racing seeks members of all skill sets to be part of our team. Our history goes back over 15 years across
+        multiple NASCAR and Road racing games. Today iRacing is our primary game as we participate in all facets of the
+        simulator, with a focus on oval and road racing.</p>
 </div>
 <div class="section-sub-section automenu">
     <h2 id="what-we-do">
@@ -14,9 +15,20 @@
         <li>Have fun</li>
         <li>Always learn and grow</li>
     </ul>
-    <p>We host weekly events in iRacing including practices, leagues and other hosted events. In addition, AOD
-        participates in official events hosted by iRacing including daily competitions and team endurance
-        events.</p>
+    <p>We host weekly events in iRacing including a private league. In addition, AOD participates in official events
+        hosted by iRacing including daily competitions and team endurance events.</p>
+
+    <p>AOD Racing has seen success in recent iRacing special events, in which some of our victories include:</p>
+    <ul>
+        <li>2018 Spa 24</li>
+        <li>2019 Indy 500</li>
+        <li>2020 24 Hours of LeMans</li>
+        <li>2020 Spa 24</li>
+        <li>2020 Southern 500</li>
+        <li>2021 12 Hours of Sebring</li>
+        <li>2021 Daytona 500</li>
+        <li>2021 Indy 500</li>
+    </ul>
 
 </div>
 <div class="section-sub-section automenu">
@@ -27,11 +39,10 @@
     <p>In order to be eligible for membership in the AOD Racing division, you must meet the following
         criteria:</p>
     <ul>
-        <li>Be at least 16 years of age</li>
+        <li>Be at least 14 years of age</li>
         <li>Be on TeamSpeak whenever you are ingame</li>
-        <li>Wear AOD tags while in Steam games</li>
-        <li>Contribute to the forums once a week to maintain activity</li>
-        <li>Sportsmanlike conduct on and off the track</li>
+        <li>Sportsman-like conduct on and off the track</li>
+        <li>Be able to participate in at least one official race per week</li>
     </ul>
 </div>
 
