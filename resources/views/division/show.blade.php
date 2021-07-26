@@ -1,6 +1,7 @@
 @extends ('application.base')
 
 @section('page-title', "{$data['name']} Division")
+@section('og-image', asset("images/division-icons/{$data['abbreviation']}.png"))
 
 @section('content')
 
