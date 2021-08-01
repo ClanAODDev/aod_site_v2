@@ -10,17 +10,13 @@
         Servers and Events
     </h2>
 
-    <p>The Jedi Knight division currently holds three public servers and one private server.</p>
-    <h3>Pandemonium – 173.234.30.34</h3>
+    <p>The Jedi Knight division currently holds two public servers and one private server.</p>
+    <h3>Pandemonium – 144.48.104.34:26345</h3>
     <p>This server features a 24/7 Duel of the Fates map and is the most popular among players.</p>
-    <h3>Stomping Grounds – 64.94.95.146</h3>
-    <p>This is our rotation server which keeps game-play fresh by cycling maps every few rounds. The map list is
-        changed every so often to allow for new experiences and to help keep players flexible to new
-        environments.</p>
-    <h3>Honor Duels – 64.94.95.147</h3>
+    <h3>Honor Duels – 144.48.104.34:11157</h3>
     <p>This server allows players to hone their skills with a lightsaber by engaging in 1-on-1 duels between
         Jedi and Sith varying in skill levels and play styles.</p>
-    <h3>Purgatory – 173.234.30.34</h3>
+    <h3>Purgatory – 144.48.104.34:14674</h3>
     <p>This is our private server for AOD members to participate in our events ranging from our in-house
         tournaments to weekly practice and training sessions.</p>
     <p>Our events start with FA Mondays where we all get together for an hour or two and play that day’s popular
