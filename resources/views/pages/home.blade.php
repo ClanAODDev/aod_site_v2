@@ -44,7 +44,7 @@
             <div class="grid"></div>
 
             <iframe id="video" width="100%" style="border: 0"
-                    src="https://www.youtube.com/embed/67CqbCLTCYQ?loop=1&autoplay=1&controls=0&showinfo=0&autohide=1&playlist=KN6yvG9aJsg&mute=1">
+                    src="https://www.youtube.com/embed/67CqbCLTCYQ?loop=1&autoplay=1&controls=0&showinfo=0&autohide=1&playlist=67CqbCLTCYQ&mute=1">
             </iframe>
         </div>
     </div>
