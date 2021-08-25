@@ -27,7 +27,7 @@
         <div class="close-video">
             <i class="fa fa-times-circle fa-lg"></i>
         </div>
-        <iframe src="https://www.youtube.com/embed/mrKdx7mDsPw?autoplay=0&amp;showinfo=0&amp;enablejsapi=1"
+        <iframe src="https://www.youtube.com/embed/7u848gKuFgE?autoplay=0&amp;showinfo=0&amp;enablejsapi=1"
                 id="video-iframe" allowfullscreen style="border: none;"></iframe>
     </div>
 
