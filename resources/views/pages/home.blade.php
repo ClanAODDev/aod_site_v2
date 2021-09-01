@@ -5,7 +5,7 @@
     <div class="commo-bar">
         <p class="commo-item"><i class="fab fa-teamspeak fa-lg"></i>
             <strong>TEAMSPEAK </strong>
-            @if($teamspeak)
+            @if($teamspeak && array_key_exists('online', $teamspeak))
                 {{ $teamspeak['online'] }} / {{ $teamspeak['max'] }}
             @else
                 ERR
@@ -14,7 +14,7 @@
         <p class="commo-item">
             <i class="fab fa-discord fa-lg"></i>
             <strong>DISCORD</strong>
-            @if($discord)
+            @if($discord && array_key_exists('online', $discord))
                 {{ $discord['online'] + $discord['idle'] + $discord['dnd'] }} / {{ $discord['total'] }}
             @else
                 ERR
