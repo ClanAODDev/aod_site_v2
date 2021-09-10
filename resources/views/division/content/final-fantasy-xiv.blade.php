@@ -37,7 +37,7 @@
     <p>If you're reading this you're halfway there. If you can meet the criteria below you're at 80%.</p>
 
     <ul>
-        <li>Be a mature 16+ years of age</li>
+        <li>Be a mature 18+ years of age</li>
         <li>Have a functioning microphone</li>
         <li>Participate socially on our forums</li>
         <li>Be active in FFXIV once every 30 days</li>
