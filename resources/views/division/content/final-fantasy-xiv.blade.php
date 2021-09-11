@@ -9,8 +9,6 @@
         investments within the community truly matter. And while victory is important to us all, we value the individual
         first - not individual skill. There are no minimum item level (ilvl) or job level (jlvl) requirements - everyone
         is welcome.</p>
-
-    <p>Easy requirements; 1) Be 16+ & 2) Have a working microphone.</p>
 </div>
 <div class="section-sub-section automenu">
     <h2 id="servers-and-events">
