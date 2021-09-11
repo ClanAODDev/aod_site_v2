@@ -38,7 +38,7 @@
 
     <ul>
         <li>Be a mature 18+ years of age</li>
-        <li>Have a functioning microphone</li>
+        <li>Willing to use voice comms</li>
         <li>Participate socially on our forums</li>
         <li>Be active in FFXIV once every 30 days</li>
     </ul>
