@@ -41,7 +41,7 @@
         Servers and Events
     </h2>
 
-    <p>The division is currently found on Suddene Server.</p>
+    <p>The division is currently found on NA East Servers. Once you join, we'll invite you!</p>
     <p>Our community events range from scheduled Dungeon Adventures to impromptu fun; including both the regular game
         modes and those we’ve engineered ourselves. We’re always looking for new and fun ways to keep things
         interesting. As we progress in the game we will host end game content, ie 50v50 Territory battles, and
@@ -49,8 +49,7 @@
 
     <h3>Factions</h3>
 
-    <p>Currently, AOD is host to Companies in each faction so there is always a choice for which path is right for
-        you.</p>
+    <p>Currently, AOD is hosting Companies in the Syndicate faction, however, we may change this over time within the limits of the in-game Faction mechanics.</p>
 </div>
 
 
