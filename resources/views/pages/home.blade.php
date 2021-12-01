@@ -43,9 +43,10 @@
 
             <div class="grid"></div>
 
-            <iframe id="video" width="100%" style="border: 0"
-                    src="https://www.youtube.com/embed/67CqbCLTCYQ?loop=1&autoplay=1&controls=0&showinfo=0&autohide=1&playlist=67CqbCLTCYQ&mute=1">
-            </iframe>
+            <div id="video" style="border: 0;width: 100%;"></div>
+            <script>
+                var tag=document.createElement("script");tag.src="https://www.youtube.com/iframe_api";var player,firstScriptTag=document.getElementsByTagName("script")[0];function onYouTubeIframeAPIReady(){player=new YT.Player("video",{videoId:"67CqbCLTCYQ",playerVars:{modestbranding:0,autoplay:1,controls:0,showinfo:0,wmode:"transparent",branding:0,rel:0,autohide:0,origin:window.location.origin},events:{onReady:onPlayerReady,onStateChange:onPlayerStateChange}})}function onPlayerReady(e){e.target.playVideo()}function onPlayerStateChange(e){e.data===YT.PlayerState.ENDED&&player.playVideo()}firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+            </script>
         </div>
     </div>
 
