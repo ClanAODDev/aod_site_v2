@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\AOD\SocialRepository;
+use Carbon\CarbonImmutable;
 
 class HomeController extends Controller
 {
@@ -16,9 +17,14 @@ class HomeController extends Controller
             ]
         );
 
+        $startXmas = CarbonImmutable::createFromFormat('m-d', '12-01');
+        $endXmas = $startXmas->addDay(45);
+        $isItChristmas = now()->between($startXmas, $endXmas);
+
         return view('pages.home', [
             'teamspeak' => cache()->get('aod_teamspeak'),
-            'discord' => cache()->get('aod_discord')
+            'discord' => cache()->get('aod_discord'),
+            'isChristmas' => $isItChristmas
         ]);
     }
 
