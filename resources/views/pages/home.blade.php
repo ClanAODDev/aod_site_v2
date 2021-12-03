@@ -35,7 +35,7 @@
         <div class="video-container video-foreground">
 
             <div class="hero-text">
-                <img src="{{ asset('images/official-logo.png') }}" class="aod-logo" alt="AOD Clan Logo"/>
+                @include('partials.aod-logo')
                 <h1 class="slide-in-right">Game with purpose<br/>inspired by community</h1>
                 <h2 class="subtitle">What are you waiting for?</h2>
                 <div class="play-button">PLAY VIDEO</div>
