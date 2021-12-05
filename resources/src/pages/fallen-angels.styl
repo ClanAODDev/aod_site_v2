@@ -9,6 +9,8 @@ video#angel-of-death
     left 0
     z-index -2
     height 835px
+    @media (max-width: 1470px)
+        display none
 
 #members-container
     text-align center
@@ -23,6 +25,7 @@ video#angel-of-death
 
     h3
         padding 10px 0
+        min-width 600px
 
     .fallen-angel
         flex 0 47%
@@ -31,7 +34,7 @@ video#angel-of-death
         text-align center
         font-size 18px
         color #bfb5b5
-        font normal 16px/1.8em MuseoSans,century gothic,arial
+        font normal 16px / 1.8em MuseoSans, century gothic, arial
 
     a.fallen-angel:hover
         color #fff !important
@@ -40,11 +43,14 @@ video#angel-of-death
         animation .2s ease-in-out
 
     #member-list
-        display: flex
+        display flex
         flex-direction row
         flex-wrap wrap
         width 1200px
         margin 0 auto
+        @media (max-width: 1470px)
+            width 600px
+            display block
 
 
 section#fallen-angels
@@ -55,6 +61,10 @@ section#fallen-angels
         margin 0 auto
         position relative
         height 835px
+        @media (max-width: 1470px)
+            background-image: url('../images/memoriam-mobile.jpg')
+            background-repeat no-repeat
+            background-position 50% 0
 
         #epitaph
             position absolute
@@ -62,6 +72,11 @@ section#fallen-angels
             left 50%
             width 55%
             text-align center
+            @media (max-width: 1470px)
+                position relative
+                min-width 600px
+                margin 0 auto
+                left 0
 
             h2#lead
                 font-family 'Copperplate Gothic Light', serif
