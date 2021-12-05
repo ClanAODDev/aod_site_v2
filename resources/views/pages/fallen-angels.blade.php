@@ -36,7 +36,7 @@ This is our way of honoring their memory; May their souls rest in peace.')
     <div
         style="text-align: center;padding: 5px;width: 100%;position: relative;margin: 0 auto;margin-top: -175px;
             background-color: rgba(0,0,0,.4);border-top: rgba(255,255,255,.1) 1px solid; padding-bottom:50px;">
-        <h3>&mdash; IN MEMORIAM &mdash;</h3>
+        <h3 style="padding: 10px 0;">&mdash; IN MEMORIAM &mdash;</h3>
         <style>
             a.fallen-angel:hover {
                 color: #fff !important;
