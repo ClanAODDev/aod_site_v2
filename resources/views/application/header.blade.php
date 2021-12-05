@@ -1,5 +1,6 @@
 <head>
-    <title>ClanAOD.net | @yield('page-title', 'Since 1999')</title>
+    <title>@if (request()->is(['/','home']))ClanAOD.net | @endif
+        @yield('page-title', 'Since 1999')</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css?v=2.41') }}"/>
     <link rel="stylesheet" href="{{ asset('css/fonts.css?v=2.3') }}"/>
