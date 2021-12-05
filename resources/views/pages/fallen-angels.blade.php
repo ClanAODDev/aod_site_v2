@@ -6,7 +6,7 @@ This is our way of honoring their memory; May their souls rest in peace.')
 
 @section('content')
 
-    <section style="min-height: 800px; overflow: scroll; overflow-x: hidden">
+    <section style="min-height: 800px;">
         <video src="{{ asset('images/memoriam-v2.webm') }}"
                preload="auto" loop playsinline muted autoplay
                style="margin-bottom:-30px; margin: 0 auto; overflow: hidden; position: absolute;top: 50px;right: 0;
