@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController')->name('home');
 Route::view('/history', 'pages.history')->name('history');
 
+Route::get('/fallen-angels', 'FallenAngelsController')->name('fallen-angels');
 Route::get('/divisions', 'DivisionController@index')->name('division.index');
 Route::get('/divisions/{division}', 'DivisionController@show')->name('division.show');
 
