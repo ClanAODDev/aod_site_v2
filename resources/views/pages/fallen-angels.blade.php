@@ -47,7 +47,10 @@ This is our way of honoring their memory; May their souls rest in peace.')
             </style>
             <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1200px; margin: 0 auto;">
                 @foreach ($fallen as $member)
-                    <a href="#" class="fallen-angel" style="flex: 0 47%; display: block; padding: 30px 15px; text-align:
+                    <a href="{{ $member['forum_profile'] ?? '#' }}" class="fallen-angel" style="flex: 0 47%; display:
+                    block; padding: 30px
+                    15px;
+                    text-align:
                     center;
                     font-size: 18px;
                     color: #bfb5b5; font: normal 16px/1.8em MuseoSans,century gothic,arial; ">
