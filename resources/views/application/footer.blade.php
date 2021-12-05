@@ -2,7 +2,7 @@
     <div class="section-content-container">
         <div class="section-blurb">
             <div class="logo">
-                @include('partials.aod-logo')
+                <img src="{{ asset('images/official-logo.png') }}" alt="Clan AOD Logo"/>
             </div>
             <div class="blurb-text">
                 <h1>About The Angels of Death</h1>
