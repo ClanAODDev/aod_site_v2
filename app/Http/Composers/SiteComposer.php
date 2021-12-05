@@ -33,11 +33,11 @@ class SiteComposer
             fn() => $this->getDivisions()
         ));
 
-//        $view->with(self::AOD_TWEETS, cache()->remember(
-//            self::AOD_TWEETS,
-//            config('app.cache_length'),
-//            fn() => $this->getTwitterFeed()
-//        ));
+        $view->with(self::AOD_TWEETS, cache()->remember(
+            self::AOD_TWEETS,
+            config('app.cache_length'),
+            fn() => $this->getTwitterFeed()
+        ));
 
         // no need to cache RSS feed
         $view->with(self::AOD_ANNOUNCEMENTS, $this->getAnnouncementsFeed());
