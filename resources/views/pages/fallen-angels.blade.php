@@ -33,31 +33,28 @@ This is our way of honoring their memory; May their souls rest in peace.')
     </section>
 
 
-        <div
-            style="text-align: center;padding: 5px;width: 100%;position: relative;margin: 0 auto;margin-top: -175px;
+    <div
+        style="text-align: center;padding: 5px;width: 100%;position: relative;margin: 0 auto;margin-top: -175px;
             background-color: rgba(0,0,0,.4);border-top: rgba(255,255,255,.1) 1px solid; padding-bottom:50px;">
-            <h3>&mdash; IN MEMORIAM &mdash;</h3>
-            <style>
-                a.fallen-angel:hover {
-                    color: #fff !important;
-                    text-decoration: underline;
-                    transition: all;
-                    animation: .2s ease-in-out;
-                }
-            </style>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1200px; margin: 0 auto;">
-                @foreach ($fallen as $member)
-                    <a href="{{ $member['forum_profile'] ?? '#' }}" class="fallen-angel" style="flex: 0 47%; display:
-                    block; padding: 30px
-                    15px;
-                    text-align:
-                    center;
-                    font-size: 18px;
-                    color: #bfb5b5; font: normal 16px/1.8em MuseoSans,century gothic,arial; ">
-                        {{ $member['name'] }} &mdash; {{ $member['date_of_death'] }}</a>
-                @endforeach
-            </div>
+        <h3>&mdash; IN MEMORIAM &mdash;</h3>
+        <style>
+            a.fallen-angel:hover {
+                color: #fff !important;
+                text-decoration: underline;
+                transition: all;
+                animation: .2s ease-in-out;
+            }
+        </style>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1200px; margin: 0 auto;">
+            @foreach ($fallen as $member)
+                <a href="{{ $member['forum_profile'] ?? '#' }}" class="fallen-angel" style="flex: 0 47%; display:
+                    block; padding: 30px 15px; text-align: center; font-size: 18px; color: #bfb5b5; font: normal
+                    16px/1.8em MuseoSans,century gothic,arial;"
+                   target="_blank"
+                >{{ $member['name'] }} &mdash; {{ $member['date_of_death'] }}</a>
+            @endforeach
         </div>
+    </div>
 
 
 
