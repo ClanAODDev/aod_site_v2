@@ -7,7 +7,7 @@ return [
      */
     'fallen-angels' => [
         [
-            'name' => 'Kevin "Bluntz" Loveless',
+            'name' => 'Kevin "Bluntz" Lovelace',
             'date_of_death' => '11/14/2021',
             'forum_profile' => '#',
         ],
