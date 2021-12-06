@@ -17,8 +17,8 @@ return [
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=33030',
         ],
         [
-            'name' => 'hailhydra2018',
-            'date_of_death' => 'Unknown',
+            'name' => 'Bruce "hailhydra2018" Kennedy',
+            'date_of_death' => '01/18/2020',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=62669',
         ],
         [
