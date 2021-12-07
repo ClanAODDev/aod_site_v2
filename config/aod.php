@@ -13,7 +13,7 @@ return [
         ],
         [
             'name' => 'AchesAndPains',
-            'date_of_death' => 'Unknown',
+            'date_of_death' => '07/2020',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=33030',
         ],
         [
@@ -40,6 +40,11 @@ return [
             'name' => 'Syph3n',
             'date_of_death' => 'Unknown',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=26433',
+        ],
+        [
+            'name' => 'oc675',
+            'date_of_death' => '11/08/2015',
+            'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=35067',
         ],
 
     ],
