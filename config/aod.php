@@ -37,7 +37,7 @@ return [
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=56057',
         ],
         [
-            'name' => 'Syph3n',
+            'name' => 'Lance "Syph3n" Groth',
             'date_of_death' => 'Unknown',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=26433',
         ],
