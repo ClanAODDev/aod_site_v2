@@ -13,7 +13,7 @@ return [
         ],
         [
             'name' => 'AchesAndPains',
-            'date_of_death' => '07/2020',
+            'date_of_death' => '07/17/2020',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=33030',
         ],
         [
