@@ -54,7 +54,11 @@ class SiteComposer
             )['data'];
         }
 
-        return DivisionRepository::all()->json('data');
+        if (!$divisons = DivisionRepository::all()->json('data')) {
+            return [];
+        }
+
+        return $divisons;
 
     }
 
