@@ -27,8 +27,9 @@ class Repository
      */
     protected function getPromise($url)
     {
-        if (is_array($url))
+        if (is_array($url)) {
             $url = implode('/', $url);
+        }
 
         return $this->client->get(
             rtrim(config('services.aod.tracker_url'), '/') . $this->api_endpoint . $url

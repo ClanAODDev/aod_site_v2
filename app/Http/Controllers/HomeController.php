@@ -34,8 +34,7 @@ class HomeController extends Controller
             cache()->remember(
                 $cacheKey,
                 config('app.cache_length'),
-                fn() => $closure
-
+                fn () => $closure
             );
         }
     }
@@ -52,7 +51,8 @@ class HomeController extends Controller
 
         foreach ($items as $cacheKey => $file) {
             $items[$cacheKey] = json_decode(
-                file_get_contents(storage_path("testing/{$file}")), true
+                file_get_contents(storage_path("testing/{$file}")),
+                true
             )['data'];
         }
 

@@ -21,22 +21,22 @@ class SiteComposer
     /**
      * take care that these only change in conjunction with dependent views
      */
-    const AOD_DIVISIONS = 'aod_divisions';
-    const AOD_TWEETS = 'aod_tweets';
-    const AOD_ANNOUNCEMENTS = 'aod_announcements';
+    public const AOD_DIVISIONS = 'aod_divisions';
+    public const AOD_TWEETS = 'aod_tweets';
+    public const AOD_ANNOUNCEMENTS = 'aod_announcements';
 
     public function compose(View $view): void
     {
         $view->with(self::AOD_DIVISIONS, cache()->remember(
             self::AOD_DIVISIONS,
             config('app.cache_length'),
-            fn() => $this->getDivisions()
+            fn () => $this->getDivisions()
         ));
 
         $view->with(self::AOD_TWEETS, cache()->remember(
             self::AOD_TWEETS,
             config('app.cache_length'),
-            fn() => $this->getTwitterFeed()
+            fn () => $this->getTwitterFeed()
         ));
 
         // no need to cache RSS feed
@@ -50,7 +50,8 @@ class SiteComposer
     {
         if ($this->isLocal()) {
             return json_decode(
-                file_get_contents(storage_path('testing/divisions.json')), true
+                file_get_contents(storage_path('testing/divisions.json')),
+                true
             )['data'];
         }
 
@@ -59,13 +60,11 @@ class SiteComposer
         }
 
         return $divisons;
-
     }
 
     private function getTwitterFeed()
     {
         if ($this->isLocal() || app()->environment('testing')) {
-
             return json_decode(file_get_contents(storage_path('testing/tweets.json')));
         }
 

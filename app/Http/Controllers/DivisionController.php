@@ -37,7 +37,7 @@ class DivisionController extends Controller
         cache()->remember(
             "{$this->cacheKey}{$division}",
             config('app.cache_length'),
-            fn() => $response
+            fn () => $response
         );
 
         return view('division.show', [
@@ -51,5 +51,4 @@ class DivisionController extends Controller
 
         return $data['data']['division'];
     }
-
 }

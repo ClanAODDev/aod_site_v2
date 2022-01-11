@@ -18,5 +18,4 @@ class SocialRepository extends Repository
     {
         return $this->getPromise('/stream-events');
     }
-
 }
