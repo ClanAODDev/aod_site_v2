@@ -22,14 +22,8 @@
                         <a href="{{ route("division.show", \Str::slug($division['name'])) }}"
                            class="item game-button animate drop-down animation-delay-{{ $loop->index }}"
                         >
-                            <div class="icon">
-                                @if (file_exists(public_path("images/division-icons/{$division['abbreviation']}.png")))
-                                    <img class="game"
-                                         src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
-                                @else
-                                    <img class="game" src="{{ asset("images/aod_new.png") }}"/>
-                                @endif
-                            </div>
+                            @include('division.partials.logo')
+
                             <div class="meta">
                                 <div class="title">{{ $division['name'] }}</div>
                                 <div class="members">{{ $division['members_count'] }} Members</div>

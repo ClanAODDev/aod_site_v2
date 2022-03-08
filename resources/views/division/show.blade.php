@@ -11,7 +11,7 @@
             <div id="sub-nav"></div>
 
             <div id="general" class="game-header">
-                <img class="game" src="{{ asset("images/division-icons/{$data['abbreviation']}.png") }}">
+                @include('division.partials.logo')
                 <h1>{{ $data['name'] }} Division</h1>
             </div>
 
