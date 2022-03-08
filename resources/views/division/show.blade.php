@@ -11,7 +11,7 @@
             <div id="sub-nav"></div>
 
             <div id="general" class="game-header">
-                @include('division.partials.logo')
+                @include('division.partials.logo', ['division' => $data])
                 <h1>{{ $data['name'] }} Division</h1>
             </div>
 
