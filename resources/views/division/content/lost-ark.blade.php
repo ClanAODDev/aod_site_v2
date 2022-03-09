@@ -1,11 +1,12 @@
-<div class="section-sub-section automenu"><p>Beatrice has summoned you to the Angels of Death, Lost Ark Division.</p>
+<div class="section-sub-section automenu"><p>Beatrice has summoned you to the Angels of Death, <strong>Lost Ark
+            Division</strong>.</p>
     <p>This game takes place in the fictional world of Arkesia. The land of Arkesia is set in the universe of Orpheus, a
         massive and nature rich world with changing weather, and environment.</p>
-    <p>Once you are a member of the Lost Ark Division you are welcome to explore a massive, zone based MMO filled with
+    <p>Once you are a member of the Lost Ark Division you are welcome to explore a massive, zone-based MMO filled with
         demons and wild beast where you'll forge a new alliances for yourself alongside friends as you group up and
-        explore the ever chaging world of Orpheus. There will be endless opportunities to fight and explore among the
-        continants wilderness, dungeons and ruins. Channel your inner Assasin, Warrior, Mage, Martial Artist and Gunner
-        as you fight through the world and find the secret to the arks. Why continute on as a lone wolf when you can
+        explore the ever-changing world of Orpheus. There will be endless opportunities to fight and explore among the
+        continents wilderness, dungeons and ruins. Channel your inner Assassin, Warrior, Mage, Martial Artist and Gunner
+        as you fight through the world and find the secret to the arks. Why continue on as a lone wolf when you can
         join a thriving community of like minded players.
     <p>
 </div>
@@ -22,8 +23,8 @@
 
 <div class="section-sub-section automenu">
     <h2 id="servers">Servers and Events</h2>
-    <p>The division is currently found on the server Azena in the NA East Region. Once you join us here in AOD, we'll
-        invite you!</p>
+    <p>The division is currently found on the server <strong>Azena</strong> in the <strong>NA East Region</strong>. Once
+        you join us here in AOD, we'll invite you!</p>
     <p>Our community events range from scheduled Dungeon Adventures and Raids. We’re always looking for new and fun ways
         to keep things interesting. As we progress in the game we will strive to ensure our members are well versed in
         the lore of Lost Ark and ready for what lies ahead with end game content </p>
