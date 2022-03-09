@@ -18,7 +18,7 @@
 </div>
 
 <div class="section-sub-section automenu">
-    <h2 id="what-we-do">
+    <h2 id="trailers">
         Trailers
     </h2>
 
@@ -37,7 +37,7 @@
 </div>
 
 <div class="section-sub-section automenu">
-    <h2 id="what-we-do">
+    <h2 id="servers">
         Servers and Events
     </h2>
 
