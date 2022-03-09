@@ -13,7 +13,8 @@
 <div class="section-sub-section automenu">
     <h2 id="trailers">Trailers</h2>
     <p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Udwbd5X0zbg?feature=oembed"
+        <iframe class="youtube-embed" width="560" height="315"
+                src="https://www.youtube.com/embed/Udwbd5X0zbg?feature=oembed"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </p>
