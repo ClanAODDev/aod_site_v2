@@ -16,7 +16,9 @@ class Twitter
         return json_decode(
             $twitter->setGetfield(http_build_query($config['stream_config']))
                 ->buildOauth($this->url, 'GET')
-                ->performRequest()
+                ->performRequest([
+                    'CURLOPT_TIMEOUT' => 3
+                ])
         );
     }
 }
