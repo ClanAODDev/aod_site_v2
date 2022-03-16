@@ -10,15 +10,21 @@ class Twitter
 
     public function getfeed()
     {
-        $config = config('services.twitter');
+        $config  = config('services.twitter');
         $twitter = new TwitterAPIExchange($config['auth']);
 
-        return json_decode(
-            $twitter->setGetfield(http_build_query($config['stream_config']))
-                ->buildOauth($this->url, 'GET')
-                ->performRequest([
-                    'CURLOPT_TIMEOUT' => 3
-                ])
-        );
+        try {
+            $response = json_decode(
+                $twitter->setGetfield(http_build_query($config['stream_config']))
+                        ->buildOauth($this->url, 'GET')
+                        ->performRequest(true, [
+                            'CURLOPT_TIMEOUT' => 3,
+                        ])
+            );
+
+            return $response;
+        } catch (\Exception $exception) {
+            return [];
+        }
     }
 }
