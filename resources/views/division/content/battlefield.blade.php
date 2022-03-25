@@ -13,7 +13,7 @@
     <h2 id="bf2042-teaser">
         BF2042 Teaser
     </h2>
-    <iframe class="youtube-embed" src="https://www.youtube.com/embed/trkPcMHO30k"
+    <iframe class="youtube-embed" src="https://www.youtube.com/embed/sbiXfgMc_O8"
             title="Clan AOD Battlefield Division - BF2042" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
