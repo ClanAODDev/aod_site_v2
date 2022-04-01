@@ -27,11 +27,6 @@ return [
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=20244',
         ],
         [
-            'name'          => 'Pafire',
-            'date_of_death' => 'Unknown',
-            'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=51680',
-        ],
-        [
             'name'          => 'Quake-id',
             'date_of_death' => 'Unknown',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=56057',
