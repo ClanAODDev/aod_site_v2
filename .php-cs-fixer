@@ -14,10 +14,8 @@ return (new PhpCsFixer\Config())
         // Rule overrides
         'array_indentation'      => false,
         'binary_operator_spaces' => [
-            'default'   => 'align_single_space_minimal',
-            'operators' => [
-                '=' => null,
-            ],
+                'default' => 'single_space',
+                'operators' => ['=>' => 'align']
         ],
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'no_multi_line',
