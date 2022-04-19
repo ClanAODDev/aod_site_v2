@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      * Fallen members of ClanAOD
      */
     'fallen-angels' => [

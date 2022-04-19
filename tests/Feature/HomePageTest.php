@@ -19,8 +19,8 @@ class HomePageTest extends TestCase
         ));
 
         Http::fake([
-            "*/api/v1/ts-count" => Http::response($tsResponse, 200),
-            "*/api/v1/discord-count" => Http::response($discordResponse, 200),
+            '*/api/v1/ts-count' => Http::response($tsResponse, 200),
+            '*/api/v1/discord-count' => Http::response($discordResponse, 200),
         ]);
 
         $data = $this->get(route('home'));
@@ -36,8 +36,8 @@ class HomePageTest extends TestCase
         ));
 
         Http::fake([
-            "*/api/v1/ts-count" => Http::response([], 500),
-            "*/api/v1/discord-count" => Http::response($discordResponse, 200),
+            '*/api/v1/ts-count' => Http::response([], 500),
+            '*/api/v1/discord-count' => Http::response($discordResponse, 200),
         ]);
 
         $data = $this->get(route('home'));
@@ -53,8 +53,8 @@ class HomePageTest extends TestCase
         ));
 
         Http::fake([
-            "*/api/v1/ts-count" => Http::response($tsResponse, 200),
-            "*/api/v1/discord-count" => Http::response([], 500),
+            '*/api/v1/ts-count' => Http::response($tsResponse, 200),
+            '*/api/v1/discord-count' => Http::response([], 500),
         ]);
 
         $data = $this->get(route('home'));
@@ -66,7 +66,7 @@ class HomePageTest extends TestCase
     public function home_page_returns_200_ok_if_rss_announcements_lookup_fails()
     {
         Http::fake([
-            'clanaod.net/forums/external.php*' => Http::response([], 500)
+            'clanaod.net/forums/external.php*' => Http::response([], 500),
         ]);
 
         $data = $this->get(route('home'));

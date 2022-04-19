@@ -5,21 +5,17 @@ namespace App\Http\Composers;
 use Facades\App\Repositories\AOD\DivisionRepository;
 use Facades\App\Support\RssReader;
 use Facades\App\Support\Twitter;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
 /**
- * Class SiteComposer
+ * Class SiteComposer.
  *
  * Handles data that needs to be available across the site.
- *
- * @package App\Http\Composers
  */
 class SiteComposer
 {
     /**
-     * take care that these only change in conjunction with dependent views
+     * take care that these only change in conjunction with dependent views.
      */
     public const AOD_DIVISIONS = 'aod_divisions';
     public const AOD_TWEETS = 'aod_tweets';

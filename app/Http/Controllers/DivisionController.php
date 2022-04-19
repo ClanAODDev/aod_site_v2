@@ -10,7 +10,7 @@ class DivisionController extends Controller
     public string $cacheKey = 'aod_content_';
 
     /**
-     * Show all divisions
+     * Show all divisions.
      */
     public function index(): View
     {
@@ -18,7 +18,7 @@ class DivisionController extends Controller
     }
 
     /**
-     * Show an individual division
+     * Show an individual division.
      */
     public function show($division): View
     {

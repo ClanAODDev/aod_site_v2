@@ -21,6 +21,7 @@ class RssReader
             $simpleXML = new SimpleXMLElement($data);
         } catch (\Exception $exception) {
             \Log::error($exception->getMessage());
+
             return false;
         }
 

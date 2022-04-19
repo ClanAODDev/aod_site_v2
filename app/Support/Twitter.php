@@ -10,7 +10,7 @@ class Twitter
 
     public function getfeed()
     {
-        $config  = config('services.twitter');
+        $config = config('services.twitter');
         $twitter = new TwitterAPIExchange($config['auth']);
 
         try {

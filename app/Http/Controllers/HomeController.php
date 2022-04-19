@@ -13,7 +13,7 @@ class HomeController extends Controller
             (app()->environment('local'))
                 ? $this->getDummyData() : [
                 'aod_teamspeak' => (new SocialRepository())->getTeamspeak()->json('data'),
-                'aod_discord' => (new SocialRepository())->getDiscord()->json('data')
+                'aod_discord' => (new SocialRepository())->getDiscord()->json('data'),
             ]
         );
 
@@ -24,7 +24,7 @@ class HomeController extends Controller
         return view('pages.home', [
             'teamspeak' => cache()->get('aod_teamspeak'),
             'discord' => cache()->get('aod_discord'),
-            'isChristmas' => $isItChristmas
+            'isChristmas' => $isItChristmas,
         ]);
     }
 
