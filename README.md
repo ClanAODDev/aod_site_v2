@@ -1,5 +1,8 @@
 ## Clan AOD - Website
 
+[![Site Test Suite](https://github.com/ClanAODDev/aod_site_v2/actions/workflows/format_php.yml/badge.svg)](https://github.com/ClanAODDev/aod_site_v2/actions/workflows/format_php.yml)
+
+
 [![Site Test Suite](https://github.com/ClanAODDev/aod_site_v2/actions/workflows/CI.yml/badge.svg)](https://github.com/ClanAODDev/aod_site_v2/actions/workflows/CI.yml)
 
 The Clan AOD website is built using [Laravel]((https://laravel.com/docs)). Local setup and development information is provided below. Contributions should follow the contributor guidelines.
