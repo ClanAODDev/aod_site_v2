@@ -49,7 +49,8 @@
 
     <h3>Factions</h3>
 
-    <p>Currently, AOD is hosting Companies in the Syndicate faction, however, we may change this over time within the limits of the in-game Faction mechanics.</p>
+    <p>Currently, AOD is hosting Companies in the Marauders faction, however, we may change this over time within the
+        limits of the in-game Faction mechanics.</p>
 </div>
 
 
