@@ -22,13 +22,13 @@
         Servers and Events
     </h2>
     <p>A few times a week, we will run a Portal Server in Battlefield 2042. Our main event nights are Wednesday Evening
-        (Wednesday Night Warfare - BF V) and Friday Evening (AOD FNB - BF2042). Search for AOD STOMPING GROUNDS in your
-        BF2042 Portal Server Browser to find us.
+        (Wednesday Night Warfare - BF V) and Friday Evening (AOD FNB - BF2042). Search for AOD Stomping Grounds - Full
+        Progression in your BF2042 Portal Server Browser to find us.
     </p>
     <p>Our community events range from scheduled matches to impromptu fun; highlighting both the regular game modes and
         those we’ve engineered ourselves. We’re always looking for new and fun ways to keep things interesting. We have
         also hosted VIP events like hosting the developers at DICE for some good old-fashioned Conquest battles and
-        playing with some of the Mods of R/Battlefield2042 and other Battlefield subreddits.
+        playing with some of the Mods of r/Battlefield2042 and other Battlefield subreddits.
     </p>
 </div>
 <div class="section-sub-section automenu">
