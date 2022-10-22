@@ -35,8 +35,7 @@
     <ul>
         <li>Be at least 16 years of age</li>
         <li>Be on Teamspeak whenever you are ingame</li>
-        <li>Include ‘AOD’ in the beginning of your Origin name, or join our in-game Apex Club</li>
-        <li>Contribute to our community on a monthly basis by engaging on our forums</li>
+        <li>Join one of our in-game AOD Apex Clubs</li>
         <li>Follow our <a href="https://www.clanaod.net/forums/showthread.php?t=3327">AOD Code of Conduct</a></li>
     </ul>
 </div>
