@@ -45,11 +45,35 @@
 
             <div id="video" style="border: 0;width: 100%;"></div>
             <script>
-                var tag=document.createElement("script");tag.src="https://www.youtube.com/iframe_api";var player,
-                    firstScriptTag=document.getElementsByTagName("script")[0];function onYouTubeIframeAPIReady()
-                {player=new YT.Player("video",{videoId:"67CqbCLTCYQ",playerVars:{playsinline:1,modestbranding:0,
-                    autoplay:1,
-                        controls:0,showinfo:0,wmode:"transparent",branding:0,rel:0,autohide:0,origin:window.location.origin},events:{onReady:onPlayerReady,onStateChange:onPlayerStateChange}})}function onPlayerReady(e){e.target.playVideo()}function onPlayerStateChange(e){e.data===YT.PlayerState.ENDED&&player.playVideo()}firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+                var tag = document.createElement("script");
+                tag.src = "https://www.youtube.com/iframe_api";
+                var player,
+                    firstScriptTag = document.getElementsByTagName("script")[0];
+
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player("video", {
+                        videoId: "67CqbCLTCYQ", playerVars: {
+                            autoplay: 1,
+                            branding: 0,
+                            controls: 0,
+                            loop: 1,
+                            modestbranding: 0,
+                            origin: window.location.origin,
+                            playsinline: 1,
+                            rel: 0,
+                        }, events: {onReady: onPlayerReady, onStateChange: onPlayerStateChange}
+                    })
+                }
+
+                function onPlayerReady(e) {
+                    e.target.playVideo()
+                }
+
+                function onPlayerStateChange(e) {
+                    e.data === YT.PlayerState.ENDED && player.playVideo()
+                }
+
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             </script>
         </div>
     </div>
