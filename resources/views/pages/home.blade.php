@@ -11,7 +11,7 @@
                 ERR
             @endif
         </p>
-        <p class="commo-item" style="width:190px">
+        <p class="commo-item">
             <i class="fab fa-discord fa-lg"></i>
             <a href="https://discord.gg/clanaod" title="Join the AOD Discord"><strong>DISCORD</strong></a>
             @if($discord && array_key_exists('online', $discord))
