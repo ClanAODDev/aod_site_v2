@@ -11,14 +11,15 @@
                 ERR
             @endif
         </p>
-        <p class="commo-item">
+        <p class="commo-item" style="width:190px">
             <i class="fab fa-discord fa-lg"></i>
-            <strong>DISCORD</strong>
+            <a href="https://discord.gg/clanaod" title="Join the AOD Discord"><strong>DISCORD</strong></a>
             @if($discord && array_key_exists('online', $discord))
                 {{ $discord['online'] + $discord['idle'] + $discord['dnd'] }} / {{ $discord['total'] }}
             @else
                 ERR
             @endif
+
         </p>
     </div>
 
