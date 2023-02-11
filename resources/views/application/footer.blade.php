@@ -17,7 +17,6 @@
     <div class="section-content-container">
         @include('partials.announcements')
         @include('partials.sitemap')
-        @include('partials.tweets')
 
         <div class="site-meta footer-section full-width centered">
             <ul>
