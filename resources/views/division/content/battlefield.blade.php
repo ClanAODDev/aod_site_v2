@@ -21,9 +21,8 @@
     <h2 id="servers-and-events">
         Servers and Events
     </h2>
-    <p>A few times a week, we will run a Portal Server in Battlefield 2042. Our main event nights are Wednesday Evening
-        (Wednesday Night Warfare - BF V) and Friday Evening (AOD FNB - BF2042). Search for AOD Stomping Grounds - Full
-        Progression in your BF2042 Portal Server Browser to find us.
+    <p>A few times a week, we will run a Portal Server in Battlefield 2042. Our main event is Friday Evening (AOD FNB
+        - BF2042). Search for <strong>AOD Stomping Grounds - Full Progression</strong> in your BF2042 Portal Server Browser to find us.
     </p>
     <p>Our community events range from scheduled matches to impromptu fun; highlighting both the regular game modes and
         those we’ve engineered ourselves. We’re always looking for new and fun ways to keep things interesting. We have
@@ -40,9 +39,8 @@
         <li>Be at least 16 years of age</li>
         <li>Be on TeamSpeak whenever you are in-game</li>
         <li>Wear AOD tags (as directed) in any title we support</li>
-        <li>Contribute to the forums on a monthly basis to maintain activity</li>
-        <li>Cook your steaks in the microwave</li>
-        <li>Be a proud member of No-Pants Nation</li>
+        <li>Be friendly to all other members and server players</li>
+        <li><strong>We accept PC, Playstation5, and Xbox Series X/S players</strong></li>
     </ul>
 
     <p>We’ll see <strong><u>YOU</u></strong> on the battlefield!</p>
