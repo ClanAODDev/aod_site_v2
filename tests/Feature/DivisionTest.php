@@ -10,7 +10,7 @@ class DivisionTest extends TestCase
     /** @test */
     public function a_known_valid_single_division_page_returns_200_ok()
     {
-        $division = 'jedi-knight';
+        $division = 'battlefield';
 
         // right now, we depend on division views to exist for content
         $this->assertFileExists(
