@@ -1,12 +1,11 @@
 <div class="section-sub-section automenu">
-    <p>Angels of Death has made up an influential portion of the Emerald population in PlanetSide 2 since the game
-        launched. We “move the map” by controlling territory and capturing enemy facilities on a daily basis. Full
-        members currently make up around 300 of the 10,000 plus in-game members who fight for the Terran Republic.
-        Expect to see public platoons running during peak hours daily.</p>
+<p>With an active presence in PlanetSide dating back to 2003, AOD is the top outfit for players looking for a fun, casual gaming environment where they can play alongside dozens of members in an organized fashion. We specialize in operating large forces alongside specialized, cohesive squads in a coordinated manner to control territory. With public platoons running during primetime daily, we'd love for you to hop in and play with us, join us as an outfit member in-game, or even in TeamSpeak as a full-member. Players of all skill levels will find a home where they can play, improve, get involved in the community, and have fun!</p>
+<p>Founded in 1999, the Angels of Death are a large multi-gaming clan. Beyond PlanetSide, we have over 1,000 active members fully supporting over 7 different titles, all with dedicated leadership, officers, and members. When it comes to online gaming communities, you won't find any other organization with the same scale, longevity, organization, and casual environment that has caused many people to call AOD home for decades. We support our operations with our own Forums, TeamSpeak, and Discord.</p>
+
 </div>
 <div class="section-sub-section automenu">
-    <h2 id="servers-and-events">
-        Servers and Events
+    <h2 id="events">
+        Events
     </h2>
 
     <p>The Angels of Death operate exclusively on the Emerald server.</p>
