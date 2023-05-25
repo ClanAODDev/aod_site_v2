@@ -33,7 +33,8 @@ class Repository
 
         return $this->client->get(
             rtrim(
-                config('services.aod.tracker_url'), '/'
+                config('services.aod.tracker_url'),
+                '/'
             ) . $this->api_endpoint . $url
         );
     }
