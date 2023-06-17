@@ -1,5 +1,5 @@
 <div class="section-sub-section automenu">
-    Content coming soon. Stay tuned!
+    <p>Content coming soon. Stay tuned!</p>
 </div>
 <div class="section-sub-section automenu">
     <h2 id="apply-to-division">
