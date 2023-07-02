@@ -9,7 +9,7 @@
 
 
 <div class="section-sub-section automenu">
-    <h2 id="launch-trailer">BattleBit Remastered Launch Trailer</h2>
+    <h2 id="launch-trailer">Launch Trailer</h2>
 
     <iframe class="youtube-embed" src="https://www.youtube.com/embed/AO8cokSpALA"
             title="BattleBit Remastered Launch Trailer" frameborder="0"
