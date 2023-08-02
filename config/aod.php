@@ -2,12 +2,12 @@
 
 return [
 
-    /**
+    /*
      * YouTube ID
      */
     'intro_video_id' => env('INTRO_VIDEO_ID', '7u848gKuFgE'),
 
-    /**
+    /*
      * YouTube ID
      * Should loop seamlessly
      */
