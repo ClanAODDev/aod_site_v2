@@ -2,6 +2,17 @@
 
 return [
 
+    /**
+     * YouTube ID
+     */
+    'intro_video_id' => env('INTRO_VIDEO_ID', '7u848gKuFgE'),
+
+    /**
+     * YouTube ID
+     * Should loop seamlessly
+     */
+    'hero_video_id' => env('HERO_VIDEO_ID', '67CqbCLTCYQ'),
+
     /*
      * Fallen members of ClanAOD
      */

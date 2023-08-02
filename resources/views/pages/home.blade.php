@@ -28,7 +28,8 @@
         <div class="close-video">
             <i class="fa fa-times-circle fa-lg"></i>
         </div>
-        <iframe src="https://www.youtube.com/embed/7u848gKuFgE?autoplay=0&amp;showinfo=0&amp;enablejsapi=1"
+        <iframe src="https://www.youtube.com/embed/{{ config('aod.intro_video_id') }}?autoplay=0&amp;showinfo=0&amp;
+        enablejsapi=1"
                 id="video-iframe" allowfullscreen style="border: none;"></iframe>
     </div>
 
@@ -53,7 +54,7 @@
 
                 function onYouTubeIframeAPIReady() {
                     player = new YT.Player("video", {
-                        videoId: "67CqbCLTCYQ", playerVars: {
+                        videoId: "{{ config('aod.hero_video_id') }}", playerVars: {
                             autoplay: 1,
                             branding: 0,
                             controls: 0,
