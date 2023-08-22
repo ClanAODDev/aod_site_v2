@@ -2,12 +2,12 @@
     <p>With an active presence in PlanetSide dating back to 2003, AOD is the top outfit for players looking for a fun,
         casual gaming environment where they can play alongside dozens of members in an organized fashion. We specialize
         in operating large forces alongside specialized, cohesive squads in a coordinated manner to control territory.
-        With public platoons running during primetime daily, we'd love for you to hop in and play with us, join us as an
+        With recurring events throughout the week, we'd love for you to hop in and play with us, join us as an
         outfit member in-game, or even in TeamSpeak as a full-member. Players of all skill levels will find a home where
         they can play, improve, get involved in the community, and have fun!</p>
     <p><strong>AOD plays as the Terran Republic on Emerald (US East)</strong>.</p>
     <p>Founded in 1999, the Angels of Death are a large multi-gaming clan. Beyond PlanetSide, we have over 1,000 active
-        members fully supporting over 7 different titles, all with dedicated leadership, officers, and members. When it
+        members fully supporting multiple titles across many genres, all with dedicated leadership, officers, and members. When it
         comes to online gaming communities, you won't find any other organization with the same scale, longevity,
         organization, and casual environment that has caused many people to call AOD home for decades. We support our
         operations with our own Forums, TeamSpeak, and Discord.</p>
@@ -27,12 +27,12 @@
 
     <h3>Weekly</h3>
     <ul>
-        <li><strong>Infantry Training</strong>: Our Reaper team specilizes in cohesive infantry gameplay. Outside of
+        <li><strong>Infantry Practice</strong>: Our Reaper team specializes in cohesive infantry gameplay. Outside of
             Ops, they hold a weekly practice where new players can learn higher level infantry play from the basics to
             the complex, and seasoned players can brush up on their abilities.
         </li>
-        <li><strong>Vehicle Training</strong>: Our Guardian Angel team specilizes in coordinated armor/air gameplay.
-            Outside of Ops, they hold a weekly practice where members can learn the intracties of working well in
+        <li><strong>Vehicle Practice</strong>: Our Guardian Angel team specializes in coordinated armor/air gameplay.
+            Outside of Ops, they hold a weekly practice where members can learn the intricacies of working well in
             driver-gunner teams, or holding their own in an armor squad with proper teamwork.
         </li>
         <li><strong>Platoon/Squad Leading Class</strong>: We offer a comprehensive program that can take a complete
@@ -43,8 +43,7 @@
         <li><strong>Off Faction Night</strong>: To switch things up, we'll spend an evening on NC or VS and get a feel
             for the other faction's arsenals and gameplay. We offer NC and VS outfits for our members to join.
         </li>
-        <li><strong>Weekly Operations</strong>: The main event of the week! Every Sunday/Monday, every week, for years,
-            we all get together operate multiple platoons in conjunction with our Reaper & Guardian Special Operation
+        <li><strong>Weekly Operations</strong>: The main event of the week! Every Sunday & Monday, we all get together operate multiple platoons in conjunction with our Reaper & Guardian Special Operation
             Groups under a force commander, with officers as platoon and squad leads. AOD conducts Ops with scale and
             coordination that no other outfit can match, and we dominate whatever continent we're on for two hours.
         </li>
