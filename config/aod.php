@@ -57,6 +57,10 @@ return [
             'date_of_death' => '11/05/2020',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=51680',
         ],
-
+        [
+            'name'          => 'William "T Dooly" McCoy',
+            'date_of_death' => '07/22/2023',
+            'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=49952',
+        ],
     ],
 ];
