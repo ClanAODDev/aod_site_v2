@@ -44,7 +44,7 @@ return [
         ],
         [
             'name'          => 'Lance "Syph3n" Groth',
-            'date_of_death' => 'Unknown',
+            'date_of_death' => '01/12/2015',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=26433',
         ],
         [
