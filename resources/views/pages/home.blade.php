@@ -83,7 +83,7 @@
     <section class="supported-games with-shadow">
         <div class="section-content-container section--centered ">
             <h1 class="slide-in-right animate">Engaged in <strong>18</strong> major titles <br>with more than
-                <strong>2500</strong> active members </h1>
+                <strong>1200</strong> active members </h1>
             <div class="section-blurb slide-in-left animate animation-delay-2">
                 <p>From first-person shooters and survival games to the most well known massive-multiplayer games,
                     you’ll always have something to play. And there’s no shortage of AOD members playing around the
