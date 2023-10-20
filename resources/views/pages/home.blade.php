@@ -155,17 +155,16 @@
                     amphitheater while working your WASD and, when you have to leave your mechanical keys, keep up to
                     date by following our social feeds.</p>
                 <ul class="social-media-sites">
-                    <li class="twitch animate drop-up animation-delay-1" data-link="https://www.twitch
-                    .tv/clanaodstream">Twitch
+                    <li class="twitch animate drop-up animation-delay-1"
+                        data-link="https://www.twitch.tv/clanaodstream">Twitch
                     </li>
-                    <li class="twitter animate drop-up animation-delay-2" data-link="https://twitter
-                    .com/officialclanaod">Twitter
+                    <li class="twitter animate drop-up animation-delay-2"
+                        data-link="https://twitter.com/officialclanaod">Twitter
                     </li>
-                    <li class="steam animate drop-up animation-delay-3" data-link="http://steamcommunity
-                    .com/groups/clanaod">Steam
+                    <li class="steam animate drop-up animation-delay-3"
+                        data-link="http://steamcommunity.com/groups/clanaod">Steam
                     </li>
-                    <li class="youtube animate drop-up animation-delay-4" data-link="http://bit
-                    .ly/2dKbL9I">Youtube
+                    <li class="youtube animate drop-up animation-delay-4" data-link="http://bit.ly/2dKbL9I">Youtube
                     </li>
                 </ul>
                 <p>
