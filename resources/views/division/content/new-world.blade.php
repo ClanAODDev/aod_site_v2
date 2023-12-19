@@ -64,7 +64,7 @@
         <li>Be at least 18 years of age</li>
         <li>Be on TeamSpeak whenever you are in an AOD supported game</li>
         <li>Wear AOD tags (as directed) in any title we support</li>
-        <li>Contribute to the forums on a bi-weekly basis to maintain activity</li>
+        <li>Come play with us on a regular basis - Be active!</li>
         <li>Have a Discord account and join our Discord server</li>
         <li>Be a fan of extreme meme activity in Discord</li>
         <li>No seriously, we have Gif wars...often.</li>
