@@ -7,26 +7,26 @@
 
 <div class="section-sub-section automenu">
 
-    <h2 id="sail">
+    <h3>
         SAIL INTO AN OPEN WORLD OF MULTIPLAYER CONFLICT
-    </h2>
-        <ul>
+    </h3>
+    <ul>
         <li>Test your pirate skills by competing against both powerful factions and rival players for the riches of the Indian Ocean.</li>
         <li>It’s your choice: hunt solo as a lone wolf, or team up with a pirate gang and dominate across different game modes.</li>
     </ul>
 
-    <h2 id="naval">
+    <h3>
         EXPERIENCE NAVAL COMBAT REDEFINED
-    </h2>
-        <ul>
+    </h3>
+    <ul>
         <li>Become the ultimate pirate with Skull & Bones' RPG-like progression system. Choose the ship best suited to your playstyle & upgrade it, using the loot you have plundered. Make the best choices for your equipment, weapons & crew.</li>
         <li>Harness the innovative wind system to combat your way with a wide number of tactical options at your disposal.</li>
     </ul>    
         
-    <h2 id="fortune">
+    <h3>
        FORTUNE FAVORS THE BOLD
-    </h2>
-        <ul>
+    </h3>
+    <ul>
         <li>As you venture forth, you’ll discover the Indian Ocean is never tranquil and that the PvPvE-shared world of Skull & Bones is systemic and ever-evolving.</li>
         <li>Fortunes will give insight into changes in Weather, Conflict, and even upcoming Cataclysms.</li>
     </ul>
