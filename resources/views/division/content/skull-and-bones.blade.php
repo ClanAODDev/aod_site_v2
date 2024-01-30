@@ -30,15 +30,17 @@
         <li>As you venture forth, you’ll discover the Indian Ocean is never tranquil and that the PvPvE-shared world of Skull & Bones is systemic and ever-evolving.</li>
         <li>Fortunes will give insight into changes in Weather, Conflict, and even upcoming Cataclysms.</li>
     </ul>
-    
-</div>
-
-<div class="section-sub-section automenu">
 
     <p>Once you are a member of the Skull and Bones Division you are welcome to explore a thrilling, shared-world filled with danger and opportunity where you'll increase your Infamy alongside friends as you group up and plunder the seas in true fleet style. There will be endless opportunities to fight, and forage among the trade routes,  small islands, and sea beasts you encounter, the choices are all yours.</p>
     
     <p>The Seas are a treacherous journey for anyone sailing where everyone else is hell-bent on your destruction, what will you do to survive? Band together with fellow clanmates to plunder, fortify, and grow your fleet and infamy, or continue on as a lone pirate?</p>
     
+    
+</div>
+
+<div class="section-sub-section automenu">
+
+
 <div class="section-sub-section automenu">
     <h2 id="trailers">
         Trailers
