@@ -3,9 +3,6 @@
 
     <p>From the Coast of Africa to the lush, tropical islands of the East Indies, the world of Skull and Bones is a treasure trove to explore.Through your journey, you will face many dangers - from unpredictable weather, and dangerous rogue waves, to deadly wildlife and cutthroat pirate hunters.Everything and everyone wants you dead.Renegade captains command the most powerful weapons on Earth: warships.To go from underdog to pirate king, you must master sailing and naval combat while building powerful alliances no one can take down.
 </p>
-</div>
-
-<div class="section-sub-section automenu">
 
     <h3>
         SAIL INTO AN OPEN WORLD OF MULTIPLAYER CONFLICT
@@ -37,9 +34,6 @@
     
     
 </div>
-
-<div class="section-sub-section automenu">
-
 
 <div class="section-sub-section automenu">
     <h2 id="trailers">
