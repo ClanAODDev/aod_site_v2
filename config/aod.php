@@ -62,5 +62,10 @@ return [
             'date_of_death' => '07/22/2023',
             'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=49952',
         ],
+        [
+            'name'          => 'Stefan "Drakooth" Erfmann',
+            'date_of_death' => '03/04/2024',
+            'forum_profile' => 'https://www.clanaod.net/forums/member.php?u=85302',
+        ],
     ],
 ];
