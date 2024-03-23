@@ -22,11 +22,6 @@
     </h2>
     <p>Don’t waste any more time gaming with random cannon fodder. Join the AOD Helldivers and you’ll always have voice
         comms and coordinated strategy with your squad. Never fight alone. Become the ultimate dispenser of Freedom!</p>
-    <iframe class="youtube-embed" src="https://www.youtube.com/watch?v=UC5EpJR0GBQ"
-            title="HELLDIVERS: DEATH FROM ABOVE" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-    ></iframe>
 </div>
 
 <div class="section-sub-section automenu">
