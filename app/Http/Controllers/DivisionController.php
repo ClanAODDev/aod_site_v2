@@ -22,16 +22,17 @@ class DivisionController extends Controller
      */
     public function show($division): View
     {
-        if (!view()->exists("division.content.{$division}")) {
-            abort(404, 'Division not found');
-        }
-
         $response = (app()->environment('local'))
             ? $this->getDummyDivision()
             : (new DivisionRepository())->find($division)->json('data.division');
 
         if (empty($response)) {
-            abort(404, 'Division request failed, malformed response');
+            abort(404, 'Bad division request');
+        }
+
+        if (!view()->exists("division.content.{$division}")) {
+            \Log::error("Requested division `{$division}` does not have a corresponding template.");
+            abort(404, 'Division not found');
         }
 
         cache()->remember(
