@@ -1,5 +1,5 @@
 <div class="section-sub-section automenu">
-    <strong>Freedom. Peace. Democracy.</strong>
+    <p><strong>Freedom. Peace. Democracy.</strong></p>
     <p>Enlist in the AOD Helldivers and join the fight for freedom across a hostile galaxy.
         We are a casual gaming group, and we accept players of all skill ranges. We don’t require meta builds or force a
         certain playstyle. We only ask two things: respect for your fellow Helldivers and have a good time gaming
