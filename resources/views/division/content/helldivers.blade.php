@@ -26,7 +26,7 @@
 
 <div class="section-sub-section automenu">
     <h2 id="apply-to-division">Apply to division</h2>
-    <p>In order to be eligible for membership in the Battlebit Remastered division, you must meet the following
+    <p>In order to be eligible for membership in the Helldivers division, you must meet the following
         criteria:</p>
 
     <ul>
