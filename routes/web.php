@@ -20,6 +20,4 @@ Route::get('/fallen-angels', 'FallenAngelsController')->name('fallen-angels');
 Route::get('/divisions', 'DivisionController@index')->name('division.index');
 Route::get('/divisions/{division}', 'DivisionController@show')->name('division.show');
 
-Route::get('/files/{file}', 'FileController')->name('file.show');
-
 require 'partials/policies.php';
