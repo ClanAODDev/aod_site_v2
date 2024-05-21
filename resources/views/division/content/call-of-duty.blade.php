@@ -10,8 +10,8 @@
 </div>
 
 <div class="section-sub-section automenu">
-    <h2 id="events-&amp;-badges">
-        Events &amp;amp; Badges
+    <h2 id="events-and-badges">
+        Events & Badges
     </h2>
 
     <p>The Call of Duty Division hosts weekly events for all clan supported Call of Duty games as well as many others. The Officer Team makes it our priority to keep the members engaged with custom events and challenges.</p>
