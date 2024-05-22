@@ -13,7 +13,7 @@ class RssReader
     {
         $data = Http::get($path);
 
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -25,7 +25,7 @@ class RssReader
             return false;
         }
 
-        if (!property_exists($simpleXML, 'channel')) {
+        if (! property_exists($simpleXML, 'channel')) {
             return false;
         }
 

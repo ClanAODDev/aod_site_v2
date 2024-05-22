@@ -18,7 +18,9 @@ class SiteComposer
      * take care that these only change in conjunction with dependent views.
      */
     public const AOD_DIVISIONS = 'aod_divisions';
+
     public const AOD_TWEETS = 'aod_tweets';
+
     public const AOD_ANNOUNCEMENTS = 'aod_announcements';
 
     public function compose(View $view): void
@@ -39,9 +41,6 @@ class SiteComposer
         $view->with(self::AOD_ANNOUNCEMENTS, $this->getAnnouncementsFeed());
     }
 
-    /**
-     * @return array
-     */
     protected function getDivisions(): array
     {
         if ($this->isLocal()) {
@@ -51,7 +50,7 @@ class SiteComposer
             )['data'];
         }
 
-        if (!$divisons = DivisionRepository::all()->json('data')) {
+        if (! $divisons = DivisionRepository::all()->json('data')) {
             return [];
         }
 
@@ -75,7 +74,7 @@ class SiteComposer
 
         $feed = RssReader::setPath(config('services.aod.announcements_rss_feed'));
 
-        if (!$feed) {
+        if (! $feed) {
             return [];
         }
 

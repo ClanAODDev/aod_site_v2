@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "j7mbo/twitter-api-php": "^1.0",
         "laravel/framework": "^9.0",
+        "laravel/pint": "^1.16",
         "laravel/tinker": "^2.5",
         "sentry/sentry-laravel": "^2.7"
     },
@@ -56,7 +57,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

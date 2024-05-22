@@ -16,8 +16,8 @@ class Twitter
         try {
             $response = json_decode(
                 $twitter->setGetfield(http_build_query($config['stream_config']))
-                        ->buildOauth($this->url, 'GET')
-                        ->performRequest()
+                    ->buildOauth($this->url, 'GET')
+                    ->performRequest()
             );
 
             return $response;

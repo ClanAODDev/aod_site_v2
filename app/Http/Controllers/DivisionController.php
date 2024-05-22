@@ -30,7 +30,7 @@ class DivisionController extends Controller
             abort(404, 'Bad division request');
         }
 
-        if (!view()->exists("division.content.{$division}")) {
+        if (! view()->exists("division.content.{$division}")) {
             \Log::error("Requested division `{$division}` does not have a corresponding template.");
             abort(404, 'Division not found');
         }

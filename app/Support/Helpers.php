@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @param $string
  * @return mixed
  */
 function urlify($string)

@@ -8,6 +8,7 @@ class SmokeTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider staticPageRouteProvider
      */
     public function static_pages_should_return_200_ok($route)

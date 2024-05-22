@@ -12,9 +12,9 @@ class HomeController extends Controller
         $this->getCommoStats(
             (app()->environment('local'))
                 ? $this->getDummyData() : [
-                'aod_teamspeak' => (new SocialRepository())->getTeamspeak()->json('data'),
-                'aod_discord' => (new SocialRepository())->getDiscord()->json('data'),
-            ]
+                    'aod_teamspeak' => (new SocialRepository())->getTeamspeak()->json('data'),
+                    'aod_discord' => (new SocialRepository())->getDiscord()->json('data'),
+                ]
         );
 
         $startXmas = CarbonImmutable::createFromFormat('m-d', '12-01');
@@ -39,9 +39,6 @@ class HomeController extends Controller
         }
     }
 
-    /**
-     * @return array
-     */
     private function getDummyData(): array
     {
         $items = [

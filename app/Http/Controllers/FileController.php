@@ -11,7 +11,7 @@ class FileController extends Controller
     {
         $file = storage_path("files/{$file}");
 
-        if (!Storage::exists($file)) {
+        if (! Storage::exists($file)) {
             return response('File not found', 404);
         }
 

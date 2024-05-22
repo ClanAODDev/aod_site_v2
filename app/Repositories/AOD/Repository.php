@@ -15,7 +15,7 @@ class Repository
     {
         $token = config('services.aod.access_token');
 
-        if (!$token) {
+        if (! $token) {
             throw new \Exception('Tracker access token missing.');
         }
 
