@@ -2,8 +2,6 @@
 
     <p>Welcome, Soldier, and thank you for your interest in the Angels of Death XDefiant Division!</p>
 
-    <p>The Angels of Death – XDefiant Division ).</p>
-
     <p>We’re a gaming community that knows how to win but prefers good people over skill. Our goal is to create a diverse, friendly, and non-toxic environment for all Angels of Death members to play the games they enjoy. We communicate, we play clean, and we play as a team.</p>
 
     <p>The XDefiant Division is home to members from all over the world with varying skill levels. We are united by our love for gaming and the fun, mature, judgment-free atmosphere we have created. If you’re looking for a community with members that play with honor and respect, you're in the right place.</p>
