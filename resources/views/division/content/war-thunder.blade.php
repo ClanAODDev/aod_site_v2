@@ -39,7 +39,7 @@
         criteria:</p>
     <ul>
         <li>Be at least 16 years of age</li>
-        <li>Be on TeamSpeak whenever you are ingame</li>
+        <li>Be on Voice Comms (Discord) whenever you are in-game</li>
         <li>Wear AOD tags while you are ingame</li>
         <li>Willingness to say “it’s okay, I’ve got it…” just before every massively overconfident maneuver that
             results in your inevitable demise
