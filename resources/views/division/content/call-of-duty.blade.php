@@ -22,15 +22,6 @@
         <li>Poker & Skribbl.io Game Nights</li>
         <li>Custom Games, Tournaments, and tons more!</li>
     </ul>
-    <p>There are also AOD Exclusive Forum Badges and Awards that any member can earn through special events, in-game challenges, and tournaments.</p>
-    <ul>
-        <li>Dedicated Soldier (Prestige Progression)</li>
-        <li>Gilded Guns (Gun Camo Challenges)</li>
-        <li>Answered The Call (Participation in Quarterly Events)</li>
-        <li>Second to None (Winning Quarterly Events)</li>
-        <li>Royale Champion (Warzone Wins)</li>
-        <li>Member of the Quarter (Being a good member)</li>
-    </ul>
 </div>
 
 <div class="section-sub-section automenu">
@@ -41,10 +32,10 @@
     <p>To be eligible for membership in the Angels of Death – Call of Duty Division, you must meet and agree to the following requirements.
     </p>
     <ul>
-        <li>Play Call of Duty (preferably on PC, just makes connecting to TeamSpeak easier)</li>
+        <li>Play Call of Duty (preferably on PC, just makes connecting to Discord easier)</li>
         <li>Be at least 18 years of age.</li>
-        <li>Be on TeamSpeak when playing Call of Duty.</li>
-        <li>Be on TeamSpeak at least once monthly to stay active.</li>
+        <li>Be on Discord when playing Call of Duty.</li>
+        <li>Be on Discord at least once monthly to stay active.</li>
         <li>Wear the AOD tags when playing Call of Duty.</li>
     </ul>
 </div>
