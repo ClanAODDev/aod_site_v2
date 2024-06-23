@@ -32,6 +32,10 @@ npm install
 # - recommend setting up an alias - alias sail='/vendor/bin/sail`
 /vendor/bin/sail up -d
 
+# set up environment file and generate application encryption key
+cp .env.example
+/vendor/bin/sail artisan key:generate
+
 # navigate to http://localhost
 
 # run tests
