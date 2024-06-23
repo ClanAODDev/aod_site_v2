@@ -33,7 +33,7 @@ npm install
 /vendor/bin/sail up -d
 
 # set up environment file and generate application encryption key
-cp .env.example
+cp .env.example .env
 /vendor/bin/sail artisan key:generate
 
 # navigate to http://localhost
