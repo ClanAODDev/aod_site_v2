@@ -20,7 +20,7 @@
 
 <div class="section-sub-section automenu">
     <h2 id="apply-to-division"> Apply to division </h2>
-    <p>In order to be eligible for membership in the Battlefield division, you must meet the following
+    <p>In order to be eligible for membership in the Once Human division, you must meet the following
         criteria:</p>
 
     <ul>
@@ -29,7 +29,5 @@
         <li>Wear AOD tags (as directed) in any title we support</li>
         <li>Be friendly to all other members and server players</li>
     </ul>
-
-    <p>We’ll see <strong><u>YOU</u></strong> on the battlefield!</p>
 
 </div>
