@@ -37,10 +37,9 @@
     <p>To be eligible for membership in the Angels of Death – XDefiant Division, you must meet and agree to the following requirements.
     </p>
     <ul>
-        <li>Play XDefiant (preferably on PC, just makes connecting to TeamSpeak easier)</li>
+        <li>Be on Discord when playing XDefiant</li>
         <li>Be at least 16 years of age.</li>
-        <li>Be on TeamSpeak when playing XDefiant.</li>
-        <li>Be on TeamSpeak at least once monthly to stay active.</li>
-        <li>Wear the AOD tags when playing XDefiant (Change name to AOD_ on Uplay).</li>
+        <li>Be on Discord at least once monthly to stay active.</li>
+        <li>Wear AOD tags when playing XDefiant (Change name to AOD_ on Uplay).</li>
     </ul>
 </div>
