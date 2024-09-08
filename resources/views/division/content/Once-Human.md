@@ -13,6 +13,6 @@ Embrace the unknown. Become the Deviant. Once Human. Are you ready to evolve?
 In order to be eligible for membership in the Once Human division, you must meet the following criteria:
 
 *   Be at least 18 years of age
-*   Be on TeamSpeak whenever you are in-game
+*   Be in Discord Comms whenever you are in-game
 *   Wear AOD tags (as directed) in any title we support
 *   Be friendly to all other members and server players
