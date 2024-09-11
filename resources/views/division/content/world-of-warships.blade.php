@@ -19,12 +19,11 @@
         bi-weekly and monthly events ranging from Operation Nights to scrims against other WoWS Clans. Bragging
         rights and torpedo beats for everyone. And if you’re a collector or a completionist, we’ve badges galore
         you can earn that’ll make your forum profile shine.</p>
-    <p>Our goal is to make sure no one plays alone. Need a hand grinding out a new line? We got you. Need a
-        friend to help you with that Tier X you want? Again, we got you. Want someone to rage along with you
-        about CV players? Yep, we got you there too. In fact, we encourage anyone and everyone we find playing
-        alone to Division up with other members. No one wins a team game all by themselves nor should they. In
-        AOD its about the community and we’d like for you to be a part of it.</p>
-
+    <pOur goal is to make sure no one plays alone. Need help grinding a new line to  obtain the tier x or Superships? 
+        We got you!.  Want someone to rage along with you about CV and Sub Players, we got you!  Want to learn the mechanics 
+        of the gameplay to become an effective teammate? This is the place for you!   In fact, we encourage anyone and 
+        everyone we find playing alone to Division up with other members. No one wins a team game all by themselves nor 
+        should they. In AOD its about the community and we’d like for you to be a part of it.</p>
 </div>
 
 <div class="section-sub-section automenu">
