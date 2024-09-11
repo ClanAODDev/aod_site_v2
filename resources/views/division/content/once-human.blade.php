@@ -24,7 +24,7 @@
 
     <ul>
         <li>Be at least 18 years of age</li>
-        <li>Be on TeamSpeak whenever you are in-game</li>
+        <li>Be in Discord Comms whenever you are in-game</li>
         <li>Wear AOD tags (as directed) in any title we support</li>
         <li>Be friendly to all other members and server players</li>
     </ul>
