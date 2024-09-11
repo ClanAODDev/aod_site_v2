@@ -1,8 +1,8 @@
-With an active presence in PlanetSide dating back to 2003, AOD is the top outfit for players looking for a fun, casual gaming environment where they can play alongside dozens of members in an organized fashion. We specialize in operating large forces alongside specialized, cohesive squads in a coordinated manner to control territory. With recurring events throughout the week, we'd love for you to hop in and play with us, join us as an outfit member in-game, or even in TeamSpeak as a full-member. Players of all skill levels will find a home where they can play, improve, get involved in the community, and have fun!
+With an active presence in PlanetSide dating back to 2003, AOD is the top outfit for players looking for a fun, casual gaming environment where they can play alongside dozens of members in an organized fashion. We specialize in operating large forces alongside specialized, cohesive squads in a coordinated manner to control territory. With recurring events throughout the week, we'd love for you to hop in and play with us, join us as an outfit member in-game, or even in Discord as a full-member. Players of all skill levels will find a home where they can play, improve, get involved in the community, and have fun!
 
 **AOD plays as the Terran Republic on Emerald (US East)**.
 
-Founded in 1999, the Angels of Death are a large multi-gaming clan. Beyond PlanetSide, we have over 1,000 active members fully supporting multiple titles across many genres, all with dedicated leadership, officers, and members. When it comes to online gaming communities, you won't find any other organization with the same scale, longevity, organization, and casual environment that has caused many people to call AOD home for decades. We support our operations with our own Forums, TeamSpeak, and Discord.
+Founded in 1999, the Angels of Death are a large multi-gaming clan. Beyond PlanetSide, we have over 1,000 active members fully supporting multiple titles across many genres, all with dedicated leadership, officers, and members. When it comes to online gaming communities, you won't find any other organization with the same scale, longevity, organization, and casual environment that has caused many people to call AOD home for decades. We support our operations with our own Forums and Discord.
 
 ![](https://i.imgur.com/yh9xl8R.png)
 
@@ -26,7 +26,7 @@ Take a look at our [complete schedule of events](https://planetside.clanaod.net/
 Full Membership
 ---------------
 
-Behind every AOD squad and platoon are our full-members. More than just outfit members in-game, these are members of AOD as a whole. Full-members have access to our private Forums, Discord, and TeamSpeak where all the action happens, as well as the expansive community spanning all our AOD supported games. In-game, full-members also enjoy priority spots in platoons, squad/platoon leading, war assets, and thousands of hours of combined experience in improvement resources.
+Behind every AOD squad and platoon are our full-members. More than just outfit members in-game, these are members of AOD as a whole. Full-members have access to our private Forums and Discord where all the action happens, as well as the expansive community spanning all our AOD supported games. In-game, full-members also enjoy priority spots in platoons, squad/platoon leading, war assets, and thousands of hours of combined experience in improvement resources.
 
 Apply to division
 -----------------
@@ -35,9 +35,9 @@ To join, submit an application to the [PlanetSide Division](https://www.clanaod.
 
 **Requirements:**  
 
-*   Be on TeamSpeak when in-game.
+*   Be on Discord voice when in-game.
 *   Follow our Code of Conduct and Division Regulations.
 *   Wear AODR tags in-game.
-*   Logon to TeamSpeak once every month to maintain activity.
+*   Participate via Discord voice once every month to maintain activity.
 
-We hope to see you in-game and on TeamSpeak!
+We hope to see you in-game and on Discord!
