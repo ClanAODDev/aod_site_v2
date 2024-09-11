@@ -31,10 +31,8 @@
 
     <ul>
         <li>Be at least 18 years old</li>
-        <li>Have a microphone and be in TeamSpeak whenever you are playing</li>
+        <li>Have a microphone and be in our Discord voice channels whenever you are playing.</li>
         <li>Be active and engaged to maintain your membership</li>
-        <li>Have a Discord account and join our Discord server</li>
-        <li>Be a fan of extreme meme activity and gif wars</li>
         <li>Pants are optional. Liber-tea is mandatory</li>
     </ul>
 
