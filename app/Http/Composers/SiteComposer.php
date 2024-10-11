@@ -43,18 +43,11 @@ class SiteComposer
 
     protected function getDivisions(): array
     {
-        if ($this->isLocal()) {
-            return json_decode(
-                file_get_contents(storage_path('testing/divisions.json')),
-                true
-            )['data'];
-        }
-
-        if (! $divisons = DivisionRepository::all()->json('data')) {
+        if (! $divisions = DivisionRepository::all()->json('data')) {
             return [];
         }
 
-        return $divisons;
+        return $divisions;
     }
 
     private function getTwitterFeed()

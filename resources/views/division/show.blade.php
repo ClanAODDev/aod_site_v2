@@ -1,23 +1,23 @@
 @extends ('application.base')
 
-@section('page-title', "{$data['name']} Division")
-@section('og-image', asset("images/division-icons/{$data['abbreviation']}.png"))
+@section('page-title', "{$data['division']['name']} Division")
+@section('og-image', $data['division']['icon'])
 
 @section('content')
 
-    <section class="division" data-application-id="{{ $data['forum_app_id'] }}"
-             style="background: url({{ asset("images/division-headers/{$data['abbreviation']}.jpg") }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
+    <section class="division" data-application-id="{{ $data['division']['forum_app_id'] }}"
+             style="background: url({{ asset("images/division-headers/{$data['division']['abbreviation']}.jpg") }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
         <div class="section-content-container">
             <div id="sub-nav"></div>
 
             <div id="general" class="game-header">
                 <div class="icon">
-                    <img class="game" src="{{ $division['icon'] }}"/>
+                    <img class="game" src="{{ $data['division']['icon'] }}"/>
                 </div>
-                <h1>{{ $data['name'] }} Division</h1>
+                <h1>{{ $data['division']['name'] }} Division</h1>
             </div>
 
-            @includeIf("division.content.{$data['slug']}", compact('division'))
+            @includeIf("division.content.{$data['division']['slug']}", compact('division'))
 
             <p style="text-align: center; margin-bottom:50px;">
                 <a class="call-to-action-button" style="margin:10px;" href="https://www.clanaod.net/forums/register.php">1. Create Account</a>
