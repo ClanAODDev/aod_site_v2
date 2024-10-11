@@ -11,7 +11,9 @@
             <div id="sub-nav"></div>
 
             <div id="general" class="game-header">
-                @include('division.partials.logo', ['division' => $data])
+                <div class="icon">
+                    <img class="game" src="{{ $division['icon'] }}"/>
+                </div>
                 <h1>{{ $data['name'] }} Division</h1>
             </div>
 
