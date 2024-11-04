@@ -22,7 +22,9 @@
                         <a href="{{ route("division.show", \Str::slug($division['name'])) }}"
                            class="item game-button animate drop-down animation-delay-{{ $loop->index }}"
                         >
-                            @include('division.partials.logo')
+                            <div class="icon">
+                                <img class="game" src="{{ $division['icon'] }}"/>
+                            </div>
 
                             <div class="meta">
                                 <div class="title">{{ $division['name'] }}</div>

@@ -15,11 +15,12 @@ class Repository
     {
         $token = config('services.aod.access_token');
 
-        if (! $token) {
+        if (!$token) {
             throw new \Exception('Tracker access token missing.');
         }
 
-        $this->client = Http::withToken($token)->acceptJson();
+        $this->client = Http::withToken($token)
+            ->acceptJson();
     }
 
     /**
@@ -31,11 +32,8 @@ class Repository
             $url = implode('/', $url);
         }
 
-        return $this->client->get(
-            rtrim(
-                config('services.aod.tracker_url'),
-                '/'
-            ) . $this->api_endpoint . $url
-        );
+        $str = rtrim(config('services.aod.tracker_url'), '/') . $this->api_endpoint . $url;
+
+        return $this->client->get($str);
     }
 }

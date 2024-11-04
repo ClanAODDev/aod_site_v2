@@ -10,7 +10,7 @@
             @foreach ($aod_divisions as $division)
                 <a href="#" data-application-id="{{ $division['forum_app_id'] }}"
                    data-application-link class="tooltips">
-                    <img class="game" src="{{ asset("images/division-icons/{$division['abbreviation']}.png") }}"/>
+                    <img class="game" src="{{ $division['icon'] }}"/>
                     <span>{{ $division['name'] }}</span>
                 </a>
             @endforeach
