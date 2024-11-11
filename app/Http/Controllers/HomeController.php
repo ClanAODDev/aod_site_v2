@@ -16,7 +16,6 @@ class HomeController extends Controller
                 ]
         );
 
-
         $startXmas = CarbonImmutable::createFromFormat('m-d', '12-01');
         $endXmas = $startXmas->addDay(45);
         $isItChristmas = now()->between($startXmas, $endXmas);
