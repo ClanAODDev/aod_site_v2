@@ -12,7 +12,6 @@ class HomeController extends Controller
         $this->getCommoStats(
             (app()->environment('local'))
                 ? $this->getDummyData() : [
-                    'aod_teamspeak' => (new SocialRepository())->getTeamspeak()->json('data'),
                     'aod_discord' => (new SocialRepository())->getDiscord()->json('data'),
                 ]
         );
@@ -22,7 +21,6 @@ class HomeController extends Controller
         $isItChristmas = now()->between($startXmas, $endXmas);
 
         return view('pages.home', [
-            'teamspeak' => cache()->get('aod_teamspeak'),
             'discord' => cache()->get('aod_discord'),
             'isChristmas' => $isItChristmas,
         ]);
@@ -42,7 +40,6 @@ class HomeController extends Controller
     private function getDummyData(): array
     {
         $items = [
-            'aod_teamspeak' => 'teamspeak.json',
             'aod_discord' => 'discord.json',
         ];
 
