@@ -3,21 +3,13 @@
 @section('content')
 
     <div class="commo-bar">
-        <p class="commo-item"><i class="fab fa-teamspeak fa-lg"></i>
-            <strong>TEAMSPEAK </strong>
-            @if($teamspeak && array_key_exists('online', $teamspeak))
-                {{ $teamspeak['online'] }} / {{ $teamspeak['max'] }}
-            @else
-                ERR
-            @endif
-        </p>
         <p class="commo-item">
-            <i class="fab fa-discord fa-lg"></i>
-            <a href="https://discord.gg/clanaod" title="Join the AOD Discord"><strong>DISCORD</strong></a>
+            <a href="https://discord.gg/clanaod" title="Join the AOD Discord">
+                JOIN US ON DISCORD <i class="fab fa-discord fa-lg"></i>
+            </a>
+
             @if($discord && array_key_exists('online', $discord))
-                {{ $discord['online'] + $discord['idle'] + $discord['dnd'] }} / {{ $discord['total'] }}
-            @else
-                ERR
+                ONLINE: {{ $discord['online'] + $discord['idle'] + $discord['dnd'] }} / {{ $discord['total'] }}
             @endif
 
         </p>
