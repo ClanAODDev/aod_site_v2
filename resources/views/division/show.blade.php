@@ -17,11 +17,19 @@
                 <h1>{{ $data['division']['name'] }} Division</h1>
             </div>
 
-            @includeIf("division.content.{$data['division']['slug']}", compact('division'))
+            <hr>
 
-            <p style="text-align: center; margin-bottom:50px;">
-                <a class="call-to-action-button" style="margin:10px;" href="https://www.clanaod.net/forums/register.php">1. Create Account</a>
-                <a class="call-to-action-button" style="margin:10px;" href="#" data-application-link="">2. Apply for division</a>
+            @if($data['division']['site_content'])
+                @markdown($data['division']['site_content'])
+            @else
+                @includeIf("division.content.{$data['division']['slug']}", compact('division'))
+            @endif
+
+            <p style="text-align: center; margin:50px 0;">
+                <a class="call-to-action-button" style="margin:10px;"
+                   href="https://www.clanaod.net/forums/register.php">1. Create Account</a>
+                <a class="call-to-action-button" style="margin:10px;" href="#" data-application-link="">2. Apply for
+                    division</a>
             </p>
         </div>
     </section>
