@@ -18,11 +18,10 @@
             </div>
 
             <hr>
-
             @if($data['division']['site_content'])
                 @markdown($data['division']['site_content'])
             @else
-                @includeIf("division.content.{$data['division']['slug']}", compact('division'))
+                <p>Division content coming soon.</p>
             @endif
 
             <p style="text-align: center; margin:50px 0;">
