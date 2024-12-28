@@ -11,6 +11,7 @@ var ClanAOD = ClanAOD || {};
             this.initAutoMenu();
             this.handleApplicationLinks();
             this.handleViewportAnimations();
+            this.setupDivisionEmbeds();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -148,6 +149,10 @@ var ClanAOD = ClanAOD || {};
                         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
                 );
             }
+        },
+        setupDivisionEmbeds() {
+            // find a way to do this with embed/embed later
+            $('.division iframe').addClass('youtube-embed')
         }
     };
 }(jQuery), ClanAOD.setup(), ClanAOD.smoothScroll();
