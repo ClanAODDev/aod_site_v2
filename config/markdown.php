@@ -11,6 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\Embed\Bridge\OscaroteroEmbedAdapter;
 use League\CommonMark\Extension\Embed\Embed;
 
@@ -81,6 +82,9 @@ return [
         Embed::class => [
             'class' => 'youtube-embed',
         ],
+        Link::class => [
+            'target' => '_blank',
+        ]
     ],
 
     'renderer' => [
