@@ -79,9 +79,6 @@ return [
     ],
 
     'default_attributes' => [
-        Embed::class => [
-            'class' => 'youtube-embed',
-        ],
         Link::class => [
             'target' => '_blank',
         ]
