@@ -7,7 +7,7 @@ body
 ul, ol
   list-style none
 
-.section-sub-section
+.division
     blockquote
         margin 30px 0
         .quote-author
@@ -22,18 +22,17 @@ ul, ol
             font-style italic
             font-family Georgia, serif
             margin-bottom -10px
+    ul li
+        list-style none
+        font-family font_face
+        color rgba(255, 255, 255, .4)
+        padding-bottom 10px
 
-.section-sub-section ul li
-  list-style none
-  font-family font_face
-  color rgba(255, 255, 255, .4)
-  padding-bottom 10px
-
-  &:before
-    content "-"
-    display inline-block
-    margin-left -1.3em
-    width 1.3em
+        &:before
+          content "-"
+          display inline-block
+          margin-left -1.3em
+          width 1.3em
 
 strong
   color link_color
@@ -106,14 +105,14 @@ a
     transition 0.6s
 
 a.call-to-action-button
-  border solid 3px #fff
-  padding 20px
+  border solid 1px #fff
+  padding 15px
   border-radius 40px
   color #fff
   margin-top 20px
   display inline-block
   font-family font_face
-  font-size 24px
+  font-size 18px
   text-transform uppercase
 
   &.is-small
@@ -122,8 +121,8 @@ a.call-to-action-button
     font-size 14px
 
   &:hover
-    background-color #ffffff
-    color #000000
+    background-color #fff
+    color #000
 
 /** nav bar **/
 
@@ -304,7 +303,7 @@ section.primary-footer
   text-align center
   width 50%
 
-  hr
+hr
     opacity .1
 
 a
