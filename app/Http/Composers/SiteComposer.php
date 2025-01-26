@@ -4,7 +4,6 @@ namespace App\Http\Composers;
 
 use Facades\App\Repositories\AOD\DivisionRepository;
 use Facades\App\Support\RssReader;
-use Facades\App\Support\Twitter;
 use Illuminate\View\View;
 
 /**
@@ -31,12 +30,6 @@ class SiteComposer
             fn () => $this->getDivisions()
         ));
 
-        $view->with(self::AOD_TWEETS, cache()->remember(
-            self::AOD_TWEETS,
-            config('app.cache_length'),
-            fn () => $this->getTwitterFeed()
-        ));
-
         // no need to cache RSS feed
         $view->with(self::AOD_ANNOUNCEMENTS, $this->getAnnouncementsFeed());
     }
@@ -48,15 +41,6 @@ class SiteComposer
         }
 
         return $divisions;
-    }
-
-    private function getTwitterFeed()
-    {
-        if ($this->isLocal() || app()->environment('testing')) {
-            return json_decode(file_get_contents(storage_path('testing/tweets.json')));
-        }
-
-        return Twitter::getfeed();
     }
 
     private function getAnnouncementsFeed()
