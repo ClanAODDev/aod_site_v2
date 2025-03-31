@@ -30,13 +30,16 @@ class SiteComposer
             fn () => $this->getDivisions()
         ));
 
-        // no need to cache RSS feed
-        $announcements = $this->isLocal()
-            ? simplexml_load_file(storage_path('testing/announcements.xml'))->channel
-            : cache()->remember('aod_announcements', 60, function () {
+        if ($this->isLocal()) {
+            $announcements = simplexml_load_file(storage_path('testing/announcements.xml'))->channel;
+        } else {
+            $announcements = cache()->remember('aod_announcements', 60, function () {
                 $feed = $this->getAnnouncementsFeed();
-                return $feed ? json_decode(json_encode($feed), true) : [];
+                return $feed ? $feed->asXML() : null;
             });
+
+            $announcements = $announcements ? simplexml_load_string($announcements) : null;
+        }
 
         $view->with(self::AOD_ANNOUNCEMENTS, $announcements);
     }
