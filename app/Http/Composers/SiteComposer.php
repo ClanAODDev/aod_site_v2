@@ -40,7 +40,7 @@ class SiteComposer
 
     private function getAnnouncementsFeed()
     {
-        $feed = RssReader::setPath(config('services.aod.announcements_rss_feed'));
+        $feed = (new RssReader)->setPath(config('services.aod.announcements_rss_feed'));
 
         if (! $feed) {
             return [];
