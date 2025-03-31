@@ -2,8 +2,8 @@
 
 namespace App\Http\Composers;
 
+use App\Support\RssReader;
 use Facades\App\Repositories\AOD\DivisionRepository;
-use Facades\App\Support\RssReader;
 use Illuminate\View\View;
 
 /**
@@ -31,7 +31,22 @@ class SiteComposer
         ));
 
         // no need to cache RSS feed
-        $view->with(self::AOD_ANNOUNCEMENTS, $this->getAnnouncementsFeed());
+        $announcements = $this->isLocal()
+            ? simplexml_load_file(storage_path('testing/announcements.xml'))->channel
+            : cache()->remember('aod_announcements', 60, fn () => $this->getAnnouncementsFeed());
+
+        $view->with(self::AOD_ANNOUNCEMENTS, $announcements);
+    }
+
+    private function getAnnouncementsFeed()
+    {
+        $feed = RssReader::setPath(config('services.aod.announcements_rss_feed'));
+
+        if (! $feed) {
+            return [];
+        }
+
+        return $feed->getItems();
     }
 
     protected function getDivisions(): array
@@ -41,21 +56,6 @@ class SiteComposer
         }
 
         return $divisions;
-    }
-
-    private function getAnnouncementsFeed()
-    {
-        if ($this->isLocal()) {
-            return simplexml_load_file(storage_path('testing/announcements.xml'))->channel;
-        }
-
-        $feed = RssReader::setPath(config('services.aod.announcements_rss_feed'));
-
-        if (! $feed) {
-            return [];
-        }
-
-        return $feed->getItems();
     }
 
     /**
