@@ -33,7 +33,10 @@ class SiteComposer
         // no need to cache RSS feed
         $announcements = $this->isLocal()
             ? simplexml_load_file(storage_path('testing/announcements.xml'))->channel
-            : cache()->remember('aod_announcements', 60, fn () => $this->getAnnouncementsFeed());
+            : cache()->remember('aod_announcements', 60, function () {
+                $feed = $this->getAnnouncementsFeed();
+                return $feed ? json_decode(json_encode($feed), true) : [];
+            });
 
         $view->with(self::AOD_ANNOUNCEMENTS, $announcements);
     }
