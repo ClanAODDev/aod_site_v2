@@ -38,7 +38,9 @@ class SiteComposer
                 return $feed ? $feed->asXML() : null;
             });
 
-            $announcements = $announcements ? simplexml_load_string($announcements) : null;
+            $announcements = $announcements
+                ? simplexml_load_string($announcements, null, LIBXML_NOERROR | LIBXML_NOWARNING | LIBXML_NOCDATA)
+                : null;
         }
 
         $view->with(self::AOD_ANNOUNCEMENTS, $announcements);
@@ -69,6 +71,7 @@ class SiteComposer
      */
     private function isLocal()
     {
+        return false;
         return app()->environment('local');
     }
 }
