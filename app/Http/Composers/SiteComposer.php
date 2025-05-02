@@ -18,8 +18,6 @@ class SiteComposer
      */
     public const AOD_DIVISIONS = 'aod_divisions';
 
-    public const AOD_TWEETS = 'aod_tweets';
-
     public const AOD_ANNOUNCEMENTS = 'aod_announcements';
 
     public function compose(View $view): void
@@ -63,7 +61,7 @@ class SiteComposer
             return [];
         }
 
-        return $divisions;
+        return $this->shouldShowOnSite($divisions);
     }
 
     /**
@@ -71,7 +69,13 @@ class SiteComposer
      */
     private function isLocal()
     {
-        return false;
         return app()->environment('local');
+    }
+
+    private function shouldShowOnSite(array $divisions): array
+    {
+        return array_filter($divisions, function ($division) {
+            return isset($division['show_on_site']) && $division['show_on_site'] !== false;
+        });
     }
 }
