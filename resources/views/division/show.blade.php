@@ -4,9 +4,16 @@
 @section('og-image', $data['division']['icon'])
 
 @section('content')
+    @php
+        $division_abbr = $data['division']['abbreviation'];
+        $division_image_path = public_path("images/division-headers/{$division_abbr}.jpg");
+        $division_heading = file_exists($division_image_path) ? "images/division-headers/{$division_abbr}.jpg" : 'images/page-header.jpg';
+    @endphp
 
     <section class="division" data-application-id="{{ $data['division']['forum_app_id'] }}"
-             style="background: url({{ asset("images/division-headers/{$data['division']['abbreviation']}.jpg") }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x; background-position: top center;">
+             style="background: url({{ asset($division_heading) }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x;
+         background-position: top center;">
+
         <div class="section-content-container">
             <div id="sub-nav"></div>
 
