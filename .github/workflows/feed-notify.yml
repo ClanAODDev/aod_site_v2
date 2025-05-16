@@ -1,0 +1,18 @@
+name: Discord IT Feed notifications
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Discord Commits
+      uses: Sniddl/discord-commits@v1.6
+      with:
+        webhook: ${{ secrets.IT_FEED_WEBHOOK }}
+        template: "avatar-with-link"
+        include-extras: true
