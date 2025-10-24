@@ -2,6 +2,9 @@
 
 @section('page-title', "{$data['division']['name']} Division")
 @section('og-image', $data['division']['icon'])
+@if (!empty($data['division']['settings']['meta_description']))
+    @section('og-description', $data['division']['settings']['meta_description'])
+@endif
 
 @section('content')
     @php

@@ -6,11 +6,11 @@ class SocialRepository extends Repository
 {
     public function getDiscord()
     {
-        return $this->getPromise('/discord-count');
+        return $this->getPromise(['discord-count']);
     }
 
     public function getStreamEvents()
     {
-        return $this->getPromise('/stream-events');
+        return $this->getPromise(['stream-events']);
     }
 }

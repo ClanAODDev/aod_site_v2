@@ -13,6 +13,9 @@ class DivisionRepository extends Repository
 
     public function find(string $division): Response
     {
-        return $this->getPromise(['/divisions', $division, '?include-site']);
+        return $this->getPromise(
+            ['divisions', $division],
+            ['include-site' => true, 'include-settings' => true]
+        );
     }
 }

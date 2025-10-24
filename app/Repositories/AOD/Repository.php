@@ -3,6 +3,7 @@
 namespace App\Repositories\AOD;
 
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 class Repository
@@ -26,14 +27,20 @@ class Repository
     /**
      * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
      */
-    protected function getPromise($url)
+    protected function getPromise(string|array $url, array $params = []): Response
     {
-        if (is_array($url)) {
-            $url = implode('/', $url);
+        $base = rtrim(config('services.aod.tracker_url'), '/');
+        $endpoint = trim($this->api_endpoint, '/');
+
+        $path = is_array($url) ? implode('/', array_map('rawurlencode', $url)) : ltrim($url, '/');
+
+        $fullUrl = "{$base}/{$endpoint}/{$path}";
+
+        if (!empty($params)) {
+            $query = http_build_query($params);
+            $fullUrl .= "?{$query}";
         }
 
-        $str = rtrim(config('services.aod.tracker_url'), '/') . $this->api_endpoint . $url;
-
-        return $this->client->get($str);
+        return $this->client->get($fullUrl);
     }
 }
