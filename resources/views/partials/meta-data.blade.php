@@ -11,8 +11,7 @@
 <meta name="description" content="{{ $ogDescription }}">
 <meta property="og:description" content="{{ $ogDescription }}">
 <meta property="twitter:description" content="{{ $ogDescription }}">
-<meta property="og:image" content="@yield('og-image', asset('images/official-logo.png'))">
-
+<meta property="og:image" content="{{ $ogImage }}">
 
 <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicons/apple-icon-57x57.png') }}">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/favicons/apple-icon-60x60.png') }}">
