@@ -5,6 +5,10 @@
   .hero-video .hero-text h1
     font-size 28px
 
+
+
+
+
 @media (max-width: 1120px)
   h1, h2
     font-size 1.3em
@@ -38,6 +42,9 @@
 
   section .section-content-container
     width auto !important
+    max-width 100% !important
+    padding 0 15px !important
+    margin 0 auto !important
 
   .primary-nav ul li
     background none
@@ -45,6 +52,7 @@
   .primary-nav
     position fixed
     top 0
+    z-index 100 !important  // Ensure nav is above hero video but doesn't push it
 
   .section--short-width
     display block !important
@@ -62,6 +70,10 @@
   #menu-primary
     display none
 
+  .primary-nav .full-nav ul
+    min-width auto !important
+    width 100% !important
+
   section
     padding 20px
     &.founded-info .section-image
@@ -76,8 +88,20 @@
 @media (max-width: 1260px)
     .push
       margin-top: 625px;
-    .hero-video .hero-text
-      top 125px
+    .hero-video
+      position fixed !important
+      top 0 !important
+      left 0 !important
+      width 100vw !important
+      height 100vh !important
+      z-index -1 !important
+
+      .hero-text
+        position fixed !important
+        top 125px !important
+        left 50% !important
+        transform translateX(-50%) !important
+        z-index 3 !important
   section.founded-info .section-image
     position absolute
     top -130px
