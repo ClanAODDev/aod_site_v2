@@ -2,9 +2,6 @@
 <html lang="en">
 
 @include('application.header')
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <body class="{{ request()->is('history') ? 'page-template-page-history' : null }}">
 @include('partials.dev-banner')
 
