@@ -2,8 +2,7 @@
     <title>@if (request()->is(['/','home']))ClanAOD.net | @endif
         @yield('page-title', 'Since 1999')</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css?v=2.50') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/fonts.css?v=2.3') }}"/>
+    @vite(['resources/src/main.styl', 'resources/fonts/fonts.css'])
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css"
           integrity="sha512-jQqzj2vHVxA/yCojT8pVZjKGOe9UmoYvnOuM/2sQ110vxiajBU+4WkyRs1ODMmd4AfntwUEV4J+VfM6DkfjLRg=="

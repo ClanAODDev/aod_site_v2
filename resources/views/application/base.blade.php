@@ -2,10 +2,8 @@
 <html lang="en">
 
 @include('application.header')
-<script type="text/javascript">
-    let AOD = {"path": "{{ config('app_url') }}"};
-</script>
-<script src="{{ asset('js/app.js') }}"></script>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body class="{{ request()->is('history') ? 'page-template-page-history' : null }}">
 @include('partials.dev-banner')
@@ -22,7 +20,7 @@
 
 @include('application.footer')
 
-<script src="{{ asset('js/app.js') }}?v=2.0"></script>
+@vite(['resources/js/app.js'])
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Composers;
 
 use App\Support\RssReader;
@@ -33,6 +35,7 @@ class SiteComposer
         } else {
             $announcements = cache()->remember('aod_announcements', 60, function () {
                 $feed = $this->getAnnouncementsFeed();
+
                 return $feed ? $feed->asXML() : null;
             });
 

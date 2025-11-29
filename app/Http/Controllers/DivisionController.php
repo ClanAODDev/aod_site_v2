@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Repositories\AOD\DivisionRepository;
@@ -24,7 +26,7 @@ class DivisionController extends Controller
     {
         $data = (new DivisionRepository)->find($division)->json('data');
 
-        if (!$data) {
+        if (! $data) {
             abort(404, 'Bad division request');
         }
 

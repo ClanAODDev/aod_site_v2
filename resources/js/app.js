@@ -1,8 +1,26 @@
-require('./bootstrap');
+import './bootstrap.js';
+import './easyModal.min.js';
 
 'use strict';
-var ClanAOD = ClanAOD || {};
-!function (e) {
+
+// Set up AOD global configuration
+window.AOD = window.AOD || {"path": window.location.origin};
+
+// Initialize ClanAOD when everything is ready
+function initializeClanAOD() {
+    console.log('Initializing ClanAOD...');
+    console.log('jQuery available:', typeof window.$ !== 'undefined');
+    console.log('easyModal available:', typeof window.$.fn.easyModal !== 'undefined');
+
+    if (typeof window.$ === 'undefined') {
+        console.error('jQuery is not available!');
+        return;
+    }
+
+    var $ = window.$;
+    var ClanAOD = {};
+
+    !function (e) {
     ClanAOD = {
         setup: function () {
             this.addDynamicLinks();
@@ -12,6 +30,7 @@ var ClanAOD = ClanAOD || {};
             this.handleApplicationLinks();
             this.handleViewportAnimations();
             this.setupDivisionEmbeds();
+            this.scaleHeroVideo();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -48,11 +67,48 @@ var ClanAOD = ClanAOD || {};
             e('#sub-nav').length && ClanAOD.handleAutoMenu('sub-nav', 'h2');
         },
         stickyNav: function () {
+            console.log('Setting up sticky nav...');
             e(window).bind('scroll', function () {
-                e('.stay-fixed').length > 0 ? e('.stay-fixed').find('.full-nav .home').addClass('show-logo') : e(window).scrollTop() > 700 ? e('.primary-nav').addClass('fixed').find('.full-nav .home').addClass('show-logo') : e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
+                var scrollTop = e(window).scrollTop();
+                var stayFixed = e('.stay-fixed').length > 0;
+                console.log('Scroll event - scrollTop:', scrollTop, 'stayFixed:', stayFixed);
+
+                // Handle hero video and text fade based on scroll position
+                var heroVideo = e('.hero-video');
+                var heroText = e('.hero-text');
+                if (heroVideo.length > 0) {
+                    var fadeStart = 500; // Start fading at 500px
+                    var fadeEnd = 700;   // Fully faded at 700px
+                    var opacity = 1;
+
+                    if (scrollTop >= fadeEnd) {
+                        opacity = 0;
+                    } else if (scrollTop >= fadeStart) {
+                        opacity = 1 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart));
+                    }
+
+                    heroVideo.css('opacity', opacity);
+                    heroText.css('opacity', opacity);
+                }
+
+                if (stayFixed) {
+                    e('.stay-fixed').find('.full-nav .home').addClass('show-logo');
+                } else if (scrollTop > 700) {
+                    console.log('Adding fixed class to primary-nav');
+                    e('.primary-nav').addClass('fixed').find('.full-nav .home').addClass('show-logo');
+                } else {
+                    console.log('Removing fixed class from primary-nav');
+                    e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
+                }
             });
         },
         handleModals: function () {
+            console.log('Setting up modals...');
+            console.log('Apply form elements found:', e('.apply-form').length);
+            console.log('Apply button elements found:', e('.apply-button').length);
+            console.log('easyModal available:', typeof e.fn.easyModal !== 'undefined');
+
+            // Set up intro video modal
             e('.intro-video').easyModal({
                 overlayOpacity: .75,
                 overlayColor: '#000',
@@ -63,12 +119,25 @@ var ClanAOD = ClanAOD || {};
                 onOpen: function () {
                     document.getElementById('video-iframe').contentWindow.postMessage(ClanAOD.postYTMessage('start'), '*');
                 }
-            }), e('.play-button').click(function (n) {
-                e('.intro-video').trigger('openModal'), n.preventDefault();
-            }), e('.close-video').click(function () {
+            });
+
+            e('.play-button').click(function (n) {
+                console.log('Play button clicked!');
+                e('.intro-video').trigger('openModal');
+                n.preventDefault();
+            });
+
+            e('.close-video').click(function () {
                 e('.intro-video').trigger('closeModal');
-            }), e('.apply-form').easyModal({overlayOpacity: .75}), e('.apply-button').click(function (n) {
-                e('.apply-form').trigger('openModal'), n.preventDefault();
+            });
+
+            // Set up apply form modal
+            e('.apply-form').easyModal({overlayOpacity: .75});
+
+            e('.apply-button').click(function (n) {
+                console.log('Apply button clicked!');
+                e('.apply-form').trigger('openModal');
+                n.preventDefault();
             });
         },
         /**
@@ -153,6 +222,84 @@ var ClanAOD = ClanAOD || {};
         setupDivisionEmbeds() {
             // find a way to do this with embed/embed later
             $('.division iframe').addClass('youtube-embed')
+        },
+        scaleHeroVideo: function () {
+            console.log('Setting up hero video scaling...');
+
+            // Store reference to resize function for external access
+            window.resizeHeroVideo = function() {
+                // YouTube API replaces the div with an iframe that has the same ID
+                var $video = e('#video');
+                console.log('Resize attempt - Element found:', $video.length > 0, 'Is iframe:', $video.is('iframe'), 'Tag name:', $video.prop('tagName'));
+
+                if ($video.length === 0 || !$video.is('iframe')) {
+                    // Video not loaded yet, try again in a moment
+                    console.log('Video not ready, retrying in 100ms...');
+                    setTimeout(window.resizeHeroVideo, 100);
+                    return;
+                }
+
+                var windowWidth = e(window).width();
+                var windowHeight = e(window).height();
+                var videoAspectRatio = 16 / 9;
+                var windowAspectRatio = windowWidth / windowHeight;
+
+                console.log('Resizing video - Window:', windowWidth + 'x' + windowHeight, 'Aspect:', windowAspectRatio);
+
+                // Calculate scale factors for both dimensions
+                var scaleX = windowWidth / (windowHeight * videoAspectRatio);
+                var scaleY = windowHeight / (windowWidth / videoAspectRatio);
+
+                // Use the larger scale factor to ensure complete coverage
+                var scale = Math.max(scaleX, scaleY);
+
+                // Apply scale with a small buffer to ensure no gaps
+                scale = Math.max(scale, 1.01);
+
+                var videoWidth = windowWidth * scale;
+                var videoHeight = windowHeight * scale;
+
+                // Ensure video maintains 16:9 aspect ratio
+                if (videoWidth / videoHeight > videoAspectRatio) {
+                    videoHeight = videoWidth / videoAspectRatio;
+                } else {
+                    videoWidth = videoHeight * videoAspectRatio;
+                }
+
+                // Apply the calculated dimensions with transform-based centering
+                $video.css({
+                    'width': videoWidth + 'px',
+                    'height': videoHeight + 'px',
+                    'transform': 'translate(-50%, -50%)',
+                    'top': '50%',
+                    'left': '50%',
+                    'position': 'absolute'
+                });
+
+                console.log('Video scaled to:', videoWidth + 'x' + videoHeight);
+                console.log('Coverage check - Width covers:', (videoWidth >= windowWidth), 'Height covers:', (videoHeight >= windowHeight));
+            };
+
+            // Initial resize
+            window.resizeHeroVideo();
+
+            // Resize on window resize
+            e(window).resize(function() {
+                window.resizeHeroVideo();
+            });
         }
     };
-}(jQuery), ClanAOD.setup(), ClanAOD.smoothScroll();
+    }($);
+
+    // Initialize ClanAOD functionality
+    ClanAOD.setup();
+    ClanAOD.smoothScroll();
+}
+
+// Wait for DOM to be ready, then initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeClanAOD);
+} else {
+    // DOM is already ready
+    initializeClanAOD();
+}
