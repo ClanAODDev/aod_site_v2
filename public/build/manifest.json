@@ -1,0 +1,92 @@
+{
+  "resources/fonts/32291B_0_0.eot": {
+    "file": "assets/32291B_0_0-5DOyDCCZ.eot",
+    "src": "resources/fonts/32291B_0_0.eot"
+  },
+  "resources/fonts/32291B_0_0.ttf": {
+    "file": "assets/32291B_0_0-D7FCvzBT.ttf",
+    "src": "resources/fonts/32291B_0_0.ttf"
+  },
+  "resources/fonts/32291B_0_0.woff": {
+    "file": "assets/32291B_0_0-CuewpsnZ.woff",
+    "src": "resources/fonts/32291B_0_0.woff"
+  },
+  "resources/fonts/32291B_0_0.woff2": {
+    "file": "assets/32291B_0_0-rG2fqcOy.woff2",
+    "src": "resources/fonts/32291B_0_0.woff2"
+  },
+  "resources/fonts/fonts-legacy.css": {
+    "file": "assets/fonts-legacy-CLGQyHA2.js",
+    "name": "fonts",
+    "src": "resources/fonts/fonts-legacy.css",
+    "isEntry": true,
+    "assets": [
+      "assets/32291B_0_0-5DOyDCCZ.eot",
+      "assets/32291B_0_0-rG2fqcOy.woff2",
+      "assets/32291B_0_0-CuewpsnZ.woff",
+      "assets/32291B_0_0-D7FCvzBT.ttf",
+      "assets/socicon-CkE3AQ6x.eot",
+      "assets/socicon-SOzQmMjC.woff",
+      "assets/socicon-D1cf2MBw.ttf",
+      "assets/socicon-xP2or0tW.svg"
+    ]
+  },
+  "resources/fonts/fonts.css": {
+    "file": "assets/fonts-DOSa79SC.css",
+    "src": "resources/fonts/fonts.css",
+    "isEntry": true,
+    "name": "fonts",
+    "names": [
+      "fonts.css"
+    ]
+  },
+  "resources/fonts/socicon.eot": {
+    "file": "assets/socicon-CkE3AQ6x.eot",
+    "src": "resources/fonts/socicon.eot"
+  },
+  "resources/fonts/socicon.svg": {
+    "file": "assets/socicon-xP2or0tW.svg",
+    "src": "resources/fonts/socicon.svg"
+  },
+  "resources/fonts/socicon.ttf": {
+    "file": "assets/socicon-D1cf2MBw.ttf",
+    "src": "resources/fonts/socicon.ttf"
+  },
+  "resources/fonts/socicon.woff": {
+    "file": "assets/socicon-SOzQmMjC.woff",
+    "src": "resources/fonts/socicon.woff"
+  },
+  "resources/js/app-legacy.js": {
+    "file": "assets/app-legacy-Zu6r0kRu.js",
+    "name": "app",
+    "src": "resources/js/app-legacy.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CrT64Aq3.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/src/main-legacy.styl": {
+    "file": "assets/main-legacy-ClB01pcq.js",
+    "name": "main",
+    "src": "resources/src/main-legacy.styl",
+    "isEntry": true
+  },
+  "resources/src/main.styl": {
+    "file": "assets/main-BSwsk8He.css",
+    "src": "resources/src/main.styl",
+    "isEntry": true,
+    "name": "main",
+    "names": [
+      "main.css"
+    ]
+  },
+  "vite/legacy-polyfills-legacy": {
+    "file": "assets/polyfills-legacy-CyIKkSHo.js",
+    "name": "polyfills",
+    "src": "vite/legacy-polyfills-legacy",
+    "isEntry": true
+  }
+}

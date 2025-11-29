@@ -1,8 +1,26 @@
-require('./bootstrap');
+import './bootstrap.js';
+import './easyModal.min.js';
 
 'use strict';
-var ClanAOD = ClanAOD || {};
-!function (e) {
+
+// Set up AOD global configuration
+window.AOD = window.AOD || {"path": window.location.origin};
+
+// Initialize ClanAOD when everything is ready
+function initializeClanAOD() {
+    console.log('Initializing ClanAOD...');
+    console.log('jQuery available:', typeof window.$ !== 'undefined');
+    console.log('easyModal available:', typeof window.$.fn.easyModal !== 'undefined');
+
+    if (typeof window.$ === 'undefined') {
+        console.error('jQuery is not available!');
+        return;
+    }
+
+    var $ = window.$;
+    var ClanAOD = {};
+
+    !function (e) {
     ClanAOD = {
         setup: function () {
             this.addDynamicLinks();
@@ -48,11 +66,30 @@ var ClanAOD = ClanAOD || {};
             e('#sub-nav').length && ClanAOD.handleAutoMenu('sub-nav', 'h2');
         },
         stickyNav: function () {
+            console.log('Setting up sticky nav...');
             e(window).bind('scroll', function () {
-                e('.stay-fixed').length > 0 ? e('.stay-fixed').find('.full-nav .home').addClass('show-logo') : e(window).scrollTop() > 700 ? e('.primary-nav').addClass('fixed').find('.full-nav .home').addClass('show-logo') : e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
+                var scrollTop = e(window).scrollTop();
+                var stayFixed = e('.stay-fixed').length > 0;
+                console.log('Scroll event - scrollTop:', scrollTop, 'stayFixed:', stayFixed);
+
+                if (stayFixed) {
+                    e('.stay-fixed').find('.full-nav .home').addClass('show-logo');
+                } else if (scrollTop > 700) {
+                    console.log('Adding fixed class to primary-nav');
+                    e('.primary-nav').addClass('fixed').find('.full-nav .home').addClass('show-logo');
+                } else {
+                    console.log('Removing fixed class from primary-nav');
+                    e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
+                }
             });
         },
         handleModals: function () {
+            console.log('Setting up modals...');
+            console.log('Apply form elements found:', e('.apply-form').length);
+            console.log('Apply button elements found:', e('.apply-button').length);
+            console.log('easyModal available:', typeof e.fn.easyModal !== 'undefined');
+
+            // Set up intro video modal
             e('.intro-video').easyModal({
                 overlayOpacity: .75,
                 overlayColor: '#000',
@@ -63,12 +100,25 @@ var ClanAOD = ClanAOD || {};
                 onOpen: function () {
                     document.getElementById('video-iframe').contentWindow.postMessage(ClanAOD.postYTMessage('start'), '*');
                 }
-            }), e('.play-button').click(function (n) {
-                e('.intro-video').trigger('openModal'), n.preventDefault();
-            }), e('.close-video').click(function () {
+            });
+
+            e('.play-button').click(function (n) {
+                console.log('Play button clicked!');
+                e('.intro-video').trigger('openModal');
+                n.preventDefault();
+            });
+
+            e('.close-video').click(function () {
                 e('.intro-video').trigger('closeModal');
-            }), e('.apply-form').easyModal({overlayOpacity: .75}), e('.apply-button').click(function (n) {
-                e('.apply-form').trigger('openModal'), n.preventDefault();
+            });
+
+            // Set up apply form modal
+            e('.apply-form').easyModal({overlayOpacity: .75});
+
+            e('.apply-button').click(function (n) {
+                console.log('Apply button clicked!');
+                e('.apply-form').trigger('openModal');
+                n.preventDefault();
             });
         },
         /**
@@ -155,4 +205,17 @@ var ClanAOD = ClanAOD || {};
             $('.division iframe').addClass('youtube-embed')
         }
     };
-}(jQuery), ClanAOD.setup(), ClanAOD.smoothScroll();
+    }($);
+
+    // Initialize ClanAOD functionality
+    ClanAOD.setup();
+    ClanAOD.smoothScroll();
+}
+
+// Wait for DOM to be ready, then initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeClanAOD);
+} else {
+    // DOM is already ready
+    initializeClanAOD();
+}
