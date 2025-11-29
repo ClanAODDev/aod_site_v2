@@ -61,6 +61,6 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-      - name: Execute Unit and Feature tests via PHPUnit
-        run: php vendor/bin/phpunit
+      - name: Execute Unit and Feature tests via Pest
+        run: php vendor/bin/pest
 
