@@ -64,3 +64,15 @@ jobs:
       - name: Execute Unit and Feature tests via Pest
         run: php vendor/bin/pest
 
+      - name: Notify Discord
+        if: always()
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.IT_FEED_WEBHOOK }}
+          status: ${{ job.status }}
+          title: "Test Results"
+          description: "Test suite completed for PHP ${{ matrix.php_version }}"
+          color: ${{ job.status == 'success' && '0x00ff00' || job.status == 'failure' && '0xff0000' || '0xffff00' }}
+          username: "GitHub Actions"
+          avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+
