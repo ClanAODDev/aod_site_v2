@@ -11,7 +11,7 @@
 @include('partials.apply')
 
 @if(request()->is('/'))
-    <div class="push" style="margin-top: 700px;"></div>
+    <div class="push"></div>
 @endif
 
 @include('partials.nav-bar')
