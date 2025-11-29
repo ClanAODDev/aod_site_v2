@@ -37,7 +37,7 @@
 
             <div class="grid"></div>
 
-            <div id="video" style="border: 0;width: 100%;"></div>
+            <div id="video" style="border: 0;width: 100%;height: 100%;"></div>
             <script>
                 var tag = document.createElement("script");
                 tag.src = "https://www.youtube.com/iframe_api";
@@ -48,6 +48,7 @@
                     player = new YT.Player("video", {
                         videoId: "{{ config('aod.hero_video_id') }}", playerVars: {
                             autoplay: 1,
+                            mute: 1,
                             branding: 0,
                             controls: 0,
                             loop: 1,
@@ -55,16 +56,25 @@
                             origin: window.location.origin,
                             playsinline: 1,
                             rel: 0,
+                            playlist: "{{ config('aod.hero_video_id') }}"
                         }, events: {onReady: onPlayerReady, onStateChange: onPlayerStateChange}
                     })
                 }
 
                 function onPlayerReady(e) {
-                    e.target.playVideo()
+                    e.target.mute();
+                    e.target.playVideo();
+
+                    // Trigger video scaling after player is ready
+                    if (window.resizeHeroVideo) {
+                        setTimeout(window.resizeHeroVideo, 100);
+                    }
                 }
 
                 function onPlayerStateChange(e) {
-                    e.data === YT.PlayerState.ENDED && player.playVideo()
+                    if (e.data === YT.PlayerState.ENDED) {
+                        player.playVideo();
+                    }
                 }
 
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

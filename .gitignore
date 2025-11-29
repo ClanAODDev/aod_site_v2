@@ -16,3 +16,4 @@ yarn-error.log
 .DS_Store
 *Zone.Identifier
 LAST_REVISION
+/.phpunit.cache/
