@@ -20,7 +20,7 @@
             <i class="fa fa-times-circle fa-lg"></i>
         </div>
         <iframe src="https://www.youtube.com/embed/{{ config('aod.intro_video_id') }}?autoplay=0&amp;showinfo=0&amp;
-        enablejsapi=1"
+        enablejsapi=1&amp;rel=0&amp;modestbranding=1&amp;origin={{ url('/') }}"
                 id="video-iframe" allowfullscreen style="border: none;"></iframe>
     </div>
 
