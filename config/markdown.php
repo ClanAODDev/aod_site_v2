@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\Embed\Bridge\OscaroteroEmbedAdapter;
-use League\CommonMark\Extension\Embed\Embed;
 
 return [
 
@@ -52,7 +51,7 @@ return [
         League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension::class,
         League\CommonMark\Extension\Table\TableExtension::class,
 
-        # custom extensions
+        // custom extensions
         League\CommonMark\Extension\Embed\EmbedExtension::class,
         League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension::class,
     ],
@@ -81,7 +80,7 @@ return [
     'default_attributes' => [
         Link::class => [
             'target' => '_blank',
-        ]
+        ],
     ],
 
     'renderer' => [

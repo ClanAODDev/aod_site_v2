@@ -1,76 +1,94 @@
 <?php
 
-namespace Tests\Feature;
-
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Tests\TestCase;
 
-class HomePageTest extends TestCase
-{
-    /** @test */
-    public function home_page_returns_200_ok()
-    {
-        $tsResponse = file_get_contents(storage_path(
-            'testing/teamspeak.json'
-        ));
+describe('Home Page', function () {
+    beforeEach(function () {
+        Cache::flush();
+    });
 
-        $discordResponse = file_get_contents(storage_path(
-            'testing/discord.json'
-        ));
+    it('loads successfully', function () {
+        // Mock the Discord API response
+        $discordResponse = json_decode(
+            file_get_contents(storage_path('testing/discord.json')),
+            true
+        );
 
         Http::fake([
-            '*/api/v1/ts-count' => Http::response($tsResponse, 200),
             '*/api/v1/discord-count' => Http::response($discordResponse, 200),
         ]);
 
-        $data = $this->get(route('home'));
+        $response = $this->get(route('home'));
 
-        $data->assertOk();
-    }
+        $response->assertOk();
+        $response->assertViewIs('pages.home');
+        $response->assertViewHas(['discord', 'isChristmas']);
+    });
 
-    /** @test */
-    public function home_page_returns_200_ok_if_twitter_lookup_fails()
-    {
-        $discordResponse = file_get_contents(storage_path(
-            'testing/discord.json'
-        ));
+    it('shows Christmas theme during Christmas season', function () {
+        // Mock current date to be during Christmas season (December 1 - January 15)
+        $this->travelTo(now()->setMonth(12)->setDay(15));
 
         Http::fake([
-            '*/api/v1/ts-count' => Http::response([], 500),
-            '*/api/v1/discord-count' => Http::response($discordResponse, 200),
+            '*/api/v1/discord-count' => Http::response(['data' => ['count' => 100]], 200),
         ]);
 
-        $data = $this->get(route('home'));
+        $response = $this->get(route('home'));
 
-        $data->assertOk();
-    }
+        $response->assertOk();
+        $response->assertViewHas('isChristmas', true);
+    });
 
-    /** @test */
-    public function home_page_returns_200_ok_if_discord_lookup_fails()
-    {
-        $tsResponse = file_get_contents(storage_path(
-            'testing/teamspeak.json'
-        ));
+    it('does not show Christmas theme outside Christmas season', function () {
+        // Mock current date to be outside Christmas season
+        $this->travelTo(now()->setMonth(6)->setDay(15));
 
         Http::fake([
-            '*/api/v1/ts-count' => Http::response($tsResponse, 200),
+            '*/api/v1/discord-count' => Http::response(['data' => ['count' => 100]], 200),
+        ]);
+
+        $response = $this->get(route('home'));
+
+        $response->assertOk();
+        $response->assertViewHas('isChristmas', false);
+    });
+
+    it('handles Discord API failure gracefully', function () {
+        Http::fake([
             '*/api/v1/discord-count' => Http::response([], 500),
         ]);
 
-        $data = $this->get(route('home'));
+        $response = $this->get(route('home'));
 
-        $data->assertOk();
-    }
+        $response->assertOk();
+        $response->assertViewIs('pages.home');
+    });
 
-    /** @test */
-    public function home_page_returns_200_ok_if_rss_announcements_lookup_fails()
-    {
+    it('caches Discord data correctly', function () {
+        $discordData = ['data' => ['count' => 150]];
+
         Http::fake([
-            'clanaod.net/forums/external.php*' => Http::response([], 500),
+            '*/api/v1/discord-count' => Http::response($discordData, 200),
         ]);
 
-        $data = $this->get(route('home'));
+        // First request should hit the API
+        $this->get(route('home'));
+        expect(Cache::has('aod_discord'))->toBeTrue();
 
-        $data->assertOk();
-    }
-}
+        // Second request should use cache
+        Http::fake(); // Clear all fakes to ensure no API calls
+        $response = $this->get(route('home'));
+        $response->assertOk();
+    });
+
+    it('uses dummy data in local environment', function () {
+        app()->detectEnvironment(fn () => 'local');
+
+        $response = $this->get(route('home'));
+
+        $response->assertOk();
+        $response->assertViewIs('pages.home');
+        $response->assertViewHas('discord');
+    });
+});

@@ -1,39 +1,103 @@
 <?php
 
-namespace Tests\Feature;
-
 use Illuminate\Support\Facades\Http;
-use Tests\TestCase;
 
-class DivisionTest extends TestCase
-{
-    /** @test */
-    public function a_known_valid_single_division_page_returns_200_ok()
-    {
-        $division = 'battlefield';
+describe('Division Pages', function () {
+    describe('Division Index', function () {
+        it('loads successfully', function () {
+            $response = $this->get(route('division.index'));
 
-        // right now, we depend on division views to exist for content
-        $this->assertFileExists(
-            resource_path("views/division/content/{$division}.blade.php")
-        );
+            $response->assertOk();
+            $response->assertViewIs('division.index');
+        });
 
-        $response = file_get_contents(storage_path(
-            'testing/division.json'
-        ));
+        it('has correct route name', function () {
+            expect(route('division.index'))->toBe(url('/divisions'));
+        });
+    });
 
-        Http::fake([
-            "*/api/v1/divisions/{$division}" => Http::response($response, 200),
-        ]);
+    describe('Division Show', function () {
+        it('loads successfully with valid division', function () {
+            $divisionData = json_decode(
+                file_get_contents(storage_path('testing/division.json')),
+                true
+            );
 
-        $data = $this->get(route('division.show', compact('division')));
+            // Add required fields that the view expects
+            $divisionData['data']['division']['icon'] = 'https://example.com/icon.png';
+            $divisionData['data']['division']['settings'] = ['meta_description' => 'Test description'];
+            $divisionData['data']['division']['site_content'] = 'Test division content';
 
-        $data->assertOk();
-    }
+            Http::fake([
+                '*/api/v1/divisions/cod*' => Http::response($divisionData, 200),
+            ]);
 
-    /** @test */
-    public function a_known_invalid_single_division_page_returns_404_not_found()
-    {
-        $this->get('divisions/not-a-real-division')
-            ->assertNotFound();
-    }
-}
+            $response = $this->get(route('division.show', 'cod'));
+
+            $response->assertOk();
+            $response->assertViewIs('division.show');
+            $response->assertViewHas('data');
+        });
+
+        it('returns 404 for invalid division', function () {
+            Http::fake([
+                '*/api/v1/divisions/invalid*' => Http::response(['data' => null], 200),
+            ]);
+
+            $response = $this->get(route('division.show', 'invalid'));
+
+            $response->assertNotFound();
+        });
+
+        it('returns 404 when API returns empty data', function () {
+            Http::fake([
+                '*/api/v1/divisions/empty*' => Http::response(['data' => null], 200),
+            ]);
+
+            $response = $this->get(route('division.show', 'empty'));
+
+            $response->assertNotFound();
+        });
+
+        it('handles API failure gracefully', function () {
+            Http::fake([
+                '*/api/v1/divisions/error*' => Http::response([], 500),
+            ]);
+
+            $response = $this->get(route('division.show', 'error'));
+
+            $response->assertNotFound();
+        });
+
+        it('includes correct query parameters in API request', function () {
+            Http::fake([
+                '*/api/v1/divisions/test*' => function ($request) {
+                    expect($request->url())->toContain('include-site=1');
+                    expect($request->url())->toContain('include-settings=1');
+
+                    return Http::response([
+                        'data' => [
+                            'division' => [
+                                'name' => 'Test Division',
+                                'abbreviation' => 'test',
+                                'icon' => 'https://example.com/icon.png',
+                                'forum_app_id' => 1,
+                                'settings' => ['meta_description' => 'Test description'],
+                                'site_content' => 'Test division content',
+                            ],
+                        ],
+                    ], 200);
+                },
+            ]);
+
+            $response = $this->get(route('division.show', 'test'));
+
+            $response->assertOk();
+        });
+
+        it('has correct route pattern', function () {
+            expect(route('division.show', 'cod'))->toBe(url('/divisions/cod'));
+            expect(route('division.show', 'bf4'))->toBe(url('/divisions/bf4'));
+        });
+    });
+});

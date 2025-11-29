@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Repositories\AOD\SocialRepository;
@@ -12,7 +14,7 @@ class HomeController extends Controller
         $this->getCommoStats(
             (app()->environment('local'))
                 ? $this->getDummyData() : [
-                    'aod_discord' => (new SocialRepository())->getDiscord()->json('data'),
+                    'aod_discord' => (new SocialRepository)->getDiscord()->json('data'),
                 ]
         );
 

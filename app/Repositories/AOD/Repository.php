@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories\AOD;
 
 use Illuminate\Http\Client\PendingRequest;
@@ -16,7 +18,7 @@ class Repository
     {
         $token = config('services.aod.access_token');
 
-        if (!$token) {
+        if (! $token) {
             throw new \Exception('Tracker access token missing.');
         }
 
@@ -36,7 +38,7 @@ class Repository
 
         $fullUrl = "{$base}/{$endpoint}/{$path}";
 
-        if (!empty($params)) {
+        if (! empty($params)) {
             $query = http_build_query($params);
             $fullUrl .= "?{$query}";
         }

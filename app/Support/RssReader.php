@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Support;
 
 use Illuminate\Support\Facades\Http;
@@ -11,11 +13,13 @@ class RssReader
 
     public function setPath($path)
     {
-        $data = Http::get($path);
+        $response = Http::get($path);
 
-        if (! $data) {
+        if (! $response->successful()) {
             return false;
         }
+
+        $data = $response->body();
 
         try {
             $simpleXML = new SimpleXMLElement($data);

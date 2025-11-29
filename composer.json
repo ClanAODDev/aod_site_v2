@@ -14,11 +14,13 @@
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.12",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^8.1"
+        "nunomaduro/collision": "^8.1",
+        "pestphp/pest": "*",
+        "pestphp/pest-plugin-laravel": "*",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "files": [
@@ -57,7 +59,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "pestphp/pest-plugin": true
         }
     },
     "minimum-stability": "stable",
