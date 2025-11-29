@@ -91,4 +91,23 @@ describe('Home Page', function () {
         $response->assertViewIs('pages.home');
         $response->assertViewHas('discord');
     });
+
+    it('contains video modal elements', function () {
+        Http::fake([
+            '*/api/v1/discord-count' => Http::response(['data' => ['count' => 100]], 200),
+        ]);
+
+        $response = $this->get(route('home'));
+
+        $response->assertOk();
+
+        // Check that video modal elements are present
+        $response->assertSee('intro-video', false); // Check for class name
+        $response->assertSee('video-iframe', false); // Check for iframe ID
+        $response->assertSee('close-video', false); // Check for close button class
+        $response->assertSee('play-button', false); // Check for play button class
+
+        // Check that YouTube iframe is properly configured
+        $response->assertSee('enablejsapi=1', false); // Check for YouTube API enablement
+    });
 });

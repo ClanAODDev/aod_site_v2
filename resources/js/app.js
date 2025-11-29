@@ -8,10 +8,6 @@ window.AOD = window.AOD || {"path": window.location.origin};
 
 // Initialize ClanAOD when everything is ready
 function initializeClanAOD() {
-    console.log('Initializing ClanAOD...');
-    console.log('jQuery available:', typeof window.$ !== 'undefined');
-    console.log('easyModal available:', typeof window.$.fn.easyModal !== 'undefined');
-
     if (typeof window.$ === 'undefined') {
         console.error('jQuery is not available!');
         return;
@@ -42,12 +38,6 @@ function initializeClanAOD() {
             }), e('.hamburger').click(function () {
                 e('.nav-items').fadeToggle();
             });
-
-            // if (meta.'clan-twitch-status' === 'online') {
-            //   alert('woooo')
-            // } else {
-            //   alert('nahhh')
-            // }
         },
         smoothScroll: function () {
             e('.smooth-scroll').click(function (n) {
@@ -67,11 +57,9 @@ function initializeClanAOD() {
             e('#sub-nav').length && ClanAOD.handleAutoMenu('sub-nav', 'h2');
         },
         stickyNav: function () {
-            console.log('Setting up sticky nav...');
             e(window).bind('scroll', function () {
                 var scrollTop = e(window).scrollTop();
                 var stayFixed = e('.stay-fixed').length > 0;
-                console.log('Scroll event - scrollTop:', scrollTop, 'stayFixed:', stayFixed);
 
                 // Handle hero video and text fade based on scroll position
                 var heroVideo = e('.hero-video');
@@ -94,35 +82,27 @@ function initializeClanAOD() {
                 if (stayFixed) {
                     e('.stay-fixed').find('.full-nav .home').addClass('show-logo');
                 } else if (scrollTop > 700) {
-                    console.log('Adding fixed class to primary-nav');
                     e('.primary-nav').addClass('fixed').find('.full-nav .home').addClass('show-logo');
                 } else {
-                    console.log('Removing fixed class from primary-nav');
                     e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
                 }
             });
         },
         handleModals: function () {
-            console.log('Setting up modals...');
-            console.log('Apply form elements found:', e('.apply-form').length);
-            console.log('Apply button elements found:', e('.apply-button').length);
-            console.log('easyModal available:', typeof e.fn.easyModal !== 'undefined');
 
             // Set up intro video modal
             e('.intro-video').easyModal({
                 overlayOpacity: .75,
                 overlayColor: '#000',
                 autoOpen: !1,
+                overlayClose: true,
+                closeOnEscape: true,
                 onClose: function () {
-                    document.getElementById('video-iframe').contentWindow.postMessage(ClanAOD.postYTMessage('stop'), '*');
-                },
-                onOpen: function () {
-                    document.getElementById('video-iframe').contentWindow.postMessage(ClanAOD.postYTMessage('start'), '*');
+                    ClanAOD.stopVideo();
                 }
             });
 
             e('.play-button').click(function (n) {
-                console.log('Play button clicked!');
                 e('.intro-video').trigger('openModal');
                 n.preventDefault();
             });
@@ -135,7 +115,6 @@ function initializeClanAOD() {
             e('.apply-form').easyModal({overlayOpacity: .75});
 
             e('.apply-button').click(function (n) {
-                console.log('Apply button clicked!');
                 e('.apply-form').trigger('openModal');
                 n.preventDefault();
             });
@@ -152,6 +131,19 @@ function initializeClanAOD() {
                     return '{"event":"command","func":"playVideo","args":""}';
                 case'stop':
                     return '{"event":"command","func":"stopVideo","args":""}';
+            }
+        },
+
+        // Helper function to stop video
+        stopVideo: function() {
+            var iframe = document.getElementById('video-iframe');
+            if (iframe) {
+                // Stop video by reloading iframe
+                var src = iframe.src;
+                iframe.src = 'about:blank';
+                setTimeout(function() {
+                    iframe.src = src.replace('autoplay=1', 'autoplay=0');
+                }, 50);
             }
         },
         /**
@@ -224,17 +216,13 @@ function initializeClanAOD() {
             $('.division iframe').addClass('youtube-embed')
         },
         scaleHeroVideo: function () {
-            console.log('Setting up hero video scaling...');
-
             // Store reference to resize function for external access
             window.resizeHeroVideo = function() {
                 // YouTube API replaces the div with an iframe that has the same ID
                 var $video = e('#video');
-                console.log('Resize attempt - Element found:', $video.length > 0, 'Is iframe:', $video.is('iframe'), 'Tag name:', $video.prop('tagName'));
 
                 if ($video.length === 0 || !$video.is('iframe')) {
                     // Video not loaded yet, try again in a moment
-                    console.log('Video not ready, retrying in 100ms...');
                     setTimeout(window.resizeHeroVideo, 100);
                     return;
                 }
@@ -243,8 +231,6 @@ function initializeClanAOD() {
                 var windowHeight = e(window).height();
                 var videoAspectRatio = 16 / 9;
                 var windowAspectRatio = windowWidth / windowHeight;
-
-                console.log('Resizing video - Window:', windowWidth + 'x' + windowHeight, 'Aspect:', windowAspectRatio);
 
                 // Calculate scale factors for both dimensions
                 var scaleX = windowWidth / (windowHeight * videoAspectRatio);
@@ -275,9 +261,6 @@ function initializeClanAOD() {
                     'left': '50%',
                     'position': 'absolute'
                 });
-
-                console.log('Video scaled to:', videoWidth + 'x' + videoHeight);
-                console.log('Coverage check - Width covers:', (videoWidth >= windowWidth), 'Height covers:', (videoHeight >= windowHeight));
             };
 
             // Initial resize
