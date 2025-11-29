@@ -23,6 +23,7 @@ export default defineConfig({
         }
     },
     publicDir: 'public',
+    outDir: 'dist',
     css: {
         preprocessorOptions: {
             stylus: {

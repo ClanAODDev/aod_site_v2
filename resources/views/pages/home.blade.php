@@ -15,7 +15,6 @@
         </p>
     </div>
 
-
     <div class="intro-video" style="display: none;">
         <div class="close-video">
             <i class="fa fa-times-circle fa-lg"></i>
