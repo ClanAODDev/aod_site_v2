@@ -270,7 +270,7 @@ function initializeClanAOD() {
             e(window).resize(function() {
                 window.resizeHeroVideo();
             });
-        }
+        },
     };
     }($);
 
