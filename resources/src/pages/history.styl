@@ -46,24 +46,6 @@
     background-color: #000;
     overflow: hidden;
 
-    &::after {
-      background:
-        repeating-linear-gradient(
-          45deg,
-          rgba(0, 0, 0, 0.3) 0px,
-          rgba(0, 0, 0, 0.3) 2px,
-          transparent 2px,
-          transparent 12px
-        ),
-        radial-gradient(
-          ellipse at center,
-          transparent 0%,
-          transparent 60%,
-          rgba(0, 0, 0, 0.4) 100%
-        ),
-        rgba(0, 0, 0, 0.5);
-    }
-
     .era-video {
       position: absolute;
       top: 0;
@@ -91,25 +73,6 @@
   &[data-era="modern"] .era-background {
     background-color: #000;
     overflow: hidden;
-
-    &::after {
-      background:
-        repeating-linear-gradient(
-          45deg,
-          rgba(139, 0, 0, 0.2) 0px,
-          rgba(139, 0, 0, 0.2) 2px,
-          transparent 2px,
-          transparent 12px
-        ),
-        radial-gradient(
-          ellipse at center,
-          transparent 0%,
-          transparent 60%,
-          rgba(0, 0, 0, 0.5) 100%
-        ),
-        linear-gradient(135deg, rgba(139, 0, 0, 0.6), rgba(0, 0, 0, 0.75));
-      z-index: 1;
-    }
 
     .era-video {
       position: absolute;
