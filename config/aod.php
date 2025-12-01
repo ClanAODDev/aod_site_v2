@@ -2,16 +2,13 @@
 
 return [
 
-    /*
-     * YouTube ID
+    /**
+     * YouTube IDs
      */
     'intro_video_id' => env('INTRO_VIDEO_ID', '7u848gKuFgE'),
-
-    /*
-     * YouTube ID
-     * Should loop seamlessly
-     */
-    'hero_video_id' => env('HERO_VIDEO_ID', '67CqbCLTCYQ'),
+    'hero_video_id' => env('HERO_VIDEO_ID', 'fEVGn3eRABI'),
+    'foundations_era_video_id' => env('HISTORY_FOUNDATIONS_ERA_VIDEO_ID', 'KN6yvG9aJsg'),
+    'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
 
     /*
      * Fallen members of ClanAOD
