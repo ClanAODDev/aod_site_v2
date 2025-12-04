@@ -16,4 +16,9 @@
 
     @include('partials.meta-data')
 
+    @if(request()->is('history'))
+        <meta name="foundations-era-video-id" content="{{ config('aod.foundations_era_video_id') }}">
+        <meta name="modern-era-video-id" content="{{ config('aod.modern_era_video_id') }}">
+    @endif
+
 </head>

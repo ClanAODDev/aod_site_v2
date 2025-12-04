@@ -3,10 +3,8 @@ import './easyModal.min.js';
 
 'use strict';
 
-// Set up AOD global configuration
 window.AOD = window.AOD || {"path": window.location.origin};
 
-// Initialize ClanAOD when everything is ready
 function initializeClanAOD() {
     if (typeof window.$ === 'undefined') {
         console.error('jQuery is not available!');
@@ -27,6 +25,7 @@ function initializeClanAOD() {
             this.handleViewportAnimations();
             this.setupDivisionEmbeds();
             this.scaleHeroVideo();
+            this.setupHistoryTimeline();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -61,12 +60,11 @@ function initializeClanAOD() {
                 var scrollTop = e(window).scrollTop();
                 var stayFixed = e('.stay-fixed').length > 0;
 
-                // Handle hero video and text fade based on scroll position
                 var heroVideo = e('.hero-video');
                 var heroText = e('.hero-text');
                 if (heroVideo.length > 0) {
-                    var fadeStart = 500; // Start fading at 500px
-                    var fadeEnd = 700;   // Fully faded at 700px
+                    var fadeStart = 500;
+                    var fadeEnd = 700;
                     var opacity = 1;
 
                     if (scrollTop >= fadeEnd) {
@@ -90,7 +88,6 @@ function initializeClanAOD() {
         },
         handleModals: function () {
 
-            // Set up intro video modal
             e('.intro-video').easyModal({
                 overlayOpacity: .75,
                 overlayColor: '#000',
@@ -111,7 +108,6 @@ function initializeClanAOD() {
                 e('.intro-video').trigger('closeModal');
             });
 
-            // Set up apply form modal
             e('.apply-form').easyModal({overlayOpacity: .75});
 
             e('.apply-button').click(function (n) {
@@ -119,12 +115,6 @@ function initializeClanAOD() {
                 n.preventDefault();
             });
         },
-        /**
-         * Hero video play functionality
-         *
-         * @param e
-         * @returns {string}
-         */
         postYTMessage: function (e) {
             switch (e) {
                 case'start':
@@ -134,11 +124,9 @@ function initializeClanAOD() {
             }
         },
 
-        // Helper function to stop video
         stopVideo: function() {
             var iframe = document.getElementById('video-iframe');
             if (iframe) {
-                // Stop video by reloading iframe
                 var src = iframe.src;
                 iframe.src = 'about:blank';
                 setTimeout(function() {
@@ -146,12 +134,6 @@ function initializeClanAOD() {
                 }, 50);
             }
         },
-        /**
-         * Divisional sub-header links
-         *
-         * @param n
-         * @param t
-         */
         handleAutoMenu: function (n, t) {
             var o = document.getElementById(n), i = e('.automenu h2');
             if (i.length >= 1) {
@@ -170,9 +152,7 @@ function initializeClanAOD() {
             }
         },
         handleViewportAnimations: function () {
-            // Detect request animation frame
             var scroll = window.requestAnimationFrame ||
-                // IE Fallback
                 function (callback) {
                     window.setTimeout(callback, 1000 / 60)
                 };
@@ -212,17 +192,13 @@ function initializeClanAOD() {
             }
         },
         setupDivisionEmbeds() {
-            // find a way to do this with embed/embed later
             $('.division iframe').addClass('youtube-embed')
         },
         scaleHeroVideo: function () {
-            // Store reference to resize function for external access
             window.resizeHeroVideo = function() {
-                // YouTube API replaces the div with an iframe that has the same ID
                 var $video = e('#video');
 
                 if ($video.length === 0 || !$video.is('iframe')) {
-                    // Video not loaded yet, try again in a moment
                     setTimeout(window.resizeHeroVideo, 100);
                     return;
                 }
@@ -232,27 +208,22 @@ function initializeClanAOD() {
                 var videoAspectRatio = 16 / 9;
                 var windowAspectRatio = windowWidth / windowHeight;
 
-                // Calculate scale factors for both dimensions
                 var scaleX = windowWidth / (windowHeight * videoAspectRatio);
                 var scaleY = windowHeight / (windowWidth / videoAspectRatio);
 
-                // Use the larger scale factor to ensure complete coverage
                 var scale = Math.max(scaleX, scaleY);
 
-                // Apply scale with a small buffer to ensure no gaps
                 scale = Math.max(scale, 1.01);
 
                 var videoWidth = windowWidth * scale;
                 var videoHeight = windowHeight * scale;
 
-                // Ensure video maintains 16:9 aspect ratio
                 if (videoWidth / videoHeight > videoAspectRatio) {
                     videoHeight = videoWidth / videoAspectRatio;
                 } else {
                     videoWidth = videoHeight * videoAspectRatio;
                 }
 
-                // Apply the calculated dimensions with transform-based centering
                 $video.css({
                     'width': videoWidth + 'px',
                     'height': videoHeight + 'px',
@@ -263,26 +234,112 @@ function initializeClanAOD() {
                 });
             };
 
-            // Initial resize
             window.resizeHeroVideo();
 
-            // Resize on window resize
             e(window).resize(function() {
                 window.resizeHeroVideo();
             });
-        }
+        },
+        setupHistoryTimeline: function() {
+            if (!document.body.classList.contains('page-template-page-history')) {
+                return;
+            }
+
+            if (typeof window.YT === 'undefined') {
+                var tag = document.createElement("script");
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName("script")[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+
+            window.eraPlayers = {};
+
+            window.onYouTubeIframeAPIReady = function() {
+                var foundationsVideoId = document.querySelector('meta[name="foundations-era-video-id"]')?.content || 'KN6yvG9aJsg';
+                var modernVideoId = document.querySelector('meta[name="modern-era-video-id"]')?.content || 'XHgfL_Av_r4';
+
+                ClanAOD.initializeEraPlayer('foundations', 'foundations-era-video', foundationsVideoId);
+                ClanAOD.initializeEraPlayer('modern', 'modern-era-video', modernVideoId);
+            };
+
+            e(window).resize(function() {
+                ClanAOD.scaleEraVideo('foundations-era-video', 'foundations');
+                ClanAOD.scaleEraVideo('modern-era-video', 'modern');
+            });
+        },
+        initializeEraPlayer: function(eraName, elementId, videoId) {
+            window.eraPlayers[eraName] = new YT.Player(elementId, {
+                videoId: videoId,
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    branding: 0,
+                    controls: 0,
+                    loop: 1,
+                    modestbranding: 0,
+                    origin: window.location.origin,
+                    playsinline: 1,
+                    rel: 0,
+                    playlist: videoId
+                },
+                events: {
+                    onReady: function(event) {
+                        ClanAOD.onEraPlayerReady(event, elementId, eraName);
+                    },
+                    onStateChange: function(event) {
+                        ClanAOD.onEraPlayerStateChange(event, eraName);
+                    }
+                }
+            });
+        },
+        scaleEraVideo: function(videoId, containerId) {
+            var iframe = document.getElementById(videoId);
+            var container = document.querySelector('[data-era="' + containerId + '"] .era-video');
+
+            if (!iframe || !container || !iframe.tagName || iframe.tagName !== 'IFRAME') {
+                setTimeout(function() { ClanAOD.scaleEraVideo(videoId, containerId); }, 100);
+                return;
+            }
+
+            var containerWidth = container.offsetWidth;
+            var containerHeight = container.offsetHeight;
+            var videoAspectRatio = 16 / 9;
+
+            var videoWidth = containerWidth;
+            var videoHeight = containerWidth / videoAspectRatio;
+
+            if (videoHeight < containerHeight) {
+                videoHeight = containerHeight;
+                videoWidth = containerHeight * videoAspectRatio;
+            }
+
+            iframe.style.width = videoWidth + 'px';
+            iframe.style.height = videoHeight + 'px';
+            iframe.style.position = 'absolute';
+            iframe.style.top = '50%';
+            iframe.style.left = '50%';
+            iframe.style.transform = 'translate(-50%, -50%)';
+        },
+        onEraPlayerReady: function(event, elementId, eraName) {
+            event.target.mute();
+            event.target.playVideo();
+            ClanAOD.scaleEraVideo(elementId, eraName);
+        },
+        onEraPlayerStateChange: function(event, eraName) {
+            if (event.data === YT.PlayerState.ENDED) {
+                window.eraPlayers[eraName].playVideo();
+            }
+        },
     };
     }($);
 
-    // Initialize ClanAOD functionality
     ClanAOD.setup();
     ClanAOD.smoothScroll();
+    ClanAOD.setupHistoryTimeline();
 }
 
-// Wait for DOM to be ready, then initialize
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeClanAOD);
 } else {
-    // DOM is already ready
     initializeClanAOD();
 }
