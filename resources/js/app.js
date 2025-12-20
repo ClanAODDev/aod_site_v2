@@ -26,6 +26,7 @@ function initializeClanAOD() {
             this.setupDivisionEmbeds();
             this.scaleHeroVideo();
             this.setupHistoryTimeline();
+            this.setupScreenshotGallery();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -329,6 +330,68 @@ function initializeClanAOD() {
             if (event.data === YT.PlayerState.ENDED) {
                 window.eraPlayers[eraName].playVideo();
             }
+        },
+        setupScreenshotGallery: function() {
+            var galleryItems = e('[data-lightbox]');
+            if (galleryItems.length === 0) return;
+
+            var overlay = e('#lightbox-overlay');
+            var lightboxImage = e('#lightbox-image');
+            var lightboxCaption = e('#lightbox-caption');
+            var lightboxCounter = e('#lightbox-counter');
+            var currentIndex = 0;
+            var images = [];
+
+            galleryItems.each(function() {
+                images.push({
+                    url: e(this).attr('href'),
+                    caption: e(this).data('caption') || ''
+                });
+            });
+
+            function showImage(index) {
+                if (index < 0) index = images.length - 1;
+                if (index >= images.length) index = 0;
+                currentIndex = index;
+
+                lightboxImage.attr('src', images[index].url);
+                lightboxCaption.text(images[index].caption);
+                lightboxCounter.text((index + 1) + ' / ' + images.length);
+            }
+
+            function openLightbox(index) {
+                showImage(index);
+                overlay.addClass('active');
+                e('body').css('overflow', 'hidden');
+            }
+
+            function closeLightbox() {
+                overlay.removeClass('active');
+                e('body').css('overflow', '');
+            }
+
+            galleryItems.on('click', function(event) {
+                event.preventDefault();
+                var index = parseInt(e(this).data('index'), 10);
+                openLightbox(index);
+            });
+
+            overlay.find('.lightbox-close').on('click', closeLightbox);
+            overlay.find('.lightbox-prev').on('click', function() { showImage(currentIndex - 1); });
+            overlay.find('.lightbox-next').on('click', function() { showImage(currentIndex + 1); });
+
+            overlay.on('click', function(event) {
+                if (event.target === overlay[0]) {
+                    closeLightbox();
+                }
+            });
+
+            e(document).on('keydown', function(event) {
+                if (!overlay.hasClass('active')) return;
+                if (event.key === 'Escape') closeLightbox();
+                if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+            });
         },
     };
     }($);
