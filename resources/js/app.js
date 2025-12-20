@@ -392,6 +392,89 @@ function initializeClanAOD() {
                 if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
                 if (event.key === 'ArrowRight') showImage(currentIndex + 1);
             });
+
+            ClanAOD.setupScreenshotCarousel();
+        },
+        setupScreenshotCarousel: function() {
+            var container = e('.carousel-container');
+            if (container.length === 0) return;
+
+            var viewport = container.find('.carousel-viewport');
+            var grid = container.find('.gallery-grid');
+            var items = grid.find('.gallery-item');
+            var prevBtn = container.find('.carousel-prev');
+            var nextBtn = container.find('.carousel-next');
+            var dotsContainer = e('.carousel-dots');
+            var currentPage = 0;
+
+            function getItemsPerPage() {
+                var windowWidth = e(window).width();
+                if (windowWidth <= 480) return 1;
+                if (windowWidth <= 720) return 2;
+                return 3;
+            }
+
+            function getTotalPages() {
+                var itemsPerPage = getItemsPerPage();
+                return Math.ceil(items.length / itemsPerPage);
+            }
+
+            function updateCarousel() {
+                var itemsPerPage = getItemsPerPage();
+                var totalPages = getTotalPages();
+
+                if (currentPage >= totalPages) currentPage = totalPages - 1;
+                if (currentPage < 0) currentPage = 0;
+
+                var itemWidth = items.first().outerWidth(true);
+                var offset = currentPage * itemsPerPage * itemWidth;
+                grid.css('transform', 'translateX(-' + offset + 'px)');
+
+                prevBtn.prop('disabled', currentPage === 0);
+                nextBtn.prop('disabled', currentPage >= totalPages - 1);
+
+                dotsContainer.find('.dot').removeClass('active').eq(currentPage).addClass('active');
+            }
+
+            function createDots() {
+                var totalPages = getTotalPages();
+                dotsContainer.empty();
+
+                if (totalPages <= 1) return;
+
+                for (var i = 0; i < totalPages; i++) {
+                    var dot = e('<button class="dot" aria-label="Go to page ' + (i + 1) + '"></button>');
+                    dot.data('page', i);
+                    dotsContainer.append(dot);
+                }
+
+                dotsContainer.find('.dot').on('click', function() {
+                    currentPage = e(this).data('page');
+                    updateCarousel();
+                });
+            }
+
+            prevBtn.on('click', function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.on('click', function() {
+                if (currentPage < getTotalPages() - 1) {
+                    currentPage++;
+                    updateCarousel();
+                }
+            });
+
+            e(window).on('resize', function() {
+                createDots();
+                updateCarousel();
+            });
+
+            createDots();
+            updateCarousel();
         },
     };
     }($);
