@@ -158,6 +158,7 @@ function initializeClanAOD() {
                     window.setTimeout(callback, 1000 / 60)
                 };
             var elementsToShow = document.querySelectorAll('.animate');
+            var timelineEras = document.querySelectorAll('.timeline-era');
 
             function loop() {
 
@@ -169,13 +170,20 @@ function initializeClanAOD() {
                     }
                 });
 
+                Array.prototype.forEach.call(timelineEras, function (era) {
+                    if (isEraInViewport(era)) {
+                        era.classList.add('era-visible');
+                    } else {
+                        era.classList.remove('era-visible');
+                    }
+                });
+
                 scroll(loop);
             }
 
             loop();
 
             function isElementInViewport(el) {
-                // special bonus for those using jQuery
                 if (typeof jQuery === "function" && el instanceof jQuery) {
                     el = el[0];
                 }
@@ -190,6 +198,13 @@ function initializeClanAOD() {
                     (rect.top >= 0 &&
                         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
                 );
+            }
+
+            function isEraInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                var threshold = windowHeight * 0.3;
+                return rect.top < windowHeight - threshold && rect.bottom > threshold;
             }
         },
         setupDivisionEmbeds() {
