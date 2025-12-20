@@ -27,6 +27,11 @@
                 <h1>{{ $data['division']['name'] }} Division</h1>
             </div>
 
+            <div class="division-actions">
+                <a class="action-btn" href="https://www.clanaod.net/forums/register.php">Create Account</a>
+                <a class="action-btn primary" href="#" data-application-link="">Apply Now</a>
+            </div>
+
             <hr>
             @if($data['division']['site_content'])
                 @markdown($data['division']['site_content'])
@@ -34,12 +39,7 @@
                 <p>Division content coming soon.</p>
             @endif
 
-            <p style="text-align: center; margin:50px 0;">
-                <a class="call-to-action-button" style="margin:10px;"
-                   href="https://www.clanaod.net/forums/register.php">1. Create Account</a>
-                <a class="call-to-action-button" style="margin:10px;" href="#" data-application-link="">2. Apply for
-                    division</a>
-            </p>
+            @include('partials.screenshot-gallery', ['screenshots' => $data['division']['screenshots'] ?? []])
         </div>
     </section>
 

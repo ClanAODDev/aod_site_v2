@@ -17,7 +17,11 @@ class DivisionRepository extends Repository
     {
         return $this->getPromise(
             url: ['divisions', $division],
-            params: ['include-site' => true, 'include-settings' => true]
+            params: [
+                'include-site' => true,
+                'include-settings' => true,
+                'include-screenshots' => true,
+            ]
         );
     }
 }

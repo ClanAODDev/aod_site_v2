@@ -6,6 +6,57 @@
 
 @import "partials/games"
 
+/**
+ * ----------------
+ * STATS BAR
+ * ----------------
+ **/
+.stats-bar
+  background linear-gradient(135deg, rgba(223, 69, 69, 0.9) 0%, rgba(139, 30, 30, 0.95) 100%)
+  padding 30px 0
+  position relative
+  z-index 10
+
+  .stats-container
+    display flex
+    justify-content center
+    align-items center
+    gap 60px
+    max-width 1200px
+    margin 0 auto
+    padding 0 20px
+
+  .stat-item
+    text-align center
+    color #fff
+
+    .stat-number
+      display block
+      font-size 48px
+      font-weight 700
+      font-family font_face
+      line-height 1
+      text-shadow 0 2px 10px rgba(0, 0, 0, 0.3)
+
+    .stat-label
+      display block
+      font-size 14px
+      text-transform uppercase
+      letter-spacing 2px
+      opacity 0.9
+      margin-top 8px
+
+  @media (max-width: 720px)
+    .stats-container
+      flex-wrap wrap
+      gap 30px
+
+    .stat-item
+      flex 0 0 45%
+
+      .stat-number
+        font-size 36px
+
 .aod-logo
   filter drop-shadow(0px 0px 5px #000)
   -webkit-filter drop-shadow(0px 0px 5px #000)
@@ -155,6 +206,66 @@ section.supported-games
     display inline-block
     margin 15px
 
+.divisions-grid
+  display flex
+  flex-wrap wrap
+  justify-content center
+  gap 20px
+  margin-top 40px
+  padding 0 20px
+
+  .division-icon
+    display flex
+    flex-direction column
+    align-items center
+    text-decoration none
+    padding 15px
+    border-radius 12px
+    background rgba(255, 255, 255, 0.05)
+    border 1px solid rgba(255, 255, 255, 0.1)
+    transition all 0.3s ease
+    width 100px
+
+    &:hover
+      background rgba(255, 255, 255, 0.1)
+      border-color rgba(255, 255, 255, 0.3)
+      transform translateY(-5px)
+
+      img
+        transform scale(1.1)
+
+    img
+      width 48px
+      height 48px
+      object-fit contain
+      transition transform 0.3s ease
+      filter drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
+
+    .division-name
+      color #fff
+      font-size 11px
+      font-family font_face
+      text-transform uppercase
+      letter-spacing 0.5px
+      margin-top 10px
+      text-align center
+      opacity 0.8
+      line-height 1.2
+
+  @media (max-width: 720px)
+    gap 10px
+
+    .division-icon
+      width 80px
+      padding 10px
+
+      img
+        width 36px
+        height 36px
+
+      .division-name
+        font-size 9px
+
 /**
  * ----------------
  * FOUNDED AREA
@@ -184,30 +295,88 @@ section.founded-info
 section.social-media
   background url(social_media_bg_image) social_media_section_bg_color no-repeat center 0
 
-.social-media ul
-  margin-top 20px
+.social-icons
+  display flex
+  justify-content center
+  gap 25px
+  margin-top 30px
+  flex-wrap wrap
 
-ul.social-media-sites li
-  display inline-block
-  background-image url('/images/social-media-sprite.png')
-  background-repeat no-repeat
-  margin 0 30px 0 0
-  width 62px
-  height 63px
-  text-indent -9999px
+  .social-icon
+    display flex
+    flex-direction column
+    align-items center
+    text-decoration none
+    color #fff
+    padding 20px
+    border-radius 12px
+    background rgba(255, 255, 255, 0.05)
+    border 1px solid rgba(255, 255, 255, 0.1)
+    transition all 0.3s ease
+    min-width 90px
 
-  &.steam
-    background-position -5px -5px
-  &.twitch
-    background-position -77px -5px
-  &.twitter
-    background-position -5px -78px
-  &.youtube
-    background-position -78px -78px
-  &:hover
-    filter drop-shadow(0px 0px 5px #fff)
-    -webkit-filter drop-shadow(0px 0px 5px #fff)
-    cursor pointer
+    svg
+      width 40px
+      height 40px
+      transition all 0.3s ease
+
+    span
+      font-size 12px
+      text-transform uppercase
+      letter-spacing 1px
+      margin-top 10px
+      opacity 0.8
+
+    &:hover
+      transform translateY(-5px)
+      border-color rgba(255, 255, 255, 0.3)
+
+      svg
+        transform scale(1.15)
+
+    &.discord:hover
+      background rgba(88, 101, 242, 0.2)
+      border-color rgba(88, 101, 242, 0.5)
+      svg
+        color #5865F2
+
+    &.twitch:hover
+      background rgba(145, 70, 255, 0.2)
+      border-color rgba(145, 70, 255, 0.5)
+      svg
+        color #9146FF
+
+    &.twitter:hover
+      background rgba(255, 255, 255, 0.1)
+      border-color rgba(255, 255, 255, 0.5)
+      svg
+        color #fff
+
+    &.steam:hover
+      background rgba(0, 114, 172, 0.2)
+      border-color rgba(0, 114, 172, 0.5)
+      svg
+        color #00adee
+
+    &.youtube:hover
+      background rgba(255, 0, 0, 0.2)
+      border-color rgba(255, 0, 0, 0.5)
+      svg
+        color #FF0000
+
+  @media (max-width: 720px)
+    gap 15px
+
+    .social-icon
+      padding 15px
+      min-width 70px
+
+      svg
+        width 30px
+        height 30px
+
+      span
+        font-size 10px
 
 /**
  * ----------------
