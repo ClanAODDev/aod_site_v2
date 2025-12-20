@@ -108,7 +108,7 @@
                 <div class="section-blurb slide-in-left animate">
                     <h1>Founded in <strong>1999</strong><br>and still growing! </h1>
                     <p>The Angels of Death is a time-tested organization, supporting over 56 major gaming titles in the
-                        past 15 years including classics like Medal of Honor: Allied Assault, and Swat 3.</p>
+                        past 25 years including classics like Medal of Honor: Allied Assault, and Swat 3.</p>
                     <p>We’ve lasted this long because of the tireless efforts of people who love gaming, and our
                         community is as diverse as the games we play. AOD is truly a family, and we’ve never stopped
                         growing.</p>
