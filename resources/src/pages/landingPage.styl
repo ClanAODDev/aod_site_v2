@@ -494,6 +494,14 @@ section.merch-section
   background linear-gradient(180deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%)
   padding 80px 0
 
+  .section-content-container
+    width 100%
+    max-width 1400px
+    padding 0 spacing_xl
+
+    @media (min-width: bp_desktop_lg)
+      max-width 1600px
+
 .merch-carousel
   display flex
   align-items center
@@ -503,6 +511,8 @@ section.merch-section
 .merch-viewport
   overflow hidden
   flex 1
+  mask-image linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)
+  -webkit-mask-image linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)
 
 .merch-grid
   display flex
@@ -522,9 +532,9 @@ section.merch-section
   width 220px
 
   &:hover
-    border-color rgba(aod_red, 0.6)
-    background rgba(aod_red, 0.1)
-    box-shadow 0 0 25px rgba(aod_red, 0.3)
+    border-color alpha(aod_red, 0.6)
+    background alpha(aod_red, 0.1)
+    box-shadow 0 0 25px alpha(aod_red, 0.3)
 
   img
     width 100%
@@ -533,9 +543,11 @@ section.merch-section
     border-radius 8px
     margin-bottom spacing_md
     transition all transition_normal ease
+    pointer-events none
+    filter drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
 
   &:hover img
-    filter brightness(1.1)
+    filter drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) brightness(1.1)
 
   span
     font-family font_face
@@ -544,6 +556,7 @@ section.merch-section
     text-transform uppercase
     letter-spacing 1px
     text-align center
+    pointer-events none
 
 .merch-nav
   background overlay_light
@@ -590,9 +603,7 @@ section.merch-section
     gap spacing_sm
 
   .merch-nav
-    width 35px
-    height 35px
-    font-size 22px
+    display none
 
   .merch-item
     width 180px

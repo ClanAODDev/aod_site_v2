@@ -10,6 +10,33 @@ return [
     'foundations_era_video_id' => env('HISTORY_FOUNDATIONS_ERA_VIDEO_ID', 'KN6yvG9aJsg'),
     'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
 
+    'merch' => [
+        'store_url' => 'https://exclaim.gg/store/AODMerch',
+        'image_base_url' => 'https://exclaim.gg/design-preview/',
+        'image_suffix' => '.ps-front.pw-384.webp',
+        'items' => [
+            ['name' => 'Christmas Hoodie', 'slug' => 'b44boc0u', 'image_id' => 'culkvl4p4pil6j9l'],
+            ['name' => 'Nike Club Fleece Hoodie', 'slug' => 'tiif16wd', 'image_id' => 'ypb6lg43if4zzwdz'],
+            ['name' => 'Dual Collar Esports Jersey', 'slug' => 'odvg8pbs', 'image_id' => 'xnq2q4bw6mni0hn1'],
+            ['name' => 'XXL Gaming Mouse Pad', 'slug' => 'wlieyyh0', 'image_id' => 'tkq7j82lgsdhz4q1'],
+            ['name' => '15 oz Mug', 'slug' => '3pkex63t', 'image_id' => 'l2hk3sj30vm865uk'],
+            ['name' => 'Carhartt Hoodie', 'slug' => 'uz0zlglj', 'image_id' => 'bt2s8kkk6eg2f8jd'],
+            ['name' => 'Hockey Jersey', 'slug' => 'y2mwcg4d', 'image_id' => '3h9f1xt3x1sobwy5'],
+            ['name' => 'Polyester Fleece Hoodie', 'slug' => 'ir00du3x', 'image_id' => 'c8rkaej53pv7oi21'],
+            ['name' => 'Football Fan Jersey', 'slug' => 'wz4tuazy', 'image_id' => 'ixb16pzif8o3espf'],
+            ['name' => 'Crew Neck Esports Jersey', 'slug' => 'xumadmka', 'image_id' => 'zb6e2uchrwwvkb08'],
+            ['name' => 'Women\'s Tank Top', 'slug' => 'tjax7emq', 'image_id' => 'ot1ut94ljpwqkfp5'],
+            ['name' => 'Nike Polo', 'slug' => 'oakktu0x', 'image_id' => 'zw88py0kses2xo5k'],
+            ['name' => 'Carhartt 1/4-Zip Sweatshirt', 'slug' => 'rnypwhs6', 'image_id' => 'orl5lxtff317xbwj'],
+            ['name' => 'Ceramic Shot Glass', 'slug' => 'e95v3y0n', 'image_id' => 'qrjziofw4f8yfczl'],
+            ['name' => 'Sport-Tek Fleece Pants', 'slug' => 'xemw0dre', 'image_id' => 'ms0ougij88dercor'],
+            ['name' => 'Cotton Joggers', 'slug' => 'l9oigwcp', 'image_id' => '21skuuelsbdrfjj2'],
+            ['name' => 'Sublimated Shorts', 'slug' => 'g0tj1igm', 'image_id' => 'soyq5u0r0w3z2m3i'],
+            ['name' => 'XL Gaming Mouse Pad', 'slug' => 'cab3mp8b', 'image_id' => 'jeiwngkq7gil1527'],
+            ['name' => 'Female Esports Jersey', 'slug' => 'm28o26vq', 'image_id' => 'rjo5cwim0bwzalrz'],
+        ],
+    ],
+
     /*
      * Fallen members of ClanAOD
      */
