@@ -445,8 +445,11 @@ function initializeClanAOD() {
             var originalSetWidth = 0;
 
             var touchStartX = 0;
+            var touchStartY = 0;
             var touchStartOffset = 0;
             var isTouching = false;
+            var isHorizontalSwipe = null;
+            var resumeTimer = null;
 
             items.clone().appendTo(grid);
 
@@ -498,21 +501,43 @@ function initializeClanAOD() {
 
             viewport[0].addEventListener('touchstart', function(evt) {
                 isTouching = true;
+                isHorizontalSwipe = null;
+                if (resumeTimer) {
+                    clearTimeout(resumeTimer);
+                    resumeTimer = null;
+                }
                 touchStartX = evt.touches[0].clientX;
+                touchStartY = evt.touches[0].clientY;
                 touchStartOffset = currentOffset;
             }, { passive: true });
 
             viewport[0].addEventListener('touchmove', function(evt) {
                 if (!isTouching) return;
                 var touchX = evt.touches[0].clientX;
-                var delta = touchStartX - touchX;
-                currentOffset = touchStartOffset + delta;
-                normalizeOffset();
-                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
-            }, { passive: true });
+                var touchY = evt.touches[0].clientY;
+                var deltaX = Math.abs(touchX - touchStartX);
+                var deltaY = Math.abs(touchY - touchStartY);
+
+                if (isHorizontalSwipe === null && (deltaX > 5 || deltaY > 5)) {
+                    isHorizontalSwipe = deltaX > deltaY;
+                }
+
+                if (isHorizontalSwipe) {
+                    evt.preventDefault();
+                    var delta = touchStartX - touchX;
+                    currentOffset = touchStartOffset + delta;
+                    normalizeOffset();
+                    grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+                }
+            }, { passive: false });
 
             viewport[0].addEventListener('touchend', function() {
                 isTouching = false;
+                isHorizontalSwipe = null;
+                resumeTimer = setTimeout(function() {
+                    isScrolling = true;
+                }, 2500);
+                isScrolling = false;
             }, { passive: true });
 
             e(window).on('resize', function() {
