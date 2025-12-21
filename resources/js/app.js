@@ -423,25 +423,24 @@ function initializeClanAOD() {
             var currentOffset = 0;
             var isScrolling = true;
             var scrollSpeed = 0.5;
+            var originalSetWidth = 0;
 
             items.clone().appendTo(grid);
-            var allItems = grid.find('.merch-item');
 
-            function getOriginalSetWidth() {
-                var width = 0;
+            function calculateSetWidth() {
+                originalSetWidth = 0;
+                var gap = 25;
                 items.each(function() {
-                    width += e(this).outerWidth(true);
+                    originalSetWidth += e(this).outerWidth(true) + gap;
                 });
-                return width;
             }
 
             function continuousScroll() {
                 if (isScrolling) {
                     currentOffset += scrollSpeed;
 
-                    var resetPoint = getOriginalSetWidth();
-                    if (currentOffset >= resetPoint) {
-                        currentOffset = 0;
+                    if (currentOffset >= originalSetWidth) {
+                        currentOffset -= originalSetWidth;
                     }
 
                     grid.css('transform', 'translateX(-' + currentOffset + 'px)');
@@ -452,14 +451,13 @@ function initializeClanAOD() {
 
             prevBtn.on('click', function() {
                 currentOffset -= items.first().outerWidth(true);
-                if (currentOffset < 0) currentOffset = getOriginalSetWidth() + currentOffset;
+                if (currentOffset < 0) currentOffset += originalSetWidth;
                 grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
             nextBtn.on('click', function() {
                 currentOffset += items.first().outerWidth(true);
-                var resetPoint = getOriginalSetWidth();
-                if (currentOffset >= resetPoint) currentOffset = currentOffset - resetPoint;
+                if (currentOffset >= originalSetWidth) currentOffset -= originalSetWidth;
                 grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
@@ -471,6 +469,11 @@ function initializeClanAOD() {
                 isScrolling = true;
             });
 
+            e(window).on('resize', function() {
+                calculateSetWidth();
+            });
+
+            calculateSetWidth();
             continuousScroll();
         },
         setupScreenshotCarousel: function() {
