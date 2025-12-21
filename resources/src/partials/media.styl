@@ -6,7 +6,7 @@
   .hero-text .aod-logo
     width 40%
 
-  .hero-video .hero-text h1
+  .hero-text h1
     font-size 28px
 
 
@@ -39,11 +39,13 @@
       z-index 999
       opacity 0
       visibility hidden
+      pointer-events none
       transition opacity 0.3s ease, visibility 0.3s ease
 
       &.active
         opacity 1
         visibility visible
+        pointer-events auto
 
     .nav-items
       position fixed
@@ -161,12 +163,12 @@
       height 100vh !important
       z-index -1 !important
 
-      .hero-text
-        position fixed !important
-        top 125px !important
-        left 50% !important
-        transform translateX(-50%) !important
-        z-index 3 !important
+    .hero-text
+      position fixed !important
+      top 125px !important
+      left 50% !important
+      transform translateX(-50%) !important
+      z-index 10 !important
   section.founded-info .section-image
     position absolute
     top -130px
