@@ -83,7 +83,7 @@ section
 
   a
     font-weight 700
-    transition 0.6s
+    transition transition_slower
 
   .section-content-container
     position relative
@@ -105,11 +105,11 @@ p
 a
   color link_color
   text-decoration none
-  transition color 0.6s
+  transition color transition_slower
 
   &:hover
     color link_hover_color
-    transition 0.6s
+    transition transition_slower
 
 a.call-to-action-button
   border solid 1px #fff
@@ -134,8 +134,7 @@ a.call-to-action-button
 /** nav bar **/
 
 .clan-logo
-  filter drop-shadow(0 0 5px #000)
-  -webkit-filter drop-shadow(0 0 5px #000)
+  drop-shadow-md()
   cursor pointer
 
 .mobile-nav .nav-items, .mobile-nav .clan-logo, .mobile-nav .hamburger, .mobile-nav .nav-overlay
@@ -146,22 +145,22 @@ a.call-to-action-button
 
 .mobile-nav .hamburger
   position fixed
-  top 20px
-  right 40px
+  top spacing_lg
+  right spacing_2xl
   cursor pointer
-  color #888
+  color muted_color
 
   &:hover
-    color #999
+    color muted_hover_color
 
 .primary-nav
   z-index 50
   width 100%
   height 69px
   background url('/images/navbar-bg.jpg') repeat-x 0 0 body_background_color
-  box-shadow 0 1px 10px #000
+  box-shadow 0 1px 10px darker_bg
   position relative
-  transition all 0.4s ease
+  transition all transition_slow ease
 
   .nav-texture
     background url('/images/navbar-texture.png') no-repeat center 0
@@ -193,7 +192,7 @@ a.call-to-action-button
           text-indent -9999px
 
           img
-            transition all 0.4s ease
+            transition all transition_slow ease
             opacity 100
 
       a
@@ -230,27 +229,24 @@ section.primary-footer
     .section-blurb
       flex 100%
       display flex
-      padding 0 30px 20px 0
+      padding 0 spacing_xl spacing_lg 0
 
       .logo
-        display flex
-        align-items center
-        justify-content center
+        flex-center()
         flex 20%
 
         img
           width 150px
-          filter drop-shadow(0px 0px 5px #000)
-          -webkit-filter drop-shadow(0px 0px 5px #000)
+          drop-shadow-md()
 
       .blurb-text
         flex 80%
 
 .footer-section
   font-family Tahoma, sans-serif
-  color #6c7384
+  color footer_link_color
   flex 50%
-  padding-top 20px
+  padding-top spacing_lg
 
   &.full-width
     flex 100%

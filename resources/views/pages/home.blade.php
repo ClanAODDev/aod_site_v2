@@ -210,6 +210,10 @@
         </div>
     </section>
 
+    @php
+        $merch = config('aod.merch');
+        $merchItems = collect($merch['items'])->shuffle();
+    @endphp
     <section class="merch-section with-shadow">
         <div class="section-content-container section--centered">
             <h1 class="animate slide-in-left">Rep the Angels of Death</h1>
@@ -220,39 +224,17 @@
                 <button class="merch-nav merch-prev" aria-label="Previous items">&lsaquo;</button>
                 <div class="merch-viewport">
                     <div class="merch-grid">
-                        <a href="https://exclaim.gg/store/AODMerch/b44boc0u" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/culkvl4p4pil6j9l.ps-front.pw-384.webp" alt="Christmas Hoodie">
-                            <span>Christmas Hoodie</span>
+                        @foreach($merchItems as $item)
+                        <a href="{{ $merch['store_url'] }}/{{ $item['slug'] }}" class="merch-item" target="_blank">
+                            <img src="{{ $merch['image_base_url'] }}{{ $item['image_id'] }}{{ $merch['image_suffix'] }}" alt="{{ $item['name'] }}">
+                            <span>{{ $item['name'] }}</span>
                         </a>
-                        <a href="https://exclaim.gg/store/AODMerch/tiif16wd" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/ypb6lg43if4zzwdz.ps-front.pw-384.webp" alt="Nike Club Fleece Hoodie">
-                            <span>Nike Club Fleece Hoodie</span>
-                        </a>
-                        <a href="https://exclaim.gg/store/AODMerch/odvg8pbs" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/xnq2q4bw6mni0hn1.ps-front.pw-384.webp" alt="Esports Jersey">
-                            <span>Esports Jersey</span>
-                        </a>
-                        <a href="https://exclaim.gg/store/AODMerch/wlieyyh0" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/tkq7j82lgsdhz4q1.ps-front.pw-384.webp" alt="XXL Gaming Mouse Pad">
-                            <span>XXL Gaming Mouse Pad</span>
-                        </a>
-                        <a href="https://exclaim.gg/store/AODMerch/3pkex63t" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/l2hk3sj30vm865uk.ps-front.pw-384.webp" alt="15 oz Mug">
-                            <span>15 oz Mug</span>
-                        </a>
-                        <a href="https://exclaim.gg/store/AODMerch/uz0zlglj" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/bt2s8kkk6eg2f8jd.ps-front.pw-384.webp" alt="Carhartt Hoodie">
-                            <span>Carhartt Hoodie</span>
-                        </a>
-                        <a href="https://exclaim.gg/store/AODMerch/y2mwcg4d" class="merch-item" target="_blank">
-                            <img src="https://exclaim.gg/design-preview/3h9f1xt3x1sobwy5.ps-front.pw-384.webp" alt="Hockey Jersey">
-                            <span>Hockey Jersey</span>
-                        </a>
+                        @endforeach
                     </div>
                 </div>
                 <button class="merch-nav merch-next" aria-label="Next items">&rsaquo;</button>
             </div>
-            <a href="https://exclaim.gg/store/AODMerch" class="merch-cta animate drop-up" target="_blank">Shop All Merchandise [EXCLAIM.gg]</a>
+            <a href="{{ $merch['store_url'] }}" class="merch-cta animate drop-up" target="_blank">Shop All Merchandise [EXCLAIM.gg]</a>
         </div>
     </section>
 
@@ -262,7 +244,7 @@
             <div class="section-blurb">
                 <p>Complete a clan application with one of our divisions to start the process and see if we’re a good
                     fit for each other.</p>
-                <p><a class="apply-button call-to-action-button" href="#">Apply</a></p>
+                <p><a class="apply-button call-to-action-button" href="#">Apply to ClanAOD</a></p>
 
             </div>
         </div>

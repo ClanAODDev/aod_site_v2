@@ -444,6 +444,10 @@ function initializeClanAOD() {
             var scrollSpeed = 0.5;
             var originalSetWidth = 0;
 
+            var touchStartX = 0;
+            var touchStartOffset = 0;
+            var isTouching = false;
+
             items.clone().appendTo(grid);
 
             function calculateSetWidth() {
@@ -454,14 +458,18 @@ function initializeClanAOD() {
                 });
             }
 
+            function normalizeOffset() {
+                if (currentOffset >= originalSetWidth) {
+                    currentOffset -= originalSetWidth;
+                } else if (currentOffset < 0) {
+                    currentOffset += originalSetWidth;
+                }
+            }
+
             function continuousScroll() {
-                if (isScrolling) {
+                if (isScrolling && !isTouching) {
                     currentOffset += scrollSpeed;
-
-                    if (currentOffset >= originalSetWidth) {
-                        currentOffset -= originalSetWidth;
-                    }
-
+                    normalizeOffset();
                     grid.css('transform', 'translateX(-' + currentOffset + 'px)');
                 }
 
@@ -470,13 +478,13 @@ function initializeClanAOD() {
 
             prevBtn.on('click', function() {
                 currentOffset -= items.first().outerWidth(true);
-                if (currentOffset < 0) currentOffset += originalSetWidth;
+                normalizeOffset();
                 grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
             nextBtn.on('click', function() {
                 currentOffset += items.first().outerWidth(true);
-                if (currentOffset >= originalSetWidth) currentOffset -= originalSetWidth;
+                normalizeOffset();
                 grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
@@ -487,6 +495,25 @@ function initializeClanAOD() {
             container.on('mouseleave', function() {
                 isScrolling = true;
             });
+
+            viewport[0].addEventListener('touchstart', function(evt) {
+                isTouching = true;
+                touchStartX = evt.touches[0].clientX;
+                touchStartOffset = currentOffset;
+            }, { passive: true });
+
+            viewport[0].addEventListener('touchmove', function(evt) {
+                if (!isTouching) return;
+                var touchX = evt.touches[0].clientX;
+                var delta = touchStartX - touchX;
+                currentOffset = touchStartOffset + delta;
+                normalizeOffset();
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+            }, { passive: true });
+
+            viewport[0].addEventListener('touchend', function() {
+                isTouching = false;
+            }, { passive: true });
 
             e(window).on('resize', function() {
                 calculateSetWidth();
