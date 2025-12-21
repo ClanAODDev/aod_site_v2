@@ -36,8 +36,27 @@ function initializeClanAOD() {
             e('.full-nav ul').prepend(n), e('.mobile-nav ul').prepend('<li class="home"><a href="/" class="text-link">Home</a></li>'), e('.social-media-sites li').click(function () {
                 var n = e(this).attr('data-link');
                 n && window.open(n);
-            }), e('.hamburger').click(function () {
-                e('.nav-items').fadeToggle();
+            });
+
+            e('.hamburger').click(function () {
+                e('.nav-items').addClass('active');
+                e('.nav-overlay').addClass('active');
+                e('.hamburger').hide();
+                e('body').css('overflow', 'hidden');
+            });
+
+            e('.nav-close, .nav-overlay').click(function () {
+                e('.nav-items').removeClass('active');
+                e('.nav-overlay').removeClass('active');
+                e('.hamburger').show();
+                e('body').css('overflow', '');
+            });
+
+            e('.nav-items a').click(function () {
+                e('.nav-items').removeClass('active');
+                e('.nav-overlay').removeClass('active');
+                e('.hamburger').show();
+                e('body').css('overflow', '');
             });
         },
         smoothScroll: function () {

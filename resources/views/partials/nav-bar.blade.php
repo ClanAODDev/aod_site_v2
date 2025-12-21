@@ -12,7 +12,12 @@
              onclick="window.location.href = '/';"/>
 
         <div class="hamburger"><i class="fa fa-bars fa-2x"></i></div>
+        <div class="nav-overlay"></div>
         <div class="nav-items">
+            <div class="nav-drawer-header">
+                <img src="{{ asset('images/aod_new.png') }}" alt="Clan AOD Logo" onclick="window.location.href = '/';" />
+                <div class="nav-close"><i class="fa fa-times"></i></div>
+            </div>
             <ul id="menu-mobile" class="menu">
                 @include('partials.nav-links')
             </ul>
