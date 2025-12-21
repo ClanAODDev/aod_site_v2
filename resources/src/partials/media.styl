@@ -1,4 +1,4 @@
-@media (max-width: 720px)
+@media (max-width: bp_tablet)
   .hero-text .aod-logo
     width 40%
 
@@ -19,25 +19,23 @@
       .division-name
         font-size 8px
 
-
-
-
-
 @media (max-width: 1120px)
   h1, h2
     font-size 1.3em
 
-@media (max-width: 1230px)
+@media (max-width: bp_desktop)
   .push
-    margin-top: calc(100vh - 130px);
-  .mobile-nav
+    margin-top calc(100vh - 130px)
 
-    .clan-logo, .hamburger, .nav-overlay
+  .mobile-nav
+    .clan-logo,
+    .hamburger,
+    .nav-overlay
       display block
 
     .hamburger
       z-index 1001
-      transition color 0.3s ease
+      transition color transition_normal ease
 
     .nav-overlay
       position fixed
@@ -45,12 +43,12 @@
       left 0
       width 100%
       height 100%
-      background rgba(0, 0, 0, 0.7)
+      background overlay_dark
       z-index 999
       opacity 0
       visibility hidden
       pointer-events none
-      transition opacity 0.3s ease, visibility 0.3s ease
+      transition opacity transition_normal ease, visibility transition_normal ease
 
       &.active
         opacity 1
@@ -63,10 +61,10 @@
       right -280px
       width 280px
       height 100%
-      background linear-gradient(180deg, #1a1a1a 0%, #111 100%)
+      background linear-gradient(180deg, #1a1a1a 0%, dark_bg 100%)
       z-index 1000
       overflow-y auto
-      transition right 0.3s ease
+      transition right transition_normal ease
       box-shadow -5px 0 20px rgba(0, 0, 0, 0.5)
       display block !important
 
@@ -77,22 +75,22 @@
         display flex
         justify-content space-between
         align-items center
-        padding 20px
-        border-bottom 1px solid rgba(255, 255, 255, 0.1)
+        padding spacing_lg
+        border-bottom 1px solid border_subtle
 
         img
           height 50px
-          filter drop-shadow(0 0 5px #000)
+          drop-shadow-md()
 
         .nav-close
-          color #888
+          color muted_color
           font-size 24px
           cursor pointer
-          padding 10px
-          transition color 0.3s ease
+          padding spacing_sm
+          transition color transition_normal ease
 
           &:hover
-            color #fff
+            color header_color
 
       ul
         padding 0
@@ -103,35 +101,35 @@
         font-family font_face
         font-size 16px
         padding 18px 25px
-        border-bottom 1px rgba(255, 255, 255, 0.1) solid
+        border-bottom 1px border_subtle solid
         color rgba(255, 255, 255, 0.7)
         text-transform uppercase
         letter-spacing 1px
-        transition all 0.3s ease
+        transition all transition_normal ease
 
         &:hover
-          color #fff
-          background rgba(223, 69, 69, 0.2)
-          padding-left 30px
+          color header_color
+          background rgba(aod_red, 0.2)
+          padding-left spacing_xl
 
   .collection .item
     flex 0 80%
 
   section
-    padding-left 15px !important
-    padding-right 15px !important
+    padding-left spacing_md
+    padding-right spacing_md
 
   section .section-content-container
-    width 100% !important
-    max-width 100% !important
-    padding 0 10px !important
-    margin 0 auto !important
+    width 100%
+    max-width 100%
+    padding 0 spacing_sm
+    margin 0 auto
 
   .divisions-grid
-    padding 0 5px
+    padding 0 spacing_xs
 
   .holiday-content
-    padding 0 10px
+    padding 0 spacing_sm
 
   .merch-carousel
     padding 0
@@ -142,30 +140,30 @@
   .primary-nav
     position fixed
     top 0
-    z-index 100 !important  // Ensure nav is above hero video but doesn't push it
+    z-index 100
 
   .section--short-width
-    display block !important
+    display block
 
   section.lobby
-    background none !important
+    background none
 
     .divisions-list
-      margin-top 20px
+      margin-top spacing_lg
 
   .footer-section
     flex 100%
-    padding 15px
+    padding spacing_md
 
   #menu-primary
     display none
 
   .primary-nav .full-nav ul
-    min-width auto !important
-    width 100% !important
+    min-width auto
+    width 100%
 
   section
-    padding 20px
+    padding spacing_lg
     &.founded-info .section-image
       display none
 
@@ -173,40 +171,43 @@
       width 100%
 
   section.lobby .section-blurb
-    margin-right 40px
+    margin-right spacing_2xl
 
 @media (max-width: 1260px)
-    .push
-      margin-top: calc(100vh - 130px);
-    .hero-video
-      position fixed !important
-      top 0 !important
-      left 0 !important
-      width 100vw !important
-      height 100vh !important
-      z-index -1 !important
+  .push
+    margin-top calc(100vh - 130px)
 
-    .hero-text
-      position fixed !important
-      top 125px !important
-      left 50% !important
-      transform translateX(-50%) !important
-      z-index 5 !important
-      pointer-events none
+  .hero-video
+    position fixed
+    top 0
+    left 0
+    width 100vw
+    height 100vh
+    z-index -1
 
-      *
-        pointer-events auto
+  .hero-text
+    position fixed
+    top 125px
+    left 50%
+    transform translateX(-50%)
+    z-index 5
+    pointer-events none
+
+    *
+      pointer-events auto
+
   section.founded-info .section-image
     position absolute
     top -130px
     right -60px
+
     img
       width 600px
       height 600px
 
-@media (min-width: 1280px)
+@media (min-width: bp_desktop_lg)
   .section-content-container
     width 960px
 
   .push
-    margin-top: 700px;
+    margin-top 700px

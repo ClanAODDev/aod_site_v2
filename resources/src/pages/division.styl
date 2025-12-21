@@ -31,23 +31,23 @@
     text-transform uppercase
     letter-spacing 1px
     text-decoration none
-    transition all 0.3s ease
-    border 1px solid rgba(255, 255, 255, 0.3)
-    color #fff
+    transition all transition_normal ease
+    border 1px solid border_medium
+    color header_color
     background transparent
 
     &:hover
       border-color rgba(255, 255, 255, 0.8)
-      background rgba(255, 255, 255, 0.1)
+      background overlay_light
 
     &.primary
-      background linear-gradient(135deg, #df4545 0%, #b33636 100%)
+      background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
       border-color transparent
 
       &:hover
-        background linear-gradient(135deg, #e85555 0%, #c44040 100%)
+        background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
         transform translateY(-2px)
-        box-shadow 0 4px 15px rgba(223, 69, 69, 0.3)
+        box-shadow 0 4px 15px rgba(aod_red, 0.3)
 
 section.division, section.page
   margin-top 70px
@@ -73,46 +73,46 @@ section.division, section.page
   #sub-nav
     margin-top 180px
     a
-      color #fff
+      color header_color
     ul
       padding 0
       text-indent 0
       li
-        margin-bottom 15px
+        margin-bottom spacing_md
         display inline-block
-        padding 15px
+        padding spacing_md
         font-family font_face
         text-transform uppercase
-        border solid 1px #ffffff
+        border solid 1px header_color
         border-radius 10px
-        margin-right 15px
+        margin-right spacing_md
         opacity 0.3
-        transition opacity 0.6s ease
-        color #fff
+        transition opacity transition_slower ease
+        color header_color
         &:hover
           opacity 1
-          transition opacity 0.6s ease
+          transition opacity transition_slower ease
           cursor pointer
 
   .command-staff
     font-family font_face
     .member
-      border solid 1px rgba(255,255,255,.3);
+      border solid 1px border_medium
       border-radius 10px
-      padding 15px
+      padding spacing_md
       display inline-block
       flex-direction column
-      margin-right 15px
-      transition border 0.6s ease
+      margin-right spacing_md
+      transition border transition_slower ease
       &:hover
-        border solid 1px rgba(255,255,255,1)
+        border solid 1px header_color
         cursor pointer
-        transition border 0.6s ease
+        transition border transition_slower ease
       .name
         text-transform uppercase
         font-size 20px
       .position
-        color rgba(255,255,255,.3)
+        color border_medium
 
 .screenshot-gallery
   margin 40px 0
@@ -150,7 +150,7 @@ section.division, section.page
     overflow hidden
     border-radius 8px
     border 1px solid rgba(255, 255, 255, 0.15)
-    transition all 0.3s ease
+    transition all transition_normal ease
     line-height 0
     width calc((100vw - 140px) / 3 - 14px)
     max-width 350px
@@ -170,12 +170,10 @@ section.division, section.page
       width 100%
       height 100%
       background rgba(0, 0, 0, 0)
-      display flex
-      align-items center
-      justify-content center
+      flex-center()
       color rgba(255, 255, 255, 0)
       font-size 32px
-      transition all 0.3s ease
+      transition all transition_normal ease
       pointer-events none
 
     &:hover
@@ -198,18 +196,16 @@ section.division, section.page
       max-width 100% !important
 
   .carousel-nav
-    background rgba(255, 255, 255, 0.1)
-    border 1px solid rgba(255, 255, 255, 0.3)
-    color #fff
+    background overlay_light
+    border 1px solid border_medium
+    color header_color
     width 40px
     height 40px
     border-radius 50%
     font-size 24px
     cursor pointer
-    transition all 0.3s ease
-    display flex
-    align-items center
-    justify-content center
+    transition all transition_normal ease
+    flex-center()
     flex-shrink 0
 
     &:hover
@@ -224,16 +220,16 @@ section.division, section.page
     display flex
     justify-content center
     gap 8px
-    margin-top 15px
+    margin-top spacing_md
 
     .dot
       width 10px
       height 10px
       border-radius 50%
-      background rgba(255, 255, 255, 0.3)
+      background border_medium
       border none
       cursor pointer
-      transition all 0.3s ease
+      transition all transition_normal ease
 
       &:hover
         background rgba(255, 255, 255, 0.5)
@@ -241,13 +237,13 @@ section.division, section.page
       &.active
         background rgba(255, 255, 255, 0.9)
 
-  @media (max-width: 720px)
+  @media (max-width: bp_tablet)
     .gallery-item
       width calc((100vw - 100px) / 2 - 10px)
 
-  @media (max-width: 480px)
+  @media (max-width: bp_mobile)
     .carousel-container
-      gap 5px
+      gap spacing_xs
 
     .carousel-nav
       width 30px
@@ -284,14 +280,14 @@ section.division, section.page
       border-radius 4px
 
   .lightbox-caption
-    color #fff
+    color header_color
     font-size 14px
-    margin-top 15px
+    margin-top spacing_md
     opacity 0.8
 
   .lightbox-counter
     position absolute
-    bottom 20px
+    bottom spacing_lg
     left 50%
     transform translateX(-50%)
     color rgba(255, 255, 255, 0.6)
@@ -299,15 +295,15 @@ section.division, section.page
 
   .lightbox-close
     position absolute
-    top 20px
+    top spacing_lg
     right 25px
     background none
     border none
-    color #fff
+    color header_color
     font-size 40px
     cursor pointer
     opacity 0.7
-    transition opacity 0.2s
+    transition opacity transition_fast
     z-index 10
 
     &:hover
@@ -320,19 +316,19 @@ section.division, section.page
     transform translateY(-50%)
     background none
     border none
-    color #fff
+    color header_color
     font-size 50px
     cursor pointer
     opacity 0.5
-    transition opacity 0.2s
-    padding 20px
+    transition opacity transition_fast
+    padding spacing_lg
     z-index 10
 
     &:hover
       opacity 1
 
   .lightbox-prev
-    left 10px
+    left spacing_sm
 
   .lightbox-next
-    right 10px
+    right spacing_sm

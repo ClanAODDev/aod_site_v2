@@ -14,40 +14,39 @@ video#angel-of-death
 
 #members-container
     text-align center
-    padding 5px
+    padding spacing_xs
     width 100%
     position relative
     margin 0 auto
     margin-top -175px
     background-color rgba(0, 0, 0, .4)
-    border-top rgba(255, 255, 255, .1) 1px solid
+    border-top border_subtle 1px solid
     padding-bottom 50px
 
     h3
-        padding 10px 0
+        padding spacing_sm 0
         min-width 600px
-        @media (max-width: 720px)
+        @media (max-width: bp_tablet)
             min-width 100%
-            padding 10px 15px
+            padding spacing_sm spacing_md
 
     .fallen-angel
         flex 0 47%
         display block
-        padding 30px 15px
+        padding spacing_xl spacing_md
         text-align center
         font-size 18px
-        color #bfb5b5
+        color body_color
         font normal 16px / 1.8em MuseoSans, century gothic, arial
-        @media (max-width: 720px)
+        @media (max-width: bp_tablet)
             flex 0 100%
-            padding 15px 10px
+            padding spacing_md spacing_sm
             font-size 16px
 
     a.fallen-angel:hover
-        color #fff !important
+        color header_color
         text-decoration underline
-        transition all
-        animation .2s ease-in-out
+        transition all transition_fast ease-in-out
 
     #member-list
         display flex
@@ -58,13 +57,13 @@ video#angel-of-death
         @media (max-width: 1470px)
             width 600px
             display block
-        @media (max-width: 720px)
+        @media (max-width: bp_tablet)
             width 100%
-            padding 0 10px
+            padding 0 spacing_sm
 
 
 section#fallen-angels
-    min-height: 800px;
+    min-height 800px
 
     #epitaph-container
         width 1300px
@@ -72,11 +71,11 @@ section#fallen-angels
         position relative
         height 835px
         @media (max-width: 1470px)
-            background-image: url('/images/memoriam-mobile-v2.jpg')
+            background-image url('/images/memoriam-mobile-v2.jpg')
             background-repeat no-repeat
             background-position 50% 0
             width 100%
-        @media (max-width: 720px)
+        @media (max-width: bp_tablet)
             height auto
             min-height 500px
             background-size cover
@@ -92,17 +91,17 @@ section#fallen-angels
                 min-width 600px
                 margin 0 auto
                 left 0
-            @media (max-width: 720px)
+            @media (max-width: bp_tablet)
                 min-width 100%
                 width 100%
-                padding 20px 15px
+                padding spacing_lg spacing_md
                 top 10%
 
             h2#lead
                 font-family 'Copperplate Gothic Light', serif
                 font-variant small-caps
                 text-transform none
-                @media (max-width: 720px)
+                @media (max-width: bp_tablet)
                     font-size 20px
 
             #body
@@ -111,7 +110,7 @@ section#fallen-angels
                 display block
                 font-variant small-caps
                 line-height 40px
-                text-shadow #000 1px 1px
-                @media (max-width: 720px)
+                text-shadow darker_bg 1px 1px
+                @media (max-width: bp_tablet)
                     font-size 16px
                     line-height 28px

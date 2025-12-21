@@ -46,10 +46,10 @@
       opacity 0.9
       margin-top 8px
 
-  @media (max-width: 720px)
+  @media (max-width: bp_tablet)
     .stats-container
       flex-wrap wrap
-      gap 30px
+      gap spacing_xl
 
     .stat-item
       flex 0 0 45%
@@ -58,8 +58,7 @@
         font-size 36px
 
 .aod-logo
-  filter drop-shadow(0px 0px 5px #000)
-  -webkit-filter drop-shadow(0px 0px 5px #000)
+  drop-shadow-md()
   width 250px
 
 .hero-text
@@ -82,14 +81,13 @@
     width 53px
     height 61px
     margin 0 auto
-    margin-top 60px
+    margin-top spacing_3xl
     text-indent -9999px
-    transition filter 0.6s ease
+    transition filter transition_slower ease
 
     &:hover
-      filter drop-shadow(0px 0px 10px #fff)
-      -webkit-filter drop-shadow(0px 0px 10px #fff)
-      transition filter 0.6s ease
+      drop-shadow-white()
+      transition filter transition_slower ease
       cursor pointer
 
   h1
@@ -104,12 +102,12 @@
   height 100vh
   z-index -1
   overflow hidden
-  transition opacity 0.3s ease
-  background #000
+  transition opacity transition_normal ease
+  background darker_bg
 
 .twitch-live
-  right 40px
-  color #df4545
+  right spacing_2xl
+  color aod_red
   position relative
 
 .intro-video iframe
@@ -214,25 +212,25 @@ section.supported-games
   display flex
   flex-wrap wrap
   justify-content center
-  gap 20px
-  margin-top 40px
-  padding 0 20px
+  gap spacing_lg
+  margin-top spacing_2xl
+  padding 0 spacing_lg
 
   .division-icon
     display flex
     flex-direction column
     align-items center
     text-decoration none
-    padding 15px
+    padding spacing_md
     border-radius 12px
-    background rgba(255, 255, 255, 0.05)
-    border 1px solid rgba(255, 255, 255, 0.1)
-    transition all 0.3s ease
+    background overlay_light
+    border 1px solid border_subtle
+    transition all transition_normal ease
     width 100px
 
     &:hover
       background rgba(255, 255, 255, 0.1)
-      border-color rgba(255, 255, 255, 0.3)
+      border-color border_medium
       transform translateY(-5px)
 
       img
@@ -242,26 +240,26 @@ section.supported-games
       width 48px
       height 48px
       object-fit contain
-      transition transform 0.3s ease
+      transition transform transition_normal ease
       filter drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
 
     .division-name
-      color #fff
+      color header_color
       font-size 11px
       font-family font_face
       text-transform uppercase
       letter-spacing 0.5px
-      margin-top 10px
+      margin-top spacing_sm
       text-align center
       opacity 0.8
       line-height 1.2
 
-  @media (max-width: 720px)
-    gap 10px
+  @media (max-width: bp_tablet)
+    gap spacing_sm
 
     .division-icon
       width 80px
-      padding 10px
+      padding spacing_sm
 
       img
         width 36px
@@ -472,7 +470,7 @@ section.holiday-section
     height 100%
     border none
 
-@media (max-width: 720px)
+@media (max-width: bp_tablet)
   section.holiday-section
     padding 50px 0
 
@@ -516,25 +514,25 @@ section.merch-section
   align-items center
   text-decoration none
   background rgba(255, 255, 255, 0.03)
-  border 1px solid rgba(255, 255, 255, 0.1)
+  border 1px solid border_subtle
   border-radius 12px
-  padding 20px
-  transition all 0.3s ease
+  padding spacing_lg
+  transition all transition_normal ease
   flex-shrink 0
   width 220px
 
   &:hover
-    border-color rgba(223, 69, 69, 0.6)
-    background rgba(223, 69, 69, 0.1)
-    box-shadow 0 0 25px rgba(223, 69, 69, 0.3)
+    border-color rgba(aod_red, 0.6)
+    background rgba(aod_red, 0.1)
+    box-shadow 0 0 25px rgba(aod_red, 0.3)
 
   img
     width 100%
     height 220px
     object-fit contain
     border-radius 8px
-    margin-bottom 15px
-    transition all 0.3s ease
+    margin-bottom spacing_md
+    transition all transition_normal ease
 
   &:hover img
     filter brightness(1.1)
@@ -548,23 +546,21 @@ section.merch-section
     text-align center
 
 .merch-nav
-  background rgba(255, 255, 255, 0.1)
-  border 1px solid rgba(255, 255, 255, 0.3)
-  color #fff
+  background overlay_light
+  border 1px solid border_medium
+  color header_color
   width 45px
   height 45px
   border-radius 50%
   font-size 28px
   cursor pointer
-  transition all 0.3s ease
-  display flex
-  align-items center
-  justify-content center
+  transition all transition_normal ease
+  flex-center()
   flex-shrink 0
 
   &:hover
-    background rgba(223, 69, 69, 0.3)
-    border-color rgba(223, 69, 69, 0.6)
+    background rgba(aod_red, 0.3)
+    border-color rgba(aod_red, 0.6)
 
   &:disabled
     opacity 0.3
@@ -572,26 +568,26 @@ section.merch-section
 
 .merch-cta
   display inline-block
-  padding 15px 40px
-  background linear-gradient(135deg, #df4545 0%, #b33636 100%)
-  color #fff
+  padding spacing_md spacing_2xl
+  background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+  color header_color
   font-family font_face
   font-size 14px
   text-transform uppercase
   letter-spacing 2px
   text-decoration none
   border-radius 6px
-  margin-top 20px
-  transition all 0.3s ease
+  margin-top spacing_lg
+  transition all transition_normal ease
 
   &:hover
-    background linear-gradient(135deg, #e85555 0%, #c44040 100%)
+    background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
     transform translateY(-3px)
-    box-shadow 0 8px 25px rgba(223, 69, 69, 0.4)
+    box-shadow 0 8px 25px rgba(aod_red, 0.4)
 
-@media (max-width: 720px)
+@media (max-width: bp_tablet)
   .merch-carousel
-    gap 10px
+    gap spacing_sm
 
   .merch-nav
     width 35px
@@ -600,7 +596,7 @@ section.merch-section
 
   .merch-item
     width 180px
-    padding 15px
+    padding spacing_md
 
 /**
  * ----------------
@@ -614,7 +610,7 @@ section.social-media
   display flex
   justify-content center
   gap 25px
-  margin-top 30px
+  margin-top spacing_xl
   flex-wrap wrap
 
   .social-icon
@@ -622,69 +618,72 @@ section.social-media
     flex-direction column
     align-items center
     text-decoration none
-    color #fff
-    padding 20px
+    color header_color
+    padding spacing_lg
     border-radius 12px
     background rgba(255, 255, 255, 0.05)
-    border 1px solid rgba(255, 255, 255, 0.1)
-    transition all 0.3s ease
+    border 1px solid border_subtle
+    transition all transition_normal ease
     min-width 90px
+    cursor pointer
 
     svg
       width 40px
       height 40px
-      transition all 0.3s ease
+      transition all transition_normal ease
+      pointer-events none
 
     span
       font-family font_face
       font-size 12px
       text-transform uppercase
       letter-spacing 1px
-      margin-top 10px
+      margin-top spacing_sm
       opacity 0.8
+      pointer-events none
 
     &:hover
       transform translateY(-5px)
-      border-color rgba(255, 255, 255, 0.3)
+      border-color border_medium
 
       svg
         transform scale(1.15)
 
     &.discord:hover
-      background rgba(88, 101, 242, 0.2)
-      border-color rgba(88, 101, 242, 0.5)
+      background alpha(discord_color, 0.2)
+      border-color alpha(discord_color, 0.5)
       svg
-        color #5865F2
+        color discord_color
 
     &.twitch:hover
-      background rgba(145, 70, 255, 0.2)
-      border-color rgba(145, 70, 255, 0.5)
+      background alpha(twitch_color, 0.2)
+      border-color alpha(twitch_color, 0.5)
       svg
-        color #9146FF
+        color twitch_color
 
     &.twitter:hover
-      background rgba(255, 255, 255, 0.1)
-      border-color rgba(255, 255, 255, 0.5)
+      background alpha(twitter_color, 0.1)
+      border-color alpha(twitter_color, 0.5)
       svg
-        color #fff
+        color twitter_color
 
     &.steam:hover
-      background rgba(0, 114, 172, 0.2)
-      border-color rgba(0, 114, 172, 0.5)
+      background alpha(steam_color, 0.2)
+      border-color alpha(steam_color, 0.5)
       svg
-        color #00adee
+        color steam_color
 
     &.youtube:hover
-      background rgba(255, 0, 0, 0.2)
-      border-color rgba(255, 0, 0, 0.5)
+      background alpha(youtube_color, 0.2)
+      border-color alpha(youtube_color, 0.5)
       svg
-        color #FF0000
+        color youtube_color
 
-  @media (max-width: 720px)
-    gap 15px
+  @media (max-width: bp_tablet)
+    gap spacing_md
 
     .social-icon
-      padding 15px
+      padding spacing_md
       min-width 70px
 
       svg
