@@ -27,6 +27,7 @@ function initializeClanAOD() {
             this.scaleHeroVideo();
             this.setupHistoryTimeline();
             this.setupScreenshotGallery();
+            this.setupMerchCarousel();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -409,6 +410,61 @@ function initializeClanAOD() {
             });
 
             ClanAOD.setupScreenshotCarousel();
+        },
+        setupMerchCarousel: function() {
+            var container = e('.merch-carousel');
+            if (container.length === 0) return;
+
+            var viewport = container.find('.merch-viewport');
+            var grid = container.find('.merch-grid');
+            var items = grid.find('.merch-item');
+            var prevBtn = container.find('.merch-prev');
+            var nextBtn = container.find('.merch-next');
+            var currentOffset = 0;
+
+            function getItemWidth() {
+                return items.first().outerWidth(true);
+            }
+
+            function getVisibleWidth() {
+                return viewport.width();
+            }
+
+            function getMaxOffset() {
+                var totalWidth = 0;
+                items.each(function() {
+                    totalWidth += e(this).outerWidth(true);
+                });
+                var visibleWidth = getVisibleWidth();
+                return Math.max(0, totalWidth - visibleWidth + 50);
+            }
+
+            function updateCarousel() {
+                var maxOffset = getMaxOffset();
+                if (currentOffset > maxOffset) currentOffset = maxOffset;
+                if (currentOffset < 0) currentOffset = 0;
+
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+
+                prevBtn.prop('disabled', currentOffset <= 0);
+                nextBtn.prop('disabled', currentOffset >= maxOffset);
+            }
+
+            prevBtn.on('click', function() {
+                currentOffset -= getItemWidth();
+                updateCarousel();
+            });
+
+            nextBtn.on('click', function() {
+                currentOffset += getItemWidth();
+                updateCarousel();
+            });
+
+            e(window).on('resize', function() {
+                updateCarousel();
+            });
+
+            updateCarousel();
         },
         setupScreenshotCarousel: function() {
             var container = e('.carousel-container');

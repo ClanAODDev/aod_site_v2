@@ -177,19 +177,6 @@
         </div>
     </section>
 
-    <section class="honor-info ">
-        <div class="section-content-container animate drop-down-fade-in">
-            <h1>We aspire to win the right way </h1>
-            <div class="section-blurb">
-                <p>Chief among our priorities is maintaining a gaming atmosphere free of drama that all can enjoy. While
-                    winning is important to us, so is fair play, respect among members, and courtesy to our volunteer
-                    staff.</p>
-                <p><a href="https://www.clanaod.net/forums/showthread.php?t=3327">Read our Code of Conduct</a></p>
-
-            </div>
-        </div>
-    </section>
-
     <section class="social-media with-shadow">
         <div class="section-content-container section--centered">
             <h1 class="animate slide-in-left animate-delay-0">Catch up with us on social media </h1>
@@ -220,6 +207,52 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="merch-section with-shadow">
+        <div class="section-content-container section--centered">
+            <h1 class="animate slide-in-left">Rep the Angels of Death</h1>
+            <div class="section-blurb">
+                <p class="animate slide-in-right">Show your AOD pride with official merchandise. From premium apparel to gaming gear, we've got you covered.</p>
+            </div>
+            <div class="merch-carousel">
+                <button class="merch-nav merch-prev" aria-label="Previous items">&lsaquo;</button>
+                <div class="merch-viewport">
+                    <div class="merch-grid">
+                        <a href="https://exclaim.gg/store/AODMerch/b44boc0u" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/culkvl4p4pil6j9l.ps-front.pw-384.webp" alt="Christmas Hoodie">
+                            <span>Christmas Hoodie</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/tiif16wd" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/ypb6lg43if4zzwdz.ps-front.pw-384.webp" alt="Nike Club Fleece Hoodie">
+                            <span>Nike Club Fleece Hoodie</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/odvg8pbs" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/xnq2q4bw6mni0hn1.ps-front.pw-384.webp" alt="Esports Jersey">
+                            <span>Esports Jersey</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/wlieyyh0" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/tkq7j82lgsdhz4q1.ps-front.pw-384.webp" alt="XXL Gaming Mouse Pad">
+                            <span>XXL Gaming Mouse Pad</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/3pkex63t" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/l2hk3sj30vm865uk.ps-front.pw-384.webp" alt="15 oz Mug">
+                            <span>15 oz Mug</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/uz0zlglj" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/bt2s8kkk6eg2f8jd.ps-front.pw-384.webp" alt="Carhartt Hoodie">
+                            <span>Carhartt Hoodie</span>
+                        </a>
+                        <a href="https://exclaim.gg/store/AODMerch/y2mwcg4d" class="merch-item" target="_blank">
+                            <img src="https://exclaim.gg/design-preview/3h9f1xt3x1sobwy5.ps-front.pw-384.webp" alt="Hockey Jersey">
+                            <span>Hockey Jersey</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="merch-nav merch-next" aria-label="Next items">&rsaquo;</button>
+            </div>
+            <a href="https://exclaim.gg/store/AODMerch" class="merch-cta animate drop-up" target="_blank">Shop All Merchandise [EXCLAIM.gg]</a>
         </div>
     </section>
 
