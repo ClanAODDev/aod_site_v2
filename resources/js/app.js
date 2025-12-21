@@ -28,6 +28,7 @@ function initializeClanAOD() {
             this.setupHistoryTimeline();
             this.setupScreenshotGallery();
             this.setupMerchCarousel();
+            this.setupVodCarousel();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -627,6 +628,123 @@ function initializeClanAOD() {
 
             createDots();
             updateCarousel();
+        },
+        setupVodCarousel: function() {
+            var container = e('.vod-carousel');
+            if (container.length === 0) return;
+
+            var viewport = container.find('.vod-viewport');
+            var grid = container.find('.vod-grid');
+            var items = grid.find('.vod-item');
+            var prevBtn = container.find('.vod-prev');
+            var nextBtn = container.find('.vod-next');
+            var currentOffset = 0;
+            var isScrolling = true;
+            var scrollSpeed = 0.3;
+            var originalSetWidth = 0;
+
+            var touchStartX = 0;
+            var touchStartY = 0;
+            var touchStartOffset = 0;
+            var isTouching = false;
+            var isHorizontalSwipe = null;
+            var resumeTimer = null;
+
+            items.clone().appendTo(grid);
+
+            function calculateSetWidth() {
+                originalSetWidth = 0;
+                var gap = 20;
+                items.each(function() {
+                    originalSetWidth += e(this).outerWidth(true) + gap;
+                });
+            }
+
+            function normalizeOffset() {
+                if (currentOffset >= originalSetWidth) {
+                    currentOffset -= originalSetWidth;
+                } else if (currentOffset < 0) {
+                    currentOffset += originalSetWidth;
+                }
+            }
+
+            function continuousScroll() {
+                if (isScrolling && !isTouching) {
+                    currentOffset += scrollSpeed;
+                    normalizeOffset();
+                    grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+                }
+
+                requestAnimationFrame(continuousScroll);
+            }
+
+            prevBtn.on('click', function() {
+                currentOffset -= items.first().outerWidth(true);
+                normalizeOffset();
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+            });
+
+            nextBtn.on('click', function() {
+                currentOffset += items.first().outerWidth(true);
+                normalizeOffset();
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+            });
+
+            container.on('mouseenter', function() {
+                isScrolling = false;
+            });
+
+            container.on('mouseleave', function() {
+                isScrolling = true;
+            });
+
+            viewport[0].addEventListener('touchstart', function(evt) {
+                isTouching = true;
+                isHorizontalSwipe = null;
+                if (resumeTimer) {
+                    clearTimeout(resumeTimer);
+                    resumeTimer = null;
+                }
+                touchStartX = evt.touches[0].clientX;
+                touchStartY = evt.touches[0].clientY;
+                touchStartOffset = currentOffset;
+            }, { passive: true });
+
+            viewport[0].addEventListener('touchmove', function(evt) {
+                if (!isTouching) return;
+                var touchX = evt.touches[0].clientX;
+                var touchY = evt.touches[0].clientY;
+                var deltaX = Math.abs(touchX - touchStartX);
+                var deltaY = Math.abs(touchY - touchStartY);
+
+                if (isHorizontalSwipe === null && (deltaX > 5 || deltaY > 5)) {
+                    isHorizontalSwipe = deltaX > deltaY;
+                }
+
+                if (isHorizontalSwipe) {
+                    evt.preventDefault();
+                    var delta = touchStartX - touchX;
+                    currentOffset = touchStartOffset + delta;
+                    normalizeOffset();
+                    grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+                }
+            }, { passive: false });
+
+            viewport[0].addEventListener('touchend', function() {
+                isTouching = false;
+                isHorizontalSwipe = null;
+                resumeTimer = setTimeout(function() {
+                    isScrolling = true;
+                }, 2500);
+                isScrolling = false;
+            }, { passive: true });
+
+            e(window).on('resize', function() {
+                calculateSetWidth();
+            });
+
+            calculateSetWidth();
+            continuousScroll();
         },
     };
     }($);

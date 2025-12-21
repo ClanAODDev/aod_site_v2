@@ -1,0 +1,17 @@
+{
+    "is_live": true,
+    "stream": {
+        "id": "41234567890",
+        "user_id": "123456789",
+        "user_login": "clanaodstream",
+        "user_name": "ClanAODStream",
+        "game_id": "512710",
+        "game_name": "Call of Duty: Warzone",
+        "title": "AOD Community Night - Weekend Gaming Session!",
+        "viewer_count": 47,
+        "started_at": "2025-12-21T20:00:00Z",
+        "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_clanaodstream-320x180.jpg"
+    },
+    "vods": [],
+    "channel": "clanaodstream"
+}

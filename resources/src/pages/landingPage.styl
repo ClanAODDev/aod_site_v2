@@ -291,16 +291,27 @@ section.founded-info
 
 /**
  * ----------------
- * HOLIDAY SECTION
+ * HIGHLIGHTED EVENT SECTION
  * ----------------
  **/
-section.holiday-section
-  background repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139, 30, 30, 0.05) 40px, rgba(139, 30, 30, 0.05) 80px), linear-gradient(180deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%)
-  background-color #1a0a0a
+section.highlighted-event-section
   padding 80px 0
   position relative
   overflow hidden
   z-index 10
+
+  &.holiday-theme
+    background repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139, 30, 30, 0.05) 40px, rgba(139, 30, 30, 0.05) 80px), linear-gradient(180deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%)
+    background-color #1a0a0a
+
+  &.default-theme
+    background linear-gradient(180deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%)
+
+  &.esports-theme
+    background linear-gradient(180deg, #0a0a14 0%, #14142a 50%, #0a0a14 100%)
+
+  &.community-theme
+    background linear-gradient(180deg, #0a140a 0%, #142a14 50%, #0a140a 100%)
 
 .snowflakes
   position absolute
@@ -402,7 +413,7 @@ section.holiday-section
     transform translateY(calc(100vh + 100px)) rotate(360deg)
     opacity 0
 
-.holiday-content
+.highlighted-event-content
   text-align center
   max-width 900px
   margin 0 auto
@@ -420,7 +431,7 @@ section.holiday-section
     margin-bottom 30px
     line-height 1.7
 
-.holiday-badge
+.highlighted-event-badge
   display inline-flex
   align-items center
   gap 12px
@@ -435,12 +446,13 @@ section.holiday-section
   font-size 13px
   color #fff
 
-  i
-    color #ff6b6b
-    animation snowflake-spin 3s linear infinite
+  .holiday-theme &
+    i
+      color #ff6b6b
+      animation snowflake-spin 3s linear infinite
 
-  i:last-child
-    animation-direction reverse
+    i:last-child
+      animation-direction reverse
 
 @keyframes snowflake-spin
   from
@@ -448,7 +460,7 @@ section.holiday-section
   to
     transform rotate(360deg)
 
-.holiday-video
+.highlighted-event-video
   position relative
   width 100%
   max-width 800px
@@ -470,18 +482,39 @@ section.holiday-section
     height 100%
     border none
 
+.highlighted-event-cta
+  display inline-flex
+  align-items center
+  gap 10px
+  padding spacing_md spacing_2xl
+  background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+  color #fff
+  font-family font_face
+  font-size 14px
+  text-transform uppercase
+  letter-spacing 2px
+  text-decoration none
+  border-radius 6px
+  margin-top spacing_lg
+  transition all transition_normal ease
+
+  &:hover
+    background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
+    transform translateY(-3px)
+    box-shadow 0 8px 25px alpha(aod_red, 0.4)
+
 @media (max-width: bp_tablet)
-  section.holiday-section
+  section.highlighted-event-section
     padding 50px 0
 
-  .holiday-content
+  .highlighted-event-content
     h1
       font-size 1.8rem
 
     p
       font-size 1rem
 
-  .holiday-badge
+  .highlighted-event-badge
     font-size 11px
     padding 8px 18px
 

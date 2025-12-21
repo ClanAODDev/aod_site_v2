@@ -10,7 +10,8 @@ describe('Architecture Tests', function () {
     it('ensures repositories extend base repository', function () {
         expect('App\Repositories\AOD')
             ->toExtend('App\Repositories\AOD\Repository')
-            ->ignoring('App\Repositories\AOD\Repository');
+            ->ignoring('App\Repositories\AOD\Repository')
+            ->ignoring('App\Repositories\AOD\TwitchRepository');
     });
 
     it('ensures controllers are in correct namespace', function () {

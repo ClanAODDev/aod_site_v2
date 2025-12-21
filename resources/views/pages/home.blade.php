@@ -81,40 +81,13 @@
         </div>
     </div>
 
-    <section class="holiday-section with-shadow">
-        <div class="snowflakes">
-            <div class="snowflake">❄</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❄</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❄</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❄</div>
-        </div>
-        <div class="section-content-container section--centered">
-            <div class="holiday-content animate drop-up">
-                <div class="holiday-badge">
-                    <i class="fas fa-snowflake"></i>
-                    <span>Holiday Special</span>
-                    <i class="fas fa-snowflake"></i>
-                </div>
-                <h1>CLANAoD Christmas Podcast 2025</h1>
-                <p>Celebrate the season with the Angels of Death! Join us for our annual holiday podcast featuring community stories, gaming highlights, and festive fun.</p>
-                <div class="holiday-video">
-                    <iframe
-                        src="https://www.youtube.com/embed/cdVZmCGgTxs"
-                        title="AOD Christmas Podcast 2024"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+    @if($showTwitchLive)
+        @include('partials.twitch-live')
+    @elseif($showHighlightedEvent)
+        @include('partials.highlighted-event')
+    @elseif($showVods)
+        @include('partials.twitch-vods')
+    @endif
 
     <section class="supported-games with-shadow">
         <div class="section-content-container section--centered ">
