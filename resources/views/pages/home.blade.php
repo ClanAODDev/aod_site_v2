@@ -101,7 +101,7 @@
                     <span>Holiday Special</span>
                     <i class="fas fa-snowflake"></i>
                 </div>
-                <h1>AOD Christmas Podcast 2025</h1>
+                <h1>CLANAoD Christmas Podcast 2025</h1>
                 <p>Celebrate the season with the Angels of Death! Join us for our annual holiday podcast featuring community stories, gaming highlights, and festive fun.</p>
                 <div class="holiday-video">
                     <iframe
