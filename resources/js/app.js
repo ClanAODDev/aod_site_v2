@@ -436,7 +436,7 @@ function initializeClanAOD() {
                     totalWidth += e(this).outerWidth(true);
                 });
                 var visibleWidth = getVisibleWidth();
-                return Math.max(0, totalWidth - visibleWidth + 50);
+                return Math.max(0, totalWidth - visibleWidth + 150);
             }
 
             function updateCarousel() {
