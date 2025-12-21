@@ -57,13 +57,13 @@
     "src": "resources/fonts/socicon.woff"
   },
   "resources/js/app-legacy.js": {
-    "file": "assets/app-legacy-1ZPL-cG6.js",
+    "file": "assets/app-legacy-B1zysRho.js",
     "name": "app",
     "src": "resources/js/app-legacy.js",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-aGuaut7W.js",
+    "file": "assets/app-UZ1m_ECW.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
