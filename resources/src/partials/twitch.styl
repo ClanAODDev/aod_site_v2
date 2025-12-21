@@ -1,0 +1,275 @@
+.twitch-section
+  background linear-gradient(180deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)
+  padding 80px 0
+  position relative
+  z-index 10
+
+  .section-content-container
+    width 100%
+    max-width 1400px
+    padding 0 spacing_xl
+
+.twitch-content
+  text-align center
+  max-width 1000px
+  margin 0 auto
+
+  h1
+    font-family font_face
+    font-size 2rem
+    color #fff
+    margin-bottom 15px
+    text-shadow 0 2px 10px rgba(0, 0, 0, 0.5)
+
+  .stream-game
+    font-size 1.1rem
+    color alpha(twitch_color, 0.9)
+    margin-bottom 25px
+
+.twitch-live-badge
+  display inline-flex
+  align-items center
+  gap 10px
+  background linear-gradient(135deg, alpha(twitch_color, 0.3) 0%, alpha(twitch_color, 0.5) 100%)
+  border 1px solid alpha(twitch_color, 0.5)
+  padding 8px 20px
+  border-radius 30px
+  margin-bottom 20px
+  font-family font_face
+  text-transform uppercase
+  letter-spacing 2px
+  font-size 13px
+  color #fff
+
+  .live-dot
+    width 10px
+    height 10px
+    background #ff0000
+    border-radius 50%
+    animation pulse-live 1.5s ease-in-out infinite
+
+@keyframes pulse-live
+  0%, 100%
+    opacity 1
+    transform scale(1)
+  50%
+    opacity 0.5
+    transform scale(1.2)
+
+.twitch-embed-container
+  position relative
+  width 100%
+  max-width 900px
+  margin 0 auto 30px
+  border-radius 12px
+  overflow hidden
+  box-shadow 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px alpha(twitch_color, 0.3)
+
+  &::before
+    content ''
+    display block
+    padding-top 56.25%
+
+  #twitch-embed
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+    iframe
+      width 100%
+      height 100%
+      border none
+
+.twitch-unmute-btn
+  position absolute
+  bottom 20px
+  left 50%
+  transform translateX(-50%)
+  background alpha(twitch_color, 0.9)
+  border none
+  color #fff
+  padding 12px 24px
+  border-radius 6px
+  font-family font_face
+  font-size 14px
+  text-transform uppercase
+  letter-spacing 1px
+  cursor pointer
+  display flex
+  align-items center
+  gap 10px
+  transition all transition_normal ease
+  z-index 10
+
+  &:hover
+    background twitch_color
+    transform translateX(-50%) scale(1.05)
+
+  i
+    font-size 18px
+
+.twitch-cta
+  display inline-flex
+  align-items center
+  gap 10px
+  padding spacing_md spacing_2xl
+  background linear-gradient(135deg, twitch_color 0%, darken(twitch_color, 20%) 100%)
+  color #fff
+  font-family font_face
+  font-size 14px
+  text-transform uppercase
+  letter-spacing 2px
+  text-decoration none
+  border-radius 6px
+  transition all transition_normal ease
+
+  &:hover
+    background linear-gradient(135deg, lighten(twitch_color, 10%) 0%, twitch_color 100%)
+    transform translateY(-3px)
+    box-shadow 0 8px 25px alpha(twitch_color, 0.4)
+
+  i
+    font-size 18px
+
+.vod-carousel
+  display flex
+  align-items center
+  gap 15px
+  margin 40px 0
+
+.vod-viewport
+  overflow hidden
+  flex 1
+  mask-image linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)
+  -webkit-mask-image linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)
+
+.vod-grid
+  display flex
+  gap 20px
+
+.vod-item
+  display flex
+  flex-direction column
+  text-decoration none
+  background rgba(255, 255, 255, 0.03)
+  border 1px solid border_subtle
+  border-radius 12px
+  overflow hidden
+  transition all transition_normal ease
+  flex-shrink 0
+  width 280px
+
+  &:hover
+    border-color alpha(twitch_color, 0.6)
+    background alpha(twitch_color, 0.1)
+    box-shadow 0 0 25px alpha(twitch_color, 0.3)
+
+    .vod-thumbnail img
+      transform scale(1.05)
+
+.vod-thumbnail
+  position relative
+  width 100%
+  overflow hidden
+
+  img
+    width 100%
+    height 158px
+    object-fit cover
+    transition transform transition_normal ease
+
+  .vod-duration
+    position absolute
+    bottom 8px
+    right 8px
+    background rgba(0, 0, 0, 0.85)
+    color #fff
+    font-size 12px
+    padding 3px 6px
+    border-radius 4px
+    font-family font_face
+
+.vod-info
+  padding spacing_md
+  display flex
+  flex-direction column
+  flex 1
+
+  .vod-title
+    font-family font_face
+    font-size 13px
+    color rgba(255, 255, 255, 0.9)
+    text-transform uppercase
+    letter-spacing 0.5px
+    line-height 1.3
+    display -webkit-box
+    -webkit-line-clamp 2
+    -webkit-box-orient vertical
+    overflow hidden
+    flex 1
+
+  .vod-meta
+    font-family font_face
+    font-size 12px
+    color rgba(255, 255, 255, 0.5)
+    display flex
+    align-items center
+    gap 5px
+    margin-top auto
+
+    i
+      font-size 11px
+
+.vod-nav
+  background overlay_light
+  border 1px solid border_medium
+  color header_color
+  width 45px
+  height 45px
+  border-radius 50%
+  font-size 28px
+  cursor pointer
+  transition all transition_normal ease
+  flex-center()
+  flex-shrink 0
+
+  &:hover
+    background alpha(twitch_color, 0.3)
+    border-color alpha(twitch_color, 0.6)
+
+  &:disabled
+    opacity 0.3
+    cursor not-allowed
+
+@media (max-width: bp_tablet)
+  .twitch-section
+    padding 50px 0
+
+  .twitch-content
+    h1
+      font-size 1.5rem
+
+    .stream-game
+      font-size 1rem
+
+  .twitch-live-badge
+    font-size 11px
+    padding 6px 15px
+
+  .twitch-unmute-btn
+    padding 10px 18px
+    font-size 12px
+
+  .vod-carousel
+    gap spacing_sm
+
+  .vod-nav
+    display none
+
+  .vod-item
+    width 240px
+
+  .vod-thumbnail img
+    height 135px

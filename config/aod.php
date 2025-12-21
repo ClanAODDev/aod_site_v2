@@ -2,13 +2,51 @@
 
 return [
 
-    /**
-     * YouTube IDs
-     */
     'intro_video_id' => env('INTRO_VIDEO_ID', '7u848gKuFgE'),
     'hero_video_id' => env('HERO_VIDEO_ID', 'fEVGn3eRABI'),
     'foundations_era_video_id' => env('HISTORY_FOUNDATIONS_ERA_VIDEO_ID', 'KN6yvG9aJsg'),
     'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
+
+    /**
+     * Highlighted Events
+     *
+     * Icons: https://fontawesome.com/search?o=r&m=free
+     * Video types: youtube, twitch
+     *
+     * Themes:
+     *   - holiday: Red/maroon gradient with diagonal stripes
+     *   - default: Dark neutral gradient
+     *   - esports: Dark blue/purple gradient
+     *   - community: Dark green gradient
+     */
+    'highlighted_events' => [
+        [
+            'id' => 'christmas-2025',
+            'show_snowflakes' => true,
+            'enabled' => true,
+            'start_date' => '12-01',
+            'end_date' => '01-15',
+            'theme' => 'holiday',
+            'badge' => [
+                'icon' => 'fas fa-snowflake',
+                'text' => 'Holiday Special',
+            ],
+            'title' => 'ClanAOD Christmas Podcast 2025',
+            'description' => 'Celebrate the season with the Angels of Death! Join us for our annual holiday podcast featuring community stories, gaming highlights, and festive fun.',
+            'video' => [
+                'type' => 'youtube',
+                'id' => 'cdVZmCGgTxs',
+                'title' => 'AOD Christmas Podcast 2025',
+            ],
+            /* 'cta' => [
+                'text' => 'Learn More',
+                'url' => 'https://',
+                'icon' => 'fas fa-arrow-right',
+            ],*/
+        ],
+    ],
+
+
 
     'merch' => [
         'store_url' => 'https://exclaim.gg/store/AODMerch',

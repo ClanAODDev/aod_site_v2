@@ -57,25 +57,25 @@
     "src": "resources/fonts/socicon.woff"
   },
   "resources/js/app-legacy.js": {
-    "file": "assets/app-legacy-B1zysRho.js",
+    "file": "assets/app-legacy-DFYQPO4Z.js",
     "name": "app",
     "src": "resources/js/app-legacy.js",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-UZ1m_ECW.js",
+    "file": "assets/app-zDnF7yxP.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/src/main-legacy.styl": {
-    "file": "assets/main-legacy-DRHWUTKi.js",
+    "file": "assets/main-legacy-SzIfrK0h.js",
     "name": "main",
     "src": "resources/src/main-legacy.styl",
     "isEntry": true
   },
   "resources/src/main.styl": {
-    "file": "assets/main-Bqn0vba4.css",
+    "file": "assets/main-BrdnVQWC.css",
     "src": "resources/src/main.styl",
     "isEntry": true,
     "name": "main",

@@ -45,4 +45,12 @@ return [
         ],
     ],
 
+    'twitch' => [
+        'client_id' => env('TWITCH_CLIENT_ID'),
+        'client_secret' => env('TWITCH_CLIENT_SECRET'),
+        'channel' => env('TWITCH_CHANNEL', 'clanaodstream'),
+        'api_base' => 'https://api.twitch.tv/helix',
+        'oauth_url' => 'https://id.twitch.tv/oauth2/token',
+    ],
+
 ];
