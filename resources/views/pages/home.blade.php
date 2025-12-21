@@ -24,15 +24,15 @@
                 id="video-iframe" allowfullscreen style="border: none;"></iframe>
     </div>
 
+    <div class="hero-text">
+        @include('partials.aod-logo')
+        <h1 class="slide-in-right">Game with purpose<br/>inspired by community</h1>
+        <h2 class="subtitle">What are you waiting for?</h2>
+        <div class="play-button">PLAY VIDEO</div>
+    </div>
+
     <div class="hero-video video-background">
         <div class="video-container video-foreground">
-
-            <div class="hero-text">
-                @include('partials.aod-logo')
-                <h1 class="slide-in-right">Game with purpose<br/>inspired by community</h1>
-                <h2 class="subtitle">What are you waiting for?</h2>
-                <div class="play-button">PLAY VIDEO</div>
-            </div>
 
             <div class="grid"></div>
 

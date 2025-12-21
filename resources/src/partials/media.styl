@@ -1,13 +1,23 @@
 @media (max-width: 720px)
-  html, body
-    overflow-x hidden
-    max-width 100vw
-
   .hero-text .aod-logo
     width 40%
 
-  .hero-video .hero-text h1
+  .hero-text h1
     font-size 28px
+
+  .divisions-grid
+    gap 8px
+
+    .division-icon
+      width 70px
+      padding 8px
+
+      img
+        width 32px
+        height 32px
+
+      .division-name
+        font-size 8px
 
 
 
@@ -19,7 +29,7 @@
 
 @media (max-width: 1230px)
   .push
-    margin-top: 530px;
+    margin-top: calc(100vh - 130px);
   .mobile-nav
 
     .clan-logo, .hamburger, .nav-overlay
@@ -39,11 +49,13 @@
       z-index 999
       opacity 0
       visibility hidden
+      pointer-events none
       transition opacity 0.3s ease, visibility 0.3s ease
 
       &.active
         opacity 1
         visibility visible
+        pointer-events auto
 
     .nav-items
       position fixed
@@ -105,11 +117,24 @@
   .collection .item
     flex 0 80%
 
+  section
+    padding-left 15px !important
+    padding-right 15px !important
+
   section .section-content-container
-    width auto !important
+    width 100% !important
     max-width 100% !important
-    padding 0 15px !important
+    padding 0 10px !important
     margin 0 auto !important
+
+  .divisions-grid
+    padding 0 5px
+
+  .holiday-content
+    padding 0 10px
+
+  .merch-carousel
+    padding 0
 
   .primary-nav ul li
     background none
@@ -152,7 +177,7 @@
 
 @media (max-width: 1260px)
     .push
-      margin-top: 625px;
+      margin-top: calc(100vh - 130px);
     .hero-video
       position fixed !important
       top 0 !important
@@ -161,12 +186,16 @@
       height 100vh !important
       z-index -1 !important
 
-      .hero-text
-        position fixed !important
-        top 125px !important
-        left 50% !important
-        transform translateX(-50%) !important
-        z-index 3 !important
+    .hero-text
+      position fixed !important
+      top 125px !important
+      left 50% !important
+      transform translateX(-50%) !important
+      z-index 5 !important
+      pointer-events none
+
+      *
+        pointer-events auto
   section.founded-info .section-image
     position absolute
     top -130px
