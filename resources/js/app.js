@@ -421,50 +421,57 @@ function initializeClanAOD() {
             var prevBtn = container.find('.merch-prev');
             var nextBtn = container.find('.merch-next');
             var currentOffset = 0;
+            var isScrolling = true;
+            var scrollSpeed = 0.5;
 
-            function getItemWidth() {
-                return items.first().outerWidth(true);
-            }
+            items.clone().appendTo(grid);
+            var allItems = grid.find('.merch-item');
 
-            function getVisibleWidth() {
-                return viewport.width();
-            }
-
-            function getMaxOffset() {
-                var totalWidth = 0;
+            function getOriginalSetWidth() {
+                var width = 0;
                 items.each(function() {
-                    totalWidth += e(this).outerWidth(true);
+                    width += e(this).outerWidth(true);
                 });
-                var visibleWidth = getVisibleWidth();
-                return Math.max(0, totalWidth - visibleWidth + 150);
+                return width;
             }
 
-            function updateCarousel() {
-                var maxOffset = getMaxOffset();
-                if (currentOffset > maxOffset) currentOffset = maxOffset;
-                if (currentOffset < 0) currentOffset = 0;
+            function continuousScroll() {
+                if (isScrolling) {
+                    currentOffset += scrollSpeed;
 
-                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+                    var resetPoint = getOriginalSetWidth();
+                    if (currentOffset >= resetPoint) {
+                        currentOffset = 0;
+                    }
 
-                prevBtn.prop('disabled', currentOffset <= 0);
-                nextBtn.prop('disabled', currentOffset >= maxOffset);
+                    grid.css('transform', 'translateX(-' + currentOffset + 'px)');
+                }
+
+                requestAnimationFrame(continuousScroll);
             }
 
             prevBtn.on('click', function() {
-                currentOffset -= getItemWidth();
-                updateCarousel();
+                currentOffset -= items.first().outerWidth(true);
+                if (currentOffset < 0) currentOffset = getOriginalSetWidth() + currentOffset;
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
             nextBtn.on('click', function() {
-                currentOffset += getItemWidth();
-                updateCarousel();
+                currentOffset += items.first().outerWidth(true);
+                var resetPoint = getOriginalSetWidth();
+                if (currentOffset >= resetPoint) currentOffset = currentOffset - resetPoint;
+                grid.css('transform', 'translateX(-' + currentOffset + 'px)');
             });
 
-            e(window).on('resize', function() {
-                updateCarousel();
+            container.on('mouseenter', function() {
+                isScrolling = false;
             });
 
-            updateCarousel();
+            container.on('mouseleave', function() {
+                isScrolling = true;
+            });
+
+            continuousScroll();
         },
         setupScreenshotCarousel: function() {
             var container = e('.carousel-container');
