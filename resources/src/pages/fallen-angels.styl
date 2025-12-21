@@ -26,6 +26,9 @@ video#angel-of-death
     h3
         padding 10px 0
         min-width 600px
+        @media (max-width: 720px)
+            min-width 100%
+            padding 10px 15px
 
     .fallen-angel
         flex 0 47%
@@ -35,6 +38,10 @@ video#angel-of-death
         font-size 18px
         color #bfb5b5
         font normal 16px / 1.8em MuseoSans, century gothic, arial
+        @media (max-width: 720px)
+            flex 0 100%
+            padding 15px 10px
+            font-size 16px
 
     a.fallen-angel:hover
         color #fff !important
@@ -51,6 +58,9 @@ video#angel-of-death
         @media (max-width: 1470px)
             width 600px
             display block
+        @media (max-width: 720px)
+            width 100%
+            padding 0 10px
 
 
 section#fallen-angels
@@ -66,6 +76,10 @@ section#fallen-angels
             background-repeat no-repeat
             background-position 50% 0
             width 100%
+        @media (max-width: 720px)
+            height auto
+            min-height 500px
+            background-size cover
 
         #epitaph
             position absolute
@@ -78,11 +92,18 @@ section#fallen-angels
                 min-width 600px
                 margin 0 auto
                 left 0
+            @media (max-width: 720px)
+                min-width 100%
+                width 100%
+                padding 20px 15px
+                top 10%
 
             h2#lead
                 font-family 'Copperplate Gothic Light', serif
                 font-variant small-caps
                 text-transform none
+                @media (max-width: 720px)
+                    font-size 20px
 
             #body
                 font-size 25px
@@ -91,3 +112,6 @@ section#fallen-angels
                 font-variant small-caps
                 line-height 40px
                 text-shadow #000 1px 1px
+                @media (max-width: 720px)
+                    font-size 16px
+                    line-height 28px
