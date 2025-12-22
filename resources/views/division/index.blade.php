@@ -20,7 +20,7 @@
                 <div class="collection">
                     @forelse ($aod_divisions as $division)
                         <a href="{{ route("division.show", \Str::slug($division['name'])) }}"
-                           class="item game-button animate drop-down animation-delay-{{ $loop->index }}"
+                           class="item game-button animate drop-up animation-delay-{{ min($loop->index, 12) }}"
                         >
                             <div class="icon">
                                 <img class="game" src="{{ $division['icon'] }}"/>

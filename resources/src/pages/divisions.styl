@@ -1,13 +1,8 @@
-/**
- * HERO AREA
- */
-
 section.lobby
     background-image url(divisions_page_bg) , url(divisions_page_top_bg)
     background-repeat no-repeat, repeat-x
     background-position top center
     margin-top 40px
-
 
     .section-blurb
         text-align right
@@ -17,49 +12,90 @@ section.lobby
     margin-top 160px
     margin-bottom 60px
 
-    .game-button
-        border solid 1px #333
-        border-radius 10px
-        margin spacing_md
-        transition border-color transition_slower ease
-
-        &:hover
-            border-color header_color
-            cursor pointer
-            transition border-color transition_slower ease
-
-
-/**
- * GAMES
- */
-
 .collection
     display flex
     flex-direction row
     flex-wrap wrap
-    align-items center
+    justify-content center
+    gap spacing_lg
 
-    .item
+    .item.game-button
         display flex
         flex-direction row
-        flex 0 26%
+        align-items center
+        flex 0 0 calc(33.333% - spacing_lg)
         color #fff
-        padding 15px
+        padding spacing_lg
+        background linear-gradient(135deg, alpha(#1a1a2e, 0.8) 0%, alpha(#0d0d1a, 0.9) 100%)
+        border 1px solid alpha(#fff, 0.08)
+        border-radius 12px
+        position relative
+        overflow hidden
+        transition all transition_normal cubic-bezier(0.4, 0, 0.2, 1)
 
-        .icon
-            margin-right 15px
+        &::before
+            content ''
+            position absolute
+            top 0
+            left 0
+            right 0
+            bottom 0
+            background linear-gradient(135deg, alpha(aod_red, 0) 0%, alpha(aod_red, 0.05) 100%)
+            opacity 0
+            transition opacity transition_normal ease
 
-            .game
+        &:hover
+            cursor pointer
+            transform translateY(-4px) scale(1.02)
+            border-color alpha(aod_red, 0.4)
+            box-shadow 0 12px 40px alpha(#000, 0.4), 0 0 30px alpha(aod_red, 0.15)
+
+            &::before
                 opacity 1
 
-            &:hover
-                cursor pointer
+            .icon .game
+                transform scale(1.1)
+                filter drop-shadow(0 0 8px alpha(aod_red, 0.6))
+
+            .meta .title
+                color aod_red_light
+
+        .icon
+            margin-right spacing_lg
+            position relative
+            z-index 1
+
+            .game
+                width 64px
+                height 64px
+                object-fit contain
+                transition all transition_normal ease
 
         .meta
-            line-height 24px
+            line-height 1.5
+            position relative
+            z-index 1
 
-        .title, .members
+        .title
             font-family font_face
+            font-size 16px
+            font-weight 600
+            transition color transition_normal ease
 
         .members
-            color rgba(255, 255, 255, .3)
+            font-family font_face
+            font-size 13px
+            color alpha(#fff, 0.5)
+            margin-top 4px
+
+    +respond-tablet()
+        .item.game-button
+            flex 0 0 calc(50% - spacing_lg)
+
+    +respond-mobile()
+        .item.game-button
+            flex 0 0 100%
+
+            .icon .game
+                width 48px
+                height 48px
