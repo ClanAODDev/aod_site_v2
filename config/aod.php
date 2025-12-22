@@ -46,8 +46,6 @@ return [
         ],
     ],
 
-
-
     'merch' => [
         'store_url' => 'https://exclaim.gg/store/AODMerch',
         'image_base_url' => 'https://exclaim.gg/design-preview/',
