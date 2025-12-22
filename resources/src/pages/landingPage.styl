@@ -73,10 +73,8 @@
   max-width 1200px
   pointer-events none
 
-  *
-    pointer-events auto
-
   .play-button
+    pointer-events auto
     background url('/images/play-button.png') no-repeat
     width 53px
     height 61px
@@ -104,6 +102,7 @@
   overflow hidden
   transition opacity transition_normal ease
   background darker_bg
+  pointer-events none
 
 .twitch-live
   right spacing_2xl
@@ -124,6 +123,7 @@
   background-image url('/images/grid.png') , url('/images/video-overlay.png')
   background-color rgba(0, 0, 0, .5)
   background-repeat repeat, repeat-x
+  pointer-events none
 
 .video-container
   position absolute
@@ -203,6 +203,14 @@ section.supported-games
   .section-content-container
     padding 40px 0
 
+  h1, .section-blurb
+    position relative
+    z-index 0
+    pointer-events none
+
+    a
+      pointer-events auto
+
 .games-listing
   padding-left 0
   img
@@ -217,6 +225,8 @@ section.supported-games
   gap spacing_lg
   margin-top spacing_2xl
   padding 0 spacing_lg
+  position relative
+  z-index 5
 
   .division-icon
     display flex
@@ -229,6 +239,8 @@ section.supported-games
     border 1px solid border_subtle
     transition all transition_normal ease
     width 100px
+    position relative
+    z-index 10
 
     &:hover
       background rgba(255, 255, 255, 0.1)
@@ -247,6 +259,7 @@ section.supported-games
       opacity 0.7
       transition all transition_normal ease
       filter drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
+      pointer-events none
 
     .division-name
       color header_color
@@ -258,6 +271,7 @@ section.supported-games
       text-align center
       opacity 0.8
       line-height 1.2
+      pointer-events none
 
   @media (max-width: bp_tablet)
     gap spacing_sm
