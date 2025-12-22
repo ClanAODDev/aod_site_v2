@@ -197,6 +197,8 @@
 section.supported-games
   background url(supported_games_bg_image) supported_games_bg_color no-repeat center 0
   overflow visible
+  position relative
+  z-index 2
 
   .section-content-container
     padding 40px 0
@@ -234,13 +236,16 @@ section.supported-games
       transform translateY(-5px)
 
       img
+        opacity 1
         transform scale(1.1)
+        filter drop-shadow(0 0 8px alpha(hover_glow, 0.6))
 
     img
       width 48px
       height 48px
       object-fit contain
-      transition transform transition_normal ease
+      opacity 0.7
+      transition all transition_normal ease
       filter drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
 
     .division-name
@@ -279,6 +284,7 @@ section.founded-info
   background-position center 0, center 0
   background-repeat no-repeat, repeat-x
   position relative
+  z-index 1
 
   .section-blurb
     width 50%
@@ -526,6 +532,8 @@ section.highlighted-event-section
 section.merch-section
   background linear-gradient(180deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%)
   padding 80px 0
+  position relative
+  z-index 1
 
   .section-content-container
     width 100%
@@ -649,6 +657,8 @@ section.merch-section
  **/
 section.social-media
   background url(social_media_bg_image) social_media_section_bg_color no-repeat center 0
+  position relative
+  z-index 2
 
 .social-icons
   display flex
@@ -706,10 +716,10 @@ section.social-media
         color twitch_color
 
     &.twitter:hover
-      background alpha(twitter_color, 0.1)
-      border-color alpha(twitter_color, 0.5)
+      background alpha(#1DA1F2, 0.15)
+      border-color alpha(#1DA1F2, 0.4)
       svg
-        color twitter_color
+        color #1DA1F2
 
     &.steam:hover
       background alpha(steam_color, 0.2)
@@ -752,3 +762,5 @@ section.honor-info
  **/
 section.apply-info
   background url(apply_bg_image) apply_section_bg_color no-repeat center 0
+  position relative
+  z-index 0
