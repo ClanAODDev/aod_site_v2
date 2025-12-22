@@ -31,7 +31,7 @@ return [
                 'icon' => 'fas fa-snowflake',
                 'text' => 'Holiday Special',
             ],
-            'title' => 'ClanAOD Christmas Podcast 2025',
+            'title' => 'ClanAOD <strong>Christmas Podcast</strong> 2025',
             'description' => 'Celebrate the season with the Angels of Death! Join us for our annual holiday podcast featuring community stories, gaming highlights, and festive fun.',
             'video' => [
                 'type' => 'youtube',
