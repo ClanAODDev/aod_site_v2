@@ -19,6 +19,32 @@
       .division-name
         font-size 8px
 
+  .apply-form
+    width 95%
+    max-width none
+    padding spacing_md
+    max-height 85vh
+    overflow-y auto
+
+    h2
+      font-size 16px
+
+    .games-listing
+      display flex
+      flex-wrap wrap
+      justify-content center
+      gap spacing_xs
+
+      a
+        margin spacing_xs
+
+        img
+          width 40px
+          height 40px
+
+      .tooltips span
+        display none
+
 @media (max-width: 1120px)
   h1, h2
     font-size 1.3em
@@ -155,6 +181,12 @@
     flex 100%
     padding spacing_md
 
+  .apply-form
+    width 80%
+    max-width 600px
+    max-height 90vh
+    overflow-y auto
+
   #menu-primary
     display none
 
@@ -193,7 +225,7 @@
     z-index 5
     pointer-events none
 
-    *
+    .play-button
       pointer-events auto
 
   section.founded-info .section-image
