@@ -7,13 +7,14 @@ html, body
 
 body
   background-color body_background_color
-  background-image repeating-linear-gradient(
+  background-image linear-gradient(to bottom, body_background_color 0%, body_background_color 10%, transparent 40%), repeating-linear-gradient(
     -45deg,
     transparent,
     transparent 10px,
     rgba(255, 255, 255, 0.015) 10px,
     rgba(255, 255, 255, 0.015) 20px
   )
+  background-attachment fixed
   margin 0
   padding 0
   height 100%
@@ -220,6 +221,7 @@ a.call-to-action-button
 section.primary-footer
   background url(footer_bg_image) no-repeat footer_section_bg_color center 0
   display block
+  position relative
 
   h1
     font-family font_face

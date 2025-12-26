@@ -14,8 +14,7 @@
     @endphp
 
     <section class="division" data-application-id="{{ $data['division']['forum_app_id'] }}"
-             style="background: url({{ asset($division_heading) }}) no-repeat, url({{ asset('images/division-bg-border.jpg') }}) repeat-x;
-         background-position: top center;">
+             style="background: linear-gradient(to bottom, transparent 0%, transparent 20%, #1a1a1a 50%, transparent 70%), url({{ asset($division_heading) }}) no-repeat top center, url({{ asset('images/division-bg-border.jpg') }}) repeat-x top center;">
 
         <div class="section-content-container">
             <div id="sub-nav"></div>
