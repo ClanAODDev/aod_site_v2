@@ -20,4 +20,4 @@ services:
 networks:
     tracker_site_bridge:
         name: tracker_site_bridge
-        driver: bridge
+        external: true
