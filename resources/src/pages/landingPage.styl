@@ -63,7 +63,7 @@
 
 .hero-text
   color #fff
-  z-index 5
+  z-index 0
   position fixed
   top 70px
   left 50%
@@ -73,8 +73,13 @@
   max-width 1200px
   pointer-events none
 
+  &.hidden
+    display none
+
   .play-button
     pointer-events auto
+    position relative
+    z-index 5
     background url('/images/play-button.png') no-repeat
     width 53px
     height 61px
@@ -103,6 +108,9 @@
   transition opacity transition_normal ease
   background darker_bg
   pointer-events none
+
+  &.hidden
+    display none
 
 .twitch-live
   right spacing_2xl
@@ -198,7 +206,6 @@ section.supported-games
   background url(supported_games_bg_image) supported_games_bg_color no-repeat center 0
   overflow visible
   position relative
-  z-index 2
   section-fade-bottom()
 
   .section-content-container
@@ -227,7 +234,7 @@ section.supported-games
   margin-top spacing_2xl
   padding 0 spacing_lg
   position relative
-  z-index 5
+  z-index 20
 
   .division-icon
     display flex
@@ -299,7 +306,6 @@ section.founded-info
   background-position center 0, center 0
   background-repeat no-repeat, repeat-x
   position relative
-  z-index 1
 
   .section-blurb
     width 50%
@@ -308,7 +314,14 @@ section.founded-info
   .section-image
     position absolute
     right -150px
-    top -175px
+    top 0
+    bottom 0
+    margin auto 0
+    height fit-content
+    z-index 10
+
+    img
+      filter drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8))
 
 /**
  * ----------------
@@ -638,7 +651,7 @@ section.merch-section
 .merch-cta
   display inline-block
   padding spacing_md spacing_2xl
-  background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+  background transparent
   color header_color
   font-family font_face
   font-size 14px
@@ -646,13 +659,14 @@ section.merch-section
   letter-spacing 2px
   text-decoration none
   border-radius 6px
+  border 1px solid rgba(255, 255, 255, 0.3)
   margin-top spacing_lg
   transition all transition_normal ease
 
   &:hover
-    background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
-    transform translateY(-3px)
-    box-shadow 0 8px 25px rgba(aod_red, 0.4)
+    background rgba(255, 255, 255, 0.1)
+    border-color rgba(255, 255, 255, 0.6)
+    transform translateY(-2px)
 
 @media (max-width: bp_tablet)
   .merch-carousel

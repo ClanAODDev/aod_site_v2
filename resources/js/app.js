@@ -78,7 +78,7 @@ function initializeClanAOD() {
             e('#sub-nav').length && ClanAOD.handleAutoMenu('sub-nav', 'h2');
         },
         stickyNav: function () {
-            e(window).bind('scroll', function () {
+            var handleScroll = function() {
                 var scrollTop = e(window).scrollTop();
                 var stayFixed = e('.stay-fixed').length > 0;
 
@@ -91,8 +91,15 @@ function initializeClanAOD() {
 
                     if (scrollTop >= fadeEnd) {
                         opacity = 0;
+                        heroVideo.addClass('hidden');
+                        heroText.addClass('hidden');
                     } else if (scrollTop >= fadeStart) {
                         opacity = 1 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart));
+                        heroVideo.removeClass('hidden');
+                        heroText.removeClass('hidden');
+                    } else {
+                        heroVideo.removeClass('hidden');
+                        heroText.removeClass('hidden');
                     }
 
                     heroVideo.css('opacity', opacity);
@@ -106,7 +113,10 @@ function initializeClanAOD() {
                 } else {
                     e('.primary-nav').removeClass('fixed').find('.full-nav .home').removeClass('show-logo');
                 }
-            });
+            };
+
+            e(window).bind('scroll', handleScroll);
+            handleScroll();
         },
         handleModals: function () {
 
