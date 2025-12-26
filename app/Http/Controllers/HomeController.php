@@ -25,6 +25,7 @@ class HomeController extends Controller
         $showTwitchLive = $twitch['is_live'] ?? false;
         $showHighlightedEvent = ! $showTwitchLive && $highlightedEvent !== null;
         $showVods = ! $showTwitchLive && ! $showHighlightedEvent && ! empty($twitch['vods']);
+        $isChristmas = $highlightedEvent !== null && ($highlightedEvent['theme'] ?? '') === 'holiday';
 
         return view('pages.home', [
             'discord' => cache()->get('aod_discord'),
@@ -33,6 +34,7 @@ class HomeController extends Controller
             'showTwitchLive' => $showTwitchLive,
             'showHighlightedEvent' => $showHighlightedEvent,
             'showVods' => $showVods,
+            'isChristmas' => $isChristmas,
         ]);
     }
 
