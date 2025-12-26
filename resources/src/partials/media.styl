@@ -22,28 +22,37 @@
   .apply-form
     width 95%
     max-width none
-    padding spacing_md
+    padding spacing_lg
     max-height 85vh
     overflow-y auto
 
-    h2
-      font-size 16px
+    .apply-step
+      gap spacing_md
+
+      .step-number
+        width 30px
+        height 30px
+        font-size 14px
+
+      .step-content h2
+        font-size 16px
+
+      .step-content p
+        font-size 13px
 
     .games-listing
-      display flex
-      flex-wrap wrap
-      justify-content center
-      gap spacing_xs
+      grid-template-columns repeat(auto-fill, minmax(60px, 1fr))
+      gap spacing_sm
 
-      a
-        margin spacing_xs
+      .division-select
+        padding spacing_xs
 
         img
-          width 40px
-          height 40px
+          width 32px
+          height 32px
 
-      .tooltips span
-        display none
+        .division-label
+          font-size 8px
 
 @media (max-width: 1120px)
   h1, h2
@@ -51,7 +60,10 @@
 
 @media (max-width: bp_desktop)
   .push
-    margin-top calc(100vh - 130px)
+    margin-top 500px
+
+  section
+    min-height auto
 
   .mobile-nav
     .clan-logo,
@@ -182,10 +194,11 @@
     padding spacing_md
 
   .apply-form
-    width 80%
-    max-width 600px
+    width 90%
+    max-width 550px
     max-height 90vh
     overflow-y auto
+    padding spacing_xl
 
   #menu-primary
     display none
@@ -205,9 +218,12 @@
   section.lobby .section-blurb
     margin-right spacing_2xl
 
-@media (max-width: 1260px)
+@media (max-width: 1280px)
+  section
+    min-height auto
+
   .push
-    margin-top calc(100vh - 130px)
+    margin-top 700px
 
   .hero-video
     position fixed

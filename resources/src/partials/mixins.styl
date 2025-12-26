@@ -95,3 +95,16 @@ hover-glow(color = aod_red)
     border-color rgba(color, 0.6)
     background rgba(color, 0.1)
     box-shadow 0 0 25px rgba(color, 0.3)
+
+// section fade at bottom
+section-fade-bottom()
+  &::after
+    content ''
+    position absolute
+    bottom 0
+    left 0
+    right 0
+    height 80px
+    background linear-gradient(to bottom, transparent 0%, body_background_color 100%)
+    pointer-events none
+    z-index 10

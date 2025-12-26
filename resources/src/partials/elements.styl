@@ -62,7 +62,6 @@ h2
 section
   padding 30px 0
   width 100%
-  min-height 50vh
   margin 0 auto
   display flex
   align-items center
@@ -112,24 +111,32 @@ a
     transition transition_slower
 
 a.call-to-action-button
-  border solid 1px #fff
-  padding 15px
-  border-radius 40px
+  display inline-flex
+  align-items center
+  gap 10px
+  padding spacing_md spacing_2xl
+  background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+  border none
+  border-radius 6px
   color #fff
   margin-top 20px
-  display inline-block
   font-family font_face
-  font-size 18px
+  font-size 14px
   text-transform uppercase
+  letter-spacing 2px
+  text-decoration none
+  transition all transition_normal ease
 
   &.is-small
-    padding 10px
+    padding spacing_sm spacing_lg
     margin-top 10px
-    font-size 14px
+    font-size 12px
 
   &:hover
-    background-color #fff
-    color #000
+    background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
+    color #fff
+    transform translateY(-3px)
+    box-shadow 0 8px 25px alpha(aod_red, 0.4)
 
 /** nav bar **/
 
@@ -173,39 +180,71 @@ a.call-to-action-button
     overflow hidden
 
     li
-      display inline-block
+      display inline-flex
       text-align center
       background url('/images/divider.jpg') no-repeat left bottom
       z-index 10
       height 68px
 
-      img
-        display block
-        opacity 0
-        margin-top -70px
-        margin-right 20px
-
       &:first-of-type
         background none
 
-        &.show-logo
-          text-indent -9999px
+      &.home
+        position relative
+        align-items center
+        justify-content center
 
+        img
+          position absolute
+          left 50%
+          top 50%
+          transform translate(-50%, -50%)
+          height 50px
+          width auto
+          opacity 0
+          pointer-events none
+          transition opacity transition_slow ease
+
+        &.show-logo
           img
-            transition all transition_slow ease
-            opacity 100
+            opacity 1
+            pointer-events auto
+
+          a
+            opacity 0
+            pointer-events none
 
       a
-        display inline-block
-        padding 26px 45px 25px 45px
+        display flex
+        align-items center
+        justify-content center
+        height 100%
+        width 100%
+        padding 0 45px
         color nav_link_color
         font normal 16px / 1.8em "MuseoSans", "century gothic", arial
         text-transform uppercase
-        text-shadow 0 0 5px rgba(0, 0, 0, .5)
+        text-shadow 0 2px 4px rgba(0, 0, 0, .3)
+        transition all transition_normal ease
+        position relative
+
+        &::after
+          content ''
+          position absolute
+          bottom 10px
+          left 50%
+          width 0
+          height 2px
+          background aod_red
+          transition all transition_normal ease
+          transform translateX(-50%)
 
         &:hover
           color link_hover_color
           text-decoration none
+
+          &::after
+            width 60%
 
         &.active a, &.current-menu-item a
           color #fff
@@ -290,6 +329,11 @@ section.primary-footer
 
   a
     font-weight lighter
+    transition all transition_normal ease
+
+    &:hover
+      color aod_red
+      text-shadow 0 0 10px alpha(aod_red, 0.5)
 
 .site-meta ul li
   display inline-block
@@ -308,11 +352,13 @@ section.primary-footer
   .social-media
     margin-top 25px
 
-  .social-media, a
-    color footer_link_color
+    a
+      color footer_link_color
+      transition all transition_normal ease
 
-    &:hover
-      color link_hover_color
+      &:hover
+        color aod_red
+        text-shadow 0 0 10px alpha(aod_red, 0.5)
 
     ul li
       display inline-block
@@ -321,13 +367,147 @@ section.primary-footer
   position fixed
   top 0
 
+.apply-overlay
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background rgba(0, 0, 0, 0.8)
+  backdrop-filter blur(8px)
+  -webkit-backdrop-filter blur(8px)
+  z-index 998
+  opacity 0
+  transition opacity transition_normal ease
+
+  &.active
+    opacity 1
+
 .apply-form
-  padding 0 30px 20px
-  background-color #111
-  border solid 4px #555
-  border-radius 4px
-  text-align center
-  width 50%
+  position fixed
+  top 50%
+  left 50%
+  transform translate(-50%, -50%) scale(0.9)
+  width 90%
+  max-width 600px
+  max-height 90vh
+  overflow-y auto
+  padding spacing_2xl
+  background linear-gradient(180deg, rgba(30, 30, 35, 0.98) 0%, rgba(15, 15, 20, 0.98) 100%)
+  border 1px solid rgba(255, 255, 255, 0.1)
+  border-radius 16px
+  box-shadow 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 30, 30, 0.2)
+  z-index 999
+  opacity 0
+  transition all transition_normal ease
+
+  &.active
+    opacity 1
+    transform translate(-50%, -50%) scale(1)
+
+.apply-close
+  position absolute
+  top spacing_md
+  right spacing_md
+  background none
+  border none
+  color rgba(255, 255, 255, 0.5)
+  font-size 24px
+  cursor pointer
+  padding spacing_sm
+  transition all transition_normal ease
+  border-radius 50%
+
+  &:hover
+    color #fff
+    background rgba(255, 255, 255, 0.1)
+
+.apply-step
+  display flex
+  align-items flex-start
+  gap spacing_lg
+  text-align left
+  margin-bottom spacing_lg
+
+  .step-number
+    flex-shrink 0
+    width 36px
+    height 36px
+    background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+    border-radius 50%
+    display flex
+    align-items center
+    justify-content center
+    font-family font_face
+    font-size 16px
+    font-weight 700
+    color #fff
+
+  .step-content
+    flex 1
+
+    h2
+      font-size 18px
+      margin 0 0 spacing_sm 0
+      color header_color
+      text-transform none
+      background none
+      height auto
+      padding 0
+
+    p
+      margin 0
+      font-size 14px
+      color rgba(255, 255, 255, 0.6)
+      line-height 1.5
+
+.apply-divider
+  height 1px
+  background linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)
+  margin spacing_lg 0
+
+.games-listing
+  display grid
+  grid-template-columns repeat(auto-fill, minmax(100px, 1fr))
+  gap spacing_md
+  padding spacing_md 0
+
+  .division-select
+    display flex
+    flex-direction column
+    align-items center
+    gap spacing_xs
+    padding spacing_sm
+    border-radius 8px
+    border 1px solid transparent
+    background rgba(255, 255, 255, 0.03)
+    transition all transition_normal ease
+    text-decoration none
+
+    &:hover
+      background rgba(139, 30, 30, 0.2)
+      border-color rgba(139, 30, 30, 0.5)
+      transform translateY(-2px)
+
+      img
+        transform scale(1.1)
+        filter drop-shadow(0 0 8px rgba(139, 30, 30, 0.6))
+
+    img
+      width 40px
+      height 40px
+      object-fit contain
+      transition all transition_normal ease
+
+    .division-label
+      font-family "MuseoSans", "century gothic", arial, sans-serif
+      font-size 9px
+      color rgba(255, 255, 255, 0.5)
+      text-align center
+      text-transform uppercase
+      letter-spacing 0.5px
+      line-height 1.3
+      max-width 100%
 
 hr
     opacity .1

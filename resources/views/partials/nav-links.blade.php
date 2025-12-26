@@ -1,5 +1,5 @@
 @if(isset($include_home) && $include_home)
-    <li><a href="https://www.clanaod.net/">Home</a></li>
+    <li><a href="/">Home</a></li>
 @endif
 
 <li><a href="/forums">Forums</a></li>

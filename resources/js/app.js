@@ -130,11 +130,36 @@ function initializeClanAOD() {
                 e('.intro-video').trigger('closeModal');
             });
 
-            e('.apply-form').easyModal({overlayOpacity: .75});
+            var openApplyModal = function() {
+                e('.apply-overlay, .apply-form').css('display', 'block');
+                setTimeout(function() {
+                    e('.apply-overlay, .apply-form').addClass('active');
+                }, 10);
+                e('body').css('overflow', 'hidden');
+            };
+
+            var closeApplyModal = function() {
+                e('.apply-overlay, .apply-form').removeClass('active');
+                setTimeout(function() {
+                    e('.apply-overlay, .apply-form').css('display', 'none');
+                }, 300);
+                e('body').css('overflow', '');
+            };
 
             e('.apply-button').click(function (n) {
-                e('.apply-form').trigger('openModal');
+                openApplyModal();
                 n.preventDefault();
+            });
+
+            e('.apply-close, .apply-overlay').click(function (n) {
+                closeApplyModal();
+                n.preventDefault();
+            });
+
+            e(document).keydown(function(n) {
+                if (n.key === 'Escape') {
+                    closeApplyModal();
+                }
             });
         },
         postYTMessage: function (e) {
