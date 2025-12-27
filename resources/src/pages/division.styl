@@ -50,10 +50,32 @@
         box-shadow 0 4px 15px rgba(aod_red, 0.3)
 
 section.division, section.page
-  margin-top 70px
+  margin-top 37px
   align-items flex-start
   justify-content flex-start
   flex 1 0 auto
+  position relative
+  background-color #090a10
+
+section.division
+  background-image linear-gradient(to right, #090a10 0%, transparent 15%, transparent 85%, #090a10 100%), var(--division-header), url('/images/division-bg-border.jpg')
+  background-repeat no-repeat, no-repeat, repeat-x
+  background-position top center, top center, top center
+
+  &::before
+    content ''
+    position absolute
+    top 650px
+    left 0
+    right 0
+    height 100px
+    background linear-gradient(to bottom, #090a0f 0%, transparent 100%)
+    pointer-events none
+    z-index 5
+
+  .section-content-container
+    position relative
+    z-index 10
 
   .youtube-embed
     width 100%

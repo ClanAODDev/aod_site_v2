@@ -174,6 +174,24 @@ a.call-to-action-button
   position relative
   transition all transition_slow ease
 
+  &::after
+    content ''
+    position absolute
+    left 0
+    right 0
+    bottom 0
+    height 50px
+    background-image repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 255, 255, 0.015) 4px,
+      rgba(255, 255, 255, 0.015) 8px
+    )
+    mask-image linear-gradient(to bottom, transparent 0%, black 100%)
+    -webkit-mask-image linear-gradient(to bottom, transparent 0%, black 100%)
+    pointer-events none
+
   .nav-texture
     background url('/images/navbar-texture.png') no-repeat center 0
 
@@ -187,12 +205,21 @@ a.call-to-action-button
     li
       display inline-flex
       text-align center
-      background url('/images/divider.jpg') no-repeat left bottom
       z-index 10
       height 68px
+      position relative
 
-      &:first-of-type
-        background none
+      &::before
+        content ''
+        position absolute
+        left 0
+        top 5px
+        bottom 6px
+        width 2px
+        background linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(255, 255, 255, 0.07) 50%, rgba(255, 255, 255, 0.07) 100%)
+
+      &:first-of-type::before
+        display none
 
       &.home
         position relative
@@ -227,7 +254,7 @@ a.call-to-action-button
         width 100%
         padding 0 45px
         color nav_link_color
-        font normal 16px / 1.8em "MuseoSans", "century gothic", arial
+        font normal 16px / 1 "MuseoSans", "century gothic", arial
         text-transform uppercase
         text-shadow 0 2px 4px rgba(0, 0, 0, .3)
         transition all transition_normal ease
@@ -274,7 +301,7 @@ section.primary-footer
     left 0
     right 0
     bottom 100%
-    height 50vh
+    height 250px
     background-image repeating-linear-gradient(
       -45deg,
       transparent,
@@ -285,7 +312,7 @@ section.primary-footer
     mask-image linear-gradient(to bottom, transparent 0%, black 100%)
     -webkit-mask-image linear-gradient(to bottom, transparent 0%, black 100%)
     pointer-events none
-    z-index -1
+    z-index 1
 
   h1
     font-family font_face
