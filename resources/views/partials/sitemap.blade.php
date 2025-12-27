@@ -18,7 +18,7 @@
             </li>
             <li>
                 <a href="https://twitter.com/officialclanaod" target="_blank" title="X / Twitter">
-                    <i class="fab fa-x-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                 </a>
             </li>
             <li>
