@@ -25,7 +25,7 @@ return [
             'show_snowflakes' => true,
             'enabled' => true,
             'start_date' => '12-01',
-            'end_date' => '01-15',
+            'end_date' => '01-05',
             'theme' => 'holiday',
             'badge' => [
                 'icon' => 'fas fa-snowflake',
