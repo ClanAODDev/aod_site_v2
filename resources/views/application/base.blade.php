@@ -13,7 +13,9 @@
 
 @include('partials.nav-bar')
 
+<main class="main-content">
 @yield('content')
+</main>
 
 @include('application.footer')
 
