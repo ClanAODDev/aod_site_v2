@@ -29,6 +29,7 @@ function initializeClanAOD() {
             this.setupScreenshotGallery();
             this.setupMerchCarousel();
             this.setupVodCarousel();
+            this.setupTwitchLiveEmbed();
         },
         addDynamicLinks: function () {
             var twitch = e('body').data('twitch-status') === 'online' ? '<i class="fa fa-circle twitch-live"></i>' : null;
@@ -780,6 +781,41 @@ function initializeClanAOD() {
 
             calculateSetWidth();
             continuousScroll();
+        },
+        setupTwitchLiveEmbed: function() {
+            var embedContainer = document.getElementById('twitch-embed');
+            if (!embedContainer) return;
+
+            var channel = embedContainer.dataset.channel;
+            if (!channel) return;
+
+            var embed = new Twitch.Embed("twitch-embed", {
+                width: "100%",
+                height: "100%",
+                channel: channel,
+                layout: "video",
+                autoplay: true,
+                muted: true,
+                parent: [window.location.hostname]
+            });
+
+            var player = null;
+            var unmuteBtn = document.getElementById('twitch-unmute');
+
+            embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
+                player = embed.getPlayer();
+                player.setMuted(true);
+                player.play();
+            });
+
+            if (unmuteBtn) {
+                unmuteBtn.addEventListener('click', function() {
+                    if (player) {
+                        player.setMuted(false);
+                        unmuteBtn.style.display = 'none';
+                    }
+                });
+            }
         },
     };
     }($);

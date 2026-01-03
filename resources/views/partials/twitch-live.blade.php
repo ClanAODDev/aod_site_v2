@@ -10,7 +10,7 @@
                 <p class="stream-game">Playing {{ $twitch['stream']['game_name'] }}</p>
             @endif
             <div class="twitch-embed-container">
-                <div id="twitch-embed"></div>
+                <div id="twitch-embed" data-channel="{{ $twitch['channel'] }}"></div>
                 <button class="twitch-unmute-btn" id="twitch-unmute">
                     <i class="fas fa-volume-mute"></i>
                     <span>Click to Unmute</span>
@@ -22,33 +22,4 @@
         </div>
     </div>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var embed = new Twitch.Embed("twitch-embed", {
-                width: "100%",
-                height: "100%",
-                channel: "{{ $twitch['channel'] }}",
-                layout: "video",
-                autoplay: true,
-                muted: true,
-                parent: [window.location.hostname]
-            });
-
-            var player = null;
-            var unmuteBtn = document.getElementById('twitch-unmute');
-
-            embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
-                player = embed.getPlayer();
-            });
-
-            if (unmuteBtn) {
-                unmuteBtn.addEventListener('click', function() {
-                    if (player) {
-                        player.setMuted(false);
-                        unmuteBtn.style.display = 'none';
-                    }
-                });
-            }
-        });
-    </script>
 </section>
