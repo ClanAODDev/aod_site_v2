@@ -57,6 +57,88 @@ section.division, section.page
   position relative
   background-color #090a10
 
+section.page
+  color #fff
+  background url('/images/page-header.jpg') no-repeat, url('/images/division-bg-border.jpg') repeat-x
+  background-position top center
+
+  &::before
+    content ''
+    position absolute
+    top 400px
+    left 0
+    right 0
+    height 100px
+    background linear-gradient(to bottom, #090a0f 0%, transparent 100%)
+    pointer-events none
+    z-index 5
+
+  .section-content-container
+    position relative
+    z-index 10
+
+  h1
+    font-family sans-serif
+    font-size 32px
+    margin-bottom spacing_lg
+    color #fff
+
+  h2
+    font-family sans-serif
+    font-size 22px
+    margin-top spacing_xl
+    margin-bottom spacing_md
+    color #fff
+    text-transform uppercase
+
+  p
+    color rgba(255, 255, 255, 0.85)
+    line-height 1.7
+    margin-bottom spacing_lg
+
+  ul, ol
+    color rgba(255, 255, 255, 0.65)
+    margin-left spacing_xl
+    margin-bottom spacing_lg
+    line-height 1.7
+    font-family sans-serif
+
+    li
+      margin-bottom spacing_sm
+
+  a
+    color aod_red
+    &:hover
+      color aod_red_light
+
+  #sub-nav
+    margin-top 180px
+    a
+      color header_color
+    ul
+      padding 0
+      margin 0
+      text-indent 0
+      list-style none
+      li
+        list-style none
+        margin-bottom spacing_md
+        display inline-block
+        padding spacing_md
+        font-family font_face
+        text-transform uppercase
+        border solid 1px header_color
+        border-radius 10px
+        margin-right spacing_md
+        opacity 0.3
+        transition opacity transition_slower ease
+        color header_color
+        &::before
+          content none
+        &:hover
+          opacity 1
+          transition opacity transition_slower ease
+
 section.division
   background-image linear-gradient(to right, #090a10 0%, transparent 15%, transparent 85%, #090a10 100%), var(--division-header), url('/images/division-bg-border.jpg')
   background-repeat no-repeat, no-repeat, repeat-x
@@ -101,8 +183,11 @@ section.division
       color header_color
     ul
       padding 0
+      margin 0
       text-indent 0
+      list-style none
       li
+        list-style none
         margin-bottom spacing_md
         display inline-block
         padding spacing_md
@@ -114,6 +199,8 @@ section.division
         opacity 0.3
         transition opacity transition_slower ease
         color header_color
+        &::before
+          content none
         &:hover
           opacity 1
           transition opacity transition_slower ease
