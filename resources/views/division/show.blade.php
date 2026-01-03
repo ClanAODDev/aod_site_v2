@@ -16,7 +16,7 @@
     <section class="division" data-application-id="{{ $data['division']['forum_app_id'] }}"
              style="--division-header: url('{{ asset($division_heading) }}');">
 
-        <div class="section-content-container">
+        <div class="section-content-container automenu">
             <div id="sub-nav"></div>
 
             <div id="general" class="game-header">

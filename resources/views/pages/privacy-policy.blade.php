@@ -4,8 +4,7 @@
 
 @section('content')
 
-    <section class="page"
-             style="background: url({{ asset('images/page-header.jpg')}}) no-repeat, url('{{ asset('images/division-bg-border.jpg') }}') repeat-x; background-position: top center;">
+    <section class="page">
         <div class="section-content-container automenu">
             <div id="sub-nav"></div>
 
