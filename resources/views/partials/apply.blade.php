@@ -2,37 +2,20 @@
 <div class="apply-form" style="display: none;">
     <button class="apply-close"><i class="fa fa-times"></i></button>
 
-    <div class="apply-step">
-        <span class="step-number">1</span>
-        <div class="step-content">
-            <h2>Create a forum account</h2>
-            <p>You must have a forum account in order to apply for one of our divisions.</p>
-            <a href="/forums/register.php" target="_blank" class="call-to-action-button is-small">
-                <i class="fa fa-user-plus"></i> Create an account
-            </a>
-        </div>
-    </div>
-
-    <div class="apply-divider"></div>
-
-    <div class="apply-step">
-        <span class="step-number">2</span>
-        <div class="step-content">
-            <h2>Apply to a division</h2>
-            <p>Select the game you want to play with us.</p>
-        </div>
-    </div>
-
-    <div class="games-listing">
-        @if ($aod_divisions)
-            @foreach ($aod_divisions as $division)
-                <a href="#" data-application-id="{{ $division['forum_app_id'] }}" data-application-link class="division-select" title="{{ $division['name'] }}">
-                    <img src="{{ $division['icon'] }}" alt="{{ $division['name'] }}"/>
-                    <span class="division-label">{{ $division['name'] }}</span>
-                </a>
+    @if ($aod_divisions)
+        <div class="floating-icons" aria-hidden="true">
+            @foreach (collect($aod_divisions)->shuffle()->take(8) as $index => $division)
+                <img src="{{ $division['icon'] }}" alt="" class="floating-icon" style="animation-delay: {{ $index * 0.5 }}s;" />
             @endforeach
-        @else
-            <p class="text-muted">No divisions available</p>
-        @endif
+        </div>
+    @endif
+
+    <div class="apply-content">
+        <h2>Register an account</h2>
+        <p>You must have an account in order to apply for one of our divisions.</p>
+        <a href="https://tracker.clanaod.net/auth/discord" target="_blank" class="call-to-action-button is-small">
+            <i class="fab fa-discord"></i> Register with Discord
+        </a>
+        <p class="alt-register">or <a href="https://clanaod.net/forums" target="_blank">create a forum account</a></p>
     </div>
 </div>
