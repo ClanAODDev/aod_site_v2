@@ -24,11 +24,7 @@
                     <img class="game" src="{{ $data['division']['icon'] }}"/>
                 </div>
                 <h1>{{ $data['division']['name'] }} Division</h1>
-            </div>
-
-            <div class="division-actions">
-                <a class="action-btn" href="https://www.clanaod.net/forums/register.php">Create Account</a>
-                <a class="action-btn primary" href="#" data-application-link="">Apply Now</a>
+                <a class="apply-button division-apply" href="#">Apply</a>
             </div>
 
             <hr>

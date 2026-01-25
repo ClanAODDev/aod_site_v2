@@ -11,16 +11,21 @@
   display flex
   flex-direction row
   align-items center
+  flex-wrap wrap
+  gap 15px
+  margin-bottom spacing_xl
+
+  .icon
+    flex-shrink 0
+
   .game
     opacity 1
-    margin-right 15px
 
-.division-actions
-  display flex
-  gap 15px
-  margin 20px 0
+  h1
+    flex 1
+    margin 0
 
-  .action-btn
+  .division-apply
     display inline-flex
     align-items center
     justify-content center
@@ -32,22 +37,16 @@
     letter-spacing 1px
     text-decoration none
     transition all transition_normal ease
-    border 1px solid border_medium
-    color header_color
-    background transparent
+    background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+    color #fff
+    box-shadow 0 4px 15px rgba(139, 30, 30, 0.4)
+    cursor pointer
 
     &:hover
-      border-color rgba(255, 255, 255, 0.8)
-      background overlay_light
-
-    &.primary
-      background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
-      border-color transparent
-
-      &:hover
-        background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
-        transform translateY(-2px)
-        box-shadow 0 4px 15px rgba(aod_red, 0.3)
+      background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
+      transform translateY(-2px)
+      box-shadow 0 6px 20px rgba(139, 30, 30, 0.6), 0 0 15px rgba(139, 30, 30, 0.3)
+      color #fff
 
 section.division, section.page
   margin-top 37px
