@@ -158,6 +158,9 @@ section.division
     position relative
     z-index 10
 
+  .game-header
+    margin-top 180px
+
   .youtube-embed
     width 100%
     height 500px
@@ -177,7 +180,6 @@ section.division
     border 1px solid rgba(255, 255, 255, .25)
 
   #sub-nav
-    margin-top 180px
     a
       color header_color
     ul
@@ -204,6 +206,15 @@ section.division
           opacity 1
           transition opacity transition_slower ease
           cursor pointer
+        &.apply-item
+          background linear-gradient(135deg, aod_red 0%, aod_red_dark 100%)
+          border-color aod_red
+          opacity 1
+          a
+            color #fff
+          &:hover
+            background linear-gradient(135deg, aod_red_light 0%, aod_red 100%)
+            box-shadow 0 0 15px rgba(139, 30, 30, 0.5)
 
   .command-staff
     font-family font_face

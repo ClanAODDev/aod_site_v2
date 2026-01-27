@@ -17,15 +17,14 @@
              style="--division-header: url('{{ asset($division_heading) }}');">
 
         <div class="section-content-container automenu">
-            <div id="sub-nav"></div>
-
             <div id="general" class="game-header">
                 <div class="icon">
                     <img class="game" src="{{ $data['division']['icon'] }}"/>
                 </div>
                 <h1>{{ $data['division']['name'] }} Division</h1>
-                <a class="apply-button division-apply" href="#">Apply</a>
             </div>
+
+            <div id="sub-nav"></div>
 
             <hr>
             @if($data['division']['site_content'])
