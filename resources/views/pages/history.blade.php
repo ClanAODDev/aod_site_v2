@@ -28,6 +28,7 @@
                         <span class="game-tag">Nascar 2003</span>
                         <span class="game-tag">Star Wars: Galaxies</span>
                         <span class="game-tag">PlanetSide</span>
+                        <span class="game-tag">Team Fortress Classic</span>
                     </div>
                 </div>
             </div>
