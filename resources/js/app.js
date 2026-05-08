@@ -21,7 +21,6 @@ function initializeClanAOD() {
             this.stickyNav();
             this.handleModals();
             this.initAutoMenu();
-            this.handleApplicationLinks();
             this.handleViewportAnimations();
             this.setupDivisionEmbeds();
             this.scaleHeroVideo();
@@ -66,13 +65,6 @@ function initializeClanAOD() {
                 n.preventDefault();
                 var t = e(this).attr('href'), o = e(t).offset().top - 90;
                 e('html, body').stop().animate({scrollTop: o}, 750);
-            });
-        },
-        handleApplicationLinks: function () {
-            e('*[data-application-link]').click(function (n) {
-                n.preventDefault();
-                var t = e(this).data('application-id') ? e(this).data('application-id') : e('.division').data('application-id');
-                return null == t ? (alert('Division application id is not set!'), !1) : void window.open('/forums/forms.php?do=form&fid=' + t);
             });
         },
         initAutoMenu: function () {
@@ -157,9 +149,9 @@ function initializeClanAOD() {
                 e('body').css('overflow', '');
             };
 
-            e('.apply-button').click(function (n) {
-                openApplyModal();
+            e(document).on('click', '.apply-button', function (n) {
                 n.preventDefault();
+                openApplyModal();
             });
 
             e('.apply-close, .apply-overlay').click(function (n) {
@@ -205,6 +197,14 @@ function initializeClanAOD() {
                     var r = document.createElement('LI');
                     r.appendChild(c), a.appendChild(r);
                 }
+                var applyLink = document.createElement('A');
+                applyLink.setAttribute('href', '#');
+                applyLink.classList.add('apply-button');
+                applyLink.appendChild(document.createTextNode('Apply'));
+                var applyItem = document.createElement('LI');
+                applyItem.classList.add('apply-item');
+                applyItem.appendChild(applyLink);
+                a.appendChild(applyItem);
                 for (; o.hasChildNodes();) o.removeChild(o.firstChild);
                 o.appendChild(a);
             }

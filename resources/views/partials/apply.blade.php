@@ -16,6 +16,5 @@
         <a href="https://tracker.clanaod.net/auth/discord" target="_blank" class="call-to-action-button is-small">
             <i class="fab fa-discord"></i> Register with Discord
         </a>
-        <p class="alt-register">or <a href="https://clanaod.net/forums" target="_blank">create a forum account</a></p>
     </div>
 </div>
