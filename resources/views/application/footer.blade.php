@@ -9,7 +9,6 @@
                 <p>The Angels of Death is a community of players founded in 1999 based on a core set of conduct that
                     aims to promote decency and provide a comfortable environment to play with thousands of other
                     likeminded members.</p>
-                <p>With nearly 3000 members globally there is always someone to play alongside when you want.</p>
             </div>
         </div>
     </div>
