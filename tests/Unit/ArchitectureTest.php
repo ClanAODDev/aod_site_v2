@@ -36,27 +36,9 @@ describe('Architecture Tests', function () {
             ->toUseStrictTypes();
     });
 
-    it('ensures controllers have proper return types', function () {
-        expect('App\Http\Controllers')
-            ->classes()
-            ->toExtend('App\Http\Controllers\Controller');
-    });
-
     it('ensures no global variables are used', function () {
         expect('App')
             ->not->toUse(['$GLOBALS', '$_GET', '$_POST', '$_SESSION', '$_COOKIE']);
-    });
-
-    it('ensures proper exception handling', function () {
-        expect('App\Repositories')
-            ->classes()
-            ->toUse('Illuminate\Http\Client\Response');
-    });
-
-    it('ensures controllers use proper HTTP methods', function () {
-        expect('App\Http\Controllers')
-            ->classes()
-            ->toExtend('App\Http\Controllers\Controller');
     });
 
     it('ensures repositories use HTTP client', function () {

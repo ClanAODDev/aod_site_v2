@@ -1,9 +1,6 @@
 <?php
 
-/**
- * @return mixed
- */
-function urlify($string)
+function urlify(string $string): string
 {
     $regex = "/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 

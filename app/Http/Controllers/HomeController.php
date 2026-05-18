@@ -7,16 +7,16 @@ namespace App\Http\Controllers;
 use App\Repositories\AOD\SocialRepository;
 use App\Repositories\AOD\TwitchRepository;
 use Carbon\CarbonImmutable;
+use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
-        $this->getCommoStats(
-            (app()->environment('local'))
-                ? $this->getDummyData() : [
-                    'aod_discord' => (new SocialRepository)->getDiscord()->json('data'),
-                ]
+        $this->cacheCommonStats(
+            app()->environment('local')
+                ? $this->getDummyData()
+                : ['aod_discord' => (new SocialRepository)->getDiscord()->json('data')]
         );
 
         $twitch = $this->getTwitchData();
@@ -38,22 +38,16 @@ class HomeController extends Controller
         ]);
     }
 
-    private function getCommoStats($items)
+    private function cacheCommonStats(array $items): void
     {
-        foreach ($items as $cacheKey => $closure) {
-            cache()->remember(
-                $cacheKey,
-                config('app.cache_length'),
-                fn () => $closure
-            );
+        foreach ($items as $cacheKey => $value) {
+            cache()->remember($cacheKey, config('app.cache_length'), fn () => $value);
         }
     }
 
     private function getDummyData(): array
     {
-        $items = [
-            'aod_discord' => 'discord.json',
-        ];
+        $items = ['aod_discord' => 'discord.json'];
 
         foreach ($items as $cacheKey => $file) {
             $items[$cacheKey] = json_decode(
@@ -72,10 +66,7 @@ class HomeController extends Controller
         }
 
         if (app()->environment('local')) {
-            return json_decode(
-                file_get_contents(storage_path('testing/twitch.json')),
-                true
-            );
+            return json_decode(file_get_contents(storage_path('testing/twitch.json')), true);
         }
 
         return [
