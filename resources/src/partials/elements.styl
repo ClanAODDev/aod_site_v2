@@ -402,16 +402,63 @@ section.primary-footer
   .social-media
     margin-top 25px
 
-    a
-      color footer_link_color
-      transition all transition_normal ease
+    .social-icons
+      display flex
+      flex-wrap nowrap
+      gap spacing_sm
+      justify-content flex-start
+      margin-top 0
 
-      &:hover
-        color aod_red
-        text-shadow 0 0 10px alpha(aod_red, 0.5)
+      .social-icon
+        display flex
+        flex-direction column
+        align-items center
+        text-decoration none
+        color footer_link_color
+        padding 8px
+        border-radius 8px
+        background transparent
+        border 1px solid rgba(255, 255, 255, 0.08)
+        transition all transition_normal ease
+        min-width 0
+        cursor pointer
 
-    ul li
-      display inline-block
+        svg
+          width 20px
+          height 20px
+          transition all transition_normal ease
+
+        &:hover
+          transform translateY(-3px)
+          border-color rgba(255, 255, 255, 0.2)
+          color header_color
+
+          svg
+            transform scale(1.1)
+
+        &.discord:hover
+          svg
+            color discord_color
+
+        &.twitch:hover
+          svg
+            color twitch_color
+
+        &.twitter:hover
+          svg
+            color #1DA1F2
+
+        &.steam:hover
+          svg
+            color steam_color
+
+        &.youtube:hover
+          svg
+            color youtube_color
+
+        &.facebook:hover
+          svg
+            color facebook_color
 
 .fixed, .stay-fixed
   position fixed
