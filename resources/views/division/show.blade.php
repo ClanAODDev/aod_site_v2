@@ -6,6 +6,35 @@
     @section('og-description', $data['division']['settings']['meta_description'])
 @endif
 
+@section('structured-data')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        },
+        {
+            "@@type": "ListItem",
+            "position": 2,
+            "name": "Gaming Divisions",
+            "item": "{{ route('division.index') }}"
+        },
+        {
+            "@@type": "ListItem",
+            "position": 3,
+            "name": "{{ $data['division']['name'] }} Division",
+            "item": "{{ url()->current() }}"
+        }
+    ]
+}
+</script>
+@endsection
+
 @section('content')
     @php
         $division_abbr = $data['division']['abbreviation'];

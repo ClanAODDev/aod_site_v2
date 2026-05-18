@@ -1,6 +1,7 @@
 @extends('application.base')
 
 @section('page-title', 'History of AOD')
+@section('og-description', 'Explore the history of the Angels of Death gaming clan — from its founding in 1999 through 25+ years of growth, leadership, and community across over 56 major gaming titles.')
 
 @section('content')
 

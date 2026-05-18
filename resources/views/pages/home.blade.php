@@ -1,5 +1,38 @@
 @extends ('application.base')
 
+@section('page-title', 'Angels of Death Gaming Clan | Since 1999')
+@section('og-description', 'Angels of Death is a multi-game gaming community founded in 1999 with 1,200+ active members across 10 active divisions worldwide. Join us on PC, PlayStation, and Xbox.')
+
+@section('structured-data')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@graph": [
+        {
+            "@@type": "Organization",
+            "name": "Angels of Death",
+            "alternateName": "ClanAOD",
+            "url": "{{ url('/') }}",
+            "logo": "{{ asset('images/official-logo.png') }}",
+            "foundingDate": "1999",
+            "description": "Angels of Death is a mature multi-game gaming community founded in 1999, with 10 active game divisions and 1,200+ members worldwide.",
+            "sameAs": [
+                "https://discord.gg/clanaod",
+                "https://www.twitch.tv/clanaodstream",
+                "https://twitter.com/officialclanaod",
+                "https://steamcommunity.com/groups/clanaod"
+            ]
+        },
+        {
+            "@@type": "WebSite",
+            "name": "ClanAOD.net",
+            "url": "{{ url('/') }}"
+        }
+    ]
+}
+</script>
+@endsection
+
 @section('content')
 
     <div class="commo-bar">

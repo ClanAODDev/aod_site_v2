@@ -2,8 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>@if (request()->is(['/','home']))ClanAOD.net | @endif
-        @yield('page-title', 'Since 1999')</title>
+    <title>ClanAOD.net | @yield('page-title', 'Angels of Death Gaming Clan')</title>
 
     @vite(['resources/src/main.styl', 'resources/fonts/fonts.css'])
 
@@ -15,6 +14,8 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @include('partials.meta-data')
+
+    @yield('structured-data')
 
     @if(request()->is('history'))
         <meta name="foundations-era-video-id" content="{{ config('aod.foundations_era_video_id') }}">
