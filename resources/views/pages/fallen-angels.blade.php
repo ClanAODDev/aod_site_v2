@@ -14,7 +14,7 @@ This is our way of honoring their memory; May their souls rest in peace.')
 
         <div id="epitaph-container">
             <div id="epitaph">
-                <h2 id="lead">Our Fallen Angels</h2>
+                <h1 id="lead">Our Fallen Angels</h1>
                 <p id="body">To fall from heights, those who've ascended,<br/>
                     Seems dire and bleak, so far descended,<br/>
                     Our intentions meant to elevate,<br/>

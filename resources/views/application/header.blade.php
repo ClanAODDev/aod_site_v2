@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>ClanAOD.net | @yield('page-title', 'Angels of Death Gaming Clan')</title>
+    <title>@yield('page-title', 'Angels of Death Gaming Clan') | Angels of Death</title>
 
     @vite(['resources/src/main.styl', 'resources/fonts/fonts.css'])
 

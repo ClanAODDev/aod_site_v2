@@ -48,7 +48,7 @@
         <div class="section-content-container automenu">
             <div id="general" class="game-header">
                 <div class="icon">
-                    <img class="game" src="{{ $data['division']['icon'] }}"/>
+                    <img class="game" src="{{ $data['division']['icon'] }}" alt="{{ $data['division']['name'] }} Division"/>
                 </div>
                 <h1>{{ $data['division']['name'] }} Division</h1>
             </div>

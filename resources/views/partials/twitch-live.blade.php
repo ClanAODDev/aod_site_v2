@@ -5,7 +5,7 @@
                 <span class="live-dot"></span>
                 <span>LIVE NOW</span>
             </div>
-            <h1>{{ $twitch['stream']['title'] ?? 'ClanAOD is Live!' }}</h1>
+            <h2>{{ $twitch['stream']['title'] ?? 'ClanAOD is Live!' }}</h2>
             @if(isset($twitch['stream']['game_name']))
                 <p class="stream-game">Playing {{ $twitch['stream']['game_name'] }}</p>
             @endif
@@ -16,7 +16,7 @@
                     <span>Click to Unmute</span>
                 </button>
             </div>
-            <a href="https://www.twitch.tv/{{ $twitch['channel'] }}" class="twitch-cta" target="_blank">
+            <a href="https://www.twitch.tv/{{ $twitch['channel'] }}" class="twitch-cta" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-twitch"></i> Watch on Twitch
             </a>
         </div>

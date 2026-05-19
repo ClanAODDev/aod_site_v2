@@ -1,10 +1,10 @@
 <link rel="canonical" href="{{ url()->current() }}">
-<meta property="og:site_name" content="ClanAOD.net">
+<meta property="og:site_name" content="Angels of Death">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ url()->current() }}">
-<meta data-rh="true" property="og:title" content="ClanAOD.net | @yield('page-title', 'Angels of Death Gaming Clan')">
+<meta data-rh="true" property="og:title" content="@yield('page-title', 'Angels of Death Gaming Clan') | Angels of Death">
 <meta data-rh="true" property="twitter:card" content="summary_large_image">
-<meta data-rh="true" property="twitter:title" content="ClanAOD.net | @yield('page-title', 'Angels of Death Gaming Clan')">
+<meta data-rh="true" property="twitter:title" content="@yield('page-title', 'Angels of Death Gaming Clan') | Angels of Death">
 
 @php
     $description = 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other like-minded members.';

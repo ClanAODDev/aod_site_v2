@@ -1,5 +1,5 @@
 <div class="announcements footer-section">
-    <h1>Clan Announcements</h1>
+    <h2>Clan Announcements</h2>
     @if($aod_announcements->item)
         <ul>
             @foreach ($aod_announcements->item as $announcement)

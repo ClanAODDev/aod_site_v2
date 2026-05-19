@@ -5,7 +5,7 @@
                 <img src="{{ asset('images/official-logo.png') }}" alt="Clan AOD Logo"/>
             </div>
             <div class="blurb-text">
-                <h1>About The Angels of Death</h1>
+                <h2>About The Angels of Death</h2>
                 <p>The Angels of Death is a community of players founded in 1999 based on a core set of conduct that
                     aims to promote decency and provide a comfortable environment to play with thousands of other
                     likeminded members.</p>
@@ -20,9 +20,9 @@
         <div class="site-meta footer-section full-width centered">
             <ul>
                 <li>Copyright &copy; <?php echo "1999 - " . date('Y'); ?> Angels of Death. All rights reserved.</li>
-                <li><a href="https://www.clanaod.net/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
                 <li>-</li>
-                <li><a href="https://www.clanaod.net/terms-of-use/">Terms of Use</a></li>
+                <li><a href="{{ route('terms-of-use') }}">Terms of Use</a></li>
             </ul>
         </div>
     </div>
