@@ -13,11 +13,12 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $this->cacheCommonStats(
-            app()->environment('local')
-                ? $this->getDummyData()
-                : ['aod_discord' => (new SocialRepository)->getDiscord()->json('data')]
-        );
+        if (app()->environment('local')) {
+            $this->cacheCommonStats($this->getDummyData());
+        } else {
+            $discord = (new SocialRepository)->getDiscord()->json('data');
+            $this->cacheCommonStats(['aod_discord' => is_array($discord) ? $discord : null]);
+        }
 
         $twitch = $this->getTwitchData();
         $highlightedEvent = $this->getActiveHighlightedEvent();

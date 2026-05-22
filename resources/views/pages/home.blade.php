@@ -41,7 +41,7 @@
                 JOIN US ON DISCORD <i class="fab fa-discord fa-lg"></i>
             </a>
 
-            @if($discord && array_key_exists('online', $discord))
+            @if(is_array($discord) && array_key_exists('online', $discord))
                 ONLINE: {{ $discord['online'] + $discord['idle'] + $discord['dnd'] }} / {{ $discord['total'] }}
             @endif
 
