@@ -42,7 +42,7 @@ class HomeController extends Controller
     private function cacheCommonStats(array $items): void
     {
         foreach ($items as $cacheKey => $value) {
-            cache()->remember($cacheKey, config('app.cache_length'), fn () => $value);
+            cache()->put($cacheKey, $value, config('app.cache_length'));
         }
     }
 
