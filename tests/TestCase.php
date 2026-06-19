@@ -20,6 +20,9 @@ abstract class TestCase extends BaseTestCase
             'tracker.clanaod.net/api/v1/divisions' => Http::response(
                 file_get_contents(storage_path('testing/divisions.json')), 200
             ),
+            'tracker.clanaod.net/api/v1/discord-count' => Http::response(
+                file_get_contents(storage_path('testing/discord.json')), 200
+            ),
         ]);
     }
 }
