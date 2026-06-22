@@ -9,7 +9,7 @@
         "axios": "^1.16.0",
         "laravel-vite-plugin": "^2.0.1",
         "lodash": "^4.18.1",
-        "postcss": "^8.4.31",
+        "postcss": "^8.5.15",
         "stylus": "^0.54.8",
         "stylus-loader": "^6.2.0",
         "vite": "^7.2.4"
