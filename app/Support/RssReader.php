@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Support;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use SimpleXMLElement;
 
 class RssReader
 {
-    private $contents;
+    private ?SimpleXMLElement $contents = null;
 
-    public function setPath($path)
+    public function setPath(string $path): static|false
     {
         $response = Http::get($path);
 
@@ -19,12 +20,10 @@ class RssReader
             return false;
         }
 
-        $data = $response->body();
-
         try {
-            $simpleXML = new SimpleXMLElement($data);
+            $simpleXML = new SimpleXMLElement($response->body());
         } catch (\Exception $exception) {
-            \Log::error($exception->getMessage());
+            Log::error($exception->getMessage());
 
             return false;
         }
@@ -38,19 +37,13 @@ class RssReader
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getItems()
+    public function getItems(): ?SimpleXMLElement
     {
         return $this->contents;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLastBuilt()
+    public function getLastBuilt(): mixed
     {
-        return $this->contents->lastBuildDate;
+        return $this->contents?->lastBuildDate;
     }
 }

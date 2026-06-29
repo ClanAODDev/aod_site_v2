@@ -23,7 +23,7 @@
                            class="item game-button animate drop-up animation-delay-{{ min($loop->index, 12) }}"
                         >
                             <div class="icon">
-                                <img class="game" src="{{ $division['icon'] }}"/>
+                                <img class="game" src="{{ $division['icon'] }}" alt="{{ $division['name'] }}" loading="lazy"/>
                             </div>
 
                             <div class="meta">

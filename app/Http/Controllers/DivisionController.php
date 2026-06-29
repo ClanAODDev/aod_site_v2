@@ -9,20 +9,12 @@ use Illuminate\Contracts\View\View;
 
 class DivisionController extends Controller
 {
-    public string $cacheKey = 'aod_content_';
-
-    /**
-     * Show all divisions.
-     */
     public function index(): View
     {
         return view('division.index');
     }
 
-    /**
-     * Show an individual division.
-     */
-    public function show($division): View
+    public function show(string $division): View
     {
         $data = (new DivisionRepository)->find($division)->json('data');
 

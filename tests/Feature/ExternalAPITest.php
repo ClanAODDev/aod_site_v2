@@ -15,10 +15,9 @@ describe('External API Integration', function () {
     it('handles missing access token gracefully on home page', function () {
         config()->set('services.aod.access_token', null);
 
-        $response = $this->get(route('home'));
-
-        $response->assertStatus(500);
-        $response->assertSee('Tracker access token missing');
+        $this->get(route('home'))
+            ->assertStatus(500)
+            ->assertSee('Tracker access token missing');
     });
 
     it('works with valid access token', function () {
@@ -30,8 +29,7 @@ describe('External API Integration', function () {
             '*/api/v1/divisions' => Http::response(['data' => []], 200),
         ]);
 
-        $response = $this->get(route('home'));
-        $response->assertOk();
+        $this->get(route('home'))->assertOk();
     });
 
     it('handles API timeouts gracefully', function () {
@@ -39,12 +37,11 @@ describe('External API Integration', function () {
         config()->set('services.aod.tracker_url', 'https://api.example.com');
 
         Http::fake([
-            '*/api/v1/discord-count' => Http::response([], 408), // Timeout
+            '*/api/v1/discord-count' => Http::response([], 408),
             '*/api/v1/divisions' => Http::response(['data' => []], 200),
         ]);
 
-        $response = $this->get(route('home'));
-        $response->assertOk(); // Should still load page
+        $this->get(route('home'))->assertOk();
     });
 
     it('handles API server errors gracefully', function () {
@@ -56,8 +53,7 @@ describe('External API Integration', function () {
             '*/api/v1/divisions' => Http::response(['data' => []], 200),
         ]);
 
-        $response = $this->get(route('home'));
-        $response->assertOk(); // Should still load page
+        $this->get(route('home'))->assertOk();
     });
 
     it('validates API response structure', function () {
@@ -68,8 +64,7 @@ describe('External API Integration', function () {
             '*/api/v1/discord-count' => Http::response(['data' => ['count' => 150]], 200),
         ]);
 
-        $repository = new SocialRepository;
-        $response = $repository->getDiscord();
+        $response = (new SocialRepository)->getDiscord();
 
         expect($response->json('data.count'))->toBe(150);
     });
@@ -83,7 +78,6 @@ describe('External API Integration', function () {
             '*/api/v1/divisions' => Http::response(['data' => []], 200),
         ]);
 
-        $response = $this->get(route('home'));
-        $response->assertOk(); // Should still load page despite bad API response
+        $this->get(route('home'))->assertOk();
     });
 });

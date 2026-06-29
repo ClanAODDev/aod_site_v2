@@ -1,6 +1,7 @@
 @extends('application.base')
 
 @section('page-title', 'History of AOD')
+@section('og-description', 'Explore the history of the Angels of Death gaming clan — from its founding in 1999 through 25+ years of growth, leadership, and community across over 56 major gaming titles.')
 
 @section('content')
 
@@ -13,7 +14,7 @@
 
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>The Early Years</h2>
@@ -35,7 +36,7 @@
 
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>Taking Flight</h2>
@@ -64,7 +65,7 @@
 
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>Explosive Expansion</h2>
@@ -97,7 +98,7 @@
 
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>Finding Our Center</h2>
@@ -122,7 +123,7 @@
 
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>Grounding Vision</h2>
@@ -158,7 +159,7 @@
             <div class="era-background"></div>
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>A Brave New World</h2>
@@ -194,7 +195,7 @@
             </div>
             <div class="timeline-block">
                 <div class="timeline-bullet cd-location animate">
-                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="bullet">
+                    <img src="{{ asset('images/cd-icon-location.svg') }}" alt="">
                 </div>
                 <div class="timeline-content animate">
                     <h2>Modern Era</h2>

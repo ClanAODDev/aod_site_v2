@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <h1>{!!  $highlightedEvent['title'] !!}</h1>
+            <h2>{!! $highlightedEvent['title'] !!}</h2>
 
             @if(isset($highlightedEvent['description']))
                 <p>{{ $highlightedEvent['description'] }}</p>

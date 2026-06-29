@@ -7,17 +7,11 @@ namespace App\Http\Composers;
 use App\Support\RssReader;
 use Facades\App\Repositories\AOD\DivisionRepository;
 use Illuminate\View\View;
+use SimpleXMLElement;
 
-/**
- * Class SiteComposer.
- *
- * Handles data that needs to be available across the site.
- */
 class SiteComposer
 {
-    /**
-     * take care that these only change in conjunction with dependent views.
-     */
+    // these keys must stay in sync with any view that reads them directly
     public const AOD_DIVISIONS = 'aod_divisions';
 
     public const AOD_ANNOUNCEMENTS = 'aod_announcements';
@@ -47,7 +41,7 @@ class SiteComposer
         $view->with(self::AOD_ANNOUNCEMENTS, $announcements);
     }
 
-    private function getAnnouncementsFeed()
+    private function getAnnouncementsFeed(): SimpleXMLElement|array
     {
         $feed = (new RssReader)->setPath(config('services.aod.announcements_rss_feed'));
 
@@ -67,18 +61,13 @@ class SiteComposer
         return $this->shouldShowOnSite($divisions);
     }
 
-    /**
-     * @return bool|string
-     */
-    private function isLocal()
+    private function isLocal(): bool
     {
         return app()->environment('local');
     }
 
     private function shouldShowOnSite(array $divisions): array
     {
-        return array_filter($divisions, function ($division) {
-            return isset($division['show_on_site']) && $division['show_on_site'] !== false;
-        });
+        return array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false);
     }
 }

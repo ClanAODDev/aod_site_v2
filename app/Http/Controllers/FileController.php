@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
+
 class FileController extends Controller
 {
-    public function __invoke($file)
+    public function __invoke(string $file): Response
     {
         $filePath = storage_path("files/{$file}");
 
@@ -14,15 +16,13 @@ class FileController extends Controller
             return response('File not found', 404);
         }
 
-        // Prevent directory traversal
         $realPath = realpath($filePath);
         $basePath = realpath(storage_path('files'));
 
-        if (! $realPath || ! $basePath || strpos($realPath, $basePath) !== 0) {
+        if (! $realPath || ! $basePath || ! str_starts_with($realPath, $basePath)) {
             return response('File not found', 404);
         }
 
-        // For testing, return the file content directly
         if (app()->environment('testing')) {
             return response(file_get_contents($filePath));
         }

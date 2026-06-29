@@ -1,4 +1,4 @@
-Sitemap: http://www.clanaod.net/forums/xmlsitemap.php
+Sitemap: https://www.clanaod.net/sitemap.xml
 
 User-agent: BoardTracker
 Disallow: /
