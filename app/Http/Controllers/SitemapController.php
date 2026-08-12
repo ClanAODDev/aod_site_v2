@@ -19,7 +19,8 @@ class SitemapController extends Controller
 
         try {
             $divisions = $this->divisions->all()->json('data') ?? [];
-        } catch (\Exception) {}
+        } catch (\Exception) {
+        }
 
         return response()
             ->view('sitemap', compact('divisions'))

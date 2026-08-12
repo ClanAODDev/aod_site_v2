@@ -11,8 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 use League\CommonMark\Extension\Embed\Bridge\OscaroteroEmbedAdapter;
+use League\CommonMark\Extension\Embed\EmbedExtension;
+use League\CommonMark\Extension\Table\TableExtension;
 
 return [
 
@@ -48,12 +52,12 @@ return [
     */
 
     'extensions' => [
-        League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension::class,
-        League\CommonMark\Extension\Table\TableExtension::class,
+        CommonMarkCoreExtension::class,
+        TableExtension::class,
 
         // custom extensions
-        League\CommonMark\Extension\Embed\EmbedExtension::class,
-        League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension::class,
+        EmbedExtension::class,
+        DefaultAttributesExtension::class,
     ],
 
     /*

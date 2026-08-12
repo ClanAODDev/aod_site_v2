@@ -1,4 +1,6 @@
 <?php
 
-pest()->extend(Tests\TestCase::class)->in('Feature');
-pest()->extend(Tests\TestCase::class)->in('Unit');
+use Tests\TestCase;
+
+pest()->extend(TestCase::class)->in('Feature');
+pest()->extend(TestCase::class)->in('Unit');
