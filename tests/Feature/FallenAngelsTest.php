@@ -1,6 +1,15 @@
 <?php
 
+use App\Repositories\AOD\FallenMemberRepository;
+use GuzzleHttp\Psr7\Response as Psr7Response;
+use Illuminate\Http\Client\Response as HttpResponse;
+use Illuminate\Support\Facades\Cache;
+
 describe('Fallen Angels Page', function () {
+    beforeEach(function () {
+        Cache::flush();
+    });
+
     it('loads successfully', function () {
         $this->get(route('fallen-angels'))
             ->assertOk()
@@ -12,34 +21,44 @@ describe('Fallen Angels Page', function () {
         expect(route('fallen-angels'))->toBe(url('/fallen-angels'));
     });
 
-    it('displays fallen angels data from config', function () {
-        config(['aod.fallen-angels' => [
-            ['name' => 'John Doe', 'rank' => 'General', 'date_of_death' => '2023-01-01', 'forum_profile' => 'https://example.com/profile/1'],
-            ['name' => 'Jane Smith', 'rank' => 'Colonel', 'date_of_death' => '2023-02-01', 'forum_profile' => 'https://example.com/profile/2'],
-        ]]);
+    it('displays fallen members data from the tracker API', function () {
+        $response = $this->get(route('fallen-angels'))->assertOk();
 
-        $this->get(route('fallen-angels'))
-            ->assertOk()
-            ->assertViewHas('fallen', [
-                ['name' => 'John Doe', 'rank' => 'General', 'date_of_death' => '2023-01-01', 'forum_profile' => 'https://example.com/profile/1'],
-                ['name' => 'Jane Smith', 'rank' => 'Colonel', 'date_of_death' => '2023-02-01', 'forum_profile' => 'https://example.com/profile/2'],
-            ]);
+        $fallen = $response->viewData('fallen');
+
+        expect($fallen)->toBeArray()->not->toBeEmpty()
+            ->and($fallen[0])->toHaveKeys(['name', 'date_fallen', 'forum_profile']);
     });
 
-    it('handles empty fallen angels config', function () {
-        config(['aod.fallen-angels' => []]);
+    it('handles empty response from the tracker API', function () {
+        $this->app->bind(FallenMemberRepository::class, fn () => new class extends FallenMemberRepository
+        {
+            public function __construct() {}
+
+            public function all(): HttpResponse
+            {
+                return new HttpResponse(new Psr7Response(200, [], json_encode(['data' => []])));
+            }
+        });
 
         $this->get(route('fallen-angels'))
             ->assertOk()
             ->assertViewHas('fallen', []);
     });
 
-    it('uses default config when no custom config is set', function () {
-        $response = $this->get(route('fallen-angels'))->assertOk()->assertViewHas('fallen');
+    it('handles tracker API failure gracefully', function () {
+        $this->app->bind(FallenMemberRepository::class, fn () => new class extends FallenMemberRepository
+        {
+            public function __construct() {}
 
-        $fallen = $response->viewData('fallen');
+            public function all(): HttpResponse
+            {
+                throw new Exception('simulated tracker outage');
+            }
+        });
 
-        expect($fallen)->toBeArray()->not->toBeEmpty()
-            ->and($fallen[0])->toHaveKeys(['name', 'date_of_death', 'forum_profile']);
+        $this->get(route('fallen-angels'))
+            ->assertOk()
+            ->assertViewHas('fallen', []);
     });
 });

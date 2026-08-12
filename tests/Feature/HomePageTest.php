@@ -49,27 +49,33 @@ describe('Home Page', function () {
     });
 
     it('handles Discord API failure gracefully', function () {
-        Http::fake([
+        $this->fakeHttp([
             '*/api/v1/discord-count' => Http::response([], 500),
         ]);
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewIs('pages.home');
+            ->assertViewIs('pages.home')
+            ->assertViewHas('discord', null);
     });
 
     it('caches Discord data correctly', function () {
         $discordData = ['data' => ['count' => 150]];
 
-        Http::fake([
+        $this->fakeHttp([
             '*/api/v1/discord-count' => Http::response($discordData, 200),
         ]);
 
         $this->get(route('home'));
-        expect(Cache::has('aod_discord'))->toBeTrue();
+        expect(Cache::get('aod_discord'))->toBe($discordData['data']);
 
-        Http::fake();
-        $this->get(route('home'))->assertOk();
+        $this->fakeHttp([
+            '*/api/v1/discord-count' => Http::response(['data' => ['count' => 999]], 200),
+        ]);
+
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertViewHas('discord', $discordData['data']);
     });
 
     it('uses dummy data in local environment', function () {
