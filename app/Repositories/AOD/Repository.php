@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\AOD;
 
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -27,7 +28,7 @@ class Repository
     }
 
     /**
-     * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
+     * @return PromiseInterface|Response
      */
     protected function getPromise(string|array $url, array $params = []): Response
     {

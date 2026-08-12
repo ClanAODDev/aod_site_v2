@@ -3,6 +3,7 @@
 use App\Repositories\AOD\DivisionRepository;
 use App\Repositories\AOD\Repository;
 use App\Repositories\AOD\SocialRepository;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 describe('AOD Repository', function () {
@@ -28,7 +29,7 @@ describe('AOD Repository', function () {
             $reflection = new ReflectionClass($repository);
             $client = $reflection->getProperty('client')->getValue($repository);
 
-            expect($client)->toBeInstanceOf(\Illuminate\Http\Client\PendingRequest::class);
+            expect($client)->toBeInstanceOf(PendingRequest::class);
         });
 
         it('builds correct API URLs', function () {
