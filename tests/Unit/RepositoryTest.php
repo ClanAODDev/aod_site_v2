@@ -1,6 +1,7 @@
 <?php
 
 use App\Repositories\AOD\DivisionRepository;
+use App\Repositories\AOD\FallenMemberRepository;
 use App\Repositories\AOD\Repository;
 use App\Repositories\AOD\SocialRepository;
 use Illuminate\Http\Client\PendingRequest;
@@ -114,6 +115,17 @@ describe('AOD Repository', function () {
 
             expect($response->status())->toBe(200);
             Http::assertSent(fn ($request) => str_contains($request->url(), '/api/v1/discord-count'));
+        });
+    });
+
+    describe('Fallen Member Repository', function () {
+        it('fetches all fallen members', function () {
+            Http::fake(['*/api/v1/fallen-members' => Http::response(['data' => []], 200)]);
+
+            $response = (new FallenMemberRepository)->all();
+
+            expect($response->status())->toBe(200);
+            Http::assertSent(fn ($request) => str_contains($request->url(), '/api/v1/fallen-members'));
         });
     });
 });

@@ -9,6 +9,10 @@ use Illuminate\Contracts\View\View;
 
 class DivisionController extends Controller
 {
+    public function __construct(
+        private readonly DivisionRepository $divisions,
+    ) {}
+
     public function index(): View
     {
         return view('division.index');
@@ -16,12 +20,12 @@ class DivisionController extends Controller
 
     public function show(string $division): View
     {
-        $data = (new DivisionRepository)->find($division)->json('data');
+        $data = $this->divisions->find($division)->json('data');
 
         if (! $data) {
             abort(404, 'Bad division request');
         }
 
-        return view('division.show', compact('data'))->with('division');
+        return view('division.show', compact('data'));
     }
 }

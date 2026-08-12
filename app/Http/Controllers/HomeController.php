@@ -11,13 +11,21 @@ use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
+    public function __construct(
+        private readonly SocialRepository $social,
+        private readonly TwitchRepository $twitch,
+    ) {}
+
     public function __invoke(): View
     {
         if (app()->environment('local')) {
-            $this->cacheCommonStats($this->getDummyData());
+            $discord = json_decode(file_get_contents(storage_path('testing/discord.json')), true)['data'];
         } else {
-            $discord = (new SocialRepository)->getDiscord()->json('data');
-            $this->cacheCommonStats(['aod_discord' => is_array($discord) ? $discord : null]);
+            $discord = cache()->remember('aod_discord', config('app.cache_length'), function () {
+                $raw = $this->social->getDiscord()->json('data');
+
+                return is_array($raw) ? $raw : null;
+            });
         }
 
         $twitch = $this->getTwitchData();
@@ -29,7 +37,7 @@ class HomeController extends Controller
         $isChristmas = $highlightedEvent !== null && ($highlightedEvent['theme'] ?? '') === 'holiday';
 
         return view('pages.home', [
-            'discord' => cache()->get('aod_discord'),
+            'discord' => $discord,
             'twitch' => $twitch,
             'highlightedEvent' => $highlightedEvent,
             'showTwitchLive' => $showTwitchLive,
@@ -39,31 +47,10 @@ class HomeController extends Controller
         ]);
     }
 
-    private function cacheCommonStats(array $items): void
-    {
-        foreach ($items as $cacheKey => $value) {
-            cache()->put($cacheKey, $value, config('app.cache_length'));
-        }
-    }
-
-    private function getDummyData(): array
-    {
-        $items = ['aod_discord' => 'discord.json'];
-
-        foreach ($items as $cacheKey => $file) {
-            $items[$cacheKey] = json_decode(
-                file_get_contents(storage_path("testing/{$file}")),
-                true
-            )['data'];
-        }
-
-        return $items;
-    }
-
     private function getTwitchData(): array
     {
         if (config('services.twitch.client_id') && config('services.twitch.client_secret')) {
-            return (new TwitchRepository)->getStreamData();
+            return $this->twitch->getStreamData();
         }
 
         if (app()->environment('local')) {

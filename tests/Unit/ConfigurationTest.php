@@ -24,10 +24,6 @@ describe('Application Configuration', function () {
             ->and(config()->has('services.aod.tracker_url'))->toBeTrue();
     });
 
-    it('has fallen angels configuration', function () {
-        expect(config()->has('aod.fallen-angels'))->toBeTrue();
-    });
-
     it('has database configuration', function () {
         expect(config('database.default'))->not->toBeNull()
             ->and(config('database.connections'))->toBeArray()->not->toBeEmpty();
