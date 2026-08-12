@@ -33,7 +33,7 @@ This is our way of honoring their memory; May their souls rest in peace.')
             @foreach ($fallen as $member)
                 <a href="{{ $member['forum_profile'] ?? '#' }}" class="fallen-angel"
                    target="_blank"
-                >{{ $member['name'] }} &mdash; {{ $member['date_of_death'] }}</a>
+                >{{ $member['name'] }} &mdash; {{ $member['date_fallen'] }}</a>
             @endforeach
         </div>
     </div>
