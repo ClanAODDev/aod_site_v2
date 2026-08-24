@@ -57,13 +57,13 @@
     "src": "resources/fonts/socicon.woff"
   },
   "resources/js/app-legacy.js": {
-    "file": "assets/app-legacy-c97qS-Vk.js",
+    "file": "assets/app-legacy-B7zBIbpY.js",
     "name": "app",
     "src": "resources/js/app-legacy.js",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DNZVq9je.js",
+    "file": "assets/app-CC2Uvmxm.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
@@ -84,7 +84,7 @@
     ]
   },
   "vite/legacy-polyfills-legacy": {
-    "file": "assets/polyfills-legacy-CyIKkSHo.js",
+    "file": "assets/polyfills-legacy-BoBotdpX.js",
     "name": "polyfills",
     "src": "vite/legacy-polyfills-legacy",
     "isEntry": true
