@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use Inertia\Testing\AssertableInertia;
 
 describe('Division Pages', function () {
     describe('Division Index', function () {
         it('loads successfully', function () {
             $this->get(route('division.index'))
                 ->assertOk()
-                ->assertViewIs('division.index');
+                ->assertInertia(fn (AssertableInertia $page) => $page->component('division/index'));
         });
 
         it('has correct route name', function () {
@@ -32,8 +33,10 @@ describe('Division Pages', function () {
 
             $this->get(route('division.show', 'cod'))
                 ->assertOk()
-                ->assertViewIs('division.show')
-                ->assertViewHas('data');
+                ->assertInertia(fn (AssertableInertia $page) => $page
+                    ->component('division/show')
+                    ->has('division')
+                    ->where('division.name', 'Jedi Knight'));
         });
 
         it('returns 404 for invalid division', function () {

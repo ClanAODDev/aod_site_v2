@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Support;
 
 use Facades\App\Repositories\AOD\DivisionRepository;
+use Illuminate\Support\Str;
 
 class OnSiteDivisions
 {
@@ -31,8 +32,11 @@ class OnSiteDivisions
             return [];
         }
 
-        return array_values(
-            array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false)
-        );
+        $onSite = array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false);
+
+        return array_values(array_map(
+            fn ($division) => [...$division, 'href' => route('division.show', Str::slug($division['name']))],
+            $onSite
+        ));
     }
 }
