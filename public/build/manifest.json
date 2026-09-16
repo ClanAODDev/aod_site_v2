@@ -74,7 +74,7 @@
     ]
   },
   "resources/js/app-legacy.tsx": {
-    "file": "assets/app-legacy-BGC0pRZM.js",
+    "file": "assets/app-legacy-Dun8Dtdz.js",
     "name": "app",
     "src": "resources/js/app-legacy.tsx",
     "isEntry": true,
@@ -95,7 +95,7 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-BHR62vGd.js",
+    "file": "assets/app-DBd3ydDD.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -106,11 +106,11 @@
       "resources/js/pages/history.tsx"
     ],
     "css": [
-      "assets/app-CkFfB2m-.css"
+      "assets/app-CMPuCwPO.css"
     ]
   },
   "resources/js/pages/history-legacy.tsx": {
-    "file": "assets/history-legacy-QAQbdp-a.js",
+    "file": "assets/history-legacy-B7UUn7ND.js",
     "name": "history",
     "src": "resources/js/pages/history-legacy.tsx",
     "isDynamicEntry": true,
@@ -120,7 +120,7 @@
     ]
   },
   "resources/js/pages/history.tsx": {
-    "file": "assets/history-DDDc0xMr.js",
+    "file": "assets/history-CZFNQml_.js",
     "name": "history",
     "src": "resources/js/pages/history.tsx",
     "isDynamicEntry": true,

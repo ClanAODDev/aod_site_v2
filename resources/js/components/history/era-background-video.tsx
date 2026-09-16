@@ -10,11 +10,13 @@ const ASPECT_RATIO = 16 / 9;
 
 export function EraBackgroundVideo({ videoId }: EraBackgroundVideoProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const playerTargetRef = useRef<HTMLDivElement>(null);
     const [iframe, setIframe] = useState<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
         const container = containerRef.current;
-        if (!container) {
+        const playerTarget = playerTargetRef.current;
+        if (!container || !playerTarget) {
             return;
         }
 
@@ -26,7 +28,7 @@ export function EraBackgroundVideo({ videoId }: EraBackgroundVideoProps) {
                 return;
             }
 
-            player = new YT.Player(container, {
+            player = new YT.Player(playerTarget, {
                 videoId,
                 playerVars: {
                     autoplay: 1,
@@ -86,5 +88,9 @@ export function EraBackgroundVideo({ videoId }: EraBackgroundVideoProps) {
         return () => observer.disconnect();
     }, [iframe]);
 
-    return <div ref={containerRef} className="era-video" />;
+    return (
+        <div ref={containerRef} className="era-video">
+            <div ref={playerTargetRef} />
+        </div>
+    );
 }
