@@ -15,6 +15,9 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="{{ $metaTitle ?? 'Angels of Death Gaming Clan | Angels of Death' }}">
     <meta property="twitter:description" content="{{ $metaDescription ?? 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other like-minded members.' }}">
+    @if (isset($structuredData))
+        <script type="application/ld+json">{!! json_encode($structuredData) !!}</script>
+    @endif
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -9,4 +9,118 @@
             transparent 1px 7px
         );
     }
+
+    /* Rendered-markdown container (trusted admin/API HTML from `Prose`). */
+    .prose-tron {
+        max-width: none;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: color-mix(in srgb, var(--foreground) 85%, transparent);
+    }
+
+    .prose-tron p {
+        margin-block: 0 1.25rem;
+    }
+
+    .prose-tron strong {
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    .prose-tron a {
+        color: var(--primary);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .prose-tron a:hover {
+        color: color-mix(in srgb, var(--primary) 80%, white);
+    }
+
+    .prose-tron h1 {
+        margin-bottom: 1.25rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--foreground);
+    }
+
+    .prose-tron h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.375rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--foreground);
+    }
+
+    .prose-tron h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    .prose-tron :is(ul, ol) {
+        margin-block: 0 1.25rem;
+        padding-left: 1.75rem;
+        color: color-mix(in srgb, var(--foreground) 65%, transparent);
+    }
+
+    .prose-tron ul {
+        list-style: disc;
+    }
+
+    .prose-tron ol {
+        list-style: decimal;
+    }
+
+    .prose-tron li {
+        margin-block: 0.5rem;
+    }
+
+    .prose-tron img {
+        max-width: 100%;
+        padding: 0.3rem;
+        border: 1px solid var(--border);
+        filter: drop-shadow(0 0 0.75rem black);
+    }
+
+    .prose-tron iframe {
+        width: 100%;
+        height: 500px;
+        border: 0;
+        border-radius: var(--radius);
+    }
+
+    .prose-tron blockquote {
+        border-left: 2px solid color-mix(in srgb, var(--primary) 40%, transparent);
+        padding-left: 1rem;
+        font-style: italic;
+    }
+
+    .prose-tron hr {
+        margin-block: 2rem;
+        border-color: var(--border);
+    }
+
+    .prose-tron table {
+        width: 100%;
+        margin-block: 1.25rem;
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+    }
+
+    .prose-tron :is(th, td) {
+        border: 1px solid var(--border);
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .prose-tron th {
+        background: color-mix(in srgb, var(--foreground) 4%, transparent);
+        font-weight: 600;
+        color: var(--foreground);
+    }
 }
