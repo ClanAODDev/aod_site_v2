@@ -4,6 +4,7 @@ use App\Repositories\AOD\FallenMemberRepository;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use Illuminate\Http\Client\Response as HttpResponse;
 use Illuminate\Support\Facades\Cache;
+use Inertia\Testing\AssertableInertia;
 
 describe('Fallen Angels Page', function () {
     beforeEach(function () {
@@ -13,8 +14,9 @@ describe('Fallen Angels Page', function () {
     it('loads successfully', function () {
         $this->get(route('fallen-angels'))
             ->assertOk()
-            ->assertViewIs('pages.fallen-angels')
-            ->assertViewHas('fallen');
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('fallen-angels')
+                ->has('fallen'));
     });
 
     it('has correct route name', function () {
@@ -22,12 +24,11 @@ describe('Fallen Angels Page', function () {
     });
 
     it('displays fallen members data from the tracker API', function () {
-        $response = $this->get(route('fallen-angels'))->assertOk();
-
-        $fallen = $response->viewData('fallen');
-
-        expect($fallen)->toBeArray()->not->toBeEmpty()
-            ->and($fallen[0])->toHaveKeys(['name', 'date_fallen', 'forum_profile']);
+        $this->get(route('fallen-angels'))
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('fallen', fn ($fallen) => $fallen->isNotEmpty()
+                    && isset($fallen[0]['name'], $fallen[0]['date_fallen'], $fallen[0]['forum_profile'])));
     });
 
     it('handles empty response from the tracker API', function () {
@@ -43,7 +44,7 @@ describe('Fallen Angels Page', function () {
 
         $this->get(route('fallen-angels'))
             ->assertOk()
-            ->assertViewHas('fallen', []);
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('fallen', []));
     });
 
     it('handles tracker API failure gracefully', function () {
@@ -59,6 +60,6 @@ describe('Fallen Angels Page', function () {
 
         $this->get(route('fallen-angels'))
             ->assertOk()
-            ->assertViewHas('fallen', []);
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('fallen', []));
     });
 });
