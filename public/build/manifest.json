@@ -74,12 +74,15 @@
     ]
   },
   "resources/js/app-legacy.tsx": {
-    "file": "assets/app-legacy-B8bVr4YY.js",
+    "file": "assets/app-legacy-BGC0pRZM.js",
     "name": "app",
     "src": "resources/js/app-legacy.tsx",
     "isEntry": true,
     "imports": [
       "__commonjsHelpers-legacy-CTU2Tar8.js"
+    ],
+    "dynamicImports": [
+      "resources/js/pages/history-legacy.tsx"
     ]
   },
   "resources/js/app.js": {
@@ -92,25 +95,48 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-DX2Y_twi.js",
+    "file": "assets/app-BHR62vGd.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
     "imports": [
       "__commonjsHelpers-Cpj98o6Y.js"
     ],
+    "dynamicImports": [
+      "resources/js/pages/history.tsx"
+    ],
     "css": [
-      "assets/app-CGWgkne8.css"
+      "assets/app-CkFfB2m-.css"
+    ]
+  },
+  "resources/js/pages/history-legacy.tsx": {
+    "file": "assets/history-legacy-QAQbdp-a.js",
+    "name": "history",
+    "src": "resources/js/pages/history-legacy.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app-legacy.tsx",
+      "__commonjsHelpers-legacy-CTU2Tar8.js"
+    ]
+  },
+  "resources/js/pages/history.tsx": {
+    "file": "assets/history-DDDc0xMr.js",
+    "name": "history",
+    "src": "resources/js/pages/history.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "__commonjsHelpers-Cpj98o6Y.js"
     ]
   },
   "resources/src/main-legacy.styl": {
-    "file": "assets/main-legacy-Dy07SuLj.js",
+    "file": "assets/main-legacy-dKBrqObv.js",
     "name": "main",
     "src": "resources/src/main-legacy.styl",
     "isEntry": true
   },
   "resources/src/main.styl": {
-    "file": "assets/main-LEen6eFJ.css",
+    "file": "assets/main-DkGn4d2U.css",
     "src": "resources/src/main.styl",
     "isEntry": true,
     "name": "main",
@@ -119,7 +145,7 @@
     ]
   },
   "vite/legacy-polyfills-legacy": {
-    "file": "assets/polyfills-legacy-DM14r9gf.js",
+    "file": "assets/polyfills-legacy-CppehNps.js",
     "name": "polyfills",
     "src": "vite/legacy-polyfills-legacy",
     "isEntry": true

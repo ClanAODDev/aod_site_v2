@@ -1,0 +1,12 @@
+/* Utility classes — ported from tracker_v3 as needed rather than wholesale. */
+
+@layer utilities {
+    /* Fine 45° diagonal hatch — a texture for card surfaces. */
+    .tron-hatch {
+        background-image: repeating-linear-gradient(
+            -45deg,
+            color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px,
+            transparent 1px 7px
+        );
+    }
+}
