@@ -1,4 +1,12 @@
 {
+  "__commonjsHelpers-Cpj98o6Y.js": {
+    "file": "assets/_commonjsHelpers-Cpj98o6Y.js",
+    "name": "_commonjsHelpers"
+  },
+  "__commonjsHelpers-legacy-CTU2Tar8.js": {
+    "file": "assets/_commonjsHelpers-legacy-CTU2Tar8.js",
+    "name": "_commonjsHelpers"
+  },
   "resources/fonts/32291B_0_0.eot": {
     "file": "assets/32291B_0_0-5DOyDCCZ.eot",
     "src": "resources/fonts/32291B_0_0.eot"
@@ -57,16 +65,43 @@
     "src": "resources/fonts/socicon.woff"
   },
   "resources/js/app-legacy.js": {
-    "file": "assets/app-legacy-B7zBIbpY.js",
+    "file": "assets/app-legacy-BJTQHaoi.js",
     "name": "app",
     "src": "resources/js/app-legacy.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-legacy-CTU2Tar8.js"
+    ]
+  },
+  "resources/js/app-legacy.tsx": {
+    "file": "assets/app-legacy-B8bVr4YY.js",
+    "name": "app",
+    "src": "resources/js/app-legacy.tsx",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-legacy-CTU2Tar8.js"
+    ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CC2Uvmxm.js",
+    "file": "assets/app-BI0_hW5_.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-DX2Y_twi.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js"
+    ],
+    "css": [
+      "assets/app-CGWgkne8.css"
+    ]
   },
   "resources/src/main-legacy.styl": {
     "file": "assets/main-legacy-Dy07SuLj.js",
@@ -84,7 +119,7 @@
     ]
   },
   "vite/legacy-polyfills-legacy": {
-    "file": "assets/polyfills-legacy-BoBotdpX.js",
+    "file": "assets/polyfills-legacy-DM14r9gf.js",
     "name": "polyfills",
     "src": "vite/legacy-polyfills-legacy",
     "isEntry": true
