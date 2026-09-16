@@ -1,0 +1,86 @@
+/* Design tokens ------------------------------------------------------------
+ * Tron theme, ported from tracker_v3 so the two sites match. Black / dark-grey
+ * surfaces, a single crimson accent, cyan as the opposing signal colour, sharp
+ * 4px geometry, restrained outer-glow on focus. This site has no theme toggle,
+ * so tokens live directly on :root (tracker_v3 also scopes them to
+ * [data-theme='tron'] to support its light-theme override — not needed here).
+ *
+ * The @theme inline block below exposes each token as a `bg-*` / `text-*` /
+ * `border-*` / `font-*` utility — add a line there whenever a token needs one. */
+
+:root {
+    --background: #08090b;
+    --foreground: #e7e9ec;
+
+    --card: #0f1113;
+    --card-foreground: #e7e9ec;
+
+    --popover: #15181b;
+    --popover-foreground: #e7e9ec;
+
+    --primary: #e11d2e;
+    --primary-foreground: #fdeaec;
+    --primary-glow: rgba(225, 29, 46, 0.32);
+
+    --secondary: #15181b;
+    --secondary-foreground: #e7e9ec;
+
+    --muted: #131619;
+    --muted-foreground: #868b94;
+    --dim-foreground: #5b616b;
+
+    --accent: #303338;
+    --accent-foreground: #f4f5f7;
+
+    --destructive: #ff5c5c;
+    --destructive-foreground: #1a0708;
+
+    --success: #22d3a6;
+    --warning: #f5b544;
+    --info: #3ad0ff;
+
+    --border: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(255, 255, 255, 0.15);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: rgba(225, 29, 46, 0.55);
+
+    --radius: 0.25rem;
+
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-dim-foreground: var(--dim-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-info: var(--info);
+    --color-border: var(--border);
+    --color-border-strong: var(--border-strong);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+
+    --radius-sm: calc(var(--radius) - 2px);
+    --radius-md: var(--radius);
+    --radius-lg: calc(var(--radius) + 2px);
+    --radius-xl: calc(var(--radius) + 6px);
+}
