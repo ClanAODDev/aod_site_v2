@@ -1,0 +1,78 @@
+/* Home page — hero video texture, highlighted-event theme backgrounds, and
+   the snowfall effect for the holiday theme. */
+
+.hero-video-overlay {
+    background-image: url('/images/grid.png'), url('/images/video-overlay.png');
+    background-repeat: repeat, repeat-x;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.highlighted-event-holiday {
+    background-color: #1a0a0a;
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139, 30, 30, 0.05) 40px, rgba(139, 30, 30, 0.05) 80px),
+        linear-gradient(180deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%);
+}
+
+.highlighted-event-default {
+    background-image: linear-gradient(180deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%);
+}
+
+.highlighted-event-esports {
+    background-image: linear-gradient(180deg, #0a0a14 0%, #14142a 50%, #0a0a14 100%);
+}
+
+.highlighted-event-community {
+    background-image: linear-gradient(180deg, #0a140a 0%, #142a14 50%, #0a140a 100%);
+}
+
+.highlighted-event-badge-holiday svg {
+    color: #ff6b6b;
+    animation: snowflake-spin 3s linear infinite;
+}
+
+.highlighted-event-badge-holiday svg:last-child {
+    animation-direction: reverse;
+}
+
+@keyframes snowflake-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -50px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 100px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .highlighted-event-badge-holiday svg,
+    .snowflake {
+        animation: none;
+    }
+}
