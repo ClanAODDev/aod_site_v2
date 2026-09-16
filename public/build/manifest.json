@@ -7,6 +7,20 @@
     "file": "assets/_commonjsHelpers-legacy-CTU2Tar8.js",
     "name": "_commonjsHelpers"
   },
+  "_site-layout-DYcdqUBv.js": {
+    "file": "assets/site-layout-DYcdqUBv.js",
+    "name": "site-layout",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_site-layout-legacy-jbDGQmmh.js": {
+    "file": "assets/site-layout-legacy-jbDGQmmh.js",
+    "name": "site-layout",
+    "imports": [
+      "resources/js/app-legacy.tsx"
+    ]
+  },
   "resources/fonts/32291B_0_0.eot": {
     "file": "assets/32291B_0_0-5DOyDCCZ.eot",
     "src": "resources/fonts/32291B_0_0.eot"
@@ -74,7 +88,7 @@
     ]
   },
   "resources/js/app-legacy.tsx": {
-    "file": "assets/app-legacy-Dun8Dtdz.js",
+    "file": "assets/app-legacy-N6UHqj5K.js",
     "name": "app",
     "src": "resources/js/app-legacy.tsx",
     "isEntry": true,
@@ -82,6 +96,7 @@
       "__commonjsHelpers-legacy-CTU2Tar8.js"
     ],
     "dynamicImports": [
+      "resources/js/pages/fallen-angels-legacy.tsx",
       "resources/js/pages/history-legacy.tsx"
     ]
   },
@@ -95,7 +110,7 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-DBd3ydDD.js",
+    "file": "assets/app-CY3OmxiP.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -103,40 +118,65 @@
       "__commonjsHelpers-Cpj98o6Y.js"
     ],
     "dynamicImports": [
+      "resources/js/pages/fallen-angels.tsx",
       "resources/js/pages/history.tsx"
     ],
     "css": [
-      "assets/app-CMPuCwPO.css"
+      "assets/app-Cx5K7K6Y.css"
+    ]
+  },
+  "resources/js/pages/fallen-angels-legacy.tsx": {
+    "file": "assets/fallen-angels-legacy-CsdtRw_W.js",
+    "name": "fallen-angels",
+    "src": "resources/js/pages/fallen-angels-legacy.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app-legacy.tsx",
+      "_site-layout-legacy-jbDGQmmh.js",
+      "__commonjsHelpers-legacy-CTU2Tar8.js"
+    ]
+  },
+  "resources/js/pages/fallen-angels.tsx": {
+    "file": "assets/fallen-angels-mAdpbH3Q.js",
+    "name": "fallen-angels",
+    "src": "resources/js/pages/fallen-angels.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_site-layout-DYcdqUBv.js",
+      "__commonjsHelpers-Cpj98o6Y.js"
     ]
   },
   "resources/js/pages/history-legacy.tsx": {
-    "file": "assets/history-legacy-B7UUn7ND.js",
+    "file": "assets/history-legacy-BZUAdxnc.js",
     "name": "history",
     "src": "resources/js/pages/history-legacy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app-legacy.tsx",
+      "_site-layout-legacy-jbDGQmmh.js",
       "__commonjsHelpers-legacy-CTU2Tar8.js"
     ]
   },
   "resources/js/pages/history.tsx": {
-    "file": "assets/history-CZFNQml_.js",
+    "file": "assets/history-BZ5zrENE.js",
     "name": "history",
     "src": "resources/js/pages/history.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.tsx",
+      "_site-layout-DYcdqUBv.js",
       "__commonjsHelpers-Cpj98o6Y.js"
     ]
   },
   "resources/src/main-legacy.styl": {
-    "file": "assets/main-legacy-dKBrqObv.js",
+    "file": "assets/main-legacy-BjCqT4sM.js",
     "name": "main",
     "src": "resources/src/main-legacy.styl",
     "isEntry": true
   },
   "resources/src/main.styl": {
-    "file": "assets/main-DkGn4d2U.css",
+    "file": "assets/main-ZWnXa-Z_.css",
     "src": "resources/src/main.styl",
     "isEntry": true,
     "name": "main",
