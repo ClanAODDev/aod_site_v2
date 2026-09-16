@@ -14,7 +14,6 @@
     </div>
 
     <div class="section-content-container">
-        @include('partials.announcements')
         @include('partials.sitemap')
 
         <div class="site-meta footer-section full-width centered">
