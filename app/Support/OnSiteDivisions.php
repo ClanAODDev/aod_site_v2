@@ -19,12 +19,20 @@ class OnSiteDivisions
         );
     }
 
+    /**
+     * The API returns divisions keyed by id rather than as a sequential list, and
+     * array_filter() preserves those keys - re-index with array_values() so this
+     * serializes as a JSON array (the Inertia `divisions` prop is typed as one),
+     * not an object.
+     */
     private static function fetch(): array
     {
         if (! $divisions = DivisionRepository::all()->json('data')) {
             return [];
         }
 
-        return array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false);
+        return array_values(
+            array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false)
+        );
     }
 }
