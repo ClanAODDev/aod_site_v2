@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Inertia\Testing\AssertableInertia;
 
 describe('Home Page', function () {
     beforeEach(function () {
@@ -20,8 +21,9 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewIs('pages.home')
-            ->assertViewHas(['discord', 'isChristmas']);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('home')
+                ->has('discord'));
     });
 
     it('shows Christmas theme during Christmas season', function () {
@@ -33,7 +35,7 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('isChristmas', true);
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('highlightedEvent.theme', 'holiday'));
     });
 
     it('does not show Christmas theme outside Christmas season', function () {
@@ -45,7 +47,7 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('isChristmas', false);
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('highlightedEvent', null));
     });
 
     it('handles Discord API failure gracefully', function () {
@@ -55,8 +57,9 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewIs('pages.home')
-            ->assertViewHas('discord', null);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('home')
+                ->where('discord', null));
     });
 
     it('caches Discord data correctly', function () {
@@ -75,7 +78,7 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('discord', $discordData['data']);
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('discord', $discordData['data']));
     });
 
     it('uses dummy data in local environment', function () {
@@ -83,22 +86,21 @@ describe('Home Page', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewIs('pages.home')
-            ->assertViewHas('discord');
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('home')
+                ->has('discord'));
     });
 
-    it('contains video modal elements', function () {
+    it('passes the props the hero video modal needs', function () {
         Http::fake([
             '*/api/v1/discord-count' => Http::response(['data' => ['count' => 100]], 200),
         ]);
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertSee('intro-video', false)
-            ->assertSee('video-iframe', false)
-            ->assertSee('close-video', false)
-            ->assertSee('play-button', false)
-            ->assertSee('enablejsapi=1', false);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('heroVideoId', config('aod.hero_video_id'))
+                ->where('introVideoId', config('aod.intro_video_id')));
     });
 });
 
@@ -154,9 +156,10 @@ describe('Twitch and Highlighted Event Priority', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('showTwitchLive', true)
-            ->assertViewHas('showHighlightedEvent', false)
-            ->assertViewHas('showVods', false);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('showTwitchLive', true)
+                ->where('showHighlightedEvent', false)
+                ->where('showVods', false));
     });
 
     it('shows highlighted event when stream is offline and event is active', function () {
@@ -176,9 +179,10 @@ describe('Twitch and Highlighted Event Priority', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('showTwitchLive', false)
-            ->assertViewHas('showHighlightedEvent', true)
-            ->assertViewHas('showVods', false);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('showTwitchLive', false)
+                ->where('showHighlightedEvent', true)
+                ->where('showVods', false));
     });
 
     it('shows VODs when stream is offline and no highlighted event is active', function () {
@@ -198,8 +202,9 @@ describe('Twitch and Highlighted Event Priority', function () {
 
         $this->get(route('home'))
             ->assertOk()
-            ->assertViewHas('showTwitchLive', false)
-            ->assertViewHas('showHighlightedEvent', false)
-            ->assertViewHas('showVods', true);
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('showTwitchLive', false)
+                ->where('showHighlightedEvent', false)
+                ->where('showVods', true));
     });
 });
