@@ -1,4 +1,4 @@
-System.register(["./site-layout-legacy-DUFoeAQK.js"],(function(e,t){"use strict";var n;return{setters:[e=>{n=e.c}],execute:function(){
+System.register(["./site-layout-legacy-D2g-BlW9.js"],(function(e,t){"use strict";var n;return{setters:[e=>{n=e.c}],execute:function(){
 /**
        * @license lucide-react v1.46.0 - ISC
        *
