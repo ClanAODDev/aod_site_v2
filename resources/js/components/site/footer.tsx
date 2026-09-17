@@ -1,14 +1,46 @@
+import { useOpenApplyDialog } from '@/components/site/apply-dialog';
+
+const sitemapLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Forums', href: '/forums' },
+    { label: 'Divisions', href: '/divisions' },
+    { label: 'History', href: '/history' },
+    { label: 'Fallen Angels', href: '/fallen-angels' },
+];
+
 export function Footer() {
+    const openApply = useOpenApplyDialog();
+
     return (
         <footer className="border-t border-border bg-[#1a2128] bg-[url('/images/footer-bg.jpg')] bg-top bg-no-repeat">
-            <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center">
-                <img src="/images/official-logo.png" alt="Angels of Death" className="h-16 w-auto shrink-0" />
-                <div>
-                    <h2 className="text-lg font-semibold">About The Angels of Death</h2>
-                    <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-                        The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and
-                        provide a comfortable environment to play with thousands of other likeminded members.
-                    </p>
+            <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                    <img src="/images/official-logo.png" alt="Angels of Death" className="h-16 w-auto shrink-0" />
+                    <div>
+                        <h2 className="text-lg font-semibold">About The Angels of Death</h2>
+                        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+                            The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency
+                            and provide a comfortable environment to play with thousands of other likeminded members.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="shrink-0">
+                    <h2 className="text-lg font-semibold">Site Map</h2>
+                    <ul className="mt-2 space-y-1.5 text-sm">
+                        {sitemapLinks.map((link) => (
+                            <li key={link.href}>
+                                <a href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                        <li>
+                            <button onClick={openApply} className="text-primary transition-colors hover:text-primary/80">
+                                Apply
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
