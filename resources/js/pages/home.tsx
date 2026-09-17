@@ -85,7 +85,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
             {showHighlightedEvent && highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
             {showVods && twitch.vods.length > 0 && <TwitchVods vods={twitch.vods} channel={twitch.channel} />}
 
-            <section className="bg-[#0b0f12] px-4 py-20 text-center">
+            <section className="relative bg-[#0b0f12] bg-[url('/images/supported-games-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-20 after:bg-gradient-to-b after:from-transparent after:to-[#090a10]">
                 <Reveal from="right">
                     <SectionTitle>
                         Engaged in <strong className="font-semibold text-primary">{divisions.length}</strong> major titles
@@ -117,7 +117,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 </Reveal>
             </section>
 
-            <section className="bg-[#3a0707] px-4 py-20">
+            <section className="bg-[#3a0707] bg-[url('/images/founded-bg.jpg'),url('/images/founded-bg-top-border.png')] bg-[position:center_top,center_top] bg-[repeat:no-repeat,repeat-x] px-4 py-20">
                 <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
                     <Reveal from="left">
                         <SectionTitle className="text-left">
@@ -164,7 +164,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 </Reveal>
             </section>
 
-            <section className="bg-[#030911] px-4 py-20 text-center">
+            <section className="bg-[#030911] bg-[url('/images/social-media-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
                 <Reveal from="left">
                     <SectionTitle>Catch up with us on social media</SectionTitle>
                 </Reveal>
@@ -186,7 +186,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 imageSuffix={merch.image_suffix}
             />
 
-            <section className="relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-cover bg-center px-4 py-20 text-center">
+            <section className="relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-primary/20" />
                 <div className="relative">
                     <SectionTitle>So what are you waiting for?</SectionTitle>
