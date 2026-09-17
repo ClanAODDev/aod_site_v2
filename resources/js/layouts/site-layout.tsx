@@ -6,7 +6,9 @@ import { Nav } from '@/components/site/nav';
 
 interface SiteLayoutProps {
     children: ReactNode;
-    /** Pass true on pages with a full-viewport hero directly behind the nav (currently just home). */
+    /** Pages with a full-viewport hero (currently just home) place `<Nav />` themselves, right after
+     * the hero, so it starts in normal document flow below the fold and only becomes sticky once
+     * scrolled to - pass true here to skip rendering it in the usual spot. */
     heroNav?: boolean;
 }
 
@@ -14,7 +16,7 @@ export function SiteLayout({ children, heroNav = false }: SiteLayoutProps) {
     return (
         <ApplyDialogProvider>
             <div className="flex min-h-screen flex-col">
-                <Nav floatOverHero={heroNav} />
+                {!heroNav && <Nav />}
                 <main className="flex-1">{children}</main>
                 <Footer />
             </div>
