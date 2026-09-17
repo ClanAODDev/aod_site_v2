@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { usePastScrollThreshold } from '@/hooks/use-past-scroll-threshold';
+import { cn } from '@/lib/utils';
 
 const links = [
     { label: 'Forums', href: '/forums' },
@@ -12,24 +14,46 @@ const links = [
     { label: 'Fallen Angels', href: '/fallen-angels' },
 ];
 
-export function Nav() {
+interface NavProps {
+    /** True on pages with a full-viewport hero behind the nav (currently just home): the nav starts
+     * transparent, blending into the hero, and docks into a solid bar once scrolled past it. */
+    floatOverHero?: boolean;
+}
+
+export function Nav({ floatOverHero = false }: NavProps) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const openApply = useOpenApplyDialog();
+    const pastHero = usePastScrollThreshold(700);
+    const solid = !floatOverHero || pastHero;
 
     return (
-        <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+        <header
+            className={cn(
+                'nav-hatch inset-x-0 top-0 z-40 transition-colors duration-300',
+                floatOverHero ? 'fixed' : 'sticky',
+                solid
+                    ? 'border-b border-border bg-gradient-to-b from-card/95 to-background/90 backdrop-blur-md'
+                    : 'border-b border-transparent bg-transparent',
+            )}
+        >
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
                 <a href="/" className="flex items-center gap-2">
                     <img src="/images/aod_new.png" alt="Angels of Death" className="h-9 w-auto" />
                 </a>
 
-                <nav className="hidden items-center gap-6 md:flex">
-                    {links.map((link) => (
-                        <a key={link.href} href={link.href} className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
-                            {link.label}
-                        </a>
-                    ))}
-                    <Button size="sm" onClick={openApply}>
+                <nav className="hidden items-center md:flex">
+                    <div className="flex items-center divide-x divide-border-strong/60">
+                        {links.map((link) => (
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                className="px-4 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+                    <Button size="sm" className="ml-6" onClick={openApply}>
                         Apply
                     </Button>
                 </nav>

@@ -62,9 +62,10 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
     const { divisions } = usePage<SharedPageProps>().props;
     const onlineCount = discord ? discord.online + discord.idle + discord.dnd : null;
     const isChristmas = highlightedEvent?.theme === 'holiday';
+    const totalMembers = divisions.reduce((total, division) => total + division.members_count, 0);
 
     return (
-        <SiteLayout>
+        <SiteLayout heroNav>
             <Head title="Angels of Death Gaming Clan | Since 1999" />
 
             <Hero
@@ -86,7 +87,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                     <h2 className="text-2xl font-bold md:text-4xl">
                         Engaged in <strong className="text-primary">{divisions.length}</strong> major titles
                         <br />
-                        with more than <strong className="text-primary">1200</strong> active members
+                        with more than <strong className="text-primary">{totalMembers.toLocaleString()}</strong> active members
                     </h2>
                 </Reveal>
                 <Reveal from="left" delay={150} className="mx-auto mt-5 max-w-2xl">
