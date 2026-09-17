@@ -72,7 +72,10 @@ export function HighlightedEvent({ event }: { event: HighlightedEventData }) {
                     </div>
                 )}
 
-                <h2 className="text-2xl font-bold [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] md:text-4xl" dangerouslySetInnerHTML={{ __html: event.title }} />
+                <h2
+                    className="font-mono text-2xl font-medium tracking-[0.06em] uppercase [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] md:text-4xl"
+                    dangerouslySetInnerHTML={{ __html: event.title }}
+                />
 
                 {event.description && <p className="mx-auto mt-5 max-w-2xl text-foreground/85">{event.description}</p>}
 

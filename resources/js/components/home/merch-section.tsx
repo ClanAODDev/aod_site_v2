@@ -1,4 +1,5 @@
 import { ContinuousCarousel } from '@/components/home/continuous-carousel';
+import { SectionTitle } from '@/components/section-title';
 
 interface MerchItem {
     name: string;
@@ -17,7 +18,7 @@ export function MerchSection({ items, storeUrl, imageBaseUrl, imageSuffix }: Mer
     return (
         <section className="bg-gradient-to-b from-[#0a0a0a] via-[#151515] to-[#0a0a0a] px-4 py-20">
             <div className="mx-auto max-w-6xl text-center">
-                <h2 className="text-2xl font-bold md:text-3xl">Rep the Angels of Death</h2>
+                <SectionTitle>Rep the Angels of Death</SectionTitle>
                 <p className="mx-auto mt-3 max-w-2xl text-foreground/70">
                     Show your AOD pride with official merchandise. From premium apparel to gaming gear, we&apos;ve got you covered.
                 </p>

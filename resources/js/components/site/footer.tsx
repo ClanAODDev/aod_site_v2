@@ -1,6 +1,6 @@
 export function Footer() {
     return (
-        <footer className="border-t border-border bg-card">
+        <footer className="border-t border-border bg-[#1a2128] bg-[url('/images/footer-bg.jpg')] bg-top bg-no-repeat">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center">
                 <img src="/images/official-logo.png" alt="Angels of Death" className="h-16 w-auto shrink-0" />
                 <div>
