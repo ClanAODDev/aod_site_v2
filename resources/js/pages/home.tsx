@@ -117,7 +117,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                                 {division.name}
                             </span>
                             {division.members_count > 0 && (
-                                <span className="mt-1 font-mono text-[10px] text-primary/80">{division.members_count.toLocaleString()} members</span>
+                                <span className="mt-1 font-mono text-[10px] text-foreground/50">{division.members_count.toLocaleString()} members</span>
                             )}
                         </a>
                     ))}
