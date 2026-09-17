@@ -77,7 +77,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 isChristmas={isChristmas}
             />
 
-            <div className="h-[55vh]" />
+            <div className="pointer-events-none h-[55vh]" />
 
             <Nav startsUnstuck />
 
