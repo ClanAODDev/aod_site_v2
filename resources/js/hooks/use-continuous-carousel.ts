@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 
+import { useMediaQuery } from '@/hooks/use-media-query';
+
 interface UseContinuousCarouselOptions {
     /** Pixels advanced per animation frame while idle. */
     speed?: number;
@@ -15,6 +17,9 @@ interface UseContinuousCarouselOptions {
  *
  * Replaces three near-identical jQuery implementations (merch, VOD, and the
  * old screenshot carousel) that only differed in speed/gap/class names.
+ *
+ * Honours `prefers-reduced-motion`: the auto-scroll never starts, but the
+ * prev/next buttons and touch-drag still work.
  */
 export function useContinuousCarousel<T extends HTMLElement>({ speed = 0.5, gap = 20 }: UseContinuousCarouselOptions = {}) {
     const viewportRef = useRef<T>(null);
@@ -22,6 +27,7 @@ export function useContinuousCarousel<T extends HTMLElement>({ speed = 0.5, gap 
     const offset = useRef(0);
     const setWidth = useRef(0);
     const paused = useRef(false);
+    const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
     useEffect(() => {
         const track = trackRef.current;
@@ -108,7 +114,9 @@ export function useContinuousCarousel<T extends HTMLElement>({ speed = 0.5, gap 
         const resizeObserver = new ResizeObserver(measure);
         resizeObserver.observe(track);
         measure();
-        frame = requestAnimationFrame(tick);
+        if (!reduceMotion) {
+            frame = requestAnimationFrame(tick);
+        }
 
         viewport.addEventListener('touchstart', onTouchStart, { passive: true });
         viewport.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -124,7 +132,7 @@ export function useContinuousCarousel<T extends HTMLElement>({ speed = 0.5, gap 
                 clearTimeout(resumeTimer);
             }
         };
-    }, [speed, gap]);
+    }, [speed, gap, reduceMotion]);
 
     function step(direction: 1 | -1) {
         const track = trackRef.current;
