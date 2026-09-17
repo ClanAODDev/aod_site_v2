@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
 const links = [
     { label: 'Forums', href: '/forums' },
@@ -11,6 +12,8 @@ const links = [
     { label: 'History', href: '/history' },
     { label: 'Fallen Angels', href: '/fallen-angels' },
 ];
+
+const itemClass = 'px-5 text-sm font-medium tracking-wide text-foreground/70 uppercase transition-colors hover:text-foreground';
 
 interface NavProps {
     /** True on pages where the nav starts in normal document flow, below the fold, rather than
@@ -40,31 +43,24 @@ export function Nav({ startsUnstuck = false }: NavProps) {
         <>
             {startsUnstuck && <div ref={sentinelRef} aria-hidden className="h-px" />}
 
-            <header className="nav-hatch sticky top-0 z-40 border-b border-border bg-gradient-to-b from-card/95 to-background/90 backdrop-blur-md">
-                <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-                    <a href="/" className="flex items-center gap-2">
-                        {stuck ? (
-                            <img src="/images/aod_new.png" alt="Angels of Death" className="h-9 w-auto" />
-                        ) : (
-                            <span className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Home</span>
-                        )}
+            <header className="nav-hatch sticky top-0 z-40 border-b border-border bg-gradient-to-b from-popover to-card backdrop-blur-md">
+                <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:justify-center">
+                    <a href="/" className="flex items-center gap-2 md:hidden">
+                        <img src="/images/aod_new.png" alt="Angels of Death" className="h-9 w-auto" />
                     </a>
 
-                    <nav className="hidden items-center md:flex">
-                        <div className="flex items-center divide-x divide-border-strong/60">
-                            {links.map((link) => (
-                                <a
-                                    key={link.href}
-                                    href={link.href}
-                                    className="px-4 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
-                        </div>
-                        <Button size="sm" className="ml-6" onClick={openApply}>
+                    <nav className="hidden items-center divide-x divide-border-strong/60 md:flex">
+                        <a href="/" className={cn(itemClass, 'flex items-center')}>
+                            {stuck ? <img src="/images/aod_new.png" alt="Home" className="h-6 w-auto" /> : 'Home'}
+                        </a>
+                        {links.map((link) => (
+                            <a key={link.href} href={link.href} className={itemClass}>
+                                {link.label}
+                            </a>
+                        ))}
+                        <button onClick={openApply} className={cn(itemClass, 'font-semibold text-primary hover:text-primary/80')}>
                             Apply
-                        </Button>
+                        </button>
                     </nav>
 
                     <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileOpen(true)} aria-label="Open menu">
