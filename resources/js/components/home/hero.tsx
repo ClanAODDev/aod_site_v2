@@ -36,11 +36,11 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <div className="hero-video-overlay pointer-events-none absolute inset-0" />
             </div>
 
-            <div ref={textRef} className="fixed top-[70px] left-1/2 z-0 w-full max-w-4xl -translate-x-1/2 px-4 text-center text-white transition-opacity duration-300">
+            <div ref={textRef} className="fixed top-[50px] left-1/2 -z-10 w-full max-w-4xl -translate-x-1/2 px-4 text-center text-white transition-opacity duration-300">
                 <a
                     href="https://discord.gg/clanaod"
                     title="Join the AOD Discord"
-                    className="pointer-events-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-colors hover:border-white/30 hover:bg-black/60"
+                    className="pointer-events-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-colors hover:border-white/30 hover:bg-black/60"
                 >
                     <DiscordIcon className="size-4 text-[#5865F2]" />
                     JOIN US ON DISCORD
@@ -54,18 +54,18 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <img
                     src={isChristmas ? '/images/logo-xmas.png' : '/images/official-logo.png'}
                     alt="Angels of Death"
-                    className="mx-auto w-40 drop-shadow-lg md:w-56"
+                    className="mx-auto w-32 drop-shadow-lg md:w-48"
                 />
-                <h1 className="mt-6 text-3xl font-bold [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
+                <h1 className="mt-4 text-3xl font-bold [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
                     Game with purpose
                     <br />
                     inspired by community
                 </h1>
-                <h2 className="mt-3 text-lg text-white/80">What are you waiting for?</h2>
+                <h2 className="mt-2 text-lg text-white/80">What are you waiting for?</h2>
                 <button
                     onClick={() => setIntroOpen(true)}
                     aria-label="Play video"
-                    className="pointer-events-auto relative z-10 mx-auto mt-10 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
+                    className="pointer-events-auto relative z-10 mx-auto mt-6 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
                 />
             </div>
 
