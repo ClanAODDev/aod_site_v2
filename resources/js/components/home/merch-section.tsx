@@ -34,7 +34,7 @@ export function MerchSection({ items, storeUrl, imageBaseUrl, imageSuffix }: Mer
                             href={`${storeUrl}/${item.slug}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex w-55 flex-col items-center rounded-xl border border-border bg-white/3 p-5 text-center transition-all hover:border-primary/60 hover:bg-primary/10 hover:shadow-[0_0_25px_var(--primary-glow)]"
+                            className="flex h-full w-55 flex-col items-center rounded-xl border border-border bg-white/3 p-5 text-center transition-all hover:border-primary/60 hover:bg-primary/10 hover:shadow-[0_0_25px_var(--primary-glow)]"
                         >
                             <img
                                 src={`${imageBaseUrl}${item.image_id}${imageSuffix}`}

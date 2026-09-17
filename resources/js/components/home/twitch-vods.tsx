@@ -35,7 +35,7 @@ export function TwitchVods({ vods, channel }: TwitchVodsProps) {
                             href={vod.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex w-70 flex-col overflow-hidden rounded-xl border border-border bg-white/3 text-left transition-all hover:border-[#9146FF]/60 hover:bg-[#9146FF]/10 hover:shadow-[0_0_25px_rgba(145,70,255,0.3)]"
+                            className="group flex h-full w-70 flex-col overflow-hidden rounded-xl border border-border bg-white/3 text-left transition-all hover:border-[#9146FF]/60 hover:bg-[#9146FF]/10 hover:shadow-[0_0_25px_rgba(145,70,255,0.3)]"
                         >
                             <div className="relative overflow-hidden">
                                 <img
