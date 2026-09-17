@@ -85,7 +85,10 @@ function VodCard({ vod, divisions, featured = false }: { vod: Vod; divisions: Di
 }
 
 export function TwitchVods({ vods, channel, divisions }: TwitchVodsProps) {
-    const [featured, ...rest] = vods;
+    // The carousel keeps the full list (including the featured one) - the pool of real VODs is
+    // small enough that pulling the top one out entirely made the remaining set repeat within a
+    // single viewport width, which read as a broken loop rather than a small content pool.
+    const [featured] = vods;
 
     return (
         <section className="bg-gradient-to-b from-[#0a0a0a] via-[#1a0a1a] to-[#0a0a0a] px-4 py-20">
@@ -99,9 +102,9 @@ export function TwitchVods({ vods, channel, divisions }: TwitchVodsProps) {
                     </Reveal>
                 )}
 
-                {rest.length > 0 && (
+                {vods.length > 1 && (
                     <ContinuousCarousel
-                        items={rest}
+                        items={vods}
                         keyFor={(vod) => vod.url}
                         speed={0.3}
                         gap={20}
