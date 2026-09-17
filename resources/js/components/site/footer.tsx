@@ -1,3 +1,8 @@
+import { DiscordIcon } from '@/components/icons/discord-icon';
+import { SteamIcon } from '@/components/icons/steam-icon';
+import { TwitchIcon } from '@/components/icons/twitch-icon';
+import { XIcon } from '@/components/icons/x-icon';
+import { YoutubeIcon } from '@/components/icons/youtube-icon';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 
 const sitemapLinks = [
@@ -6,6 +11,14 @@ const sitemapLinks = [
     { label: 'Divisions', href: '/divisions' },
     { label: 'History', href: '/history' },
     { label: 'Fallen Angels', href: '/fallen-angels' },
+];
+
+const socialLinks = [
+    { name: 'Discord', href: 'https://discord.gg/clanaod', Icon: DiscordIcon, hoverClass: 'hover:border-[#5865F2]/50 hover:text-[#5865F2]' },
+    { name: 'Twitch', href: 'https://www.twitch.tv/clanaodstream', Icon: TwitchIcon, hoverClass: 'hover:border-[#9146FF]/50 hover:text-[#9146FF]' },
+    { name: 'X', href: 'https://twitter.com/officialclanaod', Icon: XIcon, hoverClass: 'hover:border-[#1DA1F2]/40 hover:text-[#1DA1F2]' },
+    { name: 'Steam', href: 'https://steamcommunity.com/groups/clanaod', Icon: SteamIcon, hoverClass: 'hover:border-[#00adee]/50 hover:text-[#00adee]' },
+    { name: 'YouTube', href: 'https://www.youtube.com/ClanAODnet', Icon: YoutubeIcon, hoverClass: 'hover:border-[#FF0000]/50 hover:text-[#FF0000]' },
 ];
 
 export function Footer() {
@@ -41,6 +54,21 @@ export function Footer() {
                             </button>
                         </li>
                     </ul>
+
+                    <div className="mt-5 flex gap-3">
+                        {socialLinks.map(({ name, href, Icon, hoverClass }) => (
+                            <a
+                                key={name}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title={name}
+                                className={`flex size-9 items-center justify-center rounded-full border border-white/15 text-foreground/70 transition-colors ${hoverClass}`}
+                            >
+                                <Icon className="size-4" />
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
 
