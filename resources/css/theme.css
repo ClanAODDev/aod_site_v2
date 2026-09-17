@@ -48,6 +48,7 @@
 
     --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --font-display: 'Rajdhani', 'Inter', system-ui, sans-serif;
 }
 
 @theme inline {
@@ -78,6 +79,7 @@
 
     --font-sans: var(--font-sans);
     --font-mono: var(--font-mono);
+    --font-display: var(--font-display);
 
     --radius-sm: calc(var(--radius) - 2px);
     --radius-md: var(--radius);
