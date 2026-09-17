@@ -57,6 +57,8 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <a
                     href="https://discord.gg/clanaod"
                     title="Join the AOD Discord"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="pointer-events-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-colors hover:border-white/30 hover:bg-black/60"
                 >
                     <DiscordIcon className="size-4 text-[#5865F2]" />
