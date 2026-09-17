@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -23,6 +23,23 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
 
     useHeroScrollFade(videoWrapperRef, textRef);
 
+    useEffect(() => {
+        function handleScroll() {
+            const el = textRef.current;
+            if (!el) {
+                return;
+            }
+            // Sits above the nav (and everything else) only at rest, so the discord link and play
+            // button are clickable. The instant any scrolling starts, drop it behind - a fixed,
+            // positive z-index block would otherwise get swept over by the nav as it rises toward
+            // its sticky position, well before the opacity fade below has a chance to hide it.
+            el.style.zIndex = window.scrollY > 4 ? '-10' : '50';
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <>
             <div ref={videoWrapperRef} className="fixed inset-0 -z-10 h-screen w-screen overflow-hidden bg-black transition-opacity duration-300">
@@ -36,7 +53,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <div className="hero-video-overlay pointer-events-none absolute inset-0" />
             </div>
 
-            <div ref={textRef} className="fixed top-[50px] left-1/2 -z-10 w-full max-w-4xl -translate-x-1/2 px-4 text-center text-white transition-opacity duration-300">
+            <div ref={textRef} className="fixed top-[50px] left-1/2 z-50 w-full max-w-4xl -translate-x-1/2 px-4 text-center text-white transition-opacity duration-300">
                 <a
                     href="https://discord.gg/clanaod"
                     title="Join the AOD Discord"
