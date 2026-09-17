@@ -6,6 +6,11 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+if (app()->environment('local')) {
+    Route::get('_dev/gallery', fn () => Inertia::render('dev/gallery'))->name('dev.gallery');
+}
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
