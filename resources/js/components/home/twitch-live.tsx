@@ -2,6 +2,7 @@ import { VolumeX } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 import { TwitchIcon } from '@/components/icons/twitch-icon';
+import { SectionTitle } from '@/components/section-title';
 import { loadTwitchEmbedApi, type TwitchPlayer } from '@/lib/twitch-embed-api';
 
 interface TwitchLiveProps {
@@ -60,7 +61,7 @@ export function TwitchLive({ channel, title, gameName }: TwitchLiveProps) {
                     Live Now
                 </div>
 
-                <h2 className="text-2xl font-bold [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] md:text-3xl">{title || 'ClanAOD is Live!'}</h2>
+                <SectionTitle className="[text-shadow:0_2px_10px_rgba(0,0,0,0.5)]">{title || 'ClanAOD is Live!'}</SectionTitle>
                 {gameName && <p className="mt-2 mb-6 text-[#9146FF]/90">Playing {gameName}</p>}
 
                 <div className="relative mx-auto mb-8 aspect-video w-full max-w-3xl overflow-hidden rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.5),0_0_0_1px_rgba(145,70,255,0.3)]">

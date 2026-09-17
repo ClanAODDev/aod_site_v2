@@ -2,6 +2,7 @@ import { Eye } from 'lucide-react';
 
 import { TwitchIcon } from '@/components/icons/twitch-icon';
 import { ContinuousCarousel } from '@/components/home/continuous-carousel';
+import { SectionTitle } from '@/components/section-title';
 
 interface Vod {
     url: string;
@@ -20,7 +21,7 @@ export function TwitchVods({ vods, channel }: TwitchVodsProps) {
     return (
         <section className="bg-gradient-to-b from-[#0a0a0a] via-[#1a0a1a] to-[#0a0a0a] px-4 py-20">
             <div className="mx-auto max-w-6xl text-center">
-                <h2 className="text-2xl font-bold md:text-3xl">Recent Streams</h2>
+                <SectionTitle>Recent Streams</SectionTitle>
                 <p className="mx-auto mt-3 max-w-2xl text-foreground/70">Catch up on our latest broadcasts from the Angels of Death community.</p>
 
                 <ContinuousCarousel
