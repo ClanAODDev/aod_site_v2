@@ -53,7 +53,12 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <div className="hero-video-overlay pointer-events-none absolute inset-0" />
             </div>
 
-            <div ref={textRef} className="fixed top-[50px] left-1/2 z-50 w-full max-w-4xl -translate-x-1/2 px-4 text-center text-white transition-opacity duration-300">
+            {/* top-[27.5vh] centers this within the hero space - half of the 55vh spacer in
+                home.tsx that separates the hero from the nav/content below. Keep the two in sync. */}
+            <div
+                ref={textRef}
+                className="fixed top-[27.5vh] left-1/2 z-50 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 px-4 text-center text-white transition-opacity duration-300"
+            >
                 <a
                     href="https://discord.gg/clanaod"
                     title="Join the AOD Discord"
