@@ -103,7 +103,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                     <br />
                     inspired by community
                 </SectionTitle>
-                <h2 className="mt-2 font-display text-lg tracking-[0.06em] text-white/80 uppercase">What are you waiting for?</h2>
+                <h2 className="mt-2 font-display text-lg font-light tracking-[0.06em] text-white/80 uppercase">What are you waiting for?</h2>
                 <button
                     onClick={() => setIntroOpen(true)}
                     aria-label="Play video"
