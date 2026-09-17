@@ -56,8 +56,15 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 ) : (
                     <img src="/images/video-poster.jpg" alt="" className="absolute inset-0 size-full object-cover" />
                 )}
-                <div className="hero-video-overlay pointer-events-none absolute inset-0" />
             </div>
+
+            {/* Kept separate from the video wrapper above (and NOT shifted with it) - this fade
+                graphic is calibrated to fade out right where the nav/content take over, which is
+                a fixed point in the viewport regardless of which part of the video is showing. */}
+            <div
+                aria-hidden
+                className="hero-video-overlay pointer-events-none fixed inset-0 -z-10 h-screen w-screen"
+            />
 
             {/* top-[27.5vh] centers this within the hero space - half of the 55vh spacer in
                 home.tsx that separates the hero from the nav/content below. Keep the two in sync. */}
