@@ -83,7 +83,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
 
             {showTwitchLive && twitch.stream && <TwitchLive channel={twitch.channel} title={twitch.stream.title} gameName={twitch.stream.game_name} />}
             {showHighlightedEvent && highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
-            {showVods && twitch.vods.length > 0 && <TwitchVods vods={twitch.vods} channel={twitch.channel} />}
+            {showVods && twitch.vods.length > 0 && <TwitchVods vods={twitch.vods} channel={twitch.channel} divisions={divisions} />}
 
             <section className="relative bg-[#0b0f12] bg-[url('/images/supported-games-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-20 after:bg-gradient-to-b after:from-transparent after:to-[#090a10]">
                 <Reveal from="right">
