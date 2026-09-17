@@ -10,8 +10,11 @@ const ASPECT_RATIO = 16 / 9;
  * Attach `containerRef` to the sizing wrapper and `targetRef` to an empty
  * child div inside it - the player replaces that child in the DOM, so the
  * container itself (and the ref used to measure it) stays intact.
+ *
+ * Pass `enabled: false` to skip loading the API/mounting a player entirely
+ * (e.g. showing a static poster on mobile instead of an autoplaying video).
  */
-export function useYouTubeCoverVideo(videoId: string) {
+export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
     const containerRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
     const [iframe, setIframe] = useState<HTMLIFrameElement | null>(null);
@@ -19,7 +22,7 @@ export function useYouTubeCoverVideo(videoId: string) {
     useEffect(() => {
         const container = containerRef.current;
         const target = targetRef.current;
-        if (!container || !target) {
+        if (!container || !target || !enabled) {
             return;
         }
 
@@ -63,7 +66,7 @@ export function useYouTubeCoverVideo(videoId: string) {
             cancelled = true;
             player?.destroy();
         };
-    }, [videoId]);
+    }, [videoId, enabled]);
 
     useEffect(() => {
         const container = containerRef.current;

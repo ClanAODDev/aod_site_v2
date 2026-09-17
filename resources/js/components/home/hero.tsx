@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { useHeroScrollFade } from '@/hooks/use-hero-scroll-fade';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import { useYouTubeCoverVideo } from '@/hooks/use-youtube-cover-video';
 
 interface HeroProps {
@@ -14,7 +15,8 @@ interface HeroProps {
 }
 
 export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChristmas }: HeroProps) {
-    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId);
+    const canAutoplayVideo = useMediaQuery('(min-width: 768px)');
+    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId, canAutoplayVideo);
     const videoWrapperRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const [introOpen, setIntroOpen] = useState(false);
@@ -24,9 +26,13 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
     return (
         <>
             <div ref={videoWrapperRef} className="fixed inset-0 -z-10 h-screen w-screen overflow-hidden bg-black transition-opacity duration-300">
-                <div ref={containerRef} className="absolute inset-0">
-                    <div ref={targetRef} />
-                </div>
+                {canAutoplayVideo ? (
+                    <div ref={containerRef} className="absolute inset-0">
+                        <div ref={targetRef} />
+                    </div>
+                ) : (
+                    <img src="/images/video-poster.jpg" alt="" className="absolute inset-0 size-full object-cover" />
+                )}
                 <div className="hero-video-overlay pointer-events-none absolute inset-0" />
             </div>
 
