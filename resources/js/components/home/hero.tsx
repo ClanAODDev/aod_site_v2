@@ -19,21 +19,24 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
     const { containerRef, targetRef } = useYouTubeCoverVideo(videoId, canAutoplayVideo);
     const videoWrapperRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
+    const discordRef = useRef<HTMLAnchorElement>(null);
     const [introOpen, setIntroOpen] = useState(false);
 
-    useHeroScrollFade(videoWrapperRef, textRef);
+    useHeroScrollFade(videoWrapperRef, textRef, discordRef);
 
     useEffect(() => {
         function handleScroll() {
-            const el = textRef.current;
-            if (!el) {
-                return;
-            }
             // Sits above the nav (and everything else) only at rest, so the discord link and play
             // button are clickable. The instant any scrolling starts, drop it behind - a fixed,
             // positive z-index block would otherwise get swept over by the nav as it rises toward
             // its sticky position, well before the opacity fade below has a chance to hide it.
-            el.style.zIndex = window.scrollY > 4 ? '-10' : '50';
+            const zIndex = window.scrollY > 4 ? '-10' : '50';
+            if (textRef.current) {
+                textRef.current.style.zIndex = zIndex;
+            }
+            if (discordRef.current) {
+                discordRef.current.style.zIndex = zIndex;
+            }
         }
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
@@ -66,28 +69,29 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 className="hero-video-overlay pointer-events-none fixed inset-0 -z-10 h-screen w-screen"
             />
 
+            <a
+                ref={discordRef}
+                href="https://discord.gg/clanaod"
+                title="Join the AOD Discord"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto fixed top-6 left-1/2 z-50 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/60"
+            >
+                <DiscordIcon className="size-4 text-[#5865F2]" />
+                JOIN US ON DISCORD
+                {discordOnline !== undefined && discordTotal !== undefined && (
+                    <span className="text-white/60">
+                        · ONLINE: {discordOnline} / {discordTotal}
+                    </span>
+                )}
+            </a>
+
             {/* top-[27.5vh] centers this within the hero space - half of the 55vh spacer in
                 home.tsx that separates the hero from the nav/content below. Keep the two in sync. */}
             <div
                 ref={textRef}
                 className="fixed top-[27.5vh] left-1/2 z-50 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 px-4 text-center text-white transition-opacity duration-300"
             >
-                <a
-                    href="https://discord.gg/clanaod"
-                    title="Join the AOD Discord"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="pointer-events-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-colors hover:border-white/30 hover:bg-black/60"
-                >
-                    <DiscordIcon className="size-4 text-[#5865F2]" />
-                    JOIN US ON DISCORD
-                    {discordOnline !== undefined && discordTotal !== undefined && (
-                        <span className="text-white/60">
-                            · ONLINE: {discordOnline} / {discordTotal}
-                        </span>
-                    )}
-                </a>
-
                 <img
                     src={isChristmas ? '/images/logo-xmas.png' : '/images/official-logo.png'}
                     alt="Angels of Death"
