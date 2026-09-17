@@ -6,6 +6,7 @@ import { MerchSection } from '@/components/home/merch-section';
 import { SocialIcons } from '@/components/home/social-icons';
 import { TwitchLive } from '@/components/home/twitch-live';
 import { TwitchVods } from '@/components/home/twitch-vods';
+import { HudCorners } from '@/components/hud-corners';
 import { Reveal } from '@/components/reveal';
 import { SectionTitle } from '@/components/section-title';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
@@ -104,14 +105,20 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                             key={division.slug}
                             href={division.href}
                             title={division.name}
-                            className="group flex w-24 flex-col items-center rounded-xl border border-border bg-white/10 p-3 transition-all hover:-translate-y-1 hover:border-border-strong hover:bg-white/10"
+                            className="group relative flex w-28 flex-col items-center bg-white/5 p-4 transition-all hover:-translate-y-1 hover:bg-white/10"
                         >
+                            <HudCorners className="border-border-strong/60 transition-colors group-hover:border-primary" />
                             <img
                                 src={division.icon}
                                 alt={division.name}
                                 className="size-12 object-contain opacity-70 transition-all group-hover:scale-110 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_var(--primary-glow)]"
                             />
-                            <span className="mt-2 text-center text-[11px] tracking-wide text-foreground/80 uppercase">{division.name}</span>
+                            <span className="mt-2 flex min-h-8 items-center text-center text-[11px] tracking-wide text-foreground/80 uppercase">
+                                {division.name}
+                            </span>
+                            {division.members_count > 0 && (
+                                <span className="mt-1 font-mono text-[10px] text-primary/80">{division.members_count.toLocaleString()} members</span>
+                            )}
                         </a>
                     ))}
                 </Reveal>
