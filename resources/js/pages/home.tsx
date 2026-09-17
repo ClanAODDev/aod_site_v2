@@ -117,9 +117,9 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 </Reveal>
             </section>
 
-            <section className="bg-[#3a0707] bg-[url('/images/founded-bg.jpg'),url('/images/founded-bg-top-border.png')] bg-[position:center_top,center_top] bg-[repeat:no-repeat,repeat-x] px-4 py-20">
-                <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
-                    <Reveal from="left">
+            <section className="founded-section overflow-hidden bg-[#3a0707] px-4 py-20 md:overflow-visible">
+                <div className="relative mx-auto max-w-5xl">
+                    <Reveal from="left" className="md:max-w-md">
                         <SectionTitle className="text-left">
                             Founded in <strong className="font-semibold text-primary">1999</strong>
                             <br />
@@ -137,9 +137,14 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                             Read the history of AOD
                         </a>
                     </Reveal>
-                    <Reveal from="right" delay={150}>
+                    <Reveal from="right" delay={150} className="mt-10 md:hidden">
                         <img src="/images/dude.png" alt="" className="mx-auto w-full max-w-md drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]" />
                     </Reveal>
+                    <img
+                        src="/images/dude.png"
+                        alt=""
+                        className="pointer-events-none absolute -top-24 -right-4 hidden w-[420px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] md:block lg:-top-[130px] lg:-right-10 lg:w-[600px]"
+                    />
                 </div>
             </section>
 
