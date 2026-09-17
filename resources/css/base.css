@@ -22,6 +22,13 @@
         background-color: var(--primary-glow);
     }
 
+    /* Tailwind's preflight resets buttons to `cursor: default` - restore the pointer so they read
+       as clickable, matching every other interactive element on the site. */
+    button:not(:disabled),
+    [role='button']:not([aria-disabled='true']) {
+        cursor: pointer;
+    }
+
     /* Keyboard focus ring for anything shadcn/Radix doesn't already style
        (`focus-visible:outline-none` on those wins over this by source order). */
     :focus-visible {
