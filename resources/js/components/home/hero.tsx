@@ -42,7 +42,13 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
 
     return (
         <>
-            <div ref={videoWrapperRef} className="fixed inset-0 -z-10 h-screen w-screen overflow-hidden bg-black transition-opacity duration-300">
+            {/* Only the top 55vh of this h-screen box ever stays visible - the nav/content below
+                cover the rest. Shifting it up by half of what's covered (45vh / 2) brings the
+                vertical middle of the footage into that visible window instead of its top. */}
+            <div
+                ref={videoWrapperRef}
+                className="fixed inset-0 -z-10 h-screen w-screen -translate-y-[22.5vh] overflow-hidden bg-black transition-opacity duration-300"
+            >
                 {canAutoplayVideo ? (
                     <div ref={containerRef} className="absolute inset-0">
                         <div ref={targetRef} />
