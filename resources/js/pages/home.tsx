@@ -7,7 +7,9 @@ import { SocialIcons } from '@/components/home/social-icons';
 import { TwitchLive } from '@/components/home/twitch-live';
 import { TwitchVods } from '@/components/home/twitch-vods';
 import { Reveal } from '@/components/reveal';
+import { SectionTitle } from '@/components/section-title';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
+import { Nav } from '@/components/site/nav';
 import { SiteLayout } from '@/layouts/site-layout';
 import type { SharedPageProps } from '@/types';
 
@@ -62,7 +64,6 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
     const { divisions } = usePage<SharedPageProps>().props;
     const onlineCount = discord ? discord.online + discord.idle + discord.dnd : null;
     const isChristmas = highlightedEvent?.theme === 'holiday';
-    const totalMembers = divisions.reduce((total, division) => total + division.members_count, 0);
 
     return (
         <SiteLayout heroNav>
@@ -76,7 +77,9 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 isChristmas={isChristmas}
             />
 
-            <div className="relative h-screen" />
+            <div className="h-[70vh]" />
+
+            <Nav startsUnstuck />
 
             {showTwitchLive && twitch.stream && <TwitchLive channel={twitch.channel} title={twitch.stream.title} gameName={twitch.stream.game_name} />}
             {showHighlightedEvent && highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
@@ -84,11 +87,9 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
 
             <section className="bg-[#0b0f12] px-4 py-20 text-center">
                 <Reveal from="right">
-                    <h2 className="text-2xl font-bold md:text-4xl">
-                        Engaged in <strong className="text-primary">{divisions.length}</strong> major titles
-                        <br />
-                        with more than <strong className="text-primary">{totalMembers.toLocaleString()}</strong> active members
-                    </h2>
+                    <SectionTitle>
+                        Engaged in <strong className="font-semibold text-primary">{divisions.length}</strong> major titles
+                    </SectionTitle>
                 </Reveal>
                 <Reveal from="left" delay={150} className="mx-auto mt-5 max-w-2xl">
                     <p className="text-foreground/75">
@@ -119,11 +120,11 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
             <section className="bg-[#3a0707] px-4 py-20">
                 <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
                     <Reveal from="left">
-                        <h2 className="text-2xl font-bold md:text-4xl">
-                            Founded in <strong className="text-primary">1999</strong>
+                        <SectionTitle className="text-left">
+                            Founded in <strong className="font-semibold text-primary">1999</strong>
                             <br />
                             and still growing!
-                        </h2>
+                        </SectionTitle>
                         <p className="mt-5 text-foreground/85">
                             The Angels of Death is a time-tested organization, supporting over 56 major gaming titles in the past 25 years
                             including classics like Medal of Honor: Allied Assault, and Swat 3.
@@ -144,11 +145,11 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
 
             <section className="bg-[#050505] bg-[url('/images/belong-section-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
                 <Reveal from="left">
-                    <h2 className="text-2xl font-bold md:text-4xl">
-                        Belong to something <strong className="text-primary">unique</strong> and
+                    <SectionTitle>
+                        Belong to something <strong className="font-semibold text-primary">unique</strong> and
                         <br />
-                        worldwide that <strong className="text-primary">endures</strong> through time
-                    </h2>
+                        worldwide that <strong className="font-semibold text-primary">endures</strong> through time
+                    </SectionTitle>
                 </Reveal>
                 <Reveal from="right" delay={150} className="mx-auto mt-5 max-w-2xl space-y-4 text-foreground/85">
                     <p>
@@ -165,7 +166,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
 
             <section className="bg-[#030911] px-4 py-20 text-center">
                 <Reveal from="left">
-                    <h2 className="text-2xl font-bold md:text-4xl">Catch up with us on social media</h2>
+                    <SectionTitle>Catch up with us on social media</SectionTitle>
                 </Reveal>
                 <Reveal from="right" delay={150} className="mx-auto mt-5 max-w-2xl">
                     <p className="text-foreground/85">
@@ -185,12 +186,15 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 imageSuffix={merch.image_suffix}
             />
 
-            <section className="px-4 py-20 text-center">
-                <h2 className="text-2xl font-bold md:text-4xl">So what are you waiting for?</h2>
-                <p className="mx-auto mt-5 max-w-xl text-foreground/85">
-                    Complete a clan application with one of our divisions to start the process and see if we&apos;re a good fit for each other.
-                </p>
-                <ApplyCta />
+            <section className="relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-cover bg-center px-4 py-20 text-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-primary/20" />
+                <div className="relative">
+                    <SectionTitle>So what are you waiting for?</SectionTitle>
+                    <p className="mx-auto mt-5 max-w-xl text-foreground/85 [text-shadow:0_0_2px_rgba(0,0,0,0.4)]">
+                        Complete a clan application with one of our divisions to start the process and see if we&apos;re a good fit for each other.
+                    </p>
+                    <ApplyCta />
+                </div>
             </section>
         </SiteLayout>
     );
