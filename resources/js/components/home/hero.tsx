@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
+import { SectionTitle } from '@/components/section-title';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { useHeroScrollFade } from '@/hooks/use-hero-scroll-fade';
 import { useMediaQuery } from '@/hooks/use-media-query';
@@ -97,12 +98,12 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                     alt="Angels of Death"
                     className="mx-auto w-32 drop-shadow-lg md:w-48"
                 />
-                <h1 className="mt-4 text-3xl font-bold [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
+                <SectionTitle as="h1" className="mt-4 text-3xl [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
                     Game with purpose
                     <br />
                     inspired by community
-                </h1>
-                <h2 className="mt-2 text-lg text-white/80">What are you waiting for?</h2>
+                </SectionTitle>
+                <h2 className="mt-2 font-display text-lg tracking-[0.06em] text-white/80 uppercase">What are you waiting for?</h2>
                 <button
                     onClick={() => setIntroOpen(true)}
                     aria-label="Play video"
