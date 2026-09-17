@@ -2,10 +2,12 @@
    hatch that fades to nothing, echoing the old textured navbar without
    reusing its red/jpg assets. */
 
-.nav-hatch {
-    position: relative;
-}
-
+/* No `position: relative` here on purpose - the header this is applied to is
+   already `fixed`/`sticky` via Tailwind utilities, which already establishes
+   a containing block for the ::after below. Setting position here too would
+   be unlayered CSS, which always beats Tailwind's layered utility classes
+   regardless of source order - it would silently override `fixed`/`sticky`
+   with `relative` (this happened; that's why the nav stopped pinning). */
 .nav-hatch::after {
     content: '';
     position: absolute;
