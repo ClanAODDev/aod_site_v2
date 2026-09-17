@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { TwitchIcon } from '@/components/icons/twitch-icon';
 import { SectionTitle } from '@/components/section-title';
+import { useInView } from '@/hooks/use-in-view';
 import { loadTwitchEmbedApi, type TwitchPlayer } from '@/lib/twitch-embed-api';
 
 interface TwitchLiveProps {
@@ -15,10 +16,15 @@ export function TwitchLive({ channel, title, gameName }: TwitchLiveProps) {
     const embedRef = useRef<HTMLDivElement>(null);
     const playerRef = useRef<TwitchPlayer | null>(null);
     const [muted, setMuted] = useState(true);
+    // Twitch's player refuses to autoplay if the embed isn't actually in the viewport at the
+    // moment it checks - this section sits below the fold on load, so creating the embed
+    // immediately on mount silently fails autoplay and never retries. Defer creation until it's
+    // genuinely scrolled into view.
+    const { ref: sectionRef, inView } = useInView<HTMLElement>({ once: true, rootMargin: '0px 0px -10% 0px' });
 
     useEffect(() => {
         const el = embedRef.current;
-        if (!el) {
+        if (!el || !inView) {
             return;
         }
         el.id = 'twitch-embed';
@@ -51,10 +57,10 @@ export function TwitchLive({ channel, title, gameName }: TwitchLiveProps) {
         return () => {
             cancelled = true;
         };
-    }, [channel]);
+    }, [channel, inView]);
 
     return (
-        <section className="bg-gradient-to-b from-[#0a0a0a] via-[#1a0a1a] to-[#0a0a0a] px-4 py-20">
+        <section ref={sectionRef} className="bg-gradient-to-b from-[#0a0a0a] via-[#1a0a1a] to-[#0a0a0a] px-4 py-20">
             <div className="mx-auto max-w-5xl text-center">
                 <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-[#9146FF]/50 bg-gradient-to-br from-[#9146FF]/30 to-[#9146FF]/50 px-5 py-2 text-xs font-medium tracking-widest text-white uppercase">
                     <span className="size-2.5 animate-pulse rounded-full bg-red-600" />
