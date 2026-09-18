@@ -18,7 +18,7 @@
 .division-hero::after {
     content: '';
     position: absolute;
-    top: 650px;
+    top: 682px; /* image height (650px) + the section's own pt-8 (32px) */
     left: 0;
     right: 0;
     height: 100px;

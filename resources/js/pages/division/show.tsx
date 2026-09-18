@@ -27,7 +27,7 @@ export default function DivisionShow({ division }: DivisionShowProps) {
             <Head title={`${division.name} Division`} />
 
             <section
-                className="division-hero"
+                className="division-hero pt-8"
                 style={{ '--division-header-image': `url('${division.headerImage}')` } as React.CSSProperties}
             >
                 <div className="relative z-10 mx-auto max-w-5xl px-4 py-16">
