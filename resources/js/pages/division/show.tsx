@@ -30,7 +30,7 @@ export default function DivisionShow({ division }: DivisionShowProps) {
                 style={{ '--division-header-image': `url('${division.headerImage}')` } as React.CSSProperties}
             >
                 <div className="relative z-10 mx-auto max-w-5xl px-4 py-16">
-                    <div className="mt-[46rem] mb-8 flex flex-wrap items-center gap-4">
+                    <div className="mt-64 mb-8 flex flex-wrap items-center gap-4">
                         <img src={division.icon} alt={`${division.name} Division`} className="size-20 shrink-0 object-contain" />
                         <h1 className="text-3xl font-bold text-foreground">{division.name} Division</h1>
                     </div>
