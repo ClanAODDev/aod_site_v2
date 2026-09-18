@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { AutoMenu } from '@/components/division/auto-menu';
 import { ScreenshotGallery } from '@/components/division/screenshot-gallery';
 import { Prose } from '@/components/prose';
+import { SectionTitle } from '@/components/section-title';
 import { SiteLayout } from '@/layouts/site-layout';
 
 interface DivisionDetail {
@@ -31,8 +32,10 @@ export default function DivisionShow({ division }: DivisionShowProps) {
             >
                 <div className="relative z-10 mx-auto max-w-5xl px-4 py-16">
                     <div className="mt-[116px] mb-8 flex flex-wrap items-center gap-4">
-                        <img src={division.icon} alt={`${division.name} Division`} className="size-20 shrink-0 object-contain" />
-                        <h1 className="text-3xl font-bold text-foreground">{division.name} Division</h1>
+                        <img src={division.icon} alt={`${division.name} Division`} className="size-12 shrink-0 object-contain" />
+                        <SectionTitle as="h1" className="text-left">
+                            {division.name} Division
+                        </SectionTitle>
                     </div>
 
                     <AutoMenu containerRef={contentRef} className="mb-8" />
