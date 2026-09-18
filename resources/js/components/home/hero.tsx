@@ -99,11 +99,9 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                     className="mx-auto w-32 drop-shadow-lg md:w-48"
                 />
                 <SectionTitle as="h1" className="mt-4 text-3xl [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
-                    Game with purpose
-                    <br />
-                    inspired by community
+                    Angels of Death
                 </SectionTitle>
-                <h2 className="mt-2 font-display text-lg font-light tracking-[0.06em] text-white/80 uppercase">What are you waiting for?</h2>
+                <h2 className="mt-2 font-display text-lg font-light tracking-[0.06em] text-white/80 uppercase">Gaming since 1999</h2>
                 <button
                     onClick={() => setIntroOpen(true)}
                     aria-label="Play video"
