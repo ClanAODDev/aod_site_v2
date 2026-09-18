@@ -22,3 +22,13 @@
     background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
     pointer-events: none;
 }
+
+/* Divisions index page — a centered illustration plus a 1px-wide strip of the same edge
+   tone tiled outward on both sides (repeat-x), so the artwork appears to blend seamlessly
+   into the page regardless of viewport width. */
+.divisions-lobby-bg {
+    background-color: #0a0b10;
+    background-image: url('/images/divisions-page-bg.jpg'), url('/images/divisions-page-top-bg.jpg');
+    background-repeat: no-repeat, repeat-x;
+    background-position: top center, top center;
+}
