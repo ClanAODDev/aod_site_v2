@@ -2,9 +2,7 @@ import { Eye } from 'lucide-react';
 
 import { ContinuousCarousel } from '@/components/home/continuous-carousel';
 import { TwitchIcon } from '@/components/icons/twitch-icon';
-import { Reveal } from '@/components/reveal';
 import { SectionTitle } from '@/components/section-title';
-import { cn } from '@/lib/utils';
 import type { Division } from '@/types';
 
 interface Vod {
@@ -41,7 +39,7 @@ function extractGameTag(title: string, divisions: Division[]): { label: string; 
     return { label: candidate, icon: match?.icon ?? null };
 }
 
-function VodCard({ vod, divisions, featured = false }: { vod: Vod; divisions: Division[]; featured?: boolean }) {
+function VodCard({ vod, divisions }: { vod: Vod; divisions: Division[] }) {
     const gameTag = extractGameTag(vod.title, divisions);
 
     return (
@@ -49,10 +47,7 @@ function VodCard({ vod, divisions, featured = false }: { vod: Vod; divisions: Di
             href={vod.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-                'group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white/3 text-left transition-all hover:border-[#9146FF]/60 hover:bg-[#9146FF]/10 hover:shadow-[0_0_25px_rgba(145,70,255,0.3)]',
-                featured ? 'w-full' : 'w-70',
-            )}
+            className="group flex h-full w-70 flex-col overflow-hidden rounded-xl border border-border bg-white/3 text-left transition-all hover:border-[#9146FF]/60 hover:bg-[#9146FF]/10 hover:shadow-[0_0_25px_rgba(145,70,255,0.3)]"
         >
             <div className="relative aspect-video overflow-hidden bg-black">
                 <img
@@ -72,10 +67,8 @@ function VodCard({ vod, divisions, featured = false }: { vod: Vod; divisions: Di
                     <span className="text-[11px] font-medium text-white">{vod.duration}</span>
                 </div>
             </div>
-            <div className={cn('flex flex-1 flex-col p-4', featured && 'p-5')}>
-                <span className={cn('line-clamp-2 tracking-wide text-foreground/90 uppercase', featured ? 'text-base' : 'text-sm')}>
-                    {vod.title}
-                </span>
+            <div className="flex flex-1 flex-col p-4">
+                <span className="line-clamp-2 text-sm tracking-wide text-foreground/90 uppercase">{vod.title}</span>
                 <span className="mt-auto flex items-center gap-1 pt-2 text-xs text-foreground/50">
                     <Eye className="size-3" /> {vod.view_count.toLocaleString()} views
                 </span>
@@ -85,24 +78,13 @@ function VodCard({ vod, divisions, featured = false }: { vod: Vod; divisions: Di
 }
 
 export function TwitchVods({ vods, channel, divisions }: TwitchVodsProps) {
-    // The carousel keeps the full list (including the featured one) - the pool of real VODs is
-    // small enough that pulling the top one out entirely made the remaining set repeat within a
-    // single viewport width, which read as a broken loop rather than a small content pool.
-    const [featured] = vods;
-
     return (
         <section className="bg-gradient-to-b from-[#0a0a0a] via-[#1a0a1a] to-[#0a0a0a] px-4 py-20">
             <div className="mx-auto max-w-6xl text-center">
                 <SectionTitle>Recent Streams</SectionTitle>
                 <p className="mx-auto mt-3 max-w-2xl text-foreground/70">Catch up on our latest broadcasts from the Angels of Death community.</p>
 
-                {featured && (
-                    <Reveal from="bottom" delay={150} className="mx-auto mt-10 max-w-2xl">
-                        <VodCard vod={featured} divisions={divisions} featured />
-                    </Reveal>
-                )}
-
-                {vods.length > 1 && (
+                {vods.length > 0 && (
                     <ContinuousCarousel
                         items={vods}
                         keyFor={(vod) => vod.url}
