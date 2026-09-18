@@ -22,19 +22,6 @@
     pointer-events: none;
 }
 
-/* Footer's graphic top-edge treatment. The footer's own background-color (#1a2128, a lighter
-   slate) is a real, deliberate contrast against the page's near-black --background, so a
-   decorative texture alone (the original site's approach, a near-invisible 1%-opacity hatch)
-   isn't enough to keep that big a color step from reading as a hard cut - a genuine fade is
-   layered on top of the footer's own image/color instead, easing the page's own background
-   color across the first 120px before the footer's texture takes over underneath it. */
-.footer-hatch {
-    position: relative;
-    background-image: linear-gradient(to bottom, var(--background) 0px, transparent 120px), url('/images/footer-bg.jpg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: top center, top center;
-}
-
 /* The "founded" section's two-layer background - a tall photo plus a top border strip that tiles
    horizontally only. Tailwind's `bg-[...]` arbitrary value syntax can't express per-layer
    position/repeat pairs, so this is a plain custom class instead. */

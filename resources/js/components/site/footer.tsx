@@ -25,7 +25,7 @@ export function Footer() {
     const openApply = useOpenApplyDialog();
 
     return (
-        <footer className="footer-hatch bg-[#1a2128]">
+        <footer className="border-t border-border bg-[#1a2128] bg-[url('/images/footer-bg.jpg')] bg-top bg-no-repeat">
             <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:grid sm:grid-cols-[1fr_auto] sm:items-start sm:gap-16">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                     <img src="/images/official-logo.png" alt="Angels of Death" className="h-16 w-auto shrink-0" />
