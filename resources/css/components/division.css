@@ -1,10 +1,14 @@
 /* Division show page — the hero banner keeps the per-division header image (1194x650) at its
    natural size, centered, with a 1px-wide strip of the same edge tone tiled outward on both
    sides (repeat-x) so it blends seamlessly regardless of viewport width - same technique as
-   the divisions index page below. The vignette gradient spans the full section (not just the
-   image's own width) so there's no hard box edge where it stops - and its "opaque" ends use
-   the border strip's own sampled tone (not the generic --background token, which is a close
-   but visibly-off match) so the gradient's tail is indistinguishable from the strip itself. */
+   the divisions index page below. The vignette gradient spans the full section width (not
+   just the image's own width) so there's no hard box edge where it stops horizontally, and
+   its "opaque" ends use the border strip's own sampled tone (not the generic --background
+   token, which is a close but visibly-off match) so the gradient's tail is indistinguishable
+   from the strip. Its height is capped to the image's own height (via background-size), not
+   left to default to the full, much-taller section - otherwise that same solid tone paints
+   all the way down the page and stops dead at the section's bottom edge, against the page's
+   slightly different --background, creating a second, horizontal version of the same seam. */
 .division-hero {
     position: relative;
     background-image:
@@ -13,6 +17,7 @@
         url('/images/division-bg-border.jpg');
     background-repeat: no-repeat, no-repeat, repeat-x;
     background-position: top center, top center, top center;
+    background-size: 100% 650px, auto, auto;
 }
 
 .division-hero::after {
@@ -29,14 +34,18 @@
 /* Divisions index page — a centered illustration (1195x1098) plus a 1px-wide strip of the
    same edge tone tiled outward on both sides (repeat-x), so the artwork appears to blend
    seamlessly into the page regardless of viewport width. Same full-width-gradient-plus-
-   matched-tone approach as division-hero above, for the same reason. */
+   matched-tone approach as division-hero above, including capping the gradient's height to
+   the image's own height so it doesn't paint a solid band all the way down the (much taller)
+   page and create a second, horizontal seam where the section ends. No background-color here
+   for the same reason - past the image, nothing should paint at all, letting the page's own
+   --background show through natively instead of a second color that has to match it exactly. */
 .divisions-lobby-bg {
     position: relative;
-    background-color: #0a0b11;
     background-image:
         linear-gradient(to right, #0a0b11 0%, transparent 15%, transparent 85%, #0a0b11 100%),
         url('/images/divisions-page-bg.jpg'),
         url('/images/divisions-page-top-bg.jpg');
     background-repeat: no-repeat, no-repeat, repeat-x;
     background-position: top center, top center, top center;
+    background-size: 100% 1098px, auto, auto;
 }
