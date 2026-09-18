@@ -22,9 +22,9 @@ export default function DivisionIndex() {
                     </div>
 
                     {divisions.length === 0 ? (
-                        <p className="mt-40 text-center text-muted-foreground">No divisions to display</p>
+                        <p className="mt-64 text-center text-muted-foreground">No divisions to display</p>
                     ) : (
-                        <div className="mt-40 flex flex-wrap justify-center gap-5">
+                        <div className="mt-64 flex flex-wrap justify-center gap-5">
                             {divisions.map((division, index) => (
                                 <a
                                     key={division.slug}
