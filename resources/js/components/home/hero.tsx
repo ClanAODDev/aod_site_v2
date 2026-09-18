@@ -105,7 +105,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <button
                     onClick={() => setIntroOpen(true)}
                     aria-label="Play video"
-                    className="pointer-events-auto relative z-10 mx-auto mt-6 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
+                    className="pointer-events-auto relative z-10 mx-auto mt-6 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-center bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
                 />
             </div>
 
