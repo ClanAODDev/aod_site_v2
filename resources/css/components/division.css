@@ -1,21 +1,24 @@
-/* Division show page — the hero banner composites a per-division header image
-   (or a shared fallback) with edge-fade gradients so it blends into the page
-   background on both sides and bleeds into the content below. */
-
+/* Division show page — the hero banner keeps the per-division header image (1194x650) at its
+   natural size, centered, with a 1px-wide strip of the same edge tone tiled outward on both
+   sides (repeat-x) so it blends seamlessly regardless of viewport width - same technique as
+   the divisions index page below. The vignette gradient spans the full section (not just the
+   image's own width) so there's no hard box edge where it stops - and its "opaque" ends use
+   the border strip's own sampled tone (not the generic --background token, which is a close
+   but visibly-off match) so the gradient's tail is indistinguishable from the strip itself. */
 .division-hero {
     position: relative;
     background-image:
-        linear-gradient(to right, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-        var(--division-header-image);
-    background-repeat: no-repeat, no-repeat;
-    background-position: top center, top center;
-    background-size: cover, cover;
+        linear-gradient(to right, #0d0d15 0%, transparent 15%, transparent 85%, #0d0d15 100%),
+        var(--division-header-image),
+        url('/images/division-bg-border.jpg');
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: top center, top center, top center;
 }
 
 .division-hero::after {
     content: '';
     position: absolute;
-    top: 500px;
+    top: 650px;
     left: 0;
     right: 0;
     height: 100px;
@@ -23,12 +26,17 @@
     pointer-events: none;
 }
 
-/* Divisions index page — a centered illustration plus a 1px-wide strip of the same edge
-   tone tiled outward on both sides (repeat-x), so the artwork appears to blend seamlessly
-   into the page regardless of viewport width. */
+/* Divisions index page — a centered illustration (1195x1098) plus a 1px-wide strip of the
+   same edge tone tiled outward on both sides (repeat-x), so the artwork appears to blend
+   seamlessly into the page regardless of viewport width. Same full-width-gradient-plus-
+   matched-tone approach as division-hero above, for the same reason. */
 .divisions-lobby-bg {
-    background-color: #0a0b10;
-    background-image: url('/images/divisions-page-bg.jpg'), url('/images/divisions-page-top-bg.jpg');
-    background-repeat: no-repeat, repeat-x;
-    background-position: top center, top center;
+    position: relative;
+    background-color: #0a0b11;
+    background-image:
+        linear-gradient(to right, #0a0b11 0%, transparent 15%, transparent 85%, #0a0b11 100%),
+        url('/images/divisions-page-bg.jpg'),
+        url('/images/divisions-page-top-bg.jpg');
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: top center, top center, top center;
 }
