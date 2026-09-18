@@ -1,0 +1,1 @@
+import{j as s}from"./app-xx0hsi5v.js";import{i as r}from"./site-layout-Bb3MWWO5.js";function n({children:t,className:e,as:o="h2"}){return s.jsx(o,{className:r("font-display text-2xl font-bold tracking-[0.06em] uppercase md:text-4xl",e),children:t})}export{n as S};
