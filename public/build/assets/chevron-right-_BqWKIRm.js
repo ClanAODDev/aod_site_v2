@@ -1,0 +1,1 @@
+import{h as e}from"./site-layout-CxcoZIcr.js";const n={name:"chevron-left",size:24,node:[["path",{d:"m15 18-6-6 6-6",key:"1wnfg3"}]]};n.node;const a=e(n);const o={name:"chevron-right",size:24,node:[["path",{d:"m9 18 6-6-6-6",key:"mthhwq"}]]};o.node;const c=e(o);export{a as C,c as a};

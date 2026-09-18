@@ -26,12 +26,12 @@ export function Footer() {
 
     return (
         <footer className="border-t border-border bg-[#1a2128] bg-[url('/images/footer-bg.jpg')] bg-top bg-no-repeat">
-            <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:grid sm:grid-cols-[1fr_auto] sm:items-start sm:gap-16">
+            <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:flex-row sm:items-start sm:justify-center sm:gap-20">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                     <img src="/images/official-logo.png" alt="Angels of Death" className="h-16 w-auto shrink-0" />
                     <div>
                         <h2 className="text-lg font-semibold">About The Angels of Death</h2>
-                        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+                        <p className="mt-2 max-w-sm text-sm text-muted-foreground">
                             The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency
                             and provide a comfortable environment to play with thousands of other likeminded members.
                         </p>
