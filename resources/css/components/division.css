@@ -27,7 +27,10 @@
     left: 0;
     right: 0;
     height: 100px;
-    background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
+    /* Starts transparent (right where the image/strip still show through) and eases to fully
+       opaque --background by the bottom - the reverse of what was here before, which started
+       already-opaque at the top and so still cut hard against the image above it. */
+    background: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
     pointer-events: none;
 }
 
@@ -48,4 +51,15 @@
     background-repeat: no-repeat, no-repeat, repeat-x;
     background-position: top center, top center, top center;
     background-size: 100% 1098px, auto, auto;
+}
+
+.divisions-lobby-bg::after {
+    content: '';
+    position: absolute;
+    top: 1098px; /* image height (1098px) */
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
+    pointer-events: none;
 }
