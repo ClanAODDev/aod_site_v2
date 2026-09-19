@@ -10,9 +10,12 @@
     z-index: -2;
     height: 835px;
     overflow: hidden;
+    object-fit: cover;
     mask-image:
         linear-gradient(to bottom, black 60%, transparent 100%),
         linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
     mask-composite: intersect;
 }
 
