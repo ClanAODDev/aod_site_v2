@@ -1,5 +1,6 @@
 import { Head, usePage } from '@inertiajs/react';
 
+import { SectionTitle } from '@/components/section-title';
 import { SiteLayout } from '@/layouts/site-layout';
 import type { SharedPageProps } from '@/types';
 
@@ -13,7 +14,9 @@ export default function DivisionIndex() {
             <section className="divisions-lobby-bg">
                 <div className="mx-auto max-w-6xl px-4 py-16">
                     <div className="max-w-xl text-right md:ml-auto">
-                        <h1 className="text-3xl font-bold text-foreground">Gaming Divisions</h1>
+                        <SectionTitle as="h1" className="text-right">
+                            Gaming Divisions
+                        </SectionTitle>
                         <p className="mt-4 text-foreground/80">
                             Our gaming divisions are the lifeblood of the Angels of Death community. A great deal of effort goes into vetting each
                             division request to ensure the game is a good fit and the new division will have the right leadership to support its
