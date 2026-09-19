@@ -61,7 +61,7 @@ export default function FallenAngels({ fallen }: FallenAngelsProps) {
                             href={member.forum_profile || '#'}
                             target="_blank"
                             rel="noreferrer"
-                            className="block flex-[0_0_47%] px-4 py-6 text-center text-base text-foreground/90 transition-colors hover:text-primary hover:underline max-md:flex-[0_0_100%] max-md:px-2 max-md:py-3"
+                            className="block flex-[0_0_47%] border-b border-border/40 px-4 py-6 text-center text-base text-foreground/90 transition-colors hover:bg-white/[0.03] hover:text-primary max-md:flex-[0_0_100%] max-md:px-2 max-md:py-3"
                         >
                             {member.name} &mdash; {member.date_fallen}
                         </a>
