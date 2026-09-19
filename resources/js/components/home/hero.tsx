@@ -6,6 +6,7 @@ import { SectionTitle } from '@/components/section-title';
 import { useHeroScrollFade } from '@/hooks/use-hero-scroll-fade';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useYouTubeCoverVideo } from '@/hooks/use-youtube-cover-video';
+import { cn } from '@/lib/utils';
 
 interface HeroProps {
     videoId: string;
@@ -24,6 +25,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
     const introContainerRef = useRef<HTMLDivElement>(null);
     const introIframeRef = useRef<HTMLIFrameElement>(null);
     const [introOpen, setIntroOpen] = useState(false);
+    const [showPlayTooltip, setShowPlayTooltip] = useState(false);
 
     useHeroScrollFade(videoWrapperRef, textRef, discordRef);
 
@@ -140,9 +142,20 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <h2 className="mt-2 font-display text-lg font-light tracking-[0.06em] text-white/80 uppercase">Gaming since 1999</h2>
                 <button
                     onClick={playIntro}
-                    aria-label="Play video"
+                    onMouseEnter={() => setShowPlayTooltip(true)}
+                    onMouseLeave={() => setShowPlayTooltip(false)}
+                    aria-label="Play video (opens full screen)"
                     className="pointer-events-auto relative z-10 mx-auto mt-6 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-center bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
-                />
+                >
+                    <span
+                        className={cn(
+                            'pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/80 px-3 py-1.5 text-xs whitespace-nowrap text-white backdrop-blur-sm transition-opacity duration-200',
+                            showPlayTooltip ? 'opacity-100' : 'opacity-0',
+                        )}
+                    >
+                        Opens full screen
+                    </span>
+                </button>
             </div>
 
             <div
