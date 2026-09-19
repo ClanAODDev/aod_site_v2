@@ -1,6 +1,19 @@
 /* Home page — hero video texture, highlighted-event theme backgrounds, and
    the snowfall effect for the holiday theme. */
 
+/* Intro video: always mounted (so requestFullscreen has a real, already-connected element to
+   target synchronously from the play button's click handler - waiting for a React re-render
+   first loses the browser's user-gesture association and the fullscreen request silently fails)
+   but invisible until the browser actually grants fullscreen, which the :fullscreen selector
+   reflects independently of any component state. */
+.intro-video {
+    visibility: hidden;
+}
+
+.intro-video:fullscreen {
+    visibility: visible;
+}
+
 .hero-video-overlay {
     background-image: url('/images/grid.png'), url('/images/video-overlay.png');
     background-repeat: repeat, repeat-x;
