@@ -8,18 +8,26 @@
 
    The MuseoSans files already sat unused in public/fonts/ (leftover from the legacy site's own
    migration, never wired up to an @font-face here) - matches what clanaod.net's own hero text
-   actually loads, not just its fallback stack. */
+   actually loads, not just its fallback stack. Its one bundled weight is the 500 (medium) cut
+   (its own internal PostScript name is literally "MuseoSans-500") - clanaod.net's own hero text
+   asks for exactly that weight with normal letter-spacing. SectionTitle's font-bold +
+   tracking-[0.06em] made the browser synthesize a heavier weight this face was never cut for,
+   plus loosen letter-spacing beyond what the real site uses, together reading thicker and looser
+   than the source. */
 @font-face {
     font-family: 'MuseoSans';
     src:
         url('/fonts/32291B_0_0.woff2') format('woff2'),
         url('/fonts/32291B_0_0.woff') format('woff'),
         url('/fonts/32291B_0_0.ttf') format('truetype');
+    font-weight: 500;
     font-display: swap;
 }
 
 .hero-heading {
     font-family: 'MuseoSans', 'century gothic', Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: normal;
 }
 
 /* Intro video: always mounted (so requestFullscreen has a real, already-connected element to
