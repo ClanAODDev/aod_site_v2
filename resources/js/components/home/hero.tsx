@@ -94,12 +94,6 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 {canAutoplayVideo ? (
                     <div ref={containerRef} className="absolute inset-0">
                         <div ref={targetRef} />
-                        {/* Sits on top of the iframe to swallow every pointer event before it
-                            reaches YouTube's own embed - this is decorative background footage,
-                            not a real player, but YouTube still fades in its title bar/watermark
-                            on hover even with controls:0, and that hover only fires from real
-                            mouse events reaching the iframe in the first place. */}
-                        <div aria-hidden className="absolute inset-0" />
                     </div>
                 ) : (
                     <img src="/images/video-poster.jpg" alt="" className="absolute inset-0 size-full object-cover" />
