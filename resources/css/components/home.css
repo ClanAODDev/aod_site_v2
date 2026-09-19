@@ -4,7 +4,20 @@
 /* Hero headings use a different display face than the site-wide --font-display token (Rajdhani) -
    a one-off, so it's a plain class rather than a new theme token. Unlayered, so it reliably beats
    the font-display utility's own layered rule regardless of class order - see the .nav-hatch
-   comment in site.css for the same gotcha. */
+   comment in site.css for the same gotcha.
+
+   The MuseoSans files already sat unused in public/fonts/ (leftover from the legacy site's own
+   migration, never wired up to an @font-face here) - matches what clanaod.net's own hero text
+   actually loads, not just its fallback stack. */
+@font-face {
+    font-family: 'MuseoSans';
+    src:
+        url('/fonts/32291B_0_0.woff2') format('woff2'),
+        url('/fonts/32291B_0_0.woff') format('woff'),
+        url('/fonts/32291B_0_0.ttf') format('truetype');
+    font-display: swap;
+}
+
 .hero-heading {
     font-family: 'MuseoSans', 'century gothic', Arial, sans-serif;
 }
