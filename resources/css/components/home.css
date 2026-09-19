@@ -1,6 +1,14 @@
 /* Home page — hero video texture, highlighted-event theme backgrounds, and
    the snowfall effect for the holiday theme. */
 
+/* Hero headings use a different display face than the site-wide --font-display token (Rajdhani) -
+   a one-off, so it's a plain class rather than a new theme token. Unlayered, so it reliably beats
+   the font-display utility's own layered rule regardless of class order - see the .nav-hatch
+   comment in site.css for the same gotcha. */
+.hero-heading {
+    font-family: 'MuseoSans', 'century gothic', Arial, sans-serif;
+}
+
 /* Intro video: always mounted (so requestFullscreen has a real, already-connected element to
    target synchronously from the play button's click handler - waiting for a React re-render
    first loses the browser's user-gesture association and the fullscreen request silently fails)
