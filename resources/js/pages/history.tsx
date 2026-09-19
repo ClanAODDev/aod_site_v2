@@ -192,6 +192,8 @@ export default function History({ foundationsEraVideoId, modernEraVideoId }: His
                         { label: 'Delta Force' },
                         { label: 'DUNE: Awakening' },
                         { label: 'Marvel Rivals' },
+                        { label: 'ARC Raiders' },
+                        { label: 'Wardogs' },
                     ],
                 },
             ],
