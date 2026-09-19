@@ -73,7 +73,7 @@ export function HighlightedEvent({ event }: { event: HighlightedEventData }) {
                 )}
 
                 <h2
-                    className="font-display text-2xl font-bold tracking-[0.06em] uppercase [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] md:text-4xl"
+                    className="font-display text-2xl font-medium uppercase [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] md:text-4xl"
                     dangerouslySetInnerHTML={{ __html: event.title }}
                 />
 
