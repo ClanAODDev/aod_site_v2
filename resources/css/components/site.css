@@ -12,11 +12,28 @@
     content: '';
     position: absolute;
     inset: auto 0 0 0;
-    height: 24px;
+    height: 48px;
     background-image: repeating-linear-gradient(
         -45deg,
-        color-mix(in srgb, var(--foreground) 6%, transparent) 0 1px,
-        transparent 1px 6px
+        color-mix(in srgb, var(--foreground) 2%, transparent) 0 6px,
+        transparent 6px 16px
+    );
+    mask-image: linear-gradient(to bottom, transparent, black 100%);
+    pointer-events: none;
+}
+
+/* Homepage "apply" CTA section — thick diagonal bands, but low-opacity so the artwork behind
+   still reads through them (a low percentage keeps them see-through even at this width; the
+   6px nav-hatch stroke read as opaque here because that opacity was tuned for a 1px line). */
+.cta-hatch::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 64px;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, white 2%, transparent) 0 6px,
+        transparent 6px 16px
     );
     mask-image: linear-gradient(to bottom, transparent, black 100%);
     pointer-events: none;
