@@ -1,1 +1,0 @@
-System.register(["./app-legacy-BkhNINH3.js","./site-layout-legacy-BwWIMxnO.js"],(function(e,t){"use strict";var s,a;return{setters:[e=>{s=e.j},e=>{a=e.i}],execute:function(){e("S",(function({children:e,className:t,as:c="h2"}){return s.jsx(c,{className:a("font-display text-2xl font-bold tracking-[0.06em] uppercase md:text-4xl",t),children:e})}))}}}));

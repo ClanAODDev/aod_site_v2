@@ -4,7 +4,9 @@
 
 .fallen-angel-video {
     position: absolute;
-    inset: 0 0 0 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: -2;
     height: 835px;
     overflow: hidden;
