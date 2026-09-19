@@ -63,7 +63,8 @@ export default function FallenAngels({ fallen }: FallenAngelsProps) {
                             rel="noreferrer"
                             className="block flex-[0_0_47%] border-b border-border/40 px-4 py-6 text-center text-base text-foreground/90 transition-colors hover:bg-white/[0.03] hover:text-primary max-md:flex-[0_0_100%] max-md:px-2 max-md:py-3"
                         >
-                            {member.name} &mdash; {member.date_fallen}
+                            <span className="block">{member.name}</span>
+                            <span className="mt-1 block text-sm text-muted-foreground/60">{member.date_fallen}</span>
                         </a>
                     ))}
                 </div>
