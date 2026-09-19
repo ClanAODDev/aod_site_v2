@@ -44,7 +44,7 @@ export function ApplyDialogProvider({ children }: { children: ReactNode }) {
         <ApplyDialogContext.Provider value={() => setOpen(true)}>
             {children}
             <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="overflow-hidden sm:max-w-md">
+                <DialogContent className="overflow-hidden sm:max-w-xl">
                     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
                         {floatingIcons.map((division, index) => (
                             <img
@@ -57,16 +57,16 @@ export function ApplyDialogProvider({ children }: { children: ReactNode }) {
                         ))}
                     </div>
 
-                    <div className="relative flex flex-col items-center gap-4 py-4 text-center">
-                        <DialogTitle className="text-xl">Register an account</DialogTitle>
-                        <p className="text-sm text-muted-foreground">
+                    <div className="relative flex flex-col items-center gap-5 py-8 text-center">
+                        <DialogTitle className="text-2xl">Register an account</DialogTitle>
+                        <p className="max-w-sm text-sm text-muted-foreground">
                             You must have an account in order to apply for one of our divisions.
                         </p>
                         <a
                             href="https://tracker.clanaod.net/auth/discord"
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                         >
                             <DiscordIcon className="size-4" />
                             Register with Discord
