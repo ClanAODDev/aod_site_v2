@@ -8,6 +8,21 @@
  * The @theme inline block below exposes each token as a `bg-*` / `text-*` /
  * `border-*` / `font-*` utility — add a line there whenever a token needs one. */
 
+/* --font-display's face: matches what clanaod.net's own hero/section headings load, not just
+   its fallback stack. Its one bundled cut is 500 (medium) - its own internal PostScript name is
+   literally "MuseoSans-500" - so requesting font-bold on it makes the browser synthesize a
+   heavier weight it was never cut for. SectionTitle uses font-medium, not font-bold, for exactly
+   this reason. The files sat unused in public/fonts/, leftover from the legacy site's migration. */
+@font-face {
+    font-family: 'MuseoSans';
+    src:
+        url('/fonts/32291B_0_0.woff2') format('woff2'),
+        url('/fonts/32291B_0_0.woff') format('woff'),
+        url('/fonts/32291B_0_0.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+}
+
 :root {
     --background: #08090b;
     --foreground: #e7e9ec;
@@ -48,7 +63,7 @@
 
     --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    --font-display: 'Rajdhani', 'Inter', system-ui, sans-serif;
+    --font-display: 'MuseoSans', 'century gothic', Arial, sans-serif;
 }
 
 @theme inline {

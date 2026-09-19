@@ -1,34 +1,9 @@
 /* Home page — hero video texture, highlighted-event theme backgrounds, and
    the snowfall effect for the holiday theme. */
 
-/* Hero headings use a different display face than the site-wide --font-display token (Rajdhani) -
-   a one-off, so it's a plain class rather than a new theme token. Unlayered, so it reliably beats
-   the font-display utility's own layered rule regardless of class order - see the .nav-hatch
-   comment in site.css for the same gotcha.
-
-   The MuseoSans files already sat unused in public/fonts/ (leftover from the legacy site's own
-   migration, never wired up to an @font-face here) - matches what clanaod.net's own hero text
-   actually loads, not just its fallback stack. Its one bundled weight is the 500 (medium) cut
-   (its own internal PostScript name is literally "MuseoSans-500") - clanaod.net's own hero text
-   asks for exactly that weight with normal letter-spacing. SectionTitle's font-bold +
-   tracking-[0.06em] made the browser synthesize a heavier weight this face was never cut for,
-   plus loosen letter-spacing beyond what the real site uses, together reading thicker and looser
-   than the source. */
-@font-face {
-    font-family: 'MuseoSans';
-    src:
-        url('/fonts/32291B_0_0.woff2') format('woff2'),
-        url('/fonts/32291B_0_0.woff') format('woff'),
-        url('/fonts/32291B_0_0.ttf') format('truetype');
-    font-weight: 500;
-    font-display: swap;
-}
-
-.hero-heading {
-    font-family: 'MuseoSans', 'century gothic', Arial, sans-serif;
-    font-weight: 500;
-    letter-spacing: normal;
-}
+/* The hero's display face + weight/tracking now come from the site-wide --font-display token
+   and SectionTitle's own utilities (see theme.css and section-title.tsx) - this used to be a
+   one-off .hero-heading class before the same treatment was rolled out everywhere. */
 
 /* Intro video: always mounted (so requestFullscreen has a real, already-connected element to
    target synchronously from the play button's click handler - waiting for a React re-render
