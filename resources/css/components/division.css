@@ -8,58 +8,44 @@
    from the strip. Its height is capped to the image's own height (via background-size), not
    left to default to the full, much-taller section - otherwise that same solid tone paints
    all the way down the page and stops dead at the section's bottom edge, against the page's
-   slightly different --background, creating a second, horizontal version of the same seam. */
+   slightly different --background, creating a second, horizontal version of the same seam.
+
+   The bottom fade (image -> page background) has to overlap the last 100px of the artwork,
+   not start where it ends: below the image/strip's own height nothing paints there anymore,
+   so a fade positioned right at that edge has nothing left to fade from and reveals flat
+   --background at both of its own endpoints - invisible by construction, not a rendering bug.
+   Positioning it 100px earlier (`center 550px`) puts its transparent end over still-visible
+   artwork and its opaque end exactly at the true edge, so it actually blends the two tones.
+
+   `min-height` matches the artwork's own height so a short body never shrinks the section
+   below it - otherwise the box clips the image (and this fade) before either reaches its own
+   natural bottom, since a section's background never paints past its own box. */
 .division-hero {
     position: relative;
+    min-height: 650px;
     background-image:
+        linear-gradient(to bottom, transparent 0%, var(--background) 100%),
         linear-gradient(to right, #0d0d15 0%, transparent 15%, transparent 85%, #0d0d15 100%),
         var(--division-header-image),
         url('/images/division-bg-border.jpg');
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    background-position: top center, top center, top center;
-    background-size: 100% 650px, auto, auto;
-}
-
-.division-hero::after {
-    content: '';
-    position: absolute;
-    top: 682px; /* image height (650px) + the section's own pt-8 (32px) */
-    left: 0;
-    right: 0;
-    height: 100px;
-    /* Starts transparent (right where the image/strip still show through) and eases to fully
-       opaque --background by the bottom - the reverse of what was here before, which started
-       already-opaque at the top and so still cut hard against the image above it. */
-    background: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
-    pointer-events: none;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat-x;
+    background-position: center 550px, top center, top center, top center;
+    background-size: 100% 100px, 100% 650px, auto, auto;
 }
 
 /* Divisions index page — a centered illustration (1195x1098) plus a 1px-wide strip of the
    same edge tone tiled outward on both sides (repeat-x), so the artwork appears to blend
-   seamlessly into the page regardless of viewport width. Same full-width-gradient-plus-
-   matched-tone approach as division-hero above, including capping the gradient's height to
-   the image's own height so it doesn't paint a solid band all the way down the (much taller)
-   page and create a second, horizontal seam where the section ends. No background-color here
-   for the same reason - past the image, nothing should paint at all, letting the page's own
-   --background show through natively instead of a second color that has to match it exactly. */
+   seamlessly into the page regardless of viewport width. Same approach as division-hero
+   above, including the same overlap reasoning for the bottom fade's position. */
 .divisions-lobby-bg {
     position: relative;
+    min-height: 1098px;
     background-image:
+        linear-gradient(to bottom, transparent 0%, var(--background) 100%),
         linear-gradient(to right, #0a0b11 0%, transparent 15%, transparent 85%, #0a0b11 100%),
         url('/images/divisions-page-bg.jpg'),
         url('/images/divisions-page-top-bg.jpg');
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    background-position: top center, top center, top center;
-    background-size: 100% 1098px, auto, auto;
-}
-
-.divisions-lobby-bg::after {
-    content: '';
-    position: absolute;
-    top: 1098px; /* image height (1098px) */
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
-    pointer-events: none;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat-x;
+    background-position: center 998px, top center, top center, top center;
+    background-size: 100% 100px, 100% 1098px, auto, auto;
 }
