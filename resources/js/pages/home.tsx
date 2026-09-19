@@ -198,7 +198,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 imageSuffix={merch.image_suffix}
             />
 
-            <section className="relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
+            <section className="cta-hatch relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-primary/20" />
                 <div className="relative">
                     <SectionTitle>So what are you waiting for?</SectionTitle>
