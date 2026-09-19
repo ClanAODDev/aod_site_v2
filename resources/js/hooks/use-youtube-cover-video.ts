@@ -37,8 +37,13 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
             player = new YT.Player(target, {
                 videoId,
                 playerVars: {
-                    autoplay: 1,
-                    mute: 1,
+                    // No `autoplay: 1` here on purpose - that playerVar makes the embed try to
+                    // play itself, unmuted, the instant it's ready, racing our own mute() call
+                    // below. Browsers block that first unmuted attempt, and the follow-up
+                    // playVideo() isn't reliably able to recover from it (especially iOS
+                    // Safari). Muting before ever requesting playback avoids the race instead
+                    // of hoping to win it. (There's also no real `mute` playerVar - YouTube's
+                    // IFrame API only supports muting via this same player.mute() JS call.)
                     controls: 0,
                     loop: 1,
                     playlist: videoId,
