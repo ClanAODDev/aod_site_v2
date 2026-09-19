@@ -13,7 +13,8 @@ const links = [
     { label: 'Fallen Angels', href: '/fallen-angels' },
 ];
 
-const itemClass = 'px-5 text-base font-medium tracking-wide text-foreground/70 uppercase transition-colors hover:text-foreground';
+const itemClass =
+    'px-5 text-base font-medium tracking-wide text-foreground/70 uppercase transition-colors hover:text-foreground [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]';
 
 interface NavProps {
     /** True on pages where the nav starts in normal document flow, below the fold, rather than
@@ -43,15 +44,16 @@ export function Nav({ startsUnstuck = false }: NavProps) {
         <>
             {startsUnstuck && <div ref={sentinelRef} aria-hidden className="h-px" />}
 
-            <header className="nav-hatch sticky top-0 z-40 border-b border-border bg-gradient-to-b from-popover to-card backdrop-blur-md">
+            <header className="nav-hatch sticky top-0 z-40 border-t border-white/10 bg-gradient-to-b from-popover to-card backdrop-blur-md">
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white mix-blend-overlay" />
                 <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 md:justify-center">
                     <a href="/" className="flex items-center gap-2 md:hidden">
                         <img src="/images/aod_new.png" alt="Angels of Death" className="h-11 w-auto" />
                     </a>
 
-                    <nav className="hidden items-center divide-x divide-border-strong/60 md:flex">
+                    <nav className="hidden items-center divide-x divide-border-strong/25 md:flex">
                         <a href="/" className={cn(itemClass, 'flex items-center')}>
-                            {stuck ? <img src="/images/aod_new.png" alt="Home" className="h-9 w-auto" /> : 'Home'}
+                            {stuck ? <img src="/images/aod_new.png" alt="Home" className="h-13 w-auto" /> : 'Home'}
                         </a>
                         {links.map((link) => (
                             <a key={link.href} href={link.href} className={itemClass}>
