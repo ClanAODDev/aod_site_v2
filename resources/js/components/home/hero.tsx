@@ -1,8 +1,8 @@
+import { X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { SectionTitle } from '@/components/section-title';
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { useHeroScrollFade } from '@/hooks/use-hero-scroll-fade';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useYouTubeCoverVideo } from '@/hooks/use-youtube-cover-video';
@@ -21,9 +21,45 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
     const videoWrapperRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const discordRef = useRef<HTMLAnchorElement>(null);
+    const introContainerRef = useRef<HTMLDivElement>(null);
+    const introIframeRef = useRef<HTMLIFrameElement>(null);
     const [introOpen, setIntroOpen] = useState(false);
 
     useHeroScrollFade(videoWrapperRef, textRef, discordRef);
+
+    useEffect(() => {
+        function handleFullscreenChange() {
+            if (!document.fullscreenElement) {
+                setIntroOpen(false);
+                if (introIframeRef.current) {
+                    introIframeRef.current.src = '';
+                }
+            }
+        }
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    }, []);
+
+    function playIntro() {
+        if (introIframeRef.current) {
+            introIframeRef.current.src = `https://www.youtube.com/embed/${introVideoId}?autoplay=1&showinfo=0&enablejsapi=1&rel=0&modestbranding=1`;
+        }
+        // Requested synchronously, in the same click handler, on an element that's already
+        // mounted - see the .intro-video CSS comment for why that matters.
+        introContainerRef.current?.requestFullscreen?.().catch(() => {});
+        setIntroOpen(true);
+    }
+
+    function closeIntro() {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            setIntroOpen(false);
+            if (introIframeRef.current) {
+                introIframeRef.current.src = '';
+            }
+        }
+    }
 
     useEffect(() => {
         function handleScroll() {
@@ -103,25 +139,36 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 </SectionTitle>
                 <h2 className="mt-2 font-display text-lg font-light tracking-[0.06em] text-white/80 uppercase">Gaming since 1999</h2>
                 <button
-                    onClick={() => setIntroOpen(true)}
+                    onClick={playIntro}
                     aria-label="Play video"
                     className="pointer-events-auto relative z-10 mx-auto mt-6 h-[61px] w-[53px] bg-[url('/images/play-button.png')] bg-center bg-no-repeat transition-[filter] duration-500 hover:drop-shadow-[0_0_12px_white]"
                 />
             </div>
 
-            <Dialog open={introOpen} onOpenChange={setIntroOpen}>
-                <DialogContent showCloseButton className="max-w-4xl border-none bg-black p-0 shadow-none">
-                    <DialogTitle className="sr-only">Angels of Death intro video</DialogTitle>
-                    {introOpen && (
-                        <iframe
-                            src={`https://www.youtube.com/embed/${introVideoId}?autoplay=1&showinfo=0&enablejsapi=1&rel=0&modestbranding=1`}
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                            className="aspect-video w-full border-0"
-                        />
-                    )}
-                </DialogContent>
-            </Dialog>
+            <div
+                ref={introContainerRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Angels of Death intro video"
+                className="intro-video fixed inset-0 z-[100] bg-black"
+            >
+                <iframe
+                    ref={introIframeRef}
+                    allow="autoplay; encrypted-media; fullscreen"
+                    allowFullScreen
+                    title="Angels of Death intro video"
+                    className="size-full border-0"
+                />
+                {introOpen && (
+                    <button
+                        onClick={closeIntro}
+                        aria-label="Close video"
+                        className="absolute top-4 right-4 rounded-full bg-black/60 p-2 text-white transition-colors hover:bg-black/80"
+                    >
+                        <X className="size-5" />
+                    </button>
+                )}
+            </div>
         </>
     );
 }
