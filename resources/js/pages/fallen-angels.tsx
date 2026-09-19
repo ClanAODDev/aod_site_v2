@@ -29,7 +29,7 @@ export default function FallenAngels({ fallen }: FallenAngelsProps) {
                 />
 
                 <div className="epitaph-container">
-                    <div className="absolute top-[20%] left-1/2 w-[55%] max-lg:relative max-lg:top-0 max-lg:left-0 max-lg:mx-auto max-lg:min-w-[600px] max-md:min-w-full max-md:w-full max-md:px-4 max-md:py-8 text-center">
+                    <div className="absolute top-[20%] left-1/2 w-[55%] max-[1470px]:relative max-[1470px]:top-0 max-[1470px]:left-0 max-[1470px]:mx-auto max-[1470px]:min-w-[600px] max-md:min-w-full max-md:w-full max-md:px-4 max-md:py-8 text-center">
                         <h1 className="font-serif text-3xl [font-variant:small-caps] md:text-4xl">Our Fallen Angels</h1>
                         <p className="mt-6 font-serif text-base [font-variant:small-caps] leading-relaxed [text-shadow:1px_1px_0_var(--background)] md:text-2xl md:leading-[40px]">
                             To fall from heights, those who&apos;ve ascended,
