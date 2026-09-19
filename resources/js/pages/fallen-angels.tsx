@@ -53,7 +53,7 @@ export default function FallenAngels({ fallen }: FallenAngelsProps) {
             </section>
 
             <div className="relative -mt-[175px] w-full border-t border-border bg-black/40 px-4 pb-12 text-center">
-                <h3 className="py-4 text-lg tracking-wide">&mdash; IN MEMORIAM &mdash;</h3>
+                <h3 className="pt-10 pb-4 text-lg tracking-wide">&mdash; IN MEMORIAM &mdash;</h3>
                 <div className="mx-auto flex max-w-5xl flex-row flex-wrap justify-center">
                     {fallen.map((member) => (
                         <a
