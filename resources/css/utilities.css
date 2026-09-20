@@ -15,7 +15,7 @@
     .tron-hatch-bold {
         background-image: repeating-linear-gradient(
             -45deg,
-            color-mix(in srgb, var(--foreground) 3%, transparent) 0 3px,
+            color-mix(in srgb, var(--foreground) 1.5%, transparent) 0 3px,
             transparent 3px 12px
         );
     }
