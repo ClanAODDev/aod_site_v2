@@ -1,0 +1,29 @@
+/* ==========================================================================
+ * app.css — entry point for the Inertia frontend's hand-authored styles.
+ *
+ * Everything not covered here is Tailwind utilities inline in components, or
+ * `cva` variants inside the shadcn primitives under components/ui/.
+ *
+ *   theme.css   — design tokens (:root) + @theme inline utility map
+ *   base.css    — @layer base: reset, body, scrollbars
+ *   components/*.css — one file per bespoke widget (plain CSS + keyframes)
+ * ========================================================================== */
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* This site has one theme (Tron, always dark) and no light-mode toggle, so
+   shadcn's `dark:` utility variants - copied in as-is from tracker_v3 -
+   should always apply rather than following the OS `prefers-color-scheme`. */
+@custom-variant dark (&);
+
+@import './theme.css';
+@import './base.css';
+@import './utilities.css';
+
+@import './components/history.css';
+@import './components/fallen-angels.css';
+@import './components/division.css';
+@import './components/home.css';
+@import './components/legal.css';
+@import './components/site.css';

@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import legacy from '@vitejs/plugin-legacy';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 'resources/js/app.js',
+                'resources/js/app.tsx',
                 'resources/src/main.styl',
                 'resources/fonts/fonts.css'
             ],
@@ -14,11 +17,13 @@ export default defineConfig({
         }),
         legacy({
             targets: ['defaults', 'not IE 11']
-        })
+        }),
+        react(),
+        tailwindcss()
     ],
     resolve: {
         alias: {
-            '@': '/resources',
+            '@': '/resources/js',
             'images': '/public/images'
         }
     },

@@ -15,9 +15,6 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         Http::fake([
-            'clanaod.net/forums/external.php*' => Http::response(
-                file_get_contents(storage_path('testing/announcements.xml')), 200
-            ),
             'tracker.clanaod.net/api/v1/divisions' => Http::response(
                 file_get_contents(storage_path('testing/divisions.json')), 200
             ),

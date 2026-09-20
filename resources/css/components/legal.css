@@ -1,0 +1,20 @@
+/* Static legal pages (privacy policy, terms of use) — the shared page-header
+   image with a fade at the bottom, same composition as .division-hero but
+   with a fixed background instead of a per-division one. */
+
+.legal-hero {
+    background-image: url('/images/page-header.jpg'), url('/images/division-bg-border.jpg');
+    background-repeat: no-repeat, repeat-x;
+    background-position: top center;
+}
+
+.legal-hero::after {
+    content: '';
+    position: absolute;
+    top: 400px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
+    pointer-events: none;
+}

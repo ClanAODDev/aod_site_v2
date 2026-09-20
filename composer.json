@@ -9,6 +9,7 @@
         "embed/embed": "^4.4",
         "graham-campbell/markdown": "^16.1",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^3.3",
         "laravel/framework": "^13.0",
         "laravel/pint": "^1.16",
         "laravel/tinker": "^3.0"
