@@ -10,6 +10,16 @@
         );
     }
 
+    /* Bolder version of the above — thicker bars, wider spacing, for surfaces that
+       want the hatch to read as a deliberate graphic rather than a faint texture. */
+    .tron-hatch-bold {
+        background-image: repeating-linear-gradient(
+            -45deg,
+            color-mix(in srgb, var(--foreground) 1.5%, transparent) 0 3px,
+            transparent 3px 12px
+        );
+    }
+
     /* Rendered-markdown container (trusted admin/API HTML from `Prose`). */
     .prose-tron {
         max-width: none;
