@@ -12,7 +12,21 @@ interface TwitchLiveProps {
     gameName?: string;
 }
 
+function stripTrailingGameName(title: string | undefined, gameName: string | undefined): string | undefined {
+    if (!title || !gameName) {
+        return title;
+    }
+
+    const suffix = `- ${gameName}`;
+    if (!title.toLowerCase().endsWith(suffix.toLowerCase())) {
+        return title;
+    }
+
+    return title.slice(0, title.length - suffix.length).trim();
+}
+
 export function TwitchLive({ channel, title, gameName }: TwitchLiveProps) {
+    const displayTitle = stripTrailingGameName(title, gameName);
     const embedRef = useRef<HTMLDivElement>(null);
     const playerRef = useRef<TwitchPlayer | null>(null);
     const [muted, setMuted] = useState(true);
@@ -67,7 +81,7 @@ export function TwitchLive({ channel, title, gameName }: TwitchLiveProps) {
                     Live Now
                 </div>
 
-                <SectionTitle className="[text-shadow:0_2px_10px_rgba(0,0,0,0.5)]">{title || 'ClanAOD is Live!'}</SectionTitle>
+                <SectionTitle className="[text-shadow:0_2px_10px_rgba(0,0,0,0.5)]">{displayTitle || 'ClanAOD is Live!'}</SectionTitle>
                 {gameName && <p className="mt-2 mb-6 text-[#9146FF]/90">Playing {gameName}</p>}
 
                 <div className="relative mx-auto mb-8 aspect-video w-full max-w-3xl overflow-hidden rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.5),0_0_0_1px_rgba(145,70,255,0.3)]">
