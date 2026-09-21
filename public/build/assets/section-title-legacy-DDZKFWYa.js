@@ -1,1 +1,0 @@
-System.register(["./app-legacy-DBPR_05e.js","./site-layout-legacy-m-_WlWPA.js"],(function(e,t){"use strict";var s,a;return{setters:[e=>{s=e.j},e=>{a=e.i}],execute:function(){e("S",(function({children:e,className:t,as:c="h2"}){return s.jsx(c,{className:a("font-display text-2xl font-medium uppercase md:text-4xl",t),children:e})}))}}}));
