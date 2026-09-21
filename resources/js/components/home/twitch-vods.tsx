@@ -21,7 +21,7 @@ interface TwitchVodsProps {
 
 /** Best-effort game tag: most stream titles end in "... - Game Name". Matched against the known
  * division list so we can show its icon; falls back to a plain text pill with no icon. */
-function extractGameTag(title: string, divisions: Division[]): { label: string; icon: string | null } | null {
+function extractGameTag(title: string, divisions: Division[]): { label: string; icon: string | null; title: string } | null {
     const segments = title.split(' - ');
     if (segments.length < 2) {
         return null;
@@ -36,11 +36,12 @@ function extractGameTag(title: string, divisions: Division[]): { label: string; 
         (division) => candidate.toLowerCase().includes(division.name.toLowerCase()) || division.name.toLowerCase().includes(candidate.toLowerCase()),
     );
 
-    return { label: candidate, icon: match?.icon ?? null };
+    return { label: candidate, icon: match?.icon ?? null, title: segments.slice(0, -1).join(' - ').trim() };
 }
 
 function VodCard({ vod, divisions }: { vod: Vod; divisions: Division[] }) {
     const gameTag = extractGameTag(vod.title, divisions);
+    const displayTitle = gameTag?.title || vod.title;
 
     return (
         <a
@@ -52,7 +53,7 @@ function VodCard({ vod, divisions }: { vod: Vod; divisions: Division[] }) {
             <div className="relative aspect-video overflow-hidden bg-black">
                 <img
                     src={vod.thumbnail_url.replace('%{width}', '640').replace('%{height}', '360')}
-                    alt={vod.title}
+                    alt={displayTitle}
                     className="absolute inset-0 size-full object-cover transition-transform group-hover:scale-105"
                 />
 
@@ -68,7 +69,7 @@ function VodCard({ vod, divisions }: { vod: Vod; divisions: Division[] }) {
                 </div>
             </div>
             <div className="flex flex-1 flex-col p-4">
-                <span className="line-clamp-2 text-sm tracking-wide text-foreground/90 uppercase">{vod.title}</span>
+                <span className="line-clamp-2 text-sm tracking-wide text-foreground/90 uppercase">{displayTitle}</span>
                 <span className="mt-auto flex items-center gap-1 pt-2 text-xs text-foreground/50">
                     <Eye className="size-3" /> {vod.view_count.toLocaleString()} views
                 </span>
