@@ -55,12 +55,12 @@ describe('Division Pages', function () {
             $this->get(route('division.show', 'empty'))->assertNotFound();
         });
 
-        it('handles API failure gracefully', function () {
+        it('returns 503 when the tracker errors', function () {
             Http::fake([
                 '*/api/v1/divisions/error*' => Http::response([], 500),
             ]);
 
-            $this->get(route('division.show', 'error'))->assertNotFound();
+            $this->get(route('division.show', 'error'))->assertServiceUnavailable();
         });
 
         it('includes correct query parameters in API request', function () {

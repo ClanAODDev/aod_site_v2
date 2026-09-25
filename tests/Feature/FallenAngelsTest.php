@@ -2,6 +2,7 @@
 
 use App\Repositories\AOD\FallenMemberRepository;
 use GuzzleHttp\Psr7\Response as Psr7Response;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response as HttpResponse;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Testing\AssertableInertia;
@@ -54,7 +55,7 @@ describe('Fallen Angels Page', function () {
 
             public function all(): HttpResponse
             {
-                throw new Exception('simulated tracker outage');
+                throw new ConnectionException('simulated tracker outage');
             }
         });
 

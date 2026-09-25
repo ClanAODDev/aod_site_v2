@@ -24,7 +24,9 @@ class Repository
         }
 
         $this->client = Http::withToken($token)
-            ->acceptJson();
+            ->acceptJson()
+            ->connectTimeout(3)
+            ->timeout(5);
     }
 
     /**
