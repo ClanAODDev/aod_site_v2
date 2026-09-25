@@ -25,6 +25,22 @@ describe('Canonical host redirect', function () {
         $response->assertOk();
     });
 
+    it('keeps https when redirecting a request forwarded by the proxy', function () {
+        app()->instance('env', 'production');
+
+        $response = $this->withHeaders(['X-Forwarded-Proto' => 'https'])
+            ->get('http://warthunder.clanaod.net/divisions');
+
+        $response->assertRedirect('https://www.clanaod.net/divisions');
+    });
+
+    it('generates https urls for requests forwarded over https', function () {
+        $response = $this->withHeaders(['X-Forwarded-Proto' => 'https'])
+            ->get('http://www.clanaod.net/sitemap.xml');
+
+        $response->assertSee('<loc>https://www.clanaod.net/history</loc>', escape: false);
+    });
+
     it('does not redirect outside production', function () {
         $response = $this->get('http://warthunder.clanaod.net/divisions');
 
