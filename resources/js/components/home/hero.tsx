@@ -114,7 +114,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 title="Join the AOD Discord"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pointer-events-auto fixed top-6 left-1/2 z-50 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/60"
+                className="pointer-events-auto fixed top-6 left-1/2 z-50 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-md backdrop-saturate-150 transition-colors duration-300 hover:border-white/35 hover:bg-white/15"
             >
                 <DiscordIcon className="size-4 text-[#5865F2]" />
                 JOIN US ON DISCORD
