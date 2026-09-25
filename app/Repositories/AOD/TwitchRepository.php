@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\AOD;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -35,11 +36,15 @@ class TwitchRepository
         }
 
         return Cache::remember('twitch_access_token', 82800, function () {
-            $response = Http::asForm()->post($this->oauthUrl, [
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'grant_type' => 'client_credentials',
-            ]);
+            try {
+                $response = Http::asForm()->connectTimeout(3)->timeout(5)->post($this->oauthUrl, [
+                    'client_id' => $this->clientId,
+                    'client_secret' => $this->clientSecret,
+                    'grant_type' => 'client_credentials',
+                ]);
+            } catch (ConnectionException) {
+                return null;
+            }
 
             if ($response->failed()) {
                 return null;
@@ -57,10 +62,14 @@ class TwitchRepository
             return null;
         }
 
-        $response = Http::withHeaders([
-            'Authorization' => "Bearer {$token}",
-            'Client-Id' => $this->clientId,
-        ])->get("{$this->apiBase}/{$endpoint}", $params);
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => "Bearer {$token}",
+                'Client-Id' => $this->clientId,
+            ])->connectTimeout(3)->timeout(5)->get("{$this->apiBase}/{$endpoint}", $params);
+        } catch (ConnectionException) {
+            return null;
+        }
 
         if ($response->failed()) {
             return null;

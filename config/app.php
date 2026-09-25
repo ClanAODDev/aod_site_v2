@@ -27,6 +27,8 @@ return [
      */
     'cache_length' => env('CACHE_LENGTH', 900),
 
+    'cache_stale_length' => env('CACHE_STALE_LENGTH', 86400),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\AOD\DivisionRepository;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Http\Client\ConnectionException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -25,7 +26,17 @@ class DivisionController extends Controller
 
     public function show(string $division): Response
     {
-        $data = $this->divisions->find($division)->json('data')['division'] ?? null;
+        try {
+            $response = $this->divisions->find($division);
+        } catch (ConnectionException) {
+            abort(503);
+        }
+
+        if ($response->failed() && ! $response->notFound()) {
+            abort(503);
+        }
+
+        $data = $response->json('data.division');
 
         if (! $data) {
             abort(404, 'Bad division request');

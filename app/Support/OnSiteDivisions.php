@@ -13,11 +13,7 @@ class OnSiteDivisions
 
     public static function get(): array
     {
-        return cache()->remember(
-            self::CACHE_KEY,
-            config('app.cache_length'),
-            fn () => self::fetch()
-        );
+        return TrackerCache::remember(self::CACHE_KEY, fn () => self::fetch()) ?? [];
     }
 
     /**
@@ -28,7 +24,7 @@ class OnSiteDivisions
      */
     private static function fetch(): array
     {
-        if (! $divisions = DivisionRepository::all()->json('data')) {
+        if (! $divisions = DivisionRepository::all()->throw()->json('data')) {
             return [];
         }
 

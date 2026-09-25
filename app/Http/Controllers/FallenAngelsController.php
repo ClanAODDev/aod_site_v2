@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Repositories\AOD\FallenMemberRepository;
+use App\Support\TrackerCache;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,12 +32,9 @@ class FallenAngelsController extends Controller
      */
     private function fallen(): array
     {
-        return cache()->remember('aod_fallen_members', config('app.cache_length'), function () {
-            try {
-                return array_values($this->fallenMembers->all()->json('data') ?? []);
-            } catch (\Exception) {
-                return [];
-            }
-        });
+        return TrackerCache::remember(
+            'aod_fallen_members',
+            fn () => array_values($this->fallenMembers->all()->throw()->json('data') ?? [])
+        ) ?? [];
     }
 }

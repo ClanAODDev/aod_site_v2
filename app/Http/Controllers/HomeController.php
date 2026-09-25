@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\AOD\SocialRepository;
 use App\Repositories\AOD\TwitchRepository;
+use App\Support\TrackerCache;
 use Carbon\CarbonImmutable;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -53,8 +54,8 @@ class HomeController extends Controller
             return json_decode(file_get_contents(storage_path('testing/discord.json')), true)['data'];
         }
 
-        return cache()->remember('aod_discord', config('app.cache_length'), function () {
-            $raw = $this->social->getDiscord()->json('data');
+        return TrackerCache::remember('aod_discord', function () {
+            $raw = $this->social->getDiscord()->throw()->json('data');
 
             return is_array($raw) ? $raw : null;
         });

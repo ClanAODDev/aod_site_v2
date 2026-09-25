@@ -24,7 +24,9 @@ class Repository
         }
 
         $this->client = Http::withToken($token)
-            ->acceptJson();
+            ->acceptJson()
+            ->connectTimeout(3)
+            ->timeout(5);
     }
 
     /**
@@ -37,13 +39,6 @@ class Repository
 
         $path = is_array($url) ? implode('/', array_map('rawurlencode', $url)) : ltrim($url, '/');
 
-        $fullUrl = "{$base}/{$endpoint}/{$path}";
-
-        if (! empty($params)) {
-            $query = http_build_query($params);
-            $fullUrl .= "?{$query}";
-        }
-
-        return $this->client->get($fullUrl);
+        return $this->client->get("{$base}/{$endpoint}/{$path}", $params);
     }
 }
