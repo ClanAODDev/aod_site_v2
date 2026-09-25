@@ -1,1 +1,0 @@
-import{r as t}from"./app-DNF9c3TL.js";function a({once:n,...c}={}){const s=t.useRef(null),[o,u]=t.useState(!1);return t.useEffect(()=>{const r=s.current;if(!r)return;const e=new IntersectionObserver(([i])=>{u(i.isIntersecting),n&&i.isIntersecting&&e.disconnect()},c);return e.observe(r),()=>e.disconnect()},[n]),{ref:s,inView:o}}export{a as u};

@@ -1,1 +1,0 @@
-import{j as o}from"./app-DNF9c3TL.js";import{i}from"./site-layout-CgqEKKYu.js";function a({children:t,className:e,as:s="h2"}){return o.jsx(s,{className:i("font-display text-2xl font-medium uppercase md:text-4xl",e),children:t})}export{a as S};

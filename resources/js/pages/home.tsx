@@ -105,7 +105,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                             key={division.slug}
                             href={division.href}
                             title={division.name}
-                            className="group relative flex w-28 flex-col items-center bg-white/5 p-4 transition-all hover:-translate-y-1 hover:bg-white/10"
+                            className="group relative flex w-28 flex-col items-center bg-white/5 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md backdrop-saturate-150 transition-all hover:-translate-y-1 hover:bg-white/10"
                         >
                             <HudCorners className="border-border-strong/60 transition-colors group-hover:border-primary" />
                             <img
