@@ -27,8 +27,6 @@ export default defineConfig({
             'images': '/public/images'
         }
     },
-    publicDir: 'public',
-    outDir: 'dist',
     css: {
         preprocessorOptions: {
             stylus: {
