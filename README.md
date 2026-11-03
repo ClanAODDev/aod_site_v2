@@ -1,76 +1,80 @@
 ## Clan AOD - Website
 
-The Clan AOD website is built using [Laravel]((https://laravel.com/docs)). Local setup and development information is provided below. Contributions should follow the contributor guidelines.
+The public Clan AOD website.
 
-Local setup guidance coming soon™️
+**Tech Stack:** [Laravel](https://laravel.com/docs) 13 · PHP 8.4 · React 19 + Inertia + TypeScript · Tailwind v4 · Stylus · Vite
 
+Division information (names, logos, page content, leadership) comes from the [AOD Tracker](https://github.com/ClanAODDev/tracker_v3) API, so the site needs a tracker API token to show divisions.
 
 #### Local development
 
-Do the following to get a working local copy of the site set up.
+Requires [Docker](https://www.docker.com/) or Docker Desktop, plus Node.js and npm for the front-end build.
+
+The site's container joins the `tracker_site_bridge` Docker network that the Tracker's Sail setup creates. Start the Tracker locally first, or create the network yourself with `docker network create tracker_site_bridge`.
 
 ```shell
-
 # clone the repo - ssh key (preferred)
-git clone git@github.com:clanaoddev/aod_site_v2 
+git clone git@github.com:clanaoddev/aod_site_v2
 
-# or with user/pass
+# or over https
 git clone https://github.com/clanaoddev/aod_site_v2
 
-# install composer dependencies (requires composer [v2!])
-composer install 
-
-# install front-end compilation tools (requires npm and NodeJS
-npm install
-
-# build docker images and start up containers in detached mode
-# - recommend setting up an alias - alias sail='/vendor/bin/sail`
-/vendor/bin/sail up -d
-
-# set up environment file and generate application encryption key
+# set up the environment file
 cp .env.example .env
-/vendor/bin/sail artisan key:generate
 
-# navigate to http://localhost
+# install composer dependencies (needs PHP 8.4 and Composer 2)
+composer install
 
-# run tests
-# this execs into the web docker container and runs our phpunit tests
-sail test
+# or without local PHP
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+
+# build the docker image and start the container in detached mode
+# - recommend setting up an alias: alias sail='./vendor/bin/sail'
+./vendor/bin/sail up -d
+
+# generate the application encryption key
+./vendor/bin/sail artisan key:generate
+
+# install and build front-end assets
+npm install
+npm run build
+
+# navigate to http://localhost:8080 (or the APP_PORT set in .env)
+
+# run tests (runs phpunit inside the container)
+./vendor/bin/sail test
 ```
+
+Set `AOD_TRACKER_TOKEN` in `.env` to a Tracker API token with the `division:read` scope (create one on the Tracker's Developers page). `TRACKER_URL` defaults to the production Tracker. Point it at a local Tracker to develop against local data.
 
 #### Front-end assets
 
-`resources/src/main.styl` is the pivot template for the compiled CSS assets. I chose Stylus because it was easy to handle complicated rules and clean syntax, free of the technical debt that traditional CSS keeps. 
+Vite builds everything (`vite.config.js`):
 
-Compiling Stylus to CSS is handled by Laravel Mix and webpack via `webpack.mix.js` and by running:
+- **Pages** are React components in `resources/js/pages`, rendered through Inertia from the Laravel controllers. `resources/js/app.tsx` is the entry point.
+- **Styles**: `resources/src/main.styl` is the pivot template for the site's Stylus styles, with Tailwind v4 alongside for the React pages.
 
 ```shell
-npx mix
-
-# or for production releases
-npx mix --production
+npm run build       # production build
+npm run typecheck   # type-check the TypeScript
 ```
-
-Note that `webpack.mix.js` also handles the JS asset compilation. `app.js` is the pivot file, with `bootstrap.js` handling extra vendor-specific imports.
 
 ## New Division Setup
 
-A few things need to happen when new divisions get added. Typically this work is done by MSGT+ due to access restrictions to administration tools.
+A few things need to happen when a new division is added. This is typically done by MSGT+ because of access to the administration tools.
 
-- Division logo needs to be extracted. Avoid at all costs fan art. Opt for extracts of icon resources from the game binary. `BeCyIconGrabber` is my tried and true tool for getting these. Typically this involves inspecting the game binary with the tool, looking for "icon" assets, and then extracting the `48x48 px` size. There is nearly always this size available. In rare cases, we would get one size larger, and then do a Bicubic Sharper reduction to that size. 
-    - Logo (in PNG format) then goes to `public/images/division-icons/{abbreviation.png}` on the website.
-    - Right now it also goes to the same location on the Tracker. Eventually we will consolidate on one location for both the website and tracker to reference. For now... redundancy.
-    
+- **Create the division on the Tracker** in the Filament admin panel. Everything the site shows about a division comes from the Tracker API, so the division appears on the site once it exists there and is active.
+- **Logo**: upload it on the division in the Tracker admin. The site gets it from the API. Avoid fan art at all costs; opt for icons extracted from the game binary. `BeCyIconGrabber` is the tried and true tool: inspect the game binary, look for "icon" assets, and extract the `48x48 px` size, which is nearly always available. In rare cases, take the next size up and do a Bicubic Sharper reduction to 48x48.
+- **Division page content**: written in Markdown in the division's **Site content** field in the Tracker admin. The site renders it on `/divisions/{slug}`.
+- **Header banner (optional)**: add `public/images/division-headers/{abbreviation}.jpg` to this repo. Without one, the division page uses the default header image.
 
-- A page needs to be created on the website (`resources/views/division/content/{slug.blade.php}`) for the division using the slug-formatted version of the name.
-  
-    |Name|Slug|Abbreviation
-    |---|---|---|
-    |World of Warcraft|world-of-warcraft|wow
-    |Tom Clancy|tom-clancy|tc
-    |Planetside 2|planetside-2|ps2
-    
-    
-
-
-- Division needs to be built on the Tracker. There is an administrative layer called "Nova" for this, where resources are represented by Nova models. Once the division is created, it will populate on the API which we are consuming through the website.  
+  | Name              | Slug              | Abbreviation |
+  |-------------------|-------------------|--------------|
+  | World of Warcraft | world-of-warcraft | wow          |
+  | Tom Clancy        | tom-clancy        | tc           |
+  | Planetside 2      | planetside-2      | ps2          |
