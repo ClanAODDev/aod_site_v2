@@ -17,6 +17,25 @@ describe('Division Pages', function () {
     });
 
     describe('Division Show', function () {
+        it('drops javascript links from division page content', function () {
+            $divisionData = json_decode(
+                file_get_contents(storage_path('testing/division.json')),
+                true
+            );
+
+            $divisionData['data']['division']['site_content'] = '[Join](javascript:alert(1)) and [forums](https://clanaod.net/forums)';
+
+            Http::fake([
+                '*/api/v1/divisions/cod*' => Http::response($divisionData, 200),
+            ]);
+
+            $this->get(route('division.show', 'cod'))
+                ->assertOk()
+                ->assertInertia(fn (AssertableInertia $page) => $page
+                    ->where('division.siteContentHtml', fn (string $html) => ! str_contains($html, 'javascript:')
+                        && str_contains($html, 'href="https://clanaod.net/forums"')));
+        });
+
         it('loads successfully with valid division', function () {
             $divisionData = json_decode(
                 file_get_contents(storage_path('testing/division.json')),
