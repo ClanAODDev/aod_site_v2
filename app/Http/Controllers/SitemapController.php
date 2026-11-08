@@ -4,23 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Repositories\AOD\DivisionRepository;
+use App\Support\TrackerDivisions;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
-    public function __construct(
-        private readonly DivisionRepository $divisions,
-    ) {}
-
     public function __invoke(): Response
     {
-        $divisions = [];
-
-        try {
-            $divisions = $this->divisions->all()->json('data') ?? [];
-        } catch (\Exception) {
-        }
+        $divisions = TrackerDivisions::all();
 
         return response()
             ->view('sitemap', compact('divisions'))

@@ -48,6 +48,66 @@ describe('Division Pages', function () {
     });
 
     describe('Division Show', function () {
+        beforeEach(function () {
+            Cache::flush();
+
+            $this->fakeHttp([
+                '*/api/v1/divisions' => Http::response(['data' => array_map(
+                    fn (string $slug) => ['name' => $slug, 'slug' => $slug],
+                    ['cod', 'invalid', 'empty', 'error', 'test']
+                )], 200),
+            ]);
+        });
+
+        it('returns 404 for an unknown slug without asking the tracker for it', function () {
+            $this->get(route('division.show', 'not-a-division'))->assertNotFound();
+
+            Http::assertNotSent(fn ($request) => str_contains($request->url(), '/divisions/not-a-division'));
+        });
+
+        it('caches the division so repeat views do not call the tracker', function () {
+            $divisionData = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+
+            Http::fake(['*/api/v1/divisions/cod*' => Http::response($divisionData, 200)]);
+
+            $trackerCalls = fn () => Http::recorded()->filter(fn ($pair) => str_contains($pair[0]->url(), '/api/v1/'))->count();
+
+            $this->get(route('division.show', 'cod'))->assertOk();
+            $afterFirstView = $trackerCalls();
+            $this->get(route('division.show', 'cod'))->assertOk();
+
+            expect($afterFirstView)->toBeGreaterThan(0)
+                ->and($trackerCalls())->toBe($afterFirstView);
+        });
+
+        it('only sends the fields the division page renders', function () {
+            $divisionData = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+            $divisionData['data']['division'] += [
+                'icon' => 'https://example.com/icon.png',
+                'guid' => 'abc-123',
+                'officer_channel' => '111111111111111111',
+                'member_channel' => '222222222222222222',
+                'division_channel' => '333333333333333333',
+                'leadership' => [['name' => 'Leader', 'position' => 'Commanding Officer', 'discord_id' => '444444444444444444']],
+                'settings' => ['meta_description' => 'Test description', 'officer_channel' => '111111111111111111'],
+                'site_content' => 'Content',
+                'screenshots' => [['url' => 'https://example.com/a.png', 'caption' => 'A', 'path' => 'internal/a.png']],
+            ];
+
+            Http::fake(['*/api/v1/divisions/cod*' => Http::response($divisionData, 200)]);
+
+            $response = $this->get(route('division.show', 'cod'))->assertOk();
+
+            $response->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('division', fn ($division) => collect($division)->keys()->sort()->values()->all() === ['headerImage', 'icon', 'name', 'screenshots', 'siteContentHtml'])
+                ->where('division.screenshots', [['url' => 'https://example.com/a.png', 'caption' => 'A']]));
+
+            expect($response->getContent())
+                ->not->toContain('444444444444444444')
+                ->not->toContain('111111111111111111')
+                ->not->toContain('abc-123');
+        });
+
         it('drops javascript links from division page content', function () {
             $divisionData = json_decode(
                 file_get_contents(storage_path('testing/division.json')),
