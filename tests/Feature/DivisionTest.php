@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Inertia\Testing\AssertableInertia;
 
@@ -13,6 +14,36 @@ describe('Division Pages', function () {
 
         it('has correct route name', function () {
             expect(route('division.index'))->toBe(url('/divisions'));
+        });
+
+        it('keeps Discord and internal fields out of the shared division list', function () {
+            Cache::flush();
+
+            $this->fakeHttp([
+                '*/api/v1/divisions' => Http::response(['data' => [[
+                    'name' => 'Battlefield',
+                    'slug' => 'battlefield',
+                    'icon' => 'https://example.com/bf.png',
+                    'members_count' => 12,
+                    'show_on_site' => true,
+                    'guid' => 'abc-123',
+                    'forum_app_id' => 99,
+                    'officer_channel' => '111111111111111111',
+                    'member_channel' => '222222222222222222',
+                    'division_channel' => '333333333333333333',
+                    'leadership' => [['name' => 'Leader', 'discord_id' => '444444444444444444']],
+                ]]], 200),
+            ]);
+
+            $response = $this->get(route('division.index'))->assertOk();
+
+            $response->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('divisions.0', fn ($division) => collect($division)->keys()->sort()->values()->all() === ['href', 'icon', 'members_count', 'name', 'slug']));
+
+            expect($response->getContent())
+                ->not->toContain('444444444444444444')
+                ->not->toContain('111111111111111111')
+                ->not->toContain('abc-123');
         });
     });
 
