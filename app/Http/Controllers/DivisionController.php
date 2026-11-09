@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Repositories\AOD\DivisionRepository;
+use App\Support\TrackerCache;
+use App\Support\TrackerDivisions;
 use GrahamCampbell\Markdown\Facades\Markdown;
-use Illuminate\Http\Client\ConnectionException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,34 +27,72 @@ class DivisionController extends Controller
 
     public function show(string $division): Response
     {
-        try {
-            $response = $this->divisions->find($division);
-        } catch (ConnectionException) {
-            abort(503);
-        }
-
-        if ($response->failed() && ! $response->notFound()) {
-            abort(503);
-        }
-
-        $data = $response->json('data.division');
-
-        if (! $data) {
+        if (TrackerDivisions::hasSlug($division) === false) {
             abort(404, 'Bad division request');
         }
 
+        $result = TrackerCache::remember(
+            'aod_division_' . strtolower($division),
+            fn () => $this->fetchDivision($division)
+        );
+
+        if ($result === null) {
+            abort(503);
+        }
+
+        if (! $result['found']) {
+            abort(404, 'Bad division request');
+        }
+
+        $data = $result['division'];
+
         return Inertia::render('division/show', [
             'division' => [
-                ...$data,
+                'name' => $data['name'],
+                'icon' => $data['icon'],
                 'headerImage' => $this->headerImage($data['abbreviation']),
-                'siteContentHtml' => ! empty($data['site_content']) ? (string) Markdown::convertToHtml($data['site_content']) : null,
+                'siteContentHtml' => $data['siteContentHtml'],
+                'screenshots' => $data['screenshots'],
             ],
         ])->withViewData([
             'metaTitle' => "{$data['name']} Division | Angels of Death",
-            'metaDescription' => $data['settings']['meta_description'] ?? null,
-            'metaImage' => $data['icon'] ?? null,
+            'metaDescription' => $data['metaDescription'],
+            'metaImage' => $data['icon'],
             'structuredData' => $this->breadcrumbStructuredData($data['name']),
         ]);
+    }
+
+    private function fetchDivision(string $slug): array
+    {
+        $response = $this->divisions->find($slug);
+
+        if ($response->notFound()) {
+            return ['found' => false];
+        }
+
+        $data = $response->throw()->json('data.division');
+
+        if (! $data) {
+            return ['found' => false];
+        }
+
+        return [
+            'found' => true,
+            'division' => [
+                'name' => $data['name'],
+                'abbreviation' => $data['abbreviation'],
+                'icon' => $data['icon'] ?? null,
+                'metaDescription' => $data['settings']['meta_description'] ?? null,
+                'siteContentHtml' => ! empty($data['site_content']) ? (string) Markdown::convertToHtml($data['site_content']) : null,
+                'screenshots' => array_values(array_map(
+                    fn (array $screenshot) => [
+                        'url' => $screenshot['url'] ?? null,
+                        'caption' => $screenshot['caption'] ?? null,
+                    ],
+                    $data['screenshots'] ?? []
+                )),
+            ],
+        ];
     }
 
     private function headerImage(string $abbreviation): string

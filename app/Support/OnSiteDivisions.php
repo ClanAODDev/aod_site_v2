@@ -31,7 +31,13 @@ class OnSiteDivisions
         $onSite = array_filter($divisions, fn ($division) => isset($division['show_on_site']) && $division['show_on_site'] !== false);
 
         return array_values(array_map(
-            fn ($division) => [...$division, 'href' => route('division.show', Str::slug($division['name']))],
+            fn ($division) => [
+                'name' => $division['name'],
+                'slug' => $division['slug'] ?? null,
+                'icon' => $division['icon'] ?? null,
+                'members_count' => $division['members_count'] ?? null,
+                'href' => route('division.show', Str::slug($division['name'])),
+            ],
             $onSite
         ));
     }
