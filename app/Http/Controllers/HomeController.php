@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Repositories\AOD\SocialRepository;
-use App\Repositories\AOD\TwitchRepository;
-use App\Support\TrackerCache;
+use App\Support\DiscordStats;
+use App\Support\TwitchStream;
 use Carbon\CarbonImmutable;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -14,14 +13,14 @@ use Inertia\Response;
 class HomeController extends Controller
 {
     public function __construct(
-        private readonly SocialRepository $social,
-        private readonly TwitchRepository $twitch,
+        private readonly DiscordStats $discordStats,
+        private readonly TwitchStream $twitchStream,
     ) {}
 
     public function __invoke(): Response
     {
-        $discord = $this->getDiscordData();
-        $twitch = $this->getTwitchData();
+        $discord = $this->discordStats->get();
+        $twitch = $this->twitchStream->get();
         $highlightedEvent = $this->getActiveHighlightedEvent();
 
         $showTwitchLive = $twitch['is_live'] ?? false;
@@ -46,37 +45,6 @@ class HomeController extends Controller
             'metaDescription' => 'Angels of Death is a multi-game gaming community founded in 1999 with 1,200+ active members across 10 active divisions worldwide. Join us on PC, PlayStation, and Xbox.',
             'structuredData' => $this->structuredData(),
         ]);
-    }
-
-    private function getDiscordData(): ?array
-    {
-        if (app()->environment('local')) {
-            return json_decode(file_get_contents(storage_path('testing/discord.json')), true)['data'];
-        }
-
-        return TrackerCache::remember('aod_discord', function () {
-            $raw = $this->social->getDiscord()->throw()->json('data');
-
-            return is_array($raw) ? $raw : null;
-        });
-    }
-
-    private function getTwitchData(): array
-    {
-        if (config('services.twitch.client_id') && config('services.twitch.client_secret')) {
-            return $this->twitch->getStreamData();
-        }
-
-        if (app()->environment('local')) {
-            return json_decode(file_get_contents(storage_path('testing/twitch.json')), true);
-        }
-
-        return [
-            'is_live' => false,
-            'stream' => null,
-            'vods' => [],
-            'channel' => config('services.twitch.channel', 'clanaodstream'),
-        ];
     }
 
     private function getActiveHighlightedEvent(): ?array
