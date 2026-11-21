@@ -19,6 +19,14 @@
         color: #f04747;
     }
 
+    .next-mark {
+        display: inline-block;
+        flex-shrink: 0;
+        aspect-ratio: 1;
+        background-color: currentColor;
+        mask: url('/images/next/aod-mark.png') center / contain no-repeat;
+    }
+
     .next-heading {
         font-family: 'Rajdhani', var(--font-display);
     }
