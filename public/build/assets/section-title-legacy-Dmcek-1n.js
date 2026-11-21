@@ -1,0 +1,1 @@
+System.register(["./app-legacy-Bj-LoLvB.js","./twitch-icon-legacy-C-_w_spr.js"],(function(e,t){"use strict";var s,c;return{setters:[e=>{s=e.j},e=>{c=e.h}],execute:function(){e("S",(function({children:e,className:t,as:n="h2"}){return s.jsx(n,{className:c("font-display text-2xl font-medium uppercase md:text-4xl",t),children:e})}))}}}));

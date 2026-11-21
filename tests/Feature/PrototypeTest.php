@@ -48,7 +48,9 @@ describe('Prototype', function () {
                 ->component('next/home')
                 ->where('foundedYear', 1999)
                 ->where('currentYear', (int) now()->year)
-                ->has('discord'));
+                ->has('discord')
+                ->has('twitch.vods')
+                ->has('twitch.channel'));
     });
 
     it('stops letting a cookie in once the key changes', function () {

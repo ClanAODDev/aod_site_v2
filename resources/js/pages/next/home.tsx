@@ -5,6 +5,7 @@ import { useMemo, useState, type ReactNode } from 'react';
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
 import { NextNav } from '@/components/next/next-nav';
+import { StreamSection, type TwitchData } from '@/components/next/stream-section';
 import { Reveal } from '@/components/reveal';
 import { ApplyDialogProvider, useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { historyEras } from '@/lib/history-eras';
@@ -20,6 +21,7 @@ interface DiscordStats {
 
 interface PrototypeProps {
     discord: DiscordStats | null;
+    twitch: TwitchData;
     foundedYear: number;
     currentYear: number;
 }
@@ -323,7 +325,7 @@ function NextFooter({ foundedYear, currentYear }: { foundedYear: number; current
     );
 }
 
-export default function PrototypeHome({ discord, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
@@ -339,6 +341,7 @@ export default function PrototypeHome({ discord, foundedYear, currentYear }: Pro
                     <Legacy foundedYear={foundedYear} />
                     <Timeline years={years} />
                     <Divisions />
+                    <StreamSection twitch={twitch} />
                     <Values />
                     <Remembrance />
                     <JoinBand foundedYear={foundedYear} />

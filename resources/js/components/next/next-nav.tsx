@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 export const NEXT_LINKS = [
     { label: 'Legacy', href: '#legacy' },
     { label: 'Divisions', href: '#divisions' },
+    { label: 'Stream', href: '#stream' },
     { label: 'Values', href: '#values' },
     { label: 'History', href: '/history' },
     { label: 'Forums', href: 'https://www.clanaod.net/forums' },
