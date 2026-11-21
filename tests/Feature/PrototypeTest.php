@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\RequirePrototypeAccess;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Inertia\Testing\AssertableInertia;
@@ -122,6 +123,24 @@ describe('Prototype', function () {
 
         $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)->get('/next/divisions/nope')->assertNotFound();
     });
+
+    it('passes the winter season through the new year and nothing in November', function (string $date, ?string $season) {
+        $this->travelTo(CarbonImmutable::parse($date));
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $season === null
+                ? $page->where('season', null)
+                : $page->where('season.id', $season));
+    })->with([
+        'early December' => ['2026-12-01', 'winter'],
+        'New Year' => ['2027-01-03', 'winter'],
+        'after the holidays' => ['2027-01-06', null],
+        'Halloween' => ['2026-10-31', 'halloween'],
+        'November' => ['2026-11-21', null],
+    ]);
 
     it('leaves the current home page alone', function () {
         $this->get(route('home'))->assertOk()->assertInertia(fn (AssertableInertia $page) => $page->component('home'));
