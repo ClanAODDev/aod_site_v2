@@ -178,7 +178,7 @@ function Legacy({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-const ERA_SECONDS = 15;
+const ERA_SECONDS = 10;
 
 function Timeline({ years, videoId }: { years: number; videoId: string | null }) {
     const periods = useMemo(() => historyEras({ foundations: '', modern: '' }).flatMap((era) => era.entries), []);

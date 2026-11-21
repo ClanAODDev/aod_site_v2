@@ -14,6 +14,17 @@ class TwitchStream
 
     public function get(): array
     {
+        if (app()->environment('local') && request()->has('live')) {
+            $live = json_decode(file_get_contents(storage_path('testing/twitch_live.json')), true);
+            $channel = (string) request()->query('live');
+
+            if (preg_match('/^[A-Za-z0-9_]{3,25}$/', $channel) === 1 && $channel !== '1') {
+                $live['channel'] = $channel;
+            }
+
+            return $live;
+        }
+
         if (config('services.twitch.client_id') && config('services.twitch.client_secret')) {
             return $this->twitch->getStreamData();
         }

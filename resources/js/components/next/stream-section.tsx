@@ -136,7 +136,7 @@ export function StreamSection({ twitch }: { twitch: TwitchData }) {
                             {live ? <span className="next-live-badge">Live now</span> : <Radio className="size-4" aria-hidden="true" />}
                             {live ? 'On the channel' : 'AOD on Twitch'}
                         </p>
-                        <h2 className="next-heading text-4xl font-bold uppercase tracking-wide text-foreground sm:text-5xl">
+                        <h2 className={cn('next-heading font-bold uppercase tracking-wide text-foreground', live ? 'line-clamp-2 max-w-3xl text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl')}>
                             {live ? (twitch.stream?.title ?? 'We are live') : 'Catch the stream'}
                         </h2>
                         <p className="mt-3 max-w-xl text-muted-foreground">
@@ -145,7 +145,7 @@ export function StreamSection({ twitch }: { twitch: TwitchData }) {
                                 : 'Community nights, division events and tournaments, broadcast by members. Catch up on recent streams below.'}
                         </p>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex shrink-0 items-center gap-4 whitespace-nowrap">
                         {live && typeof twitch.stream?.viewer_count === 'number' && (
                             <span className="flex items-center gap-1.5 font-mono text-sm text-muted-foreground">
                                 <Users className="size-4" aria-hidden="true" /> {twitch.stream.viewer_count.toLocaleString('en-US')} watching

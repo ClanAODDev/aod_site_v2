@@ -433,13 +433,24 @@
 
     .next-memorial-video {
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.22;
+        top: 0;
+        left: 50%;
+        width: 1670px;
+        max-width: none;
+        height: 835px;
+        transform: translateX(-50%);
+        opacity: 0.3;
         filter: grayscale(0.6);
-        mask-image: linear-gradient(to bottom, #000 40%, transparent);
+        mask-image:
+            linear-gradient(to bottom, #000 45%, transparent 88%),
+            linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        mask-composite: intersect;
+    }
+
+    @media (max-width: 767px) {
+        .next-memorial-video {
+            display: none;
+        }
     }
 
     .next-mark-mourning {
