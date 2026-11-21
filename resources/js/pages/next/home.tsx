@@ -1,13 +1,15 @@
-import { Head, usePage } from '@inertiajs/react';
-import { ArrowDown, ArrowRight, Crown, Flame, Shield, Users } from 'lucide-react';
-import { useMemo, useState, type ReactNode } from 'react';
+import { usePage } from '@inertiajs/react';
+import { ArrowDown, ArrowLeft, ArrowRight, Crown, Flame, Shield, Users } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
-import { NextNav } from '@/components/next/next-nav';
+import { CoverVideo } from '@/components/next/cover-video';
+import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
 import { StreamSection, type TwitchData } from '@/components/next/stream-section';
 import { Reveal } from '@/components/reveal';
-import { ApplyDialogProvider, useOpenApplyDialog } from '@/components/site/apply-dialog';
+import { useOpenApplyDialog } from '@/components/site/apply-dialog';
+import { useInView } from '@/hooks/use-in-view';
 import { historyEras } from '@/lib/history-eras';
 import { cn } from '@/lib/utils';
 import type { SharedPageProps } from '@/types';
@@ -22,6 +24,8 @@ interface DiscordStats {
 interface PrototypeProps {
     discord: DiscordStats | null;
     twitch: TwitchData;
+    heroVideoId: string | null;
+    historyVideoId: string | null;
     foundedYear: number;
     currentYear: number;
 }
@@ -55,7 +59,7 @@ function formatCount(value: number | undefined): string {
 
 function SectionHeading({ eyebrow, title, children }: { eyebrow: string; title: ReactNode; children?: ReactNode }) {
     return (
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="relative mx-auto mb-12 max-w-3xl text-center">
             <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] next-red-text">{eyebrow}</p>
             <h2 className="next-heading text-4xl font-bold uppercase tracking-wide text-foreground sm:text-5xl">{title}</h2>
             {children && <p className="mt-4 text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">{children}</p>}
@@ -63,7 +67,7 @@ function SectionHeading({ eyebrow, title, children }: { eyebrow: string; title: 
     );
 }
 
-function Hero({ years, foundedYear, discord, divisionCount }: { years: number; foundedYear: number; discord: DiscordStats | null; divisionCount: number }) {
+function Hero({ years, foundedYear, discord, divisionCount, videoId }: { years: number; foundedYear: number; discord: DiscordStats | null; divisionCount: number; videoId: string | null }) {
     const openApply = useOpenApplyDialog();
     const stats = [
         { value: `${years}`, label: 'Years strong' },
@@ -74,6 +78,7 @@ function Hero({ years, foundedYear, discord, divisionCount }: { years: number; f
 
     return (
         <section id="top" className="next-hero relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-28 text-center">
+            <CoverVideo videoId={videoId} />
             <div className="next-triangles" aria-hidden="true">
                 <span />
                 <span />
@@ -153,20 +158,50 @@ function Legacy({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-function Timeline({ years }: { years: number }) {
+function Timeline({ years, videoId }: { years: number; videoId: string | null }) {
     const periods = useMemo(() => historyEras({ foundations: '', modern: '' }).flatMap((era) => era.entries), []);
     const titleCount = useMemo(() => new Set(periods.flatMap((period) => period.tags.map((tag) => tag.label))).size, [periods]);
-    const [active, setActive] = useState(periods.length - 1);
+    const [active, setActive] = useState(0);
+    const [touched, setTouched] = useState(false);
+    const railRef = useRef<HTMLDivElement>(null);
+    const { ref, inView } = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -30% 0px' });
     const period = periods[active];
+    const last = periods.length - 1;
+
+    useEffect(() => {
+        if (!inView || touched || active >= last) {
+            return;
+        }
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setActive(last);
+            return;
+        }
+        const timer = window.setTimeout(() => setActive((index) => Math.min(index + 1, last)), active === 0 ? 900 : 1300);
+        return () => window.clearTimeout(timer);
+    }, [inView, touched, active, last]);
+
+    useEffect(() => {
+        const rail = railRef.current;
+        const stop = rail?.children[active] as HTMLElement | undefined;
+        if (rail && stop && rail.scrollWidth > rail.clientWidth) {
+            rail.scrollTo({ left: stop.offsetLeft - 16, behavior: 'smooth' });
+        }
+    }, [active]);
+
+    const choose = (index: number) => {
+        setTouched(true);
+        setActive(Math.max(0, Math.min(index, last)));
+    };
 
     return (
         <section id="timeline" className="relative overflow-hidden border-t border-border bg-card/40 px-4 py-24 sm:px-6">
+            <CoverVideo videoId={videoId} className="is-faint" />
             <SectionHeading eyebrow="The long game" title={`${years} years in the making`}>
                 Two founders became thousands of members across {titleCount} titles and counting. Pick an era.
             </SectionHeading>
 
-            <div className="mx-auto max-w-6xl">
-                <div className="next-rail" role="tablist" aria-label="Eras of AOD">
+            <div ref={ref} className="relative mx-auto max-w-6xl">
+                <div ref={railRef} className="next-rail" role="tablist" aria-label="Eras of AOD">
                     {periods.map((entry, index) => (
                         <button
                             key={entry.title}
@@ -175,8 +210,8 @@ function Timeline({ years }: { years: number }) {
                             id={`era-tab-${index}`}
                             aria-selected={index === active}
                             aria-controls="era-panel"
-                            onClick={() => setActive(index)}
-                            className={cn('next-rail-stop', index === active && 'is-active')}
+                            onClick={() => choose(index)}
+                            className={cn('next-rail-stop', index === active && 'is-active', index < active && 'is-passed')}
                         >
                             <span className="next-rail-dot" aria-hidden="true" />
                             <span className="font-mono text-xs text-muted-foreground">{entry.dateRange}</span>
@@ -185,31 +220,39 @@ function Timeline({ years }: { years: number }) {
                     ))}
                 </div>
 
-                <div id="era-panel" role="tabpanel" aria-labelledby={`era-tab-${active}`} className="next-panel mt-8 grid gap-8 p-6 sm:p-10 lg:grid-cols-[2fr_3fr]">
-                    <div>
-                        <p className="font-mono text-sm next-red-text">{period.dateRange}</p>
-                        <h3 className="next-heading mt-2 text-4xl font-bold uppercase text-foreground">{period.title}</h3>
-                        <p className="mt-4 leading-relaxed text-muted-foreground">{period.description}</p>
-                        <a href="/history" className="mt-6 inline-flex items-center gap-2 text-sm font-medium next-red-text hover:underline">
-                            Read the full history <ArrowRight className="size-4" />
-                        </a>
-                    </div>
-                    <div>
-                        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">{period.tags.length} titles played</p>
-                        <ul className="flex flex-wrap gap-2">
-                            {period.tags.map((tag) => (
-                                <li
-                                    key={tag.label}
-                                    className={cn(
-                                        'rounded-sm border px-2.5 py-1 text-sm',
-                                        tag.highlight ? 'border-primary bg-primary/15 text-primary-foreground' : 'border-border text-foreground/85',
-                                    )}
-                                >
-                                    {tag.highlight && <Crown className="mr-1.5 inline size-3.5 text-primary" aria-label="Championship" />}
-                                    {tag.label}
-                                </li>
-                            ))}
-                        </ul>
+                <div id="era-panel" role="tabpanel" aria-labelledby={`era-tab-${active}`} aria-live="polite" className="next-panel mt-8 p-6 sm:p-10">
+                    <div key={active} className="next-era-enter grid gap-8 lg:grid-cols-[2fr_3fr]">
+                        <div>
+                            <p className="font-mono text-sm next-red-text">{period.dateRange}</p>
+                            <h3 className="next-heading mt-2 text-4xl font-bold uppercase text-foreground">{period.title}</h3>
+                            <p className="mt-4 leading-relaxed text-muted-foreground">{period.description}</p>
+                            <div className="mt-6 flex gap-2">
+                                <button type="button" onClick={() => choose(active - 1)} disabled={active === 0} className="next-button-ghost disabled:opacity-40">
+                                    <ArrowLeft className="size-4" /> Earlier
+                                </button>
+                                <button type="button" onClick={() => choose(active + 1)} disabled={active === last} className="next-button-ghost disabled:opacity-40">
+                                    Later <ArrowRight className="size-4" />
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">{period.tags.length} titles played</p>
+                            <ul className="flex flex-wrap gap-2">
+                                {period.tags.map((tag, index) => (
+                                    <li
+                                        key={tag.label}
+                                        style={{ animationDelay: `${120 + index * 30}ms` }}
+                                        className={cn(
+                                            'next-chip-enter rounded-sm border px-2.5 py-1 text-sm',
+                                            tag.highlight ? 'border-primary bg-primary/15 text-primary-foreground' : 'border-border text-foreground/85',
+                                        )}
+                                    >
+                                        {tag.highlight && <Crown className="mr-1.5 inline size-3.5 text-primary" aria-label="Championship" />}
+                                        {tag.label}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,7 +277,7 @@ function Divisions() {
                     {sorted.map((division, index) => (
                         <li key={division.href}>
                             <Reveal delay={Math.min(index, 8) * 50}>
-                                <a href={division.href} className="next-division group">
+                                <a href={nextDivisionHref(division.href)} className="next-division group">
                                     <img src={division.icon} alt="" className="size-12 shrink-0 object-contain transition-transform duration-300 group-hover:scale-110" />
                                     <span className="min-w-0 flex-1">
                                         <span className="next-heading block truncate text-xl font-bold uppercase text-foreground">{division.name}</span>
@@ -276,7 +319,7 @@ function Remembrance() {
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Fallen Angels</p>
             <h2 className="next-heading mt-3 text-4xl font-bold uppercase text-foreground sm:text-5xl">We remember</h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Some of the people who built this community are no longer with us. Their names stay on our wall.</p>
-            <a href="/fallen-angels" className="next-button-ghost mt-8 inline-flex">
+            <a href="/next/fallen-angels" className="next-button-ghost mt-8 inline-flex">
                 Honor the fallen <ArrowRight className="size-4" />
             </a>
         </section>
@@ -307,47 +350,20 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-function NextFooter({ foundedYear, currentYear }: { foundedYear: number; currentYear: number }) {
-    return (
-        <footer className="border-t border-border px-4 py-10 sm:px-6">
-            <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
-                <div className="flex items-center gap-3">
-                    <AodMark className="size-6" />
-                    <span>
-                        Angels of Death · {foundedYear}–{currentYear}
-                    </span>
-                </div>
-                <p className="font-mono text-xs uppercase tracking-widest">
-                    Prototype · <a href="/" className="next-red-text hover:underline">Back to the current site</a>
-                </p>
-            </div>
-        </footer>
-    );
-}
-
-export default function PrototypeHome({ discord, twitch, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, heroVideoId, historyVideoId, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
     return (
-        <ApplyDialogProvider>
-            <Head title="Angels of Death | Prototype">
-                <meta name="robots" content="noindex, nofollow" />
-            </Head>
-            <div className="next-root min-h-screen bg-background text-foreground">
-                <NextNav />
-                <main>
-                    <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} />
-                    <Legacy foundedYear={foundedYear} />
-                    <Timeline years={years} />
-                    <Divisions />
-                    <StreamSection twitch={twitch} />
-                    <Values />
-                    <Remembrance />
-                    <JoinBand foundedYear={foundedYear} />
-                </main>
-                <NextFooter foundedYear={foundedYear} currentYear={currentYear} />
-            </div>
-        </ApplyDialogProvider>
+        <NextLayout title="Angels of Death | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
+            <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} />
+            <Legacy foundedYear={foundedYear} />
+            <Timeline years={years} videoId={historyVideoId} />
+            <Divisions />
+            <StreamSection twitch={twitch} />
+            <Values />
+            <Remembrance />
+            <JoinBand foundedYear={foundedYear} />
+        </NextLayout>
     );
 }

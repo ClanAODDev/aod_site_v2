@@ -6,11 +6,11 @@ import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { cn } from '@/lib/utils';
 
 export const NEXT_LINKS = [
-    { label: 'Legacy', href: '#legacy' },
-    { label: 'Divisions', href: '#divisions' },
-    { label: 'Stream', href: '#stream' },
-    { label: 'Values', href: '#values' },
-    { label: 'History', href: '/history' },
+    { label: 'Legacy', href: '/next#legacy' },
+    { label: 'History', href: '/next#timeline' },
+    { label: 'Divisions', href: '/next#divisions' },
+    { label: 'Stream', href: '/next#stream' },
+    { label: 'Fallen Angels', href: '/next/fallen-angels' },
     { label: 'Forums', href: 'https://www.clanaod.net/forums' },
     { label: 'Tracker', href: 'https://tracker.clanaod.net' },
 ];
@@ -35,7 +35,7 @@ export function NextNav() {
             )}
         >
             <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-                <a href="#top" className="flex items-center gap-3">
+                <a href="/next" className="flex items-center gap-3">
                     <AodMark className="size-8" />
                     <span className="next-heading whitespace-nowrap text-base font-bold uppercase tracking-[0.18em] text-foreground sm:text-lg">Angels of Death</span>
                 </a>

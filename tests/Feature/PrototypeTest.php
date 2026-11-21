@@ -60,6 +60,69 @@ describe('Prototype', function () {
         $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)->get('/next')->assertNotFound();
     });
 
+    it('gates the fallen angels and division pages too', function () {
+        $this->get('/next/fallen-angels')->assertNotFound();
+        $this->get('/next/divisions/battlefield')->assertNotFound();
+    });
+
+    it('renders the fallen angels page', function () {
+        Http::fake([
+            '*/api/v1/fallen-members' => Http::response(json_decode(file_get_contents(storage_path('testing/fallen-members.json')), true)),
+        ]);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next/fallen-angels')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('next/fallen-angels')
+                ->has('fallen', 2));
+    });
+
+    it('renders a division with its leadership but without Discord IDs', function () {
+        Http::fake([
+            '*/api/v1/divisions/battlefield*' => Http::response(['data' => ['division' => [
+                'name' => 'Battlefield',
+                'slug' => 'battlefield',
+                'abbreviation' => 'bf',
+                'description' => 'Squad up.',
+                'members_count' => 233,
+                'icon' => 'https://example.com/bf.png',
+                'site_content' => "## About\n\nWe play Battlefield.",
+                'screenshots' => [],
+                'leadership' => [[
+                    'name' => 'Leader',
+                    'position' => 'Commanding Officer',
+                    'rank' => ['label' => 'Sgt', 'color' => '#ff0000'],
+                    'discord_id' => '444444444444444444',
+                ]],
+            ]]]),
+            '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield', 'show_on_site' => true]]]),
+        ]);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $response = $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next/divisions/battlefield')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('next/division')
+                ->where('division.name', 'Battlefield')
+                ->where('division.membersCount', 233)
+                ->where('division.leadership.0.rank', 'Sgt')
+                ->where('division.leadership.0', fn ($leader) => ! collect($leader)->has('discord_id')));
+
+        expect($response->getContent())->not->toContain('444444444444444444');
+    });
+
+    it('returns 404 for a division the tracker does not know', function () {
+        Http::fake([
+            '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield']]]),
+        ]);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)->get('/next/divisions/nope')->assertNotFound();
+    });
+
     it('leaves the current home page alone', function () {
         $this->get(route('home'))->assertOk()->assertInertia(fn (AssertableInertia $page) => $page->component('home'));
     });

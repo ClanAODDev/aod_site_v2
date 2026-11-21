@@ -22,6 +22,10 @@ Route::get('/fallen-angels', FallenAngelsController::class)->name('fallen-angels
 Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
 Route::get('/divisions/{division}', [DivisionController::class, 'show'])->name('division.show');
 
-Route::get('/next', PrototypeController::class)->middleware(RequirePrototypeAccess::class)->name('prototype');
+Route::prefix('next')->name('prototype.')->middleware(RequirePrototypeAccess::class)->controller(PrototypeController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+    Route::get('/fallen-angels', 'fallenAngels')->name('fallen-angels');
+    Route::get('/divisions/{division}', 'division')->name('division');
+});
 
 require 'partials/policies.php';

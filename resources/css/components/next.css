@@ -93,6 +93,38 @@
             var(--background);
     }
 
+    .next-cover-video {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+        filter: saturate(0.55) contrast(1.1);
+        animation: next-video-in 2.4s ease-out 1.2s forwards;
+    }
+
+    .next-cover-video iframe {
+        pointer-events: none;
+    }
+
+    .next-cover-video::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 12, 12, 0.35), rgba(12, 12, 12, 0.9)),
+            linear-gradient(to bottom, rgba(27, 2, 2, 0.55), rgba(12, 12, 12, 0.95));
+    }
+
+    .next-cover-video.is-faint {
+        --next-video-opacity: 0.35;
+    }
+
+    @keyframes next-video-in {
+        to {
+            opacity: var(--next-video-opacity, 0.6);
+        }
+    }
+
     .next-triangles {
         position: absolute;
         inset: 0;
@@ -162,6 +194,7 @@
     }
 
     .next-rail {
+        position: relative;
         display: flex;
         gap: 0;
         overflow-x: auto;
@@ -192,6 +225,17 @@
         right: 0;
         height: 1px;
         background: var(--border-strong);
+        transition: background-color 0.5s ease;
+    }
+
+    .next-rail-stop.is-passed::before,
+    .next-rail-stop.is-active::before {
+        height: 2px;
+        background: var(--primary);
+    }
+
+    .next-rail-stop.is-passed {
+        opacity: 0.8;
     }
 
     .next-rail-stop:hover,
@@ -215,7 +259,13 @@
         box-shadow: inset 0 0 0 2px var(--border-strong);
     }
 
+    .next-rail-stop.is-passed .next-rail-dot {
+        background: var(--next-blood);
+        box-shadow: inset 0 0 0 2px var(--primary);
+    }
+
     .next-rail-stop.is-active .next-rail-dot {
+        animation: next-dot-pulse 1.6s ease-out infinite;
         background: var(--primary);
         box-shadow: 0 0 14px var(--primary-glow);
     }
@@ -316,6 +366,127 @@
         transform: scale(1);
     }
 
+    .next-serif {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .next-memorial {
+        background:
+            radial-gradient(ellipse 50% 45% at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%),
+            var(--background);
+    }
+
+    .next-memorial-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.22;
+        filter: grayscale(0.6);
+        mask-image: linear-gradient(to bottom, #000 40%, transparent);
+    }
+
+    .next-mark-mourning {
+        filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.18));
+    }
+
+    .next-poem-line {
+        animation: next-era-in 1.2s ease-out both;
+    }
+
+    .next-plaque {
+        position: relative;
+        display: block;
+        height: 100%;
+        padding: 1.75rem 1.5rem 1.5rem;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+        box-shadow: inset 0 0 0 1px var(--border);
+        transition:
+            background-color 0.3s,
+            box-shadow 0.3s;
+    }
+
+    .next-plaque:hover {
+        box-shadow:
+            inset 0 0 0 1px var(--border-strong),
+            0 0 32px rgba(210, 0, 0, 0.12);
+    }
+
+    .next-plaque:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+
+    .next-candle {
+        margin: 0 auto 1rem;
+        color: var(--dim-foreground);
+        transition: color 0.3s;
+    }
+
+    .next-plaque:hover .next-candle {
+        color: #f0a040;
+        animation: next-flicker 1.4s ease-in-out infinite;
+    }
+
+    @keyframes next-flicker {
+        0%,
+        100% {
+            transform: scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 6px rgba(240, 160, 64, 0.6));
+        }
+        30% {
+            transform: scale(1.08, 0.95) rotate(-3deg);
+        }
+        60% {
+            transform: scale(0.95, 1.06) rotate(2deg);
+            filter: drop-shadow(0 0 10px rgba(240, 160, 64, 0.8));
+        }
+    }
+
+    .next-division-hero {
+        background:
+            linear-gradient(to right, rgba(12, 12, 12, 0.94) 20%, rgba(12, 12, 12, 0.3)),
+            linear-gradient(to top, var(--background), transparent 30%),
+            radial-gradient(ellipse 60% 80% at 80% 30%, rgba(188, 9, 19, 0.25), transparent 70%),
+            var(--division-art) center / cover no-repeat,
+            var(--background);
+    }
+
+    .next-stat-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding: 0.5rem 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        color: var(--foreground);
+        background: rgba(0, 0, 0, 0.45);
+        box-shadow: inset 0 0 0 1px var(--border-strong);
+    }
+
+    .next-rank {
+        display: inline-grid;
+        min-width: 3rem;
+        place-items: center;
+        padding: 0.25rem 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--foreground);
+        background: color-mix(in srgb, var(--rank-color) 18%, transparent);
+        box-shadow: inset 3px 0 0 var(--rank-color);
+    }
+
+    .next-prose h2 {
+        scroll-margin-top: 6rem;
+        font-family: 'Rajdhani', var(--font-display);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
     .next-remembrance {
         background:
             radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%),
@@ -326,6 +497,45 @@
         background:
             radial-gradient(ellipse 60% 120% at 20% 50%, rgba(188, 9, 19, 0.25), transparent 70%),
             linear-gradient(135deg, #1b0202, var(--background) 60%);
+    }
+
+    .next-era-enter {
+        animation: next-era-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .next-chip-enter {
+        animation: next-chip-in 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    @keyframes next-era-in {
+        from {
+            opacity: 0;
+            transform: translateY(14px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes next-chip-in {
+        from {
+            opacity: 0;
+            transform: translateY(8px) scale(0.96);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes next-dot-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.7);
+        }
+        100% {
+            box-shadow: 0 0 0 10px rgba(188, 9, 19, 0);
+        }
     }
 
     @keyframes next-glow {
@@ -360,7 +570,12 @@
     @media (prefers-reduced-motion: reduce) {
         .next-triangles span,
         .next-live-dot,
-        .next-live-badge {
+        .next-live-badge,
+        .next-era-enter,
+        .next-chip-enter,
+        .next-poem-line,
+        .next-plaque:hover .next-candle,
+        .next-rail-stop.is-active .next-rail-dot {
             animation: none;
         }
     }

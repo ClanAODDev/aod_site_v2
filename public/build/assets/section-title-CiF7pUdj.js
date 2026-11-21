@@ -1,1 +1,0 @@
-import{j as o}from"./app-DP3b6c8k.js";import{h as m}from"./twitch-icon-OpmTTTjh.js";function i({children:t,className:e,as:s="h2"}){return o.jsx(s,{className:m("font-display text-2xl font-medium uppercase md:text-4xl",e),children:t})}export{i as S};
