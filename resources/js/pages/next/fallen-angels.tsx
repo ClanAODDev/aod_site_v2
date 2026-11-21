@@ -70,7 +70,7 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
             </Head>
 
-            <section className="next-memorial relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 pb-20 pt-28 text-center">
+            <section className="next-memorial relative flex flex-col items-center overflow-hidden px-4 pb-14 pt-32 text-center">
                 <video src="/images/memoriam-v2.webm" className="next-memorial-video" preload="auto" loop playsInline muted autoPlay aria-hidden="true" />
                 <div className="relative z-10 flex flex-col items-center">
                     <AodMark className="next-mark-mourning mb-8 size-24 text-foreground/70" title="Angels of Death" />
@@ -86,7 +86,7 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                 </div>
             </section>
 
-            <section className="border-t border-border px-4 py-24 sm:px-6">
+            <section className="border-t border-border px-4 pb-24 pt-14 sm:px-6">
                 <div className="mx-auto max-w-6xl">
                     <div className="mb-12 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:items-end md:text-left">
                         <div>
