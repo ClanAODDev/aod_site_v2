@@ -1,0 +1,280 @@
+@layer components {
+    .next-root {
+        --background: #0c0c0c;
+        --card: #101010;
+        --muted: #191919;
+        --primary: #bc0913;
+        --primary-glow: rgba(188, 9, 19, 0.35);
+        --ring: rgba(210, 0, 0, 0.6);
+        --border: #1e1d1c;
+        --border-strong: #2f2e31;
+        --dim-foreground: #777075;
+        --next-blood: #6d0202;
+        --next-ember: #d20000;
+        --next-traditional-dark: #1b0202;
+        background-color: var(--background);
+    }
+
+    .next-red-text {
+        color: #f04747;
+    }
+
+    .next-heading {
+        font-family: 'Rajdhani', var(--font-display);
+    }
+
+    .next-button,
+    .next-button-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding: 0.5rem 1.25rem;
+        font-family: 'Rajdhani', var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        transition:
+            background-color 0.2s,
+            color 0.2s,
+            box-shadow 0.2s;
+    }
+
+    .next-button {
+        color: #fff;
+        background: linear-gradient(135deg, var(--primary), var(--next-blood));
+        box-shadow: 0 0 0 0 var(--primary-glow);
+    }
+
+    .next-button:hover {
+        background: linear-gradient(135deg, var(--next-ember), var(--primary));
+        box-shadow: 0 0 28px var(--primary-glow);
+    }
+
+    .next-button-ghost {
+        color: var(--foreground);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: inset 0 0 0 1px var(--border-strong);
+    }
+
+    .next-button-ghost:hover {
+        color: #fff;
+        background: rgba(188, 9, 19, 0.12);
+        box-shadow: inset 0 0 0 1px var(--primary);
+    }
+
+    .next-button-lg {
+        min-height: 3.25rem;
+        padding: 0.75rem 1.75rem;
+        font-size: 1.125rem;
+    }
+
+    .next-button:focus-visible,
+    .next-button-ghost:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 3px;
+    }
+
+    .next-hero {
+        background:
+            radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),
+            radial-gradient(ellipse 90% 70% at 50% 110%, rgba(109, 2, 2, 0.45), transparent 70%),
+            var(--background);
+    }
+
+    .next-triangles {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+    }
+
+    .next-triangles span {
+        grid-area: 1 / 1;
+        width: min(120vw, 1100px);
+        aspect-ratio: 1 / 0.9;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        background: linear-gradient(to bottom, rgba(188, 9, 19, 0.22), rgba(188, 9, 19, 0) 70%);
+        opacity: 0.55;
+        animation: next-breathe 9s ease-in-out infinite;
+    }
+
+    .next-triangles span:nth-child(2) {
+        width: min(85vw, 780px);
+        opacity: 0.4;
+        animation-delay: -3s;
+    }
+
+    .next-triangles span:nth-child(3) {
+        width: min(55vw, 480px);
+        opacity: 0.3;
+        animation-delay: -6s;
+    }
+
+    .next-scanlines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
+        mask-image: linear-gradient(to bottom, #000 60%, transparent);
+    }
+
+    .next-mark-glow {
+        filter: drop-shadow(0 0 18px rgba(188, 9, 19, 0.55)) drop-shadow(0 0 48px rgba(188, 9, 19, 0.25));
+    }
+
+    .next-live-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background: var(--success);
+        box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
+        animation: next-pulse 2s ease-out infinite;
+    }
+
+    .next-panel {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        box-shadow: inset 0 0 0 1px var(--border);
+        clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+    }
+
+    .next-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 16px;
+        width: 48px;
+        height: 2px;
+        background: var(--primary);
+    }
+
+    .next-rail {
+        display: flex;
+        gap: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .next-rail-stop {
+        position: relative;
+        display: flex;
+        flex: 1 0 9.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 1.75rem 1rem 1rem;
+        text-align: left;
+        scroll-snap-align: start;
+        opacity: 0.55;
+        transition: opacity 0.2s;
+    }
+
+    .next-rail-stop::before {
+        content: '';
+        position: absolute;
+        top: 0.6rem;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--border-strong);
+    }
+
+    .next-rail-stop:hover,
+    .next-rail-stop.is-active {
+        opacity: 1;
+    }
+
+    .next-rail-stop:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: -2px;
+    }
+
+    .next-rail-dot {
+        position: absolute;
+        top: calc(0.6rem - 5px);
+        left: 1rem;
+        width: 11px;
+        height: 11px;
+        transform: rotate(45deg);
+        background: var(--background);
+        box-shadow: inset 0 0 0 2px var(--border-strong);
+    }
+
+    .next-rail-stop.is-active .next-rail-dot {
+        background: var(--primary);
+        box-shadow: 0 0 14px var(--primary-glow);
+    }
+
+    .next-rail-stop.is-active::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary);
+    }
+
+    .next-division {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-height: 5rem;
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: inset 0 0 0 1px var(--border);
+        transition:
+            background-color 0.25s,
+            box-shadow 0.25s;
+    }
+
+    .next-division:hover {
+        background: rgba(188, 9, 19, 0.07);
+        box-shadow: inset 0 0 0 1px rgba(188, 9, 19, 0.5);
+    }
+
+    .next-remembrance {
+        background:
+            radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%),
+            var(--background);
+    }
+
+    .next-join {
+        background:
+            radial-gradient(ellipse 60% 120% at 20% 50%, rgba(188, 9, 19, 0.25), transparent 70%),
+            linear-gradient(135deg, #1b0202, var(--background) 60%);
+    }
+
+    @keyframes next-breathe {
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-1.5%) scale(1.03);
+        }
+    }
+
+    @keyframes next-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
+        }
+        100% {
+            box-shadow: 0 0 0 10px rgba(34, 211, 166, 0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .next-triangles span,
+        .next-live-dot {
+            animation: none;
+        }
+    }
+}

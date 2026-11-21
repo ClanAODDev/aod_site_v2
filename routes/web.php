@@ -4,7 +4,9 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\FallenAngelsController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrototypeController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Middleware\RequirePrototypeAccess;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,5 +21,7 @@ Route::get('/history', HistoryController::class)->name('history');
 Route::get('/fallen-angels', FallenAngelsController::class)->name('fallen-angels');
 Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
 Route::get('/divisions/{division}', [DivisionController::class, 'show'])->name('division.show');
+
+Route::get('/next', PrototypeController::class)->middleware(RequirePrototypeAccess::class)->name('prototype');
 
 require 'partials/policies.php';

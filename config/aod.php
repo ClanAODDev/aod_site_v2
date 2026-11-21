@@ -8,6 +8,14 @@ return [
     'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
 
     /**
+     * The redesign prototype at /next. It 404s unless an access key is set; opening
+     * /next?key=<key> once sets a cookie that lets that browser in until the key changes.
+     */
+    'prototype' => [
+        'access_key' => env('PROTOTYPE_ACCESS_KEY'),
+    ],
+
+    /**
      * Highlighted Events
      *
      * Icons: https://fontawesome.com/search?o=r&m=free
