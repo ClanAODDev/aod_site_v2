@@ -12,7 +12,6 @@ export const NEXT_LINKS = [
     { label: 'Stream', href: '/next#stream' },
     { label: 'Fallen Angels', href: '/next/fallen-angels' },
     { label: 'Forums', href: 'https://www.clanaod.net/forums' },
-    { label: 'Tracker', href: 'https://tracker.clanaod.net' },
 ];
 
 export function NextNav() {
