@@ -2,7 +2,7 @@
 
 return [
 
-    'intro_video_id' => env('INTRO_VIDEO_ID', '7u848gKuFgE'),
+    'intro_video_id' => env('INTRO_VIDEO_ID', 'lJxoKZgCmvc'),
     'hero_video_id' => env('HERO_VIDEO_ID', 'fEVGn3eRABI'),
     'foundations_era_video_id' => env('HISTORY_FOUNDATIONS_ERA_VIDEO_ID', 'KN6yvG9aJsg'),
     'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
