@@ -86,6 +86,38 @@
         outline-offset: 3px;
     }
 
+    .next-intro-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.875rem;
+        min-height: 2.75rem;
+        padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    }
+
+    .next-intro-button:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 4px;
+    }
+
+    .next-intro-ring {
+        position: relative;
+        display: grid;
+        width: 3.25rem;
+        height: 3.25rem;
+        place-items: center;
+        border-radius: 9999px;
+        color: #fff;
+        background: rgba(188, 9, 19, 0.85);
+        box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.6);
+        animation: next-dot-pulse 2.2s ease-out infinite;
+        transition: transform 0.25s;
+    }
+
+    .next-intro-button:hover .next-intro-ring {
+        transform: scale(1.08);
+        background: var(--next-ember);
+    }
+
     .next-hero {
         background:
             radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),
@@ -104,6 +136,7 @@
 
     .next-cover-video iframe {
         pointer-events: none;
+        transform: scale(1.35);
     }
 
     .next-cover-video::after {
@@ -277,7 +310,29 @@
         left: 0;
         right: 0;
         height: 2px;
+        background: rgba(188, 9, 19, 0.2);
+    }
+
+    .next-rail-progress {
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        height: 2px;
         background: var(--primary);
+        box-shadow: 0 0 10px var(--primary-glow);
+        transform: scaleX(0);
+        transform-origin: left;
+        animation-name: next-progress;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes next-progress {
+        to {
+            transform: scaleX(1);
+        }
     }
 
     .next-division {
@@ -577,6 +632,15 @@
         .next-plaque:hover .next-candle,
         .next-rail-stop.is-active .next-rail-dot {
             animation: none;
+        }
+
+        .next-intro-ring {
+            animation: none;
+        }
+
+        .next-rail-progress {
+            animation: none;
+            transform: scaleX(1);
         }
     }
 }

@@ -22,6 +22,7 @@ class PrototypeController extends Controller
             'discord' => $discord->get(),
             'twitch' => $twitch->get(),
             'heroVideoId' => config('aod.hero_video_id'),
+            'introVideoId' => config('aod.intro_video_id'),
             'historyVideoId' => config('aod.modern_era_video_id'),
             'foundedYear' => self::FOUNDED,
             'currentYear' => (int) now()->year,

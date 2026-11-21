@@ -1,15 +1,17 @@
 import { usePage } from '@inertiajs/react';
-import { ArrowDown, ArrowLeft, ArrowRight, Crown, Flame, Shield, Users } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, Crown, Flame, Pause, Play, Shield, Users } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
 import { CoverVideo } from '@/components/next/cover-video';
+import { IntroVideo } from '@/components/next/intro-video';
 import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
 import { StreamSection, type TwitchData } from '@/components/next/stream-section';
 import { Reveal } from '@/components/reveal';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { useInView } from '@/hooks/use-in-view';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import { historyEras } from '@/lib/history-eras';
 import { cn } from '@/lib/utils';
 import type { SharedPageProps } from '@/types';
@@ -25,6 +27,7 @@ interface PrototypeProps {
     discord: DiscordStats | null;
     twitch: TwitchData;
     heroVideoId: string | null;
+    introVideoId: string | null;
     historyVideoId: string | null;
     foundedYear: number;
     currentYear: number;
@@ -67,7 +70,21 @@ function SectionHeading({ eyebrow, title, children }: { eyebrow: string; title: 
     );
 }
 
-function Hero({ years, foundedYear, discord, divisionCount, videoId }: { years: number; foundedYear: number; discord: DiscordStats | null; divisionCount: number; videoId: string | null }) {
+function Hero({
+    years,
+    foundedYear,
+    discord,
+    divisionCount,
+    videoId,
+    introVideoId,
+}: {
+    years: number;
+    foundedYear: number;
+    discord: DiscordStats | null;
+    divisionCount: number;
+    videoId: string | null;
+    introVideoId: string | null;
+}) {
     const openApply = useOpenApplyDialog();
     const stats = [
         { value: `${years}`, label: 'Years strong' },
@@ -104,6 +121,9 @@ function Hero({ years, foundedYear, discord, divisionCount, videoId }: { years: 
                     <a href="#legacy" className="next-button-ghost next-button-lg">
                         Explore our legacy <ArrowDown className="size-5" />
                     </a>
+                </div>
+                <div className="mt-8">
+                    <IntroVideo videoId={introVideoId} />
                 </div>
             </div>
 
@@ -158,27 +178,21 @@ function Legacy({ foundedYear }: { foundedYear: number }) {
     );
 }
 
+const ERA_SECONDS = 15;
+
 function Timeline({ years, videoId }: { years: number; videoId: string | null }) {
     const periods = useMemo(() => historyEras({ foundations: '', modern: '' }).flatMap((era) => era.entries), []);
     const titleCount = useMemo(() => new Set(periods.flatMap((period) => period.tags.map((tag) => tag.label))).size, [periods]);
     const [active, setActive] = useState(0);
-    const [touched, setTouched] = useState(false);
+    const [cycle, setCycle] = useState(0);
+    const [hovered, setHovered] = useState(false);
+    const [paused, setPaused] = useState(false);
+    const calm = useMediaQuery('(prefers-reduced-motion: reduce)');
     const railRef = useRef<HTMLDivElement>(null);
-    const { ref, inView } = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -30% 0px' });
+    const { ref, inView } = useInView<HTMLDivElement>({ rootMargin: '0px 0px -20% 0px' });
     const period = periods[active];
     const last = periods.length - 1;
-
-    useEffect(() => {
-        if (!inView || touched || active >= last) {
-            return;
-        }
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            setActive(last);
-            return;
-        }
-        const timer = window.setTimeout(() => setActive((index) => Math.min(index + 1, last)), active === 0 ? 900 : 1300);
-        return () => window.clearTimeout(timer);
-    }, [inView, touched, active, last]);
+    const playing = inView && !hovered && !paused && !calm;
 
     useEffect(() => {
         const rail = railRef.current;
@@ -188,9 +202,11 @@ function Timeline({ years, videoId }: { years: number; videoId: string | null })
         }
     }, [active]);
 
+    const advance = () => setActive((index) => (index >= last ? 0 : index + 1));
+
     const choose = (index: number) => {
-        setTouched(true);
         setActive(Math.max(0, Math.min(index, last)));
+        setCycle((value) => value + 1);
     };
 
     return (
@@ -200,7 +216,15 @@ function Timeline({ years, videoId }: { years: number; videoId: string | null })
                 Two founders became thousands of members across {titleCount} titles and counting. Pick an era.
             </SectionHeading>
 
-            <div ref={ref} className="relative mx-auto max-w-6xl">
+            <div ref={ref} className="relative mx-auto max-w-6xl" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+                {!calm && (
+                    <div className="mb-3 flex justify-end">
+                        <button type="button" onClick={() => setPaused((value) => !value)} className="inline-flex min-h-9 items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground" aria-pressed={paused}>
+                            {paused ? <Play className="size-3.5" aria-hidden="true" /> : <Pause className="size-3.5" aria-hidden="true" />}
+                            {paused ? 'Play' : 'Pause'}
+                        </button>
+                    </div>
+                )}
                 <div ref={railRef} className="next-rail" role="tablist" aria-label="Eras of AOD">
                     {periods.map((entry, index) => (
                         <button
@@ -214,6 +238,15 @@ function Timeline({ years, videoId }: { years: number; videoId: string | null })
                             className={cn('next-rail-stop', index === active && 'is-active', index < active && 'is-passed')}
                         >
                             <span className="next-rail-dot" aria-hidden="true" />
+                            {index === active && (
+                                <span
+                                    key={cycle}
+                                    className="next-rail-progress"
+                                    style={{ animationDuration: `${ERA_SECONDS}s`, animationPlayState: playing ? 'running' : 'paused' }}
+                                    onAnimationEnd={advance}
+                                    aria-hidden="true"
+                                />
+                            )}
                             <span className="font-mono text-xs text-muted-foreground">{entry.dateRange}</span>
                             <span className="next-heading text-base font-bold uppercase tracking-wide text-foreground">{entry.title}</span>
                         </button>
@@ -350,13 +383,13 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-export default function PrototypeHome({ discord, twitch, heroVideoId, historyVideoId, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
     return (
         <NextLayout title="Angels of Death | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
-            <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} />
+            <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} introVideoId={introVideoId} />
             <Legacy foundedYear={foundedYear} />
             <Timeline years={years} videoId={historyVideoId} />
             <Divisions />
