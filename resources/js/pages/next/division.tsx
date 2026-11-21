@@ -21,7 +21,6 @@ interface DivisionDetail {
     slug: string;
     abbreviation: string;
     icon: string | null;
-    description: string | null;
     membersCount: number | null;
     headerImage: string;
     siteContentHtml: string | null;
@@ -81,7 +80,6 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
                             <h1 className="next-heading mt-1 text-5xl font-bold uppercase leading-none text-foreground sm:text-7xl">{division.name}</h1>
                         </div>
                     </div>
-                    {division.description && <p className="mt-6 max-w-2xl text-balance text-lg text-foreground/80">{division.description}</p>}
                     <div className="mt-8 flex flex-wrap items-center gap-3">
                         <JoinButton className="next-button next-button-lg" />
                         <span className="next-stat-chip">

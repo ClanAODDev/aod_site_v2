@@ -86,7 +86,6 @@ describe('Prototype', function () {
                 'name' => 'Battlefield',
                 'slug' => 'battlefield',
                 'abbreviation' => 'bf',
-                'description' => 'Squad up.',
                 'members_count' => 233,
                 'icon' => 'https://example.com/bf.png',
                 'site_content' => "## About\n\nWe play Battlefield.",
