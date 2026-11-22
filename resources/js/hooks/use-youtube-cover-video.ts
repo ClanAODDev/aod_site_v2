@@ -13,10 +13,12 @@ const ASPECT_RATIO = 16 / 9;
  *
  * Pass `enabled: false` to skip loading the API/mounting a player entirely
  * (e.g. showing a static poster on mobile instead of an autoplaying video).
+ * Pass `playing: false` to pause a mounted player, e.g. while it is off screen.
  */
-export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
+export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true, playing: boolean = true) {
     const containerRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
+    const playerRef = useRef<YouTubePlayer | null>(null);
     const [iframe, setIframe] = useState<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
                 events: {
                     onReady: (event) => {
                         event.target.mute();
-                        event.target.playVideo();
+                        playerRef.current = event.target;
                         setIframe(container.querySelector('iframe'));
                     },
                     onStateChange: (event) => {
@@ -69,9 +71,24 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
 
         return () => {
             cancelled = true;
+            playerRef.current = null;
+            setIframe(null);
             player?.destroy();
         };
     }, [videoId, enabled]);
+
+    useEffect(() => {
+        const player = playerRef.current;
+        if (!player || !iframe) {
+            return;
+        }
+
+        if (playing) {
+            player.playVideo();
+        } else {
+            player.pauseVideo();
+        }
+    }, [playing, iframe]);
 
     useEffect(() => {
         const container = containerRef.current;

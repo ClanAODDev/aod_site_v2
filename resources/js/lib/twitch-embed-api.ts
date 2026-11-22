@@ -1,5 +1,6 @@
 export interface TwitchPlayer {
     setMuted(muted: boolean): void;
+    pause(): void;
     play(): void;
 }
 

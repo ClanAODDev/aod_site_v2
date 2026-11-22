@@ -210,7 +210,14 @@
         animation-delay: 0.7s;
     }
 
-    .next-hero-mark {
+    .next-hero-mark-pulse {
+        position: absolute;
+        inset: -35%;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(210, 0, 0, 0.32), rgba(188, 9, 19, 0.12) 45%, transparent 68%);
+        opacity: 0;
+        pointer-events: none;
+        will-change: opacity;
         animation: next-mark-breathe 6s ease-in-out 1s infinite;
     }
 
@@ -228,10 +235,10 @@
     @keyframes next-mark-breathe {
         0%,
         100% {
-            filter: drop-shadow(0 0 18px rgba(188, 9, 19, 0.55)) drop-shadow(0 0 48px rgba(188, 9, 19, 0.25));
+            opacity: 0;
         }
         50% {
-            filter: drop-shadow(0 0 24px rgba(210, 0, 0, 0.7)) drop-shadow(0 0 72px rgba(188, 9, 19, 0.35));
+            opacity: 1;
         }
     }
 
@@ -922,7 +929,7 @@
         .next-apply-marquee-track,
         .next-hero-stagger > *,
         .next-hero-stats,
-        .next-hero-mark {
+        .next-hero-mark-pulse {
             animation: none;
         }
 

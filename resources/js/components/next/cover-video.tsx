@@ -1,3 +1,4 @@
+import { useInView } from '@/hooks/use-in-view';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useYouTubeCoverVideo } from '@/hooks/use-youtube-cover-video';
 import { cn } from '@/lib/utils';
@@ -10,15 +11,20 @@ interface CoverVideoProps {
 export function CoverVideo({ videoId, className }: CoverVideoProps) {
     const wide = useMediaQuery('(min-width: 768px)');
     const calm = useMediaQuery('(prefers-reduced-motion: reduce)');
-    const enabled = Boolean(videoId) && wide && !calm;
-    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId ?? '', enabled);
 
-    if (!enabled) {
+    if (!videoId || !wide || calm) {
         return null;
     }
 
+    return <CoverVideoPlayer videoId={videoId} className={className} />;
+}
+
+function CoverVideoPlayer({ videoId, className }: { videoId: string; className?: string }) {
+    const { ref, inView, seen } = useInView<HTMLDivElement>({ rootMargin: '200px 0px' });
+    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId, seen, inView);
+
     return (
-        <div className={cn('next-cover-video', className)} aria-hidden="true">
+        <div ref={ref} className={cn('next-cover-video', className)} aria-hidden="true">
             <div ref={containerRef} className="absolute inset-0 grid place-items-center overflow-hidden">
                 <div ref={targetRef} />
             </div>
