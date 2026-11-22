@@ -1,12 +1,26 @@
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { AodMark } from '@/components/next/aod-mark';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { cn } from '@/lib/utils';
 
-export const NEXT_LINKS = [
-    { label: 'Values', href: '/next#values' },
+interface NavLink {
+    label: string;
+    href: string;
+    description?: string;
+    children?: NavLink[];
+}
+
+export const NEXT_LINKS: NavLink[] = [
+    {
+        label: 'Values',
+        href: '/next#values',
+        children: [
+            { label: 'Code of Conduct', href: '/next/code-of-conduct', description: 'The standard every member agrees to.' },
+            { label: 'Ranking Structure', href: '/next/ranks', description: 'Every rank, from Recruit to Sergeant Major.' },
+        ],
+    },
     { label: 'History', href: '/next#timeline' },
     { label: 'Divisions', href: '/next#divisions' },
     { label: 'Stream', href: '/next#stream' },
@@ -42,11 +56,32 @@ export function NextNav() {
                     Prototype
                 </span>
                 <nav className="ml-auto hidden items-center gap-6 lg:flex" aria-label="Main">
-                    {NEXT_LINKS.map((link) => (
-                        <a key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                            {link.label}
-                        </a>
-                    ))}
+                    {NEXT_LINKS.map((link) =>
+                        link.children ? (
+                            <div key={link.href} className="group relative">
+                                <a href={link.href} className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground group-hover:text-foreground">
+                                    {link.label}
+                                    <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
+                                </a>
+                                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                                    <ul className="next-panel w-72 bg-background p-2 shadow-2xl">
+                                        {link.children.map((child) => (
+                                            <li key={child.href}>
+                                                <a href={child.href} className="block px-3 py-2.5 transition-colors hover:bg-white/5 focus-visible:bg-white/5">
+                                                    <span className="next-heading block text-base font-bold uppercase tracking-wide text-foreground">{child.label}</span>
+                                                    <span className="block text-xs text-muted-foreground">{child.description}</span>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ) : (
+                            <a key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                                {link.label}
+                            </a>
+                        ),
+                    )}
                 </nav>
                 <button type="button" onClick={openApply} className="next-button ml-auto hidden lg:ml-0 lg:inline-flex">
                     Join AOD
@@ -64,9 +99,16 @@ export function NextNav() {
             {open && (
                 <nav className="border-t border-border px-4 pb-6 pt-2 lg:hidden" aria-label="Main">
                     {NEXT_LINKS.map((link) => (
-                        <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block py-3 text-base text-foreground">
-                            {link.label}
-                        </a>
+                        <div key={link.href}>
+                            <a href={link.href} onClick={() => setOpen(false)} className="block py-3 text-base text-foreground">
+                                {link.label}
+                            </a>
+                            {link.children?.map((child) => (
+                                <a key={child.href} href={child.href} onClick={() => setOpen(false)} className="block border-l border-border py-2.5 pl-4 text-sm text-muted-foreground">
+                                    {child.label}
+                                </a>
+                            ))}
+                        </div>
                     ))}
                     <button
                         type="button"
