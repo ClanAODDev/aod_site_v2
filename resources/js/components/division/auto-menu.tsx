@@ -55,7 +55,10 @@ export function AutoMenu({ containerRef, className }: { containerRef: RefObject<
             ))}
             <button
                 onClick={openApply}
-                className={cn(pillClass, 'border-primary bg-gradient-to-br from-primary to-primary/80 text-primary-foreground opacity-100 hover:shadow-[0_0_15px_var(--primary-glow)]')}
+                className={cn(
+                    pillClass,
+                    'border-primary bg-gradient-to-br from-primary to-primary/80 text-primary-foreground opacity-100 hover:shadow-[0_0_15px_var(--primary-glow)]',
+                )}
             >
                 Apply
             </button>

@@ -14,11 +14,41 @@ const sitemapLinks = [
 ];
 
 export const socialLinks = [
-    { name: 'Discord', href: 'https://discord.gg/clanaod', Icon: DiscordIcon, hoverClass: 'hover:border-[#5865F2]/50 hover:text-[#5865F2]', color: '#5865F2' },
-    { name: 'Twitch', href: 'https://www.twitch.tv/clanaodstream', Icon: TwitchIcon, hoverClass: 'hover:border-[#9146FF]/50 hover:text-[#9146FF]', color: '#9146FF' },
-    { name: 'X', href: 'https://twitter.com/officialclanaod', Icon: XIcon, hoverClass: 'hover:border-[#1DA1F2]/40 hover:text-[#1DA1F2]', color: '#1DA1F2' },
-    { name: 'Steam', href: 'https://steamcommunity.com/groups/clanaod', Icon: SteamIcon, hoverClass: 'hover:border-[#00adee]/50 hover:text-[#00adee]', color: '#00adee' },
-    { name: 'YouTube', href: 'https://www.youtube.com/ClanAODnet', Icon: YoutubeIcon, hoverClass: 'hover:border-[#FF0000]/50 hover:text-[#FF0000]', color: '#FF0000' },
+    {
+        name: 'Discord',
+        href: 'https://discord.gg/clanaod',
+        Icon: DiscordIcon,
+        hoverClass: 'hover:border-[#5865F2]/50 hover:text-[#5865F2]',
+        color: '#5865F2',
+    },
+    {
+        name: 'Twitch',
+        href: 'https://www.twitch.tv/clanaodstream',
+        Icon: TwitchIcon,
+        hoverClass: 'hover:border-[#9146FF]/50 hover:text-[#9146FF]',
+        color: '#9146FF',
+    },
+    {
+        name: 'X',
+        href: 'https://twitter.com/officialclanaod',
+        Icon: XIcon,
+        hoverClass: 'hover:border-[#1DA1F2]/40 hover:text-[#1DA1F2]',
+        color: '#1DA1F2',
+    },
+    {
+        name: 'Steam',
+        href: 'https://steamcommunity.com/groups/clanaod',
+        Icon: SteamIcon,
+        hoverClass: 'hover:border-[#00adee]/50 hover:text-[#00adee]',
+        color: '#00adee',
+    },
+    {
+        name: 'YouTube',
+        href: 'https://www.youtube.com/ClanAODnet',
+        Icon: YoutubeIcon,
+        hoverClass: 'hover:border-[#FF0000]/50 hover:text-[#FF0000]',
+        color: '#FF0000',
+    },
 ];
 
 export function Footer() {

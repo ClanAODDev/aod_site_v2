@@ -17,11 +17,15 @@ export function NextApplyContent() {
 
     return (
         <DialogContent className="next-root next-apply max-w-[calc(100%-2rem)] gap-0 overflow-hidden rounded-none border-border p-0 sm:max-w-md">
-            <div className="relative px-7 pb-7 pt-9 text-center sm:px-9">
+            <div className="relative px-7 pt-9 pb-7 text-center sm:px-9">
                 <AodMark className="next-mark-glow mx-auto block size-16" />
-                <p className="mt-5 font-mono text-xs uppercase tracking-[0.3em] next-red-text">Join the ranks</p>
-                <DialogTitle className="next-heading mt-1 text-3xl font-bold uppercase tracking-wide text-foreground">Join Angels of Death</DialogTitle>
-                <DialogDescription className="sr-only">Three steps to join: continue with Discord, choose your name and division, then meet your division.</DialogDescription>
+                <p className="next-red-text mt-5 font-mono text-xs tracking-[0.3em] uppercase">Join the ranks</p>
+                <DialogTitle className="next-heading mt-1 text-3xl font-bold tracking-wide text-foreground uppercase">
+                    Join Angels of Death
+                </DialogTitle>
+                <DialogDescription className="sr-only">
+                    Three steps to join: continue with Discord, choose your name and division, then meet your division.
+                </DialogDescription>
 
                 {divisions.length > 0 && (
                     <div className="mt-6">
@@ -32,7 +36,9 @@ export function NextApplyContent() {
                                 ))}
                             </div>
                         </div>
-                        <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{divisions.length} divisions to choose from</p>
+                        <p className="mt-2 font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
+                            {divisions.length} divisions to choose from
+                        </p>
                     </div>
                 )}
 
@@ -43,18 +49,19 @@ export function NextApplyContent() {
                                 {index + 1}
                             </span>
                             <span>
-                                <span className="next-heading block text-lg font-bold uppercase leading-tight text-foreground">{step.title}</span>
+                                <span className="next-heading block text-lg leading-tight font-bold text-foreground uppercase">{step.title}</span>
                                 <span className="mt-0.5 block text-sm text-muted-foreground">{step.body}</span>
                             </span>
                         </li>
                     ))}
                 </ol>
 
-                <a href={DISCORD_REGISTRATION_URL} className="next-button next-button-lg mt-8 w-full whitespace-nowrap px-4 tracking-[0.08em]">
+                <a href={DISCORD_REGISTRATION_URL} className="next-button next-button-lg mt-8 w-full px-4 tracking-[0.08em] whitespace-nowrap">
                     <DiscordIcon className="size-5" /> Continue with Discord
                 </a>
                 <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-                    You'll need a Discord account with an email address, and you must be 13 or older. Already started? The same button picks up where you left off.
+                    You'll need a Discord account with an email address, and you must be 13 or older. Already started? The same button picks up where
+                    you left off.
                 </p>
             </div>
         </DialogContent>

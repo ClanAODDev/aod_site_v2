@@ -3,21 +3,13 @@
 @layer utilities {
     /* Fine 45° diagonal hatch — a texture for card surfaces. */
     .tron-hatch {
-        background-image: repeating-linear-gradient(
-            -45deg,
-            color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px,
-            transparent 1px 7px
-        );
+        background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px, transparent 1px 7px);
     }
 
     /* Bolder version of the above — thicker bars, wider spacing, for surfaces that
        want the hatch to read as a deliberate graphic rather than a faint texture. */
     .tron-hatch-bold {
-        background-image: repeating-linear-gradient(
-            -45deg,
-            color-mix(in srgb, var(--foreground) 1.5%, transparent) 0 3px,
-            transparent 3px 12px
-        );
+        background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--foreground) 1.5%, transparent) 0 3px, transparent 3px 12px);
     }
 
     /* Rendered-markdown container (trusted admin/API HTML from `Prose`). */

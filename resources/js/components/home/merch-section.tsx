@@ -39,10 +39,7 @@ function pickRandom<T>(items: T[], count: number): T[] {
 
 export function MerchSection({ items: allItems, storeUrl, imageBaseUrl, imageSuffix }: MerchSectionProps) {
     const items = useMemo(() => pickRandom(allItems, MAX_DISPLAY_COUNT), [allItems]);
-    const featuredIndices = useMemo(
-        () => new Set(pickRandom([...items.keys()], FEATURED_COUNT)),
-        [items],
-    );
+    const featuredIndices = useMemo(() => new Set(pickRandom([...items.keys()], FEATURED_COUNT)), [items]);
 
     return (
         <section className="bg-gradient-to-b from-[#0a0a0a] via-[#151515] to-[#0a0a0a] px-4 py-20">
@@ -52,7 +49,7 @@ export function MerchSection({ items: allItems, storeUrl, imageBaseUrl, imageSuf
                     Show your AOD pride with official merchandise. From premium apparel to gaming gear, we&apos;ve got you covered.
                 </p>
 
-                <div className="mt-10 grid grid-cols-2 [grid-auto-flow:dense] auto-rows-[130px] gap-3 sm:grid-cols-4 sm:auto-rows-[150px] lg:grid-cols-6 lg:auto-rows-[170px]">
+                <div className="mt-10 grid [grid-auto-flow:dense] auto-rows-[130px] grid-cols-2 gap-3 sm:auto-rows-[150px] sm:grid-cols-4 lg:auto-rows-[170px] lg:grid-cols-6">
                     {items.map((item, i) => {
                         const featured = featuredIndices.has(i);
                         return (
@@ -77,12 +74,7 @@ export function MerchSection({ items: allItems, storeUrl, imageBaseUrl, imageSuf
                                 />
 
                                 <div className="absolute inset-x-0 bottom-0 flex translate-y-1/2 items-end bg-gradient-to-t from-black/90 via-black/60 to-transparent px-3 pt-8 pb-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                                    <span
-                                        className={cn(
-                                            'tracking-wide text-foreground uppercase',
-                                            featured ? 'text-sm' : 'text-[11px]',
-                                        )}
-                                    >
+                                    <span className={cn('tracking-wide text-foreground uppercase', featured ? 'text-sm' : 'text-[11px]')}>
                                         {item.name}
                                     </span>
                                 </div>
