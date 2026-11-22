@@ -128,9 +128,7 @@
     }
 
     .next-apply {
-        background:
-            radial-gradient(ellipse 80% 55% at 50% 0%, rgba(188, 9, 19, 0.22), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(188, 9, 19, 0.22), transparent 70%), var(--background);
         clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
     }
 
@@ -180,8 +178,7 @@
     .next-hero {
         background:
             radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),
-            radial-gradient(ellipse 90% 70% at 50% 110%, rgba(109, 2, 2, 0.45), transparent 70%),
-            var(--background);
+            radial-gradient(ellipse 90% 70% at 50% 110%, rgba(109, 2, 2, 0.45), transparent 70%), var(--background);
     }
 
     .next-hero-stagger > *,
@@ -467,9 +464,7 @@
     }
 
     .next-stream {
-        background:
-            radial-gradient(ellipse 50% 60% at 85% 20%, rgba(188, 9, 19, 0.14), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 60% at 85% 20%, rgba(188, 9, 19, 0.14), transparent 70%), var(--background);
     }
 
     .next-live-badge {
@@ -539,9 +534,7 @@
     }
 
     .next-memorial {
-        background:
-            radial-gradient(ellipse 50% 45% at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 45% at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%), var(--background);
     }
 
     .next-memorial-video {
@@ -554,9 +547,7 @@
         transform: translateX(-50%);
         opacity: 0.3;
         filter: grayscale(0.6);
-        mask-image:
-            linear-gradient(to bottom, #000 45%, transparent 88%),
-            linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        mask-image: linear-gradient(to bottom, #000 45%, transparent 88%), linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
         mask-composite: intersect;
     }
 
@@ -842,9 +833,7 @@
     }
 
     .next-remembrance {
-        background:
-            radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%), var(--background);
     }
 
     .next-join {

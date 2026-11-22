@@ -12,8 +12,7 @@
     overflow: hidden;
     object-fit: cover;
     mask-image:
-        linear-gradient(to bottom, black 60%, transparent 100%),
-        linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
     mask-composite: intersect;
@@ -47,8 +46,7 @@
         z-index: -1;
         background: url('/images/memoriam-mobile-v2.jpg') no-repeat 50% 0;
         mask-image:
-            linear-gradient(to bottom, black 60%, transparent 100%),
-            linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
         mask-repeat: no-repeat;
         mask-size: 100% 100%;
         mask-composite: intersect;

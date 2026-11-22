@@ -50,25 +50,38 @@ export function NextNav() {
             <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
                 <a href="/next" className="flex items-center gap-3">
                     <AodMark className="size-8" />
-                    <span className="next-heading whitespace-nowrap text-base font-bold uppercase tracking-[0.18em] text-foreground sm:text-lg">Angels of Death</span>
+                    <span className="next-heading text-base font-bold tracking-[0.18em] whitespace-nowrap text-foreground uppercase sm:text-lg">
+                        Angels of Death
+                    </span>
                 </a>
-                <span className="hidden rounded-sm border border-primary/50 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest next-red-text sm:inline">
+                <span className="next-red-text hidden rounded-sm border border-primary/50 px-2 py-0.5 font-mono text-[10px] tracking-widest uppercase sm:inline">
                     Prototype
                 </span>
                 <nav className="ml-auto hidden items-center gap-6 lg:flex" aria-label="Main">
                     {NEXT_LINKS.map((link) =>
                         link.children ? (
                             <div key={link.href} className="group relative">
-                                <a href={link.href} className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground group-hover:text-foreground">
+                                <a
+                                    href={link.href}
+                                    className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors group-hover:text-foreground hover:text-foreground"
+                                >
                                     {link.label}
-                                    <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
+                                    <ChevronDown
+                                        className="size-3.5 transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180"
+                                        aria-hidden="true"
+                                    />
                                 </a>
-                                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                                <div className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                                     <ul className="next-panel w-72 bg-background p-2 shadow-2xl">
                                         {link.children.map((child) => (
                                             <li key={child.href}>
-                                                <a href={child.href} className="block px-3 py-2.5 transition-colors hover:bg-white/5 focus-visible:bg-white/5">
-                                                    <span className="next-heading block text-base font-bold uppercase tracking-wide text-foreground">{child.label}</span>
+                                                <a
+                                                    href={child.href}
+                                                    className="block px-3 py-2.5 transition-colors hover:bg-white/5 focus-visible:bg-white/5"
+                                                >
+                                                    <span className="next-heading block text-base font-bold tracking-wide text-foreground uppercase">
+                                                        {child.label}
+                                                    </span>
                                                     <span className="block text-xs text-muted-foreground">{child.description}</span>
                                                 </a>
                                             </li>
@@ -97,14 +110,19 @@ export function NextNav() {
                 </button>
             </div>
             {open && (
-                <nav className="border-t border-border px-4 pb-6 pt-2 lg:hidden" aria-label="Main">
+                <nav className="border-t border-border px-4 pt-2 pb-6 lg:hidden" aria-label="Main">
                     {NEXT_LINKS.map((link) => (
                         <div key={link.href}>
                             <a href={link.href} onClick={() => setOpen(false)} className="block py-3 text-base text-foreground">
                                 {link.label}
                             </a>
                             {link.children?.map((child) => (
-                                <a key={child.href} href={child.href} onClick={() => setOpen(false)} className="block border-l border-border py-2.5 pl-4 text-sm text-muted-foreground">
+                                <a
+                                    key={child.href}
+                                    href={child.href}
+                                    onClick={() => setOpen(false)}
+                                    className="block border-l border-border py-2.5 pl-4 text-sm text-muted-foreground"
+                                >
                                     {child.label}
                                 </a>
                             ))}

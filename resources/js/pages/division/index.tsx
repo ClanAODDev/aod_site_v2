@@ -33,7 +33,7 @@ export default function DivisionIndex() {
                                     key={division.slug}
                                     href={division.href}
                                     style={{ animationDelay: `${Math.min(index, 12) * 60}ms` }}
-                                    className="animate-in fade-in slide-in-from-bottom-4 group relative flex flex-[0_0_calc(25%-1.25rem)] items-center overflow-hidden rounded-xl border border-white/8 bg-gradient-to-br from-[#1a1a2e]/80 to-[#0d0d1a]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_30px_var(--primary-glow)] max-lg:flex-[0_0_calc(50%-1.25rem)] max-md:flex-[0_0_100%] fill-mode-both"
+                                    className="group relative flex flex-[0_0_calc(25%-1.25rem)] animate-in items-center overflow-hidden rounded-xl border border-white/8 bg-gradient-to-br from-[#1a1a2e]/80 to-[#0d0d1a]/90 p-5 transition-all duration-300 fill-mode-both fade-in slide-in-from-bottom-4 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_30px_var(--primary-glow)] max-lg:flex-[0_0_calc(50%-1.25rem)] max-md:flex-[0_0_100%]"
                                 >
                                     <div className="mr-5 shrink-0">
                                         <img

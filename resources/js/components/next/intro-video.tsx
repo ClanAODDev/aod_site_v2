@@ -16,7 +16,9 @@ export function IntroVideo({ videoId }: { videoId: string | null }) {
                 <span className="next-intro-ring" aria-hidden="true">
                     <Play className="size-5 fill-current" />
                 </span>
-                <span className="next-heading text-sm font-bold uppercase tracking-[0.2em] text-foreground/90 group-hover:text-foreground">Watch the intro</span>
+                <span className="next-heading text-sm font-bold tracking-[0.2em] text-foreground/90 uppercase group-hover:text-foreground">
+                    Watch the intro
+                </span>
             </button>
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent className="next-root max-w-[min(64rem,calc(100%-2rem))] gap-0 overflow-hidden rounded-none border-border bg-black p-0 sm:max-w-[min(64rem,calc(100%-2rem))]">

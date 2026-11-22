@@ -103,10 +103,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
             {/* Kept separate from the video wrapper above (and NOT shifted with it) - this fade
                 graphic is calibrated to fade out right where the nav/content take over, which is
                 a fixed point in the viewport regardless of which part of the video is showing. */}
-            <div
-                aria-hidden
-                className="hero-video-overlay pointer-events-none fixed inset-0 -z-10 h-screen w-screen"
-            />
+            <div aria-hidden className="hero-video-overlay pointer-events-none fixed inset-0 -z-10 h-screen w-screen" />
 
             <a
                 ref={discordRef}
@@ -114,7 +111,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 title="Join the AOD Discord"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pointer-events-auto fixed top-6 left-1/2 z-50 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-md backdrop-saturate-150 transition-colors duration-300 hover:border-white/35 hover:bg-white/15"
+                className="pointer-events-auto fixed top-6 left-1/2 z-50 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-md backdrop-saturate-150 transition-colors duration-300 hover:border-white/35 hover:bg-white/15"
             >
                 <DiscordIcon className="size-4 text-[#5865F2]" />
                 JOIN US ON DISCORD
@@ -139,7 +136,7 @@ export function Hero({ videoId, introVideoId, discordOnline, discordTotal, isChr
                 <SectionTitle as="h1" className="mt-4 text-3xl [text-shadow:0_0_2px_rgba(0,0,0,0.4)] md:text-5xl">
                     Angels of Death
                 </SectionTitle>
-                <h2 className="font-display mt-2 text-lg font-medium text-white/80 uppercase">Gaming since 1999</h2>
+                <h2 className="mt-2 font-display text-lg font-medium text-white/80 uppercase">Gaming since 1999</h2>
                 <button
                     onClick={playIntro}
                     onMouseEnter={() => setShowPlayTooltip(true)}
