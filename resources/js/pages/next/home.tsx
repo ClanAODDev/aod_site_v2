@@ -6,6 +6,7 @@ import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
 import { CoverVideo } from '@/components/next/cover-video';
 import { IntroVideo } from '@/components/next/intro-video';
+import { MerchSection, type MerchData } from '@/components/next/merch-section';
 import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
 import { SantaHat } from '@/components/next/santa-hat';
 import { SeasonParticles } from '@/components/next/season-particles';
@@ -36,6 +37,7 @@ interface PrototypeProps {
     heroVideoId: string | null;
     introVideoId: string | null;
     historyVideoId: string | null;
+    merch: MerchData;
     season: SeasonInfo | null;
     foundedYear: number;
     currentYear: number;
@@ -308,9 +310,12 @@ function Divisions() {
 
 function Values() {
     return (
-        <section id="values" className="border-t border-border px-4 py-24 sm:px-6">
+        <section id="values" className="relative overflow-hidden border-t border-border px-4 py-24 sm:px-6">
+            <div className="next-values-crest" aria-hidden="true">
+                <img src="/images/official-logo.png" alt="" width={250} height={250} />
+            </div>
             <SectionHeading eyebrow="What holds us together" title="The code behind the crest" />
-            <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="relative mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {VALUES.map((value, index) => (
                     <Reveal key={value.title} delay={index * 100}>
                         <article className="next-panel h-full p-6">
@@ -321,7 +326,7 @@ function Values() {
                     </Reveal>
                 ))}
             </div>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <div className="relative mt-10 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href="/next/code-of-conduct" className="next-button-ghost">
                     Read the code of conduct <ArrowRight className="size-4" />
                 </a>
@@ -370,7 +375,7 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, season, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, merch, season, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
@@ -381,6 +386,7 @@ export default function PrototypeHome({ discord, twitch, heroVideoId, introVideo
             <Timeline years={years} videoId={historyVideoId} />
             <Divisions />
             <StreamSection twitch={twitch} />
+            <MerchSection merch={merch} />
             <Remembrance />
             <JoinBand foundedYear={foundedYear} />
         </NextLayout>
