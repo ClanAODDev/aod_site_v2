@@ -737,6 +737,25 @@
         background: radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.09), transparent 62%);
     }
 
+    .next-social {
+        display: grid;
+        width: 2.75rem;
+        height: 2.75rem;
+        place-items: center;
+        border: 1px solid var(--border-strong);
+        border-radius: 9999px;
+        color: var(--muted-foreground);
+        transition:
+            color 0.2s,
+            border-color 0.2s;
+    }
+
+    .next-social:hover,
+    .next-social:focus-visible {
+        color: var(--brand, var(--foreground));
+        border-color: color-mix(in srgb, var(--brand, var(--foreground)) 50%, transparent);
+    }
+
     .next-page-hero {
         background:
             radial-gradient(ellipse 55% 70% at 50% 0%, rgba(188, 9, 19, 0.26), transparent 70%),

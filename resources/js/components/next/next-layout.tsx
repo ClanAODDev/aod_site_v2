@@ -1,9 +1,10 @@
 import { Head } from '@inertiajs/react';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 import { AodMark } from '@/components/next/aod-mark';
 import { NextNav } from '@/components/next/next-nav';
 import { ApplyDialogProvider } from '@/components/site/apply-dialog';
+import { socialLinks } from '@/components/site/footer';
 
 interface NextLayoutProps {
     title: string;
@@ -33,6 +34,15 @@ export function NextLayout({ title, foundedYear, currentYear, children }: NextLa
                                 Angels of Death · {foundedYear}–{currentYear}
                             </span>
                         </a>
+                        <ul className="flex items-center gap-2" aria-label="AOD on social media">
+                            {socialLinks.map(({ name, href, Icon, color }) => (
+                                <li key={name}>
+                                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} title={name} className="next-social" style={{ '--brand': color } as CSSProperties}>
+                                        <Icon className="size-4" aria-hidden="true" />
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                         <p className="font-mono text-xs uppercase tracking-widest">
                             Prototype · <a href="/" className="next-red-text hover:underline">Back to the current site</a>
                         </p>
