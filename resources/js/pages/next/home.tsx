@@ -308,9 +308,12 @@ function Divisions() {
 
 function Values() {
     return (
-        <section id="values" className="border-t border-border px-4 py-24 sm:px-6">
+        <section id="values" className="relative overflow-hidden border-t border-border px-4 py-24 sm:px-6">
+            <div className="next-values-crest" aria-hidden="true">
+                <img src="/images/official-logo.png" alt="" width={250} height={250} />
+            </div>
             <SectionHeading eyebrow="What holds us together" title="The code behind the crest" />
-            <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="relative mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {VALUES.map((value, index) => (
                     <Reveal key={value.title} delay={index * 100}>
                         <article className="next-panel h-full p-6">
@@ -321,7 +324,7 @@ function Values() {
                     </Reveal>
                 ))}
             </div>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <div className="relative mt-10 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href="/next/code-of-conduct" className="next-button-ghost">
                     Read the code of conduct <ArrowRight className="size-4" />
                 </a>
