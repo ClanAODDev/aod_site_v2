@@ -184,6 +184,88 @@
             var(--background);
     }
 
+    .next-hero-stagger > *,
+    .next-hero-stats {
+        animation: next-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .next-hero-stagger > :nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .next-hero-stagger > :nth-child(3) {
+        animation-delay: 0.25s;
+    }
+
+    .next-hero-stagger > :nth-child(4) {
+        animation-delay: 0.35s;
+    }
+
+    .next-hero-stagger > :nth-child(5) {
+        animation-delay: 0.45s;
+    }
+
+    .next-hero-stagger > :nth-child(6) {
+        animation-delay: 0.55s;
+    }
+
+    .next-hero-stats {
+        animation-delay: 0.7s;
+    }
+
+    .next-hero-mark {
+        animation: next-mark-breathe 6s ease-in-out 1s infinite;
+    }
+
+    .next-hero-sweep {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .next-hero-sweep::before {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        top: 0;
+        height: 18%;
+        background: linear-gradient(to bottom, transparent, rgba(210, 0, 0, 0.05) 50%, transparent);
+        transform: translateY(-100%);
+        animation: next-sweep 11s cubic-bezier(0.45, 0, 0.55, 1) 2s infinite;
+    }
+
+    @keyframes next-rise {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes next-mark-breathe {
+        0%,
+        100% {
+            filter: drop-shadow(0 0 18px rgba(188, 9, 19, 0.55)) drop-shadow(0 0 48px rgba(188, 9, 19, 0.25));
+        }
+        50% {
+            filter: drop-shadow(0 0 24px rgba(210, 0, 0, 0.7)) drop-shadow(0 0 72px rgba(188, 9, 19, 0.35));
+        }
+    }
+
+    @keyframes next-sweep {
+        0% {
+            transform: translateY(-100%);
+        }
+        55%,
+        100% {
+            transform: translateY(600%);
+        }
+    }
+
     .next-cover-video {
         position: absolute;
         inset: 0;
@@ -814,7 +896,11 @@
         .next-poem-line,
         .next-plaque:hover .next-candle,
         .next-rail-stop.is-active .next-rail-dot,
-        .next-apply-marquee-track {
+        .next-apply-marquee-track,
+        .next-hero-stagger > *,
+        .next-hero-stats,
+        .next-hero-mark,
+        .next-hero-sweep::before {
             animation: none;
         }
 

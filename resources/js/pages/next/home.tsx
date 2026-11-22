@@ -114,10 +114,11 @@ function Hero({
                 <span />
             </div>
             <div className="next-scanlines" aria-hidden="true" />
+            <div className="next-hero-sweep" aria-hidden="true" />
 
-            <div className="relative z-10 flex flex-col items-center">
+            <div className="next-hero-stagger relative z-10 flex flex-col items-center">
                 <div className="relative mb-8">
-                    <AodMark className="next-mark-glow block size-36 sm:size-44" />
+                    <AodMark className="next-mark-glow next-hero-mark block size-36 sm:size-44" />
                     {season?.effects.includes('hat') && <SantaHat className="next-santa-hat" />}
                 </div>
                 <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] next-red-text sm:text-sm">
@@ -142,7 +143,7 @@ function Hero({
                 </div>
             </div>
 
-            <dl className="relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
+            <dl className="next-hero-stats relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
                 {stats.map((stat) => (
                     <div key={stat.label} className="border-border px-4 py-5 [&:not(:last-child)]:border-r max-sm:[&:nth-child(2)]:border-r-0 max-sm:[&:nth-child(-n+2)]:border-b">
                         <dt className="flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
