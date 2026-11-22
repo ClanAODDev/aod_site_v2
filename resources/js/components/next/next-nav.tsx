@@ -6,7 +6,7 @@ import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { cn } from '@/lib/utils';
 
 export const NEXT_LINKS = [
-    { label: 'Legacy', href: '/next#legacy' },
+    { label: 'Values', href: '/next#values' },
     { label: 'History', href: '/next#timeline' },
     { label: 'Divisions', href: '/next#divisions' },
     { label: 'Stream', href: '/next#stream' },
