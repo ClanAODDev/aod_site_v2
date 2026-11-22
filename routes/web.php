@@ -25,6 +25,8 @@ Route::get('/divisions/{division}', [DivisionController::class, 'show'])->name('
 Route::prefix('next')->name('prototype.')->middleware(RequirePrototypeAccess::class)->controller(PrototypeController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/fallen-angels', 'fallenAngels')->name('fallen-angels');
+    Route::get('/ranks', 'ranks')->name('ranks');
+    Route::get('/code-of-conduct', 'codeOfConduct')->name('code-of-conduct');
     Route::get('/divisions/{division}', 'division')->name('division');
 });
 

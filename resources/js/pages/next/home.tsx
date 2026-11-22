@@ -114,10 +114,11 @@ function Hero({
                 <span />
             </div>
             <div className="next-scanlines" aria-hidden="true" />
+            <div className="next-hero-sweep" aria-hidden="true" />
 
-            <div className="relative z-10 flex flex-col items-center">
+            <div className="next-hero-stagger relative z-10 flex flex-col items-center">
                 <div className="relative mb-8">
-                    <AodMark className="next-mark-glow block size-36 sm:size-44" />
+                    <AodMark className="next-mark-glow next-hero-mark block size-36 sm:size-44" />
                     {season?.effects.includes('hat') && <SantaHat className="next-santa-hat" />}
                 </div>
                 <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] next-red-text sm:text-sm">
@@ -133,7 +134,7 @@ function Hero({
                     <button type="button" onClick={openApply} className="next-button next-button-lg">
                         Join the ranks <ArrowRight className="size-5" />
                     </button>
-                    <a href="#legacy" className="next-button-ghost next-button-lg">
+                    <a href="#values" className="next-button-ghost next-button-lg">
                         Explore our legacy <ArrowDown className="size-5" />
                     </a>
                 </div>
@@ -142,7 +143,7 @@ function Hero({
                 </div>
             </div>
 
-            <dl className="relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
+            <dl className="next-hero-stats relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
                 {stats.map((stat) => (
                     <div key={stat.label} className="border-border px-4 py-5 [&:not(:last-child)]:border-r max-sm:[&:nth-child(2)]:border-r-0 max-sm:[&:nth-child(-n+2)]:border-b">
                         <dt className="flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
@@ -153,42 +154,6 @@ function Hero({
                     </div>
                 ))}
             </dl>
-        </section>
-    );
-}
-
-function Legacy({ foundedYear }: { foundedYear: number }) {
-    return (
-        <section id="legacy" className="relative border-t border-border px-4 py-24 sm:px-6">
-            <SectionHeading eyebrow="Then and now" title="The crest changed. The standard didn't.">
-                The original Angels of Death crest flew over servers before most of today's games existed. The modern mark keeps its shape: the triangle, the ring, the blood red.
-            </SectionHeading>
-
-            <div className="mx-auto grid max-w-5xl items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
-                <Reveal from="left">
-                    <figure className="next-panel flex flex-col items-center p-8">
-                        <img src="/images/official-logo.png" alt="The original Angels of Death crest" width={250} height={250} className="size-56 object-contain" />
-                        <figcaption className="mt-6 text-center">
-                            <span className="next-heading block text-3xl font-bold text-foreground">{foundedYear}</span>
-                            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">The original crest</span>
-                        </figcaption>
-                    </figure>
-                </Reveal>
-                <div className="flex justify-center text-primary" aria-hidden="true">
-                    <ArrowRight className="size-8 max-md:rotate-90" />
-                </div>
-                <Reveal from="right">
-                    <figure className="next-panel flex flex-col items-center p-8">
-                        <div className="flex size-56 items-center justify-center">
-                            <AodMark className="next-mark-glow size-44" title="The modern Angels of Death mark" />
-                        </div>
-                        <figcaption className="mt-6 text-center">
-                            <span className="next-heading block text-3xl font-bold text-foreground">Today</span>
-                            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">The modern mark</span>
-                        </figcaption>
-                    </figure>
-                </Reveal>
-            </div>
         </section>
     );
 }
@@ -344,7 +309,7 @@ function Divisions() {
 
 function Values() {
     return (
-        <section id="values" className="border-t border-border bg-card/40 px-4 py-24 sm:px-6">
+        <section id="values" className="border-t border-border px-4 py-24 sm:px-6">
             <SectionHeading eyebrow="What holds us together" title="The code behind the crest" />
             <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {VALUES.map((value, index) => (
@@ -356,6 +321,14 @@ function Values() {
                         </article>
                     </Reveal>
                 ))}
+            </div>
+            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+                <a href="/next/code-of-conduct" className="next-button-ghost">
+                    Read the code of conduct <ArrowRight className="size-4" />
+                </a>
+                <a href="/next/ranks" className="next-button-ghost">
+                    See the ranking structure <ArrowRight className="size-4" />
+                </a>
             </div>
         </section>
     );
@@ -405,11 +378,10 @@ export default function PrototypeHome({ discord, twitch, heroVideoId, introVideo
     return (
         <NextLayout title="Angels of Death | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
             <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} introVideoId={introVideoId} season={season} />
-            <Legacy foundedYear={foundedYear} />
+            <Values />
             <Timeline years={years} videoId={historyVideoId} />
             <Divisions />
             <StreamSection twitch={twitch} />
-            <Values />
             <Remembrance />
             <JoinBand foundedYear={foundedYear} />
         </NextLayout>

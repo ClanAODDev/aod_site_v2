@@ -51,6 +51,16 @@ class PrototypeController extends Controller
         ]);
     }
 
+    public function ranks(): Response
+    {
+        return $this->page('next/ranks', 'Ranking Structure');
+    }
+
+    public function codeOfConduct(): Response
+    {
+        return $this->page('next/code-of-conduct', 'Code of Conduct');
+    }
+
     public function division(string $division, DivisionDetails $details): Response
     {
         $data = $details->findOrAbort($division);
@@ -64,6 +74,17 @@ class PrototypeController extends Controller
             'currentYear' => (int) now()->year,
         ])->withViewData([
             'metaTitle' => "{$data['name']} | Prototype",
+            'metaDescription' => 'A prototype of the next ClanAOD.net.',
+        ]);
+    }
+
+    private function page(string $component, string $title): Response
+    {
+        return Inertia::render($component, [
+            'foundedYear' => self::FOUNDED,
+            'currentYear' => (int) now()->year,
+        ])->withViewData([
+            'metaTitle' => "{$title} | Prototype",
             'metaDescription' => 'A prototype of the next ClanAOD.net.',
         ]);
     }
