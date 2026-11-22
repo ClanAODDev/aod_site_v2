@@ -167,6 +167,58 @@ describe('Prototype', function () {
         'nothing' => [[], null],
     ]);
 
+    it('passes the header image position only with a valid position on a header image', function (array $extra, ?string $position) {
+        Http::fake([
+            '*/api/v1/divisions/battlefield*' => Http::response(['data' => ['division' => [
+                'name' => 'Battlefield',
+                'slug' => 'battlefield',
+                'abbreviation' => 'bf',
+                'members_count' => 1,
+                ...$extra,
+            ]]]),
+            '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield', 'show_on_site' => true]]]),
+        ]);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next/divisions/battlefield')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('division.backdropPosition', $position)
+                ->missing('division.heroImagePosition'));
+    })->with([
+        'positioned header image' => [['hero_image' => 'https://example.com/hero.jpg', 'hero_image_position' => '30% 70%'], '30% 70%'],
+        'header image without a position' => [['hero_image' => 'https://example.com/hero.jpg'], null],
+        'screenshot fallback' => [['hero_image_position' => '30% 70%', 'screenshots' => [['url' => 'https://example.com/shot.jpg']]], null],
+        'malformed position' => [['hero_image' => 'https://example.com/hero.jpg', 'hero_image_position' => '30% 70%; color: red'], null],
+    ]);
+
+    it('renders a division cached before positions existed', function () {
+        Cache::putMany([
+            'aod_division_details_battlefield' => ['found' => true, 'division' => [
+                'name' => 'Battlefield',
+                'slug' => 'battlefield',
+                'abbreviation' => 'bf',
+                'icon' => null,
+                'membersCount' => 1,
+                'heroImage' => 'https://example.com/hero.jpg',
+                'metaDescription' => null,
+                'siteContentHtml' => null,
+                'screenshots' => [],
+                'leadership' => [],
+            ]],
+            'illuminate:cache:flexible:created:aod_division_details_battlefield' => now()->getTimestamp(),
+        ], 900);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next/divisions/battlefield')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('division.backdrop', 'https://example.com/hero.jpg')
+                ->where('division.backdropPosition', null));
+    });
+
     it('returns 404 for a division the tracker does not know', function () {
         Http::fake([
             '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield']]]),
