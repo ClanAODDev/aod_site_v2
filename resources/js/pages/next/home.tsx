@@ -114,7 +114,6 @@ function Hero({
                 <span />
             </div>
             <div className="next-scanlines" aria-hidden="true" />
-            <div className="next-hero-sweep" aria-hidden="true" />
 
             <div className="next-hero-stagger relative z-10 flex flex-col items-center">
                 <div className="relative mb-8">
