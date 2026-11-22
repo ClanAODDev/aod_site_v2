@@ -36,10 +36,28 @@ class DivisionController extends Controller
             ],
         ])->withViewData([
             'metaTitle' => "{$data['name']} Division | Angels of Death",
-            'metaDescription' => $data['metaDescription'],
-            'metaImage' => $data['icon'],
+            'metaDescription' => $data['metaDescription'] ?: $this->fallbackDescription($data),
+            ...$this->previewImage($data),
             'structuredData' => $this->breadcrumbStructuredData($data['name']),
         ]);
+    }
+
+    private function previewImage(array $data): array
+    {
+        $wide = $data['heroImage'] ?? ($data['screenshots'][0]['url'] ?? null);
+
+        return $wide
+            ? ['metaImage' => $wide, 'metaCard' => 'summary_large_image']
+            : ['metaImage' => $data['icon'], 'metaCard' => 'summary'];
+    }
+
+    private function fallbackDescription(array $data): string
+    {
+        $description = "Play {$data['name']} with the Angels of Death, a gaming community since 1999.";
+
+        return $data['membersCount']
+            ? $description . ' ' . number_format($data['membersCount']) . ' members and counting.'
+            : $description;
     }
 
     private function breadcrumbStructuredData(string $divisionName): array
