@@ -122,7 +122,8 @@ function Hero({
 
             <div className="next-hero-stagger relative z-10 flex flex-col items-center">
                 <div className="relative mb-8">
-                    <AodMark className="next-mark-glow next-hero-mark block size-36 sm:size-44" />
+                    <span className="next-hero-mark-pulse" aria-hidden="true" />
+                    <AodMark className="next-mark-glow relative block size-36 sm:size-44" />
                     {season?.effects.includes('hat') && <SantaHat className="next-santa-hat" />}
                 </div>
                 <p className="next-red-text mb-4 font-mono text-xs tracking-[0.35em] uppercase sm:text-sm">

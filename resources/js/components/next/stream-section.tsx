@@ -1,10 +1,10 @@
 import { ArrowRight, Eye, Play, Radio, Users } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { TwitchIcon } from '@/components/icons/twitch-icon';
 import { Reveal } from '@/components/reveal';
 import { useInView } from '@/hooks/use-in-view';
-import { loadTwitchEmbedApi } from '@/lib/twitch-embed-api';
+import { loadTwitchEmbedApi, type TwitchPlayer } from '@/lib/twitch-embed-api';
 import { cn } from '@/lib/utils';
 
 export interface StreamVod {
@@ -51,11 +51,13 @@ function formatDuration(duration: string): string {
 
 function LivePlayer({ channel }: { channel: string }) {
     const embedRef = useRef<HTMLDivElement>(null);
-    const { ref, inView } = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -10% 0px' });
+    const playerRef = useRef<TwitchPlayer | null>(null);
+    const [ready, setReady] = useState(false);
+    const { ref, inView, seen } = useInView<HTMLDivElement>({ rootMargin: '0px 0px -10% 0px' });
 
     useEffect(() => {
         const el = embedRef.current;
-        if (!el || !inView) {
+        if (!el || !seen) {
             return;
         }
         el.id = 'next-twitch-embed';
@@ -75,16 +77,36 @@ function LivePlayer({ channel }: { channel: string }) {
                 parent: [window.location.hostname],
             });
             embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+                if (cancelled) {
+                    return;
+                }
                 const player = embed.getPlayer();
                 player.setMuted(true);
-                player.play();
+                playerRef.current = player;
+                setReady(true);
             });
         });
 
         return () => {
             cancelled = true;
+            playerRef.current = null;
+            setReady(false);
+            el.replaceChildren();
         };
-    }, [channel, inView]);
+    }, [channel, seen]);
+
+    useEffect(() => {
+        const player = playerRef.current;
+        if (!player || !ready) {
+            return;
+        }
+
+        if (inView) {
+            player.play();
+        } else {
+            player.pause();
+        }
+    }, [inView, ready]);
 
     return (
         <div ref={ref} className="next-panel aspect-video overflow-hidden bg-black">
