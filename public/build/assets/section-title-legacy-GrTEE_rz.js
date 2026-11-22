@@ -1,0 +1,1 @@
+System.register(["./app-legacy-Do8KbnWo.js","./apply-dialog-legacy-BuC1CWZj.js"],(function(e,t){"use strict";var s,a;return{setters:[e=>{s=e.j},e=>{a=e.g}],execute:function(){e("S",(function({children:e,className:t,as:n="h2"}){return s.jsx(n,{className:a("font-display text-2xl font-medium uppercase md:text-4xl",t),children:e})}))}}}));

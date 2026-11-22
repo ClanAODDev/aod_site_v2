@@ -64,7 +64,24 @@ describe('Prototype', function () {
     it('gates the fallen angels and division pages too', function () {
         $this->get('/next/fallen-angels')->assertNotFound();
         $this->get('/next/divisions/battlefield')->assertNotFound();
+        $this->get('/next/ranks')->assertNotFound();
+        $this->get('/next/code-of-conduct')->assertNotFound();
     });
+
+    it('renders the ranks and code of conduct pages', function (string $path, string $component) {
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get($path)
+            ->assertOk()
+            ->assertHeader('X-Robots-Tag', 'noindex, nofollow')
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component($component)
+                ->where('foundedYear', 1999));
+    })->with([
+        'ranks' => ['/next/ranks', 'next/ranks'],
+        'code of conduct' => ['/next/code-of-conduct', 'next/code-of-conduct'],
+    ]);
 
     it('renders the fallen angels page', function () {
         Http::fake([

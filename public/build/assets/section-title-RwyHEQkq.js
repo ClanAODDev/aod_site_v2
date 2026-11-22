@@ -1,0 +1,1 @@
+import{j as o}from"./app-LIX21G03.js";import{g as m}from"./apply-dialog-Dvw13FbI.js";function i({children:t,className:e,as:s="h2"}){return o.jsx(s,{className:m("font-display text-2xl font-medium uppercase md:text-4xl",e),children:t})}export{i as S};

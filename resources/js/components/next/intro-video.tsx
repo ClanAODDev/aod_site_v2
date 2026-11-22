@@ -14,7 +14,7 @@ export function IntroVideo({ videoId }: { videoId: string | null }) {
         <>
             <button type="button" onClick={() => setOpen(true)} className="next-intro-button group" aria-label="Watch the AOD intro video">
                 <span className="next-intro-ring" aria-hidden="true">
-                    <Play className="size-5 translate-x-0.5 fill-current" />
+                    <Play className="size-5 fill-current" />
                 </span>
                 <span className="next-heading text-sm font-bold uppercase tracking-[0.2em] text-foreground/90 group-hover:text-foreground">Watch the intro</span>
             </button>
