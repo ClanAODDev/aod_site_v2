@@ -217,24 +217,6 @@
         animation: next-mark-breathe 6s ease-in-out 1s infinite;
     }
 
-    .next-hero-sweep {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-    }
-
-    .next-hero-sweep::before {
-        content: '';
-        position: absolute;
-        inset-inline: 0;
-        top: 0;
-        height: 18%;
-        background: linear-gradient(to bottom, transparent, rgba(210, 0, 0, 0.05) 50%, transparent);
-        transform: translateY(-100%);
-        animation: next-sweep 11s cubic-bezier(0.45, 0, 0.55, 1) 2s infinite;
-    }
-
     @keyframes next-rise {
         from {
             opacity: 0;
@@ -253,16 +235,6 @@
         }
         50% {
             filter: drop-shadow(0 0 24px rgba(210, 0, 0, 0.7)) drop-shadow(0 0 72px rgba(188, 9, 19, 0.35));
-        }
-    }
-
-    @keyframes next-sweep {
-        0% {
-            transform: translateY(-100%);
-        }
-        55%,
-        100% {
-            transform: translateY(600%);
         }
     }
 
@@ -899,8 +871,7 @@
         .next-apply-marquee-track,
         .next-hero-stagger > *,
         .next-hero-stats,
-        .next-hero-mark,
-        .next-hero-sweep::before {
+        .next-hero-mark {
             animation: none;
         }
 
