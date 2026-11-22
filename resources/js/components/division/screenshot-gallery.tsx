@@ -59,11 +59,11 @@ export function ScreenshotGallery({ screenshots }: { screenshots: Screenshot[] }
             </div>
 
             <Dialog open={openIndex !== null} onOpenChange={(open) => setOpenIndex(open ? openIndex : null)}>
-                <DialogContent showCloseButton className="max-w-4xl border-none bg-transparent p-0 shadow-none">
+                <DialogContent showCloseButton className="max-w-[calc(100%-2rem)] border-none bg-transparent p-0 shadow-none sm:max-w-[min(92vw,96rem)]">
                     <DialogTitle className="sr-only">{current?.caption || 'Screenshot'}</DialogTitle>
                     {current && (
                         <div className="relative text-center">
-                            <img src={current.url} alt={current.caption || ''} className="mx-auto max-h-[80vh] rounded" />
+                            <img src={current.url} alt={current.caption || ''} className="mx-auto max-h-[85vh] w-auto max-w-full rounded" />
                             {current.caption && <p className="mt-3 text-sm text-white/80">{current.caption}</p>}
                             <p className="mt-1 text-xs text-white/50">
                                 {(openIndex ?? 0) + 1} / {screenshots.length}
