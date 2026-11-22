@@ -55,6 +55,7 @@ class DivisionDetails
                 'abbreviation' => $data['abbreviation'],
                 'icon' => $data['icon'] ?? null,
                 'membersCount' => $data['members_count'] ?? null,
+                'heroImage' => $data['hero_image'] ?? null,
                 'metaDescription' => $data['settings']['meta_description'] ?? null,
                 'siteContentHtml' => ! empty($data['site_content']) ? (string) Markdown::convertToHtml($data['site_content']) : null,
                 'screenshots' => array_values(array_map(
