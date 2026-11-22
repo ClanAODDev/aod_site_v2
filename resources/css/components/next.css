@@ -521,30 +521,48 @@
     }
 
     .next-division-hero {
-        background:
-            radial-gradient(ellipse 60% 80% at 80% 40%, rgba(188, 9, 19, 0.14), transparent 70%),
-            var(--background);
+        min-height: 34rem;
+        background: var(--background);
     }
 
-    .next-division-art {
+    .next-division-backdrop {
         position: absolute;
-        top: 0;
-        left: 50%;
-        width: 1194px;
-        height: 182px;
-        transform: translateX(-50%);
-        background: var(--division-art) top center / 1194px 650px no-repeat;
-        mask-image:
-            linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
-            linear-gradient(to bottom, #000 72%, transparent);
-        mask-composite: intersect;
+        inset: -4%;
+        background: var(--division-backdrop) center / cover no-repeat;
+        opacity: 0.62;
+        filter: saturate(0.55) contrast(1.1) brightness(0.9);
+        animation: next-drift 40s ease-in-out infinite alternate;
     }
 
-    .next-division-art::after {
-        content: '';
+    .next-division-watermark {
+        position: absolute;
+        top: 50%;
+        right: 6%;
+        width: min(38rem, 70vw);
+        aspect-ratio: 1;
+        object-fit: contain;
+        opacity: 0.12;
+        filter: grayscale(0.4) blur(2px);
+        transform: translateY(-50%) rotate(-8deg);
+    }
+
+    .next-division-veil {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(12, 12, 12, 0.75), transparent 45%);
+        background:
+            radial-gradient(ellipse 55% 70% at 85% 35%, rgba(188, 9, 19, 0.24), transparent 70%),
+            linear-gradient(to right, rgba(12, 12, 12, 0.92) 0%, rgba(12, 12, 12, 0.6) 45%, rgba(12, 12, 12, 0.25) 100%),
+            radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 12, 12, 0.1), rgba(12, 12, 12, 0.75)),
+            linear-gradient(to bottom, rgba(27, 2, 2, 0.6), rgba(12, 12, 12, 0.3) 40%, var(--background));
+    }
+
+    @keyframes next-drift {
+        from {
+            transform: scale(1) translate(0, 0);
+        }
+        to {
+            transform: scale(1.08) translate(-1.5%, -1%);
+        }
     }
 
     .next-stat-chip {
@@ -673,6 +691,10 @@
         }
 
         .next-intro-ring {
+            animation: none;
+        }
+
+        .next-division-backdrop {
             animation: none;
         }
 
