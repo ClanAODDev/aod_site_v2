@@ -134,13 +134,32 @@
         clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
     }
 
-    .next-apply-icons {
-        mask-image: radial-gradient(ellipse 55% 60% at 50% 50%, transparent 55%, #000 85%);
+    .next-apply-marquee {
+        contain: inline-size;
+        overflow: hidden;
+        padding: 0.75rem 0;
+        border-block: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.015);
+        mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
     }
 
-    .next-apply-icons img {
-        opacity: 0.08;
-        filter: grayscale(1);
+    .next-apply-marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 1.75rem;
+        padding-right: 1.75rem;
+        animation: next-marquee linear infinite;
+    }
+
+    .next-apply-marquee-track img {
+        opacity: 0.55;
+        filter: grayscale(1) brightness(1.4);
+    }
+
+    @keyframes next-marquee {
+        to {
+            transform: translateX(-50%);
+        }
     }
 
     .next-apply-step {
@@ -794,7 +813,8 @@
         .next-chip-enter,
         .next-poem-line,
         .next-plaque:hover .next-candle,
-        .next-rail-stop.is-active .next-rail-dot {
+        .next-rail-stop.is-active .next-rail-dot,
+        .next-apply-marquee-track {
             animation: none;
         }
 

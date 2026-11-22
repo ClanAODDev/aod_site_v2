@@ -47,7 +47,7 @@ export function ApplyDialogProvider({ children, variant = 'classic' }: { childre
             {children}
             <Dialog open={open} onOpenChange={setOpen}>
                 {variant === 'next' ? (
-                    <NextApplyContent icons={floatingIcons} />
+                    <NextApplyContent />
                 ) : (
                 <DialogContent className="overflow-hidden sm:max-w-xl">
                     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

@@ -1,8 +1,10 @@
+import { usePage } from '@inertiajs/react';
+
 import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
 import { DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { DISCORD_REGISTRATION_URL } from '@/lib/registration';
-import type { Division } from '@/types';
+import type { SharedPageProps } from '@/types';
 
 const STEPS = [
     { title: 'Continue with Discord', body: 'Sign in with your Discord account.' },
@@ -10,24 +12,31 @@ const STEPS = [
     { title: 'Meet your division', body: "Your division's recruiters take it from there." },
 ];
 
-const ICON_SPOTS = ['left-[6%] top-[7%]', 'right-[6%] top-[9%]', 'left-[3%] top-[40%]', 'right-[3%] top-[44%]'];
+export function NextApplyContent() {
+    const { divisions } = usePage<SharedPageProps>().props;
 
-export function NextApplyContent({ icons }: { icons: Division[] }) {
     return (
         <DialogContent className="next-root next-apply max-w-[calc(100%-2rem)] gap-0 overflow-hidden rounded-none border-border p-0 sm:max-w-md">
-            <div aria-hidden="true" className="next-apply-icons pointer-events-none absolute inset-0">
-                {icons.slice(0, ICON_SPOTS.length).map((division, index) => (
-                    <img key={division.slug} src={division.icon} alt="" className={`absolute size-14 object-contain ${ICON_SPOTS[index]}`} />
-                ))}
-            </div>
-
             <div className="relative px-7 pb-7 pt-9 text-center sm:px-9">
                 <AodMark className="next-mark-glow mx-auto block size-16" />
                 <p className="mt-5 font-mono text-xs uppercase tracking-[0.3em] next-red-text">Join the ranks</p>
                 <DialogTitle className="next-heading mt-1 text-3xl font-bold uppercase tracking-wide text-foreground">Join Angels of Death</DialogTitle>
                 <DialogDescription className="sr-only">Three steps to join: continue with Discord, choose your name and division, then meet your division.</DialogDescription>
 
-                <ol className="mt-7 space-y-4 text-left">
+                {divisions.length > 0 && (
+                    <div className="mt-6">
+                        <div className="next-apply-marquee" aria-hidden="true">
+                            <div className="next-apply-marquee-track" style={{ animationDuration: `${divisions.length * 3}s` }}>
+                                {[...divisions, ...divisions].map((division, index) => (
+                                    <img key={`${division.slug}-${index}`} src={division.icon} alt="" className="size-10 shrink-0 object-contain" />
+                                ))}
+                            </div>
+                        </div>
+                        <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{divisions.length} divisions to choose from</p>
+                    </div>
+                )}
+
+                <ol className="mt-6 space-y-4 text-left">
                     {STEPS.map((step, index) => (
                         <li key={step.title} className="flex gap-4">
                             <span className="next-apply-step" aria-hidden="true">
