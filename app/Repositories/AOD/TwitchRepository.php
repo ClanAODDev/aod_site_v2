@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories\AOD;
 
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -56,6 +57,22 @@ class TwitchRepository
 
     protected function request(string $endpoint, array $params = []): ?array
     {
+        $response = $this->send($endpoint, $params);
+
+        if ($response?->status() === 401) {
+            Cache::forget('twitch_access_token');
+            $response = $this->send($endpoint, $params);
+        }
+
+        if (! $response || $response->failed()) {
+            return null;
+        }
+
+        return $response->json('data');
+    }
+
+    private function send(string $endpoint, array $params): ?Response
+    {
         $token = $this->getAccessToken();
 
         if (! $token) {
@@ -63,19 +80,28 @@ class TwitchRepository
         }
 
         try {
-            $response = Http::withHeaders([
+            return Http::withHeaders([
                 'Authorization' => "Bearer {$token}",
                 'Client-Id' => $this->clientId,
             ])->connectTimeout(3)->timeout(5)->get("{$this->apiBase}/{$endpoint}", $params);
         } catch (ConnectionException) {
             return null;
         }
+    }
 
-        if ($response->failed()) {
-            return null;
+    private function rememberSuccess(string $key, int $seconds, callable $callback): mixed
+    {
+        if (Cache::has($key)) {
+            return Cache::get($key);
         }
 
-        return $response->json('data');
+        $value = $callback();
+
+        if ($value !== null) {
+            Cache::put($key, $value, $seconds);
+        }
+
+        return $value;
     }
 
     public function getUserId(): ?string
@@ -89,22 +115,12 @@ class TwitchRepository
 
     public function isLive(): bool
     {
-        return Cache::remember('twitch_is_live', 120, function () {
-            $userId = $this->getUserId();
-
-            if (! $userId) {
-                return false;
-            }
-
-            $streams = $this->request('streams', ['user_id' => $userId]);
-
-            return ! empty($streams);
-        });
+        return $this->getStream() !== null;
     }
 
     public function getStream(): ?array
     {
-        return Cache::remember('twitch_stream', 120, function () {
+        $stream = $this->rememberSuccess('twitch_live_stream', 120, function () {
             $userId = $this->getUserId();
 
             if (! $userId) {
@@ -113,25 +129,27 @@ class TwitchRepository
 
             $streams = $this->request('streams', ['user_id' => $userId]);
 
-            return $streams[0] ?? null;
+            return $streams === null ? null : ['stream' => $streams[0] ?? null];
         });
+
+        return $stream['stream'] ?? null;
     }
 
     public function getVods(int $limit = 6): array
     {
-        return Cache::remember('twitch_vods', config('app.cache_length', 900), function () use ($limit) {
+        return $this->rememberSuccess('twitch_vods', (int) config('app.cache_length', 900), function () use ($limit) {
             $userId = $this->getUserId();
 
             if (! $userId) {
-                return [];
+                return null;
             }
 
             return $this->request('videos', [
                 'user_id' => $userId,
                 'type' => 'archive',
                 'first' => $limit,
-            ]) ?? [];
-        });
+            ]);
+        }) ?? [];
     }
 
     public function getStreamData(): array
