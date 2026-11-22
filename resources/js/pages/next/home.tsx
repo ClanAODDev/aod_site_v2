@@ -6,6 +6,7 @@ import { DiscordIcon } from '@/components/icons/discord-icon';
 import { AodMark } from '@/components/next/aod-mark';
 import { CoverVideo } from '@/components/next/cover-video';
 import { IntroVideo } from '@/components/next/intro-video';
+import { MerchSection, type MerchData } from '@/components/next/merch-section';
 import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
 import { SantaHat } from '@/components/next/santa-hat';
 import { SeasonParticles } from '@/components/next/season-particles';
@@ -36,6 +37,7 @@ interface PrototypeProps {
     heroVideoId: string | null;
     introVideoId: string | null;
     historyVideoId: string | null;
+    merch: MerchData;
     season: SeasonInfo | null;
     foundedYear: number;
     currentYear: number;
@@ -373,7 +375,7 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, season, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, merch, season, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
@@ -384,6 +386,7 @@ export default function PrototypeHome({ discord, twitch, heroVideoId, introVideo
             <Timeline years={years} videoId={historyVideoId} />
             <Divisions />
             <StreamSection twitch={twitch} />
+            <MerchSection merch={merch} />
             <Remembrance />
             <JoinBand foundedYear={foundedYear} />
         </NextLayout>

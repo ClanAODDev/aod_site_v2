@@ -17,6 +17,8 @@ class PrototypeController extends Controller
 {
     private const FOUNDED = 1999;
 
+    private const MERCH_COUNT = 8;
+
     public function home(DiscordStats $discord, TwitchStream $twitch, Season $season): Response
     {
         return Inertia::render('next/home', [
@@ -26,6 +28,7 @@ class PrototypeController extends Controller
             'heroVideoId' => config('aod.hero_video_id'),
             'introVideoId' => config('aod.intro_video_id'),
             'historyVideoId' => config('aod.modern_era_video_id'),
+            'merch' => $this->merch(),
             'foundedYear' => self::FOUNDED,
             'currentYear' => (int) now()->year,
         ])->withViewData([
@@ -76,6 +79,20 @@ class PrototypeController extends Controller
             'metaTitle' => "{$data['name']} | Prototype",
             'metaDescription' => 'A prototype of the next ClanAOD.net.',
         ]);
+    }
+
+    private function merch(): array
+    {
+        $merch = config('aod.merch');
+
+        return [
+            'storeUrl' => $merch['store_url'],
+            'items' => collect($merch['items'])->shuffle()->take(self::MERCH_COUNT)->map(fn (array $item) => [
+                'name' => $item['name'],
+                'href' => "{$merch['store_url']}/{$item['slug']}",
+                'image' => "{$merch['image_base_url']}{$item['image_id']}{$merch['image_suffix']}",
+            ])->values()->all(),
+        ];
     }
 
     private function page(string $component, string $title): Response

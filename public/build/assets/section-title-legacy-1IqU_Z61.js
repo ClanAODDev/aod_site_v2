@@ -1,1 +1,0 @@
-System.register(["./app-legacy-Ba-EhF6S.js","./apply-dialog-legacy-BFma9xEv.js"],(function(e,t){"use strict";var s,a;return{setters:[e=>{s=e.j},e=>{a=e.g}],execute:function(){e("S",(function({children:e,className:t,as:n="h2"}){return s.jsx(n,{className:a("font-display text-2xl font-medium uppercase md:text-4xl",t),children:e})}))}}}));
