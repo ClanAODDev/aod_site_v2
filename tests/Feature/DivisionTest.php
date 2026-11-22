@@ -108,6 +108,44 @@ describe('Division Pages', function () {
                 ->not->toContain('abc-123');
         });
 
+        it('unfurls with the widest available image and a matching card', function (array $extra, string $image, string $card) {
+            $divisionData = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+            $divisionData['data']['division'] = array_merge($divisionData['data']['division'], ['icon' => 'https://example.com/icon.png', 'screenshots' => []], $extra);
+
+            Http::fake(['*/api/v1/divisions/cod*' => Http::response($divisionData, 200)]);
+
+            $this->get(route('division.show', 'cod'))
+                ->assertOk()
+                ->assertSee('<meta property="og:image" content="' . $image . '">', false)
+                ->assertSee('<meta property="twitter:card" content="' . $card . '">', false);
+        })->with([
+            'header image' => [['hero_image' => 'https://example.com/hero.jpg', 'screenshots' => [['url' => 'https://example.com/shot.jpg']]], 'https://example.com/hero.jpg', 'summary_large_image'],
+            'first screenshot' => [['screenshots' => [['url' => 'https://example.com/shot.jpg']]], 'https://example.com/shot.jpg', 'summary_large_image'],
+            'icon only' => [[], 'https://example.com/icon.png', 'summary'],
+        ]);
+
+        it('describes a division without SEO text by name and size', function () {
+            $divisionData = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+            $divisionData['data']['division'] = array_merge($divisionData['data']['division'], ['name' => 'Battlefield', 'members_count' => 1233, 'settings' => ['meta_description' => '']]);
+
+            Http::fake(['*/api/v1/divisions/cod*' => Http::response($divisionData, 200)]);
+
+            $this->get(route('division.show', 'cod'))
+                ->assertOk()
+                ->assertSee('<meta property="og:description" content="Play Battlefield with the Angels of Death, a gaming community since 1999. 1,233 members and counting.">', false);
+        });
+
+        it('keeps a division\'s own SEO text', function () {
+            $divisionData = json_decode(file_get_contents(storage_path('testing/division.json')), true);
+            $divisionData['data']['division']['settings'] = ['meta_description' => 'Squad up for Warzone and multiplayer nights.'];
+
+            Http::fake(['*/api/v1/divisions/cod*' => Http::response($divisionData, 200)]);
+
+            $this->get(route('division.show', 'cod'))
+                ->assertOk()
+                ->assertSee('<meta property="og:description" content="Squad up for Warzone and multiplayer nights.">', false);
+        });
+
         it('drops javascript links from division page content', function () {
             $divisionData = json_decode(
                 file_get_contents(storage_path('testing/division.json')),
