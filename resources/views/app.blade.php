@@ -12,7 +12,7 @@
     <meta property="og:title" content="{{ $metaTitle ?? 'Angels of Death Gaming Clan | Angels of Death' }}">
     <meta property="og:description" content="{{ $metaDescription ?? 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other like-minded members.' }}">
     <meta property="og:image" content="{{ $metaImage ?? asset('images/official-logo.png') }}">
-    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="{{ $metaCard ?? (isset($metaImage) ? 'summary_large_image' : 'summary') }}">
     <meta property="twitter:title" content="{{ $metaTitle ?? 'Angels of Death Gaming Clan | Angels of Death' }}">
     <meta property="twitter:description" content="{{ $metaDescription ?? 'The Angels of Death is a community of players founded in 1999 based on a core set of conduct that aims to promote decency and provide a comfortable environment to play with thousands of other like-minded members.' }}">
     @if (isset($structuredData))
