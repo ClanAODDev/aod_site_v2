@@ -2,7 +2,9 @@ import { usePage } from '@inertiajs/react';
 import { createContext, useContext, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 
 import { DiscordIcon } from '@/components/icons/discord-icon';
+import { NextApplyContent } from '@/components/next/next-apply';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { DISCORD_REGISTRATION_URL } from '@/lib/registration';
 import type { SharedPageProps } from '@/types';
 
 const ApplyDialogContext = createContext<(() => void) | null>(null);
@@ -28,7 +30,7 @@ export function useOpenApplyDialog() {
     return open;
 }
 
-export function ApplyDialogProvider({ children }: { children: ReactNode }) {
+export function ApplyDialogProvider({ children, variant = 'classic' }: { children: ReactNode; variant?: 'classic' | 'next' }) {
     const [open, setOpen] = useState(false);
     const { divisions } = usePage<SharedPageProps>().props;
 
@@ -44,6 +46,9 @@ export function ApplyDialogProvider({ children }: { children: ReactNode }) {
         <ApplyDialogContext.Provider value={() => setOpen(true)}>
             {children}
             <Dialog open={open} onOpenChange={setOpen}>
+                {variant === 'next' ? (
+                    <NextApplyContent icons={floatingIcons} />
+                ) : (
                 <DialogContent className="overflow-hidden sm:max-w-xl">
                     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
                         {floatingIcons.map((division, index) => (
@@ -63,16 +68,15 @@ export function ApplyDialogProvider({ children }: { children: ReactNode }) {
                             You must have an account in order to apply for one of our divisions.
                         </p>
                         <a
-                            href="https://tracker.clanaod.net/auth/discord"
-                            target="_blank"
-                            rel="noreferrer"
+                            href={DISCORD_REGISTRATION_URL}
                             className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                         >
                             <DiscordIcon className="size-4" />
-                            Register with Discord
+                            Continue with Discord
                         </a>
                     </div>
                 </DialogContent>
+                )}
             </Dialog>
         </ApplyDialogContext.Provider>
     );
