@@ -68,12 +68,13 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
 
     return (
         <NextLayout title={`${division.name} | Prototype`} foundedYear={foundedYear} currentYear={currentYear}>
-            <section className="next-division-hero relative overflow-hidden px-4 pb-16 pt-32 sm:px-6" style={{ '--division-art': `url('${division.headerImage}')` } as CSSProperties}>
+            <section className="next-division-hero relative overflow-hidden px-4 pb-16 pt-52 sm:px-6" style={{ '--division-art': `url('${division.headerImage}')` } as CSSProperties}>
+                <div className="next-division-art" aria-hidden="true" />
                 <div className="relative z-10 mx-auto max-w-6xl">
                     <a href="/next#divisions" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
                         <ArrowLeft className="size-4" /> All divisions
                     </a>
-                    <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
+                    <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
                         {division.icon && <img src={division.icon} alt="" className="size-20 shrink-0 object-contain drop-shadow-[0_0_24px_rgba(0,0,0,0.8)]" />}
                         <div>
                             <p className="font-mono text-xs uppercase tracking-[0.3em] next-red-text">AOD Division</p>

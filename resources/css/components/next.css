@@ -522,11 +522,29 @@
 
     .next-division-hero {
         background:
-            linear-gradient(to right, rgba(12, 12, 12, 0.94) 20%, rgba(12, 12, 12, 0.3)),
-            linear-gradient(to top, var(--background), transparent 30%),
-            radial-gradient(ellipse 60% 80% at 80% 30%, rgba(188, 9, 19, 0.25), transparent 70%),
-            var(--division-art) center / cover no-repeat,
+            radial-gradient(ellipse 60% 80% at 80% 40%, rgba(188, 9, 19, 0.14), transparent 70%),
             var(--background);
+    }
+
+    .next-division-art {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1194px;
+        height: 182px;
+        transform: translateX(-50%);
+        background: var(--division-art) top center / 1194px 650px no-repeat;
+        mask-image:
+            linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+            linear-gradient(to bottom, #000 72%, transparent);
+        mask-composite: intersect;
+    }
+
+    .next-division-art::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(12, 12, 12, 0.75), transparent 45%);
     }
 
     .next-stat-chip {
