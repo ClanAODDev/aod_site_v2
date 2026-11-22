@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Repositories\AOD\FallenMemberRepository;
 use App\Support\DiscordStats;
 use App\Support\DivisionDetails;
+use App\Support\Season;
 use App\Support\TrackerCache;
 use App\Support\TwitchStream;
 use Inertia\Inertia;
@@ -16,11 +17,12 @@ class PrototypeController extends Controller
 {
     private const FOUNDED = 1999;
 
-    public function home(DiscordStats $discord, TwitchStream $twitch): Response
+    public function home(DiscordStats $discord, TwitchStream $twitch, Season $season): Response
     {
         return Inertia::render('next/home', [
             'discord' => $discord->get(),
             'twitch' => $twitch->get(),
+            'season' => $season->current(),
             'heroVideoId' => config('aod.hero_video_id'),
             'introVideoId' => config('aod.intro_video_id'),
             'historyVideoId' => config('aod.modern_era_video_id'),

@@ -7,6 +7,8 @@ import { AodMark } from '@/components/next/aod-mark';
 import { CoverVideo } from '@/components/next/cover-video';
 import { IntroVideo } from '@/components/next/intro-video';
 import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
+import { SantaHat } from '@/components/next/santa-hat';
+import { SeasonParticles } from '@/components/next/season-particles';
 import { StreamSection, type TwitchData } from '@/components/next/stream-section';
 import { Reveal } from '@/components/reveal';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
@@ -23,12 +25,18 @@ interface DiscordStats {
     total?: number;
 }
 
+interface SeasonInfo {
+    id: string;
+    effects: string[];
+}
+
 interface PrototypeProps {
     discord: DiscordStats | null;
     twitch: TwitchData;
     heroVideoId: string | null;
     introVideoId: string | null;
     historyVideoId: string | null;
+    season: SeasonInfo | null;
     foundedYear: number;
     currentYear: number;
 }
@@ -77,6 +85,7 @@ function Hero({
     divisionCount,
     videoId,
     introVideoId,
+    season,
 }: {
     years: number;
     foundedYear: number;
@@ -84,6 +93,7 @@ function Hero({
     divisionCount: number;
     videoId: string | null;
     introVideoId: string | null;
+    season: SeasonInfo | null;
 }) {
     const openApply = useOpenApplyDialog();
     const stats = [
@@ -96,6 +106,8 @@ function Hero({
     return (
         <section id="top" className="next-hero relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-28 text-center">
             <CoverVideo videoId={videoId} />
+            {season?.effects.includes('snow') && <SeasonParticles kind="snow" />}
+            {season?.effects.includes('embers') && <SeasonParticles kind="embers" />}
             <div className="next-triangles" aria-hidden="true">
                 <span />
                 <span />
@@ -104,7 +116,10 @@ function Hero({
             <div className="next-scanlines" aria-hidden="true" />
 
             <div className="relative z-10 flex flex-col items-center">
-                <AodMark className="next-mark-glow mb-8 size-36 sm:size-44" />
+                <div className="relative mb-8">
+                    <AodMark className="next-mark-glow block size-36 sm:size-44" />
+                    {season?.effects.includes('hat') && <SantaHat className="next-santa-hat" />}
+                </div>
                 <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] next-red-text sm:text-sm">
                     Est. {foundedYear} · {years} years of play
                 </p>
@@ -383,13 +398,13 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, foundedYear, currentYear }: PrototypeProps) {
+export default function PrototypeHome({ discord, twitch, heroVideoId, introVideoId, historyVideoId, season, foundedYear, currentYear }: PrototypeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
     return (
         <NextLayout title="Angels of Death | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
-            <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} introVideoId={introVideoId} />
+            <Hero years={years} foundedYear={foundedYear} discord={discord} divisionCount={divisions.length} videoId={heroVideoId} introVideoId={introVideoId} season={season} />
             <Legacy foundedYear={foundedYear} />
             <Timeline years={years} videoId={historyVideoId} />
             <Divisions />

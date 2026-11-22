@@ -118,6 +118,15 @@
         background: var(--next-ember);
     }
 
+    .next-santa-hat {
+        position: absolute;
+        top: -17%;
+        left: 50%;
+        width: 52%;
+        transform: translateX(-62%) rotate(-14deg);
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+    }
+
     .next-hero {
         background:
             radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),

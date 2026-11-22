@@ -54,7 +54,6 @@ class DivisionDetails
                 'slug' => $data['slug'] ?? $slug,
                 'abbreviation' => $data['abbreviation'],
                 'icon' => $data['icon'] ?? null,
-                'description' => $data['description'] ?? null,
                 'membersCount' => $data['members_count'] ?? null,
                 'metaDescription' => $data['settings']['meta_description'] ?? null,
                 'siteContentHtml' => ! empty($data['site_content']) ? (string) Markdown::convertToHtml($data['site_content']) : null,
