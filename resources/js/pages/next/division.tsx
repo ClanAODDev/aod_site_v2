@@ -23,6 +23,7 @@ interface DivisionDetail {
     icon: string | null;
     membersCount: number | null;
     backdrop: string | null;
+    backdropPosition: string | null;
     siteContentHtml: string | null;
     screenshots: { url: string; caption?: string }[];
     leadership: Leader[];
@@ -70,7 +71,7 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
         <NextLayout title={`${division.name} | Prototype`} foundedYear={foundedYear} currentYear={currentYear}>
             <section className="next-division-hero relative overflow-hidden px-4 pb-20 pt-40 sm:px-6">
                 {division.backdrop ? (
-                    <div className="next-division-backdrop" style={{ '--division-backdrop': `url('${division.backdrop}')` } as CSSProperties} aria-hidden="true" />
+                    <div className="next-division-backdrop" style={{ '--division-backdrop': `url('${division.backdrop}')`, backgroundPosition: division.backdropPosition ?? undefined } as CSSProperties} aria-hidden="true" />
                 ) : (
                     division.icon && <img src={division.icon} alt="" className="next-division-watermark" aria-hidden="true" />
                 )}

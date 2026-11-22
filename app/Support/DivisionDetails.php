@@ -56,6 +56,7 @@ class DivisionDetails
                 'icon' => $data['icon'] ?? null,
                 'membersCount' => $data['members_count'] ?? null,
                 'heroImage' => $data['hero_image'] ?? null,
+                'heroImagePosition' => self::heroImagePosition($data['hero_image_position'] ?? null),
                 'metaDescription' => $data['settings']['meta_description'] ?? null,
                 'siteContentHtml' => ! empty($data['site_content']) ? (string) Markdown::convertToHtml($data['site_content']) : null,
                 'screenshots' => array_values(array_map(
@@ -83,5 +84,10 @@ class DivisionDetails
         $path = "images/division-headers/{$abbreviation}.jpg";
 
         return asset(file_exists(public_path($path)) ? $path : 'images/page-header.jpg');
+    }
+
+    private static function heroImagePosition(mixed $position): ?string
+    {
+        return is_string($position) && preg_match('/^(100|[1-9]?\d)% (100|[1-9]?\d)%$/', $position) ? $position : null;
     }
 }

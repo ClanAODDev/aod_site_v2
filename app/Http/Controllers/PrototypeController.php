@@ -70,8 +70,9 @@ class PrototypeController extends Controller
 
         return Inertia::render('next/division', [
             'division' => [
-                ...collect($data)->except('metaDescription')->all(),
+                ...collect($data)->except(['metaDescription', 'heroImagePosition'])->all(),
                 'backdrop' => $data['heroImage'] ?? ($data['screenshots'][0]['url'] ?? null),
+                'backdropPosition' => isset($data['heroImage']) ? ($data['heroImagePosition'] ?? null) : null,
             ],
             'foundedYear' => self::FOUNDED,
             'currentYear' => (int) now()->year,
