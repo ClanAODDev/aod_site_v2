@@ -127,6 +127,37 @@
         filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
     }
 
+    .next-apply {
+        background:
+            radial-gradient(ellipse 80% 55% at 50% 0%, rgba(188, 9, 19, 0.22), transparent 70%),
+            var(--background);
+        clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+    }
+
+    .next-apply-icons {
+        mask-image: radial-gradient(ellipse 55% 60% at 50% 50%, transparent 55%, #000 85%);
+    }
+
+    .next-apply-icons img {
+        opacity: 0.08;
+        filter: grayscale(1);
+    }
+
+    .next-apply-step {
+        display: grid;
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        place-items: center;
+        margin-top: 0.125rem;
+        font-family: 'Rajdhani', var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        background: var(--primary);
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    }
+
     .next-hero {
         background:
             radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),

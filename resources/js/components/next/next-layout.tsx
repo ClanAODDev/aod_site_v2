@@ -18,7 +18,7 @@ export function nextDivisionHref(href: string): string {
 
 export function NextLayout({ title, foundedYear, currentYear, children }: NextLayoutProps) {
     return (
-        <ApplyDialogProvider>
+        <ApplyDialogProvider variant="next">
             <Head title={title}>
                 <meta name="robots" content="noindex, nofollow" />
             </Head>
