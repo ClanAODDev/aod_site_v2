@@ -58,7 +58,7 @@ class PrototypeController extends Controller
         return Inertia::render('next/division', [
             'division' => [
                 ...collect($data)->except('metaDescription')->all(),
-                'headerImage' => DivisionDetails::headerImage($data['abbreviation']),
+                'backdrop' => $data['heroImage'] ?? ($data['screenshots'][0]['url'] ?? null),
             ],
             'foundedYear' => self::FOUNDED,
             'currentYear' => (int) now()->year,

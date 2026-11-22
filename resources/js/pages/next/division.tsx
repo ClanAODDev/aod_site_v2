@@ -22,7 +22,7 @@ interface DivisionDetail {
     abbreviation: string;
     icon: string | null;
     membersCount: number | null;
-    headerImage: string;
+    backdrop: string | null;
     siteContentHtml: string | null;
     screenshots: { url: string; caption?: string }[];
     leadership: Leader[];
@@ -68,8 +68,14 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
 
     return (
         <NextLayout title={`${division.name} | Prototype`} foundedYear={foundedYear} currentYear={currentYear}>
-            <section className="next-division-hero relative overflow-hidden px-4 pb-16 pt-52 sm:px-6" style={{ '--division-art': `url('${division.headerImage}')` } as CSSProperties}>
-                <div className="next-division-art" aria-hidden="true" />
+            <section className="next-division-hero relative overflow-hidden px-4 pb-20 pt-40 sm:px-6">
+                {division.backdrop ? (
+                    <div className="next-division-backdrop" style={{ '--division-backdrop': `url('${division.backdrop}')` } as CSSProperties} aria-hidden="true" />
+                ) : (
+                    division.icon && <img src={division.icon} alt="" className="next-division-watermark" aria-hidden="true" />
+                )}
+                <div className="next-division-veil" aria-hidden="true" />
+                <div className="next-scanlines" aria-hidden="true" />
                 <div className="relative z-10 mx-auto max-w-6xl">
                     <a href="/next#divisions" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
                         <ArrowLeft className="size-4" /> All divisions

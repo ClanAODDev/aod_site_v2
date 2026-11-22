@@ -114,6 +114,29 @@ describe('Prototype', function () {
         expect($response->getContent())->not->toContain('444444444444444444');
     });
 
+    it('picks the hero image, then the first screenshot, as the division backdrop', function (array $extra, ?string $backdrop) {
+        Http::fake([
+            '*/api/v1/divisions/battlefield*' => Http::response(['data' => ['division' => [
+                'name' => 'Battlefield',
+                'slug' => 'battlefield',
+                'abbreviation' => 'bf',
+                'members_count' => 1,
+                ...$extra,
+            ]]]),
+            '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield', 'show_on_site' => true]]]),
+        ]);
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next/divisions/battlefield')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page->where('division.backdrop', $backdrop));
+    })->with([
+        'hero image' => [['hero_image' => 'https://example.com/hero.jpg', 'screenshots' => [['url' => 'https://example.com/shot.jpg']]], 'https://example.com/hero.jpg'],
+        'first screenshot' => [['screenshots' => [['url' => 'https://example.com/shot.jpg'], ['url' => 'https://example.com/two.jpg']]], 'https://example.com/shot.jpg'],
+        'nothing' => [[], null],
+    ]);
+
     it('returns 404 for a division the tracker does not know', function () {
         Http::fake([
             '*/api/v1/divisions' => Http::response(['data' => [['name' => 'Battlefield', 'slug' => 'battlefield']]]),
