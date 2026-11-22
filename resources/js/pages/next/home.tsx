@@ -321,6 +321,14 @@ function Values() {
                     </Reveal>
                 ))}
             </div>
+            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+                <a href="/next/code-of-conduct" className="next-button-ghost">
+                    Read the code of conduct <ArrowRight className="size-4" />
+                </a>
+                <a href="/next/ranks" className="next-button-ghost">
+                    See the ranking structure <ArrowRight className="size-4" />
+                </a>
+            </div>
         </section>
     );
 }
