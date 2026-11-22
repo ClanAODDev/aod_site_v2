@@ -54,6 +54,19 @@ describe('Prototype', function () {
                 ->has('twitch.channel'));
     });
 
+    it('passes eight store links for the merch section', function () {
+        $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
+
+        $this->withCookie(RequirePrototypeAccess::COOKIE, $grant)
+            ->get('/next')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->where('merch.storeUrl', config('aod.merch.store_url'))
+                ->has('merch.items', 8)
+                ->where('merch.items.0.href', fn (string $href) => str_starts_with($href, config('aod.merch.store_url') . '/'))
+                ->where('merch.items.0.image', fn (string $image) => str_starts_with($image, config('aod.merch.image_base_url'))));
+    });
+
     it('stops letting a cookie in once the key changes', function () {
         $grant = hash_hmac('sha256', 'open-sesame', config('app.key'));
         config(['aod.prototype.access_key' => 'new-key']);
