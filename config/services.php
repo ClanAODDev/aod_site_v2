@@ -23,6 +23,7 @@ return [
     'aod' => [
         'access_token' => env('AOD_TRACKER_TOKEN', ''),
         'tracker_url' => env('TRACKER_URL', 'https://tracker.clanaod.net'),
+        'tracker_webhook_secret' => env('TRACKER_WEBHOOK_SECRET'),
         'twitter_rss_feed' => env('TWITTER_RSS_FEED'),
     ],
 

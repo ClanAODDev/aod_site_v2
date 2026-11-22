@@ -6,6 +6,8 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrototypeController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\TrackerDivisionWebhookController;
+use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\RequirePrototypeAccess;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,6 +15,11 @@ use Inertia\Inertia;
 if (app()->environment('local')) {
     Route::get('_dev/gallery', fn () => Inertia::render('dev/gallery'))->name('dev.gallery');
 }
+
+Route::post('/webhooks/tracker/divisions', TrackerDivisionWebhookController::class)
+    ->withoutMiddleware(HandleInertiaRequests::class)
+    ->middleware('throttle:30,1')
+    ->name('webhooks.tracker.divisions');
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
