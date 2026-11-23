@@ -32,7 +32,10 @@ export function ContinuousCarousel<T>({ items, keyFor, renderItem, speed = 0.5, 
                 <ChevronLeft />
             </button>
 
-            <div ref={viewportRef} className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            <div
+                ref={viewportRef}
+                className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+            >
                 <div ref={trackRef} className="flex w-max" style={{ gap: `${gap}px` }}>
                     {doubled.map((item, index) => (
                         <div key={`${keyFor(item)}-${index}`} className="shrink-0">

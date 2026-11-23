@@ -14,7 +14,7 @@ export function PageCta({ title, children, link }: PageCtaProps) {
 
     return (
         <section className="next-join relative overflow-hidden border-t border-primary/40 px-4 py-20 text-center sm:px-6">
-            <h2 className="next-heading text-4xl font-bold uppercase text-foreground sm:text-5xl">{title}</h2>
+            <h2 className="next-heading text-4xl font-bold text-foreground uppercase sm:text-5xl">{title}</h2>
             <p className="mx-auto mt-3 max-w-2xl text-lg text-muted-foreground">{children}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <button type="button" onClick={openApply} className="next-button next-button-lg">

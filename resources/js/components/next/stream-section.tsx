@@ -1,10 +1,10 @@
 import { ArrowRight, Eye, Play, Radio, Users } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { TwitchIcon } from '@/components/icons/twitch-icon';
 import { Reveal } from '@/components/reveal';
 import { useInView } from '@/hooks/use-in-view';
-import { loadTwitchEmbedApi } from '@/lib/twitch-embed-api';
+import { loadTwitchEmbedApi, type TwitchPlayer } from '@/lib/twitch-embed-api';
 import { cn } from '@/lib/utils';
 
 export interface StreamVod {
@@ -51,11 +51,13 @@ function formatDuration(duration: string): string {
 
 function LivePlayer({ channel }: { channel: string }) {
     const embedRef = useRef<HTMLDivElement>(null);
-    const { ref, inView } = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -10% 0px' });
+    const playerRef = useRef<TwitchPlayer | null>(null);
+    const [ready, setReady] = useState(false);
+    const { ref, inView, seen } = useInView<HTMLDivElement>({ rootMargin: '0px 0px -10% 0px' });
 
     useEffect(() => {
         const el = embedRef.current;
-        if (!el || !inView) {
+        if (!el || !seen) {
             return;
         }
         el.id = 'next-twitch-embed';
@@ -75,16 +77,36 @@ function LivePlayer({ channel }: { channel: string }) {
                 parent: [window.location.hostname],
             });
             embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+                if (cancelled) {
+                    return;
+                }
                 const player = embed.getPlayer();
                 player.setMuted(true);
-                player.play();
+                playerRef.current = player;
+                setReady(true);
             });
         });
 
         return () => {
             cancelled = true;
+            playerRef.current = null;
+            setReady(false);
+            el.replaceChildren();
         };
-    }, [channel, inView]);
+    }, [channel, seen]);
+
+    useEffect(() => {
+        const player = playerRef.current;
+        if (!player || !ready) {
+            return;
+        }
+
+        if (inView) {
+            player.play();
+        } else {
+            player.pause();
+        }
+    }, [inView, ready]);
 
     return (
         <div ref={ref} className="next-panel aspect-video overflow-hidden bg-black">
@@ -109,11 +131,24 @@ function VodCard({ vod, featured = false }: { vod: StreamVod; featured?: boolean
                 <span className="next-vod-play" aria-hidden="true">
                     <Play className="size-5 fill-current" />
                 </span>
-                <span className="absolute bottom-2 right-2 bg-black/80 px-1.5 py-0.5 font-mono text-[11px] text-white">{formatDuration(vod.duration)}</span>
-                {game && <span className="absolute left-2 top-2 bg-black/80 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-white/90">{game}</span>}
+                <span className="absolute right-2 bottom-2 bg-black/80 px-1.5 py-0.5 font-mono text-[11px] text-white">
+                    {formatDuration(vod.duration)}
+                </span>
+                {game && (
+                    <span className="absolute top-2 left-2 bg-black/80 px-2 py-0.5 font-mono text-[11px] tracking-wide text-white/90 uppercase">
+                        {game}
+                    </span>
+                )}
             </span>
             <span className="flex flex-1 flex-col gap-2 p-4">
-                <span className={cn('next-heading font-bold uppercase leading-tight text-foreground', featured ? 'text-2xl sm:text-3xl' : 'line-clamp-2 text-lg')}>{title}</span>
+                <span
+                    className={cn(
+                        'next-heading leading-tight font-bold text-foreground uppercase',
+                        featured ? 'text-2xl sm:text-3xl' : 'line-clamp-2 text-lg',
+                    )}
+                >
+                    {title}
+                </span>
                 <span className="mt-auto flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
                     <Eye className="size-3.5" aria-hidden="true" /> {vod.view_count.toLocaleString('en-US')} views
                 </span>
@@ -132,11 +167,16 @@ export function StreamSection({ twitch }: { twitch: TwitchData }) {
             <div className="mx-auto max-w-6xl">
                 <div className="mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
                     <div>
-                        <p className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] next-red-text">
+                        <p className="next-red-text mb-3 flex items-center gap-2 font-mono text-xs tracking-[0.3em] uppercase">
                             {live ? <span className="next-live-badge">Live now</span> : <Radio className="size-4" aria-hidden="true" />}
                             {live ? 'On the channel' : 'AOD on Twitch'}
                         </p>
-                        <h2 className={cn('next-heading font-bold uppercase tracking-wide text-foreground', live ? 'line-clamp-2 max-w-3xl text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl')}>
+                        <h2
+                            className={cn(
+                                'next-heading font-bold tracking-wide text-foreground uppercase',
+                                live ? 'line-clamp-2 max-w-3xl text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl',
+                            )}
+                        >
                             {live ? (twitch.stream?.title ?? 'We are live') : 'Catch the stream'}
                         </h2>
                         <p className="mt-3 max-w-xl text-muted-foreground">
@@ -175,8 +215,15 @@ export function StreamSection({ twitch }: { twitch: TwitchData }) {
                         </div>
                     </div>
                 ) : (
-                    <a href={channelUrl} target="_blank" rel="noreferrer" className="next-panel flex items-center justify-between gap-4 p-8 text-foreground">
-                        <span className="next-heading text-2xl font-bold uppercase">The channel is quiet right now. Follow to hear when we go live.</span>
+                    <a
+                        href={channelUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="next-panel flex items-center justify-between gap-4 p-8 text-foreground"
+                    >
+                        <span className="next-heading text-2xl font-bold uppercase">
+                            The channel is quiet right now. Follow to hear when we go live.
+                        </span>
                         <ArrowRight className="size-6 shrink-0 text-primary" />
                     </a>
                 )}

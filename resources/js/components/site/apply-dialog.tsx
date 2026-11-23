@@ -34,13 +34,7 @@ export function ApplyDialogProvider({ children, variant = 'classic' }: { childre
     const [open, setOpen] = useState(false);
     const { divisions } = usePage<SharedPageProps>().props;
 
-    const floatingIcons = useMemo(
-        () =>
-            [...divisions]
-                .sort(() => Math.random() - 0.5)
-                .slice(0, 8),
-        [divisions],
-    );
+    const floatingIcons = useMemo(() => [...divisions].sort(() => Math.random() - 0.5).slice(0, 8), [divisions]);
 
     return (
         <ApplyDialogContext.Provider value={() => setOpen(true)}>
@@ -49,33 +43,33 @@ export function ApplyDialogProvider({ children, variant = 'classic' }: { childre
                 {variant === 'next' ? (
                     <NextApplyContent />
                 ) : (
-                <DialogContent className="overflow-hidden sm:max-w-xl">
-                    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-                        {floatingIcons.map((division, index) => (
-                            <img
-                                key={division.slug}
-                                src={division.icon}
-                                alt=""
-                                className="floating-icon absolute opacity-[0.06] grayscale blur-[1px]"
-                                style={FLOATING_ICON_POSITIONS[index % FLOATING_ICON_POSITIONS.length]}
-                            />
-                        ))}
-                    </div>
+                    <DialogContent className="overflow-hidden sm:max-w-xl">
+                        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+                            {floatingIcons.map((division, index) => (
+                                <img
+                                    key={division.slug}
+                                    src={division.icon}
+                                    alt=""
+                                    className="floating-icon absolute opacity-[0.06] blur-[1px] grayscale"
+                                    style={FLOATING_ICON_POSITIONS[index % FLOATING_ICON_POSITIONS.length]}
+                                />
+                            ))}
+                        </div>
 
-                    <div className="relative flex flex-col items-center gap-5 py-8 text-center">
-                        <DialogTitle className="text-2xl">Register an account</DialogTitle>
-                        <p className="max-w-sm text-sm text-muted-foreground">
-                            You must have an account in order to apply for one of our divisions.
-                        </p>
-                        <a
-                            href={DISCORD_REGISTRATION_URL}
-                            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                        >
-                            <DiscordIcon className="size-4" />
-                            Continue with Discord
-                        </a>
-                    </div>
-                </DialogContent>
+                        <div className="relative flex flex-col items-center gap-5 py-8 text-center">
+                            <DialogTitle className="text-2xl">Register an account</DialogTitle>
+                            <p className="max-w-sm text-sm text-muted-foreground">
+                                You must have an account in order to apply for one of our divisions.
+                            </p>
+                            <a
+                                href={DISCORD_REGISTRATION_URL}
+                                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                            >
+                                <DiscordIcon className="size-4" />
+                                Continue with Discord
+                            </a>
+                        </div>
+                    </DialogContent>
                 )}
             </Dialog>
         </ApplyDialogContext.Provider>

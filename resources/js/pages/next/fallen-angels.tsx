@@ -38,7 +38,7 @@ function Plaque({ member }: { member: FallenMember }) {
         <>
             <Flame className="next-candle size-5" aria-hidden="true" />
             <span className="next-serif block text-2xl leading-tight text-foreground">{member.name}</span>
-            <span className="mt-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">{fallenOn(member.date_fallen)}</span>
+            <span className="mt-2 block font-mono text-xs tracking-widest text-muted-foreground uppercase">{fallenOn(member.date_fallen)}</span>
             {member.forum_profile && (
                 <span className="mt-4 inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
                     Forum profile <ArrowUpRight className="size-3.5" aria-hidden="true" />
@@ -70,13 +70,22 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
             </Head>
 
-            <section className="next-memorial relative flex flex-col items-center overflow-hidden px-4 pb-14 pt-32 text-center">
-                <video src="/images/memoriam-v2.webm" className="next-memorial-video" preload="auto" loop playsInline muted autoPlay aria-hidden="true" />
+            <section className="next-memorial relative flex flex-col items-center overflow-hidden px-4 pt-32 pb-14 text-center">
+                <video
+                    src="/images/memoriam-v2.webm"
+                    className="next-memorial-video"
+                    preload="auto"
+                    loop
+                    playsInline
+                    muted
+                    autoPlay
+                    aria-hidden="true"
+                />
                 <div className="relative z-10 flex flex-col items-center">
                     <AodMark className="next-mark-mourning mb-8 size-24 text-foreground/70" title="Angels of Death" />
-                    <p className="font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground">In memoriam</p>
-                    <h1 className="next-heading mt-3 text-6xl font-bold uppercase tracking-wide text-foreground sm:text-7xl">Fallen Angels</h1>
-                    <div className="next-serif mt-10 space-y-1.5 text-xl italic text-foreground/85 sm:text-2xl">
+                    <p className="font-mono text-xs tracking-[0.4em] text-muted-foreground uppercase">In memoriam</p>
+                    <h1 className="next-heading mt-3 text-6xl font-bold tracking-wide text-foreground uppercase sm:text-7xl">Fallen Angels</h1>
+                    <div className="next-serif mt-10 space-y-1.5 text-xl text-foreground/85 italic sm:text-2xl">
                         {POEM.map((line, index) => (
                             <p key={line} className="next-poem-line" style={{ animationDelay: `${400 + index * 380}ms` }}>
                                 {line}
@@ -86,12 +95,12 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                 </div>
             </section>
 
-            <section className="border-t border-border px-4 pb-24 pt-14 sm:px-6">
+            <section className="border-t border-border px-4 pt-14 pb-24 sm:px-6">
                 <div className="mx-auto max-w-6xl">
                     <div className="mb-12 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:items-end md:text-left">
                         <div>
-                            <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] next-red-text">The wall</p>
-                            <h2 className="next-heading text-4xl font-bold uppercase text-foreground sm:text-5xl">Their names stay with us</h2>
+                            <p className="next-red-text mb-3 font-mono text-xs tracking-[0.3em] uppercase">The wall</p>
+                            <h2 className="next-heading text-4xl font-bold text-foreground uppercase sm:text-5xl">Their names stay with us</h2>
                             <p className="mt-3 text-muted-foreground">
                                 {fallen.length === 1 ? 'One angel' : `${fallen.length} angels`} remembered by the community since {foundedYear}.
                             </p>
@@ -99,13 +108,16 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                         {fallen.length > 12 && (
                             <label className="relative block w-full max-w-xs">
                                 <span className="sr-only">Find a name</span>
-                                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+                                <Search
+                                    className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
+                                    aria-hidden="true"
+                                />
                                 <input
                                     type="search"
                                     value={query}
                                     onChange={(event) => setQuery(event.target.value)}
                                     placeholder="Find a name"
-                                    className="h-11 w-full border border-border bg-transparent pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+                                    className="h-11 w-full border border-border bg-transparent pr-3 pl-9 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                                 />
                             </label>
                         )}
@@ -130,7 +142,7 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
             </section>
 
             <section className="next-remembrance border-t border-border px-4 py-20 text-center sm:px-6">
-                <p className="next-serif mx-auto max-w-2xl text-2xl italic text-foreground/85 sm:text-3xl">
+                <p className="next-serif mx-auto max-w-2xl text-2xl text-foreground/85 italic sm:text-3xl">
                     With honor we remember these precious things,
                     <br />
                     The Fallen Angels, now rest their wings.

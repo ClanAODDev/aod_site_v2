@@ -69,23 +69,39 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
 
     return (
         <NextLayout title={`${division.name} | Prototype`} foundedYear={foundedYear} currentYear={currentYear}>
-            <section className="next-division-hero relative overflow-hidden px-4 pb-20 pt-40 sm:px-6">
+            <section className="next-division-hero relative overflow-hidden px-4 pt-40 pb-20 sm:px-6">
                 {division.backdrop ? (
-                    <div className="next-division-backdrop" style={{ '--division-backdrop': `url('${division.backdrop}')`, backgroundPosition: division.backdropPosition ?? undefined } as CSSProperties} aria-hidden="true" />
+                    <div
+                        className="next-division-backdrop"
+                        style={
+                            {
+                                '--division-backdrop': `url('${division.backdrop}')`,
+                                backgroundPosition: division.backdropPosition ?? undefined,
+                            } as CSSProperties
+                        }
+                        aria-hidden="true"
+                    />
                 ) : (
                     division.icon && <img src={division.icon} alt="" className="next-division-watermark" aria-hidden="true" />
                 )}
                 <div className="next-division-veil" aria-hidden="true" />
                 <div className="next-scanlines" aria-hidden="true" />
                 <div className="relative z-10 mx-auto max-w-6xl">
-                    <a href="/next#divisions" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
+                    <a
+                        href="/next#divisions"
+                        className="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground uppercase hover:text-foreground"
+                    >
                         <ArrowLeft className="size-4" /> All divisions
                     </a>
                     <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-                        {division.icon && <img src={division.icon} alt="" className="size-20 shrink-0 object-contain drop-shadow-[0_0_24px_rgba(0,0,0,0.8)]" />}
+                        {division.icon && (
+                            <img src={division.icon} alt="" className="size-20 shrink-0 object-contain drop-shadow-[0_0_24px_rgba(0,0,0,0.8)]" />
+                        )}
                         <div>
-                            <p className="font-mono text-xs uppercase tracking-[0.3em] next-red-text">AOD Division</p>
-                            <h1 className="next-heading mt-1 text-5xl font-bold uppercase leading-none text-foreground sm:text-7xl">{division.name}</h1>
+                            <p className="next-red-text font-mono text-xs tracking-[0.3em] uppercase">AOD Division</p>
+                            <h1 className="next-heading mt-1 text-5xl leading-none font-bold text-foreground uppercase sm:text-7xl">
+                                {division.name}
+                            </h1>
                         </div>
                     </div>
                     <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -123,7 +139,7 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
                         </div>
                         {division.screenshots.length > 0 && (
                             <div className="mt-12">
-                                <h2 className="next-heading mb-4 text-3xl font-bold uppercase text-foreground">From the field</h2>
+                                <h2 className="next-heading mb-4 text-3xl font-bold text-foreground uppercase">From the field</h2>
                                 <ScreenshotGallery screenshots={division.screenshots} />
                             </div>
                         )}
@@ -132,11 +148,14 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
                     <aside className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
                         {division.leadership.length > 0 && (
                             <div className="next-panel p-6">
-                                <h2 className="next-heading text-2xl font-bold uppercase text-foreground">Leadership</h2>
+                                <h2 className="next-heading text-2xl font-bold text-foreground uppercase">Leadership</h2>
                                 <ul className="mt-4 divide-y divide-border">
                                     {division.leadership.map((leader) => (
                                         <li key={`${leader.name}-${leader.position}`} className="flex items-center gap-3 py-3">
-                                            <span className="next-rank" style={{ '--rank-color': leader.rankColor ?? 'var(--border-strong)' } as CSSProperties}>
+                                            <span
+                                                className="next-rank"
+                                                style={{ '--rank-color': leader.rankColor ?? 'var(--border-strong)' } as CSSProperties}
+                                            >
                                                 {leader.rank ?? '—'}
                                             </span>
                                             <span className="min-w-0">
@@ -149,8 +168,10 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
                             </div>
                         )}
                         <div className="next-panel p-6">
-                            <h2 className="next-heading text-2xl font-bold uppercase text-foreground">Play with us</h2>
-                            <p className="mt-2 text-sm text-muted-foreground">Ready to play? Start an application and we'll get you to the right people.</p>
+                            <h2 className="next-heading text-2xl font-bold text-foreground uppercase">Play with us</h2>
+                            <p className="mt-2 text-sm text-muted-foreground">
+                                Ready to play? Start an application and we'll get you to the right people.
+                            </p>
                             <JoinButton className="next-button mt-4 w-full" />
                         </div>
                     </aside>
@@ -160,14 +181,14 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
             {others.length > 0 && (
                 <section className="border-t border-border bg-card/40 px-4 py-16 sm:px-6">
                     <div className="mx-auto max-w-6xl">
-                        <h2 className="next-heading mb-6 text-3xl font-bold uppercase text-foreground">Other divisions</h2>
+                        <h2 className="next-heading mb-6 text-3xl font-bold text-foreground uppercase">Other divisions</h2>
                         <ul className="flex flex-wrap gap-3">
                             {others.map((entry, index) => (
                                 <li key={entry.href}>
                                     <Reveal delay={Math.min(index, 10) * 40}>
-                                        <a href={nextDivisionHref(entry.href)} className="next-division min-h-0 gap-3 py-2.5 pl-3 pr-4">
+                                        <a href={nextDivisionHref(entry.href)} className="next-division min-h-0 gap-3 py-2.5 pr-4 pl-3">
                                             <img src={entry.icon} alt="" className="size-7 object-contain" />
-                                            <span className="next-heading text-base font-bold uppercase text-foreground">{entry.name}</span>
+                                            <span className="next-heading text-base font-bold text-foreground uppercase">{entry.name}</span>
                                         </a>
                                     </Reveal>
                                 </li>

@@ -26,10 +26,7 @@ export default function DivisionShow({ division }: DivisionShowProps) {
         <SiteLayout>
             <Head title={`${division.name} Division`} />
 
-            <section
-                className="division-hero pt-8"
-                style={{ '--division-header-image': `url('${division.headerImage}')` } as React.CSSProperties}
-            >
+            <section className="division-hero pt-8" style={{ '--division-header-image': `url('${division.headerImage}')` } as React.CSSProperties}>
                 <div className="relative z-10 mx-auto max-w-5xl px-4 py-16">
                     <div className="mt-[116px] mb-8 flex flex-wrap items-center gap-4">
                         <img src={division.icon} alt={`${division.name} Division`} className="size-12 shrink-0 object-contain" />

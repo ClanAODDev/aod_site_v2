@@ -25,12 +25,19 @@
     min-height: 650px;
     background-image:
         linear-gradient(to bottom, transparent 0%, var(--background) 100%),
-        linear-gradient(to right, #0d0d15 0%, transparent 15%, transparent 85%, #0d0d15 100%),
-        var(--division-header-image),
+        linear-gradient(to right, #0d0d15 0%, transparent 15%, transparent 85%, #0d0d15 100%), var(--division-header-image),
         url('/images/division-bg-border.jpg');
     background-repeat: no-repeat, no-repeat, no-repeat, repeat-x;
-    background-position: center 550px, top center, top center, top center;
-    background-size: 100% 100px, 100% 650px, auto, auto;
+    background-position:
+        center 550px,
+        top center,
+        top center,
+        top center;
+    background-size:
+        100% 100px,
+        100% 650px,
+        auto,
+        auto;
 }
 
 /* Divisions index page — a centered illustration (1195x1098) plus a 1px-wide strip of the
@@ -42,10 +49,17 @@
     min-height: 1098px;
     background-image:
         linear-gradient(to bottom, transparent 0%, var(--background) 100%),
-        linear-gradient(to right, #0a0b11 0%, transparent 15%, transparent 85%, #0a0b11 100%),
-        url('/images/divisions-page-bg.jpg'),
+        linear-gradient(to right, #0a0b11 0%, transparent 15%, transparent 85%, #0a0b11 100%), url('/images/divisions-page-bg.jpg'),
         url('/images/divisions-page-top-bg.jpg');
     background-repeat: no-repeat, no-repeat, no-repeat, repeat-x;
-    background-position: center 998px, top center, top center, top center;
-    background-size: 100% 100px, 100% 1098px, auto, auto;
+    background-position:
+        center 998px,
+        top center,
+        top center,
+        top center;
+    background-size:
+        100% 100px,
+        100% 1098px,
+        auto,
+        auto;
 }

@@ -3,7 +3,9 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "format": "prettier --write resources/js resources/css",
+        "format:check": "prettier --check resources/js resources/css"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.3.3",
@@ -16,6 +18,9 @@
         "laravel-vite-plugin": "^2.0.1",
         "lodash": "^4.18.1",
         "postcss": "^8.5.23",
+        "prettier": "^3.10.1",
+        "prettier-plugin-organize-imports": "^4.3.0",
+        "prettier-plugin-tailwindcss": "^0.7.4",
         "stylus": "^0.54.8",
         "stylus-loader": "^6.2.0",
         "tailwindcss": "^4.3.3",
