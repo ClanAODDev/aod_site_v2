@@ -210,6 +210,31 @@
         animation-delay: 0.7s;
     }
 
+    .next-ticker {
+        display: inline-block;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+    }
+
+    .next-ticker-window {
+        display: inline-block;
+        height: 1em;
+        overflow: hidden;
+        vertical-align: bottom;
+    }
+
+    .next-ticker-reel {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(calc(var(--ticker-stop, 0) * -1em));
+        transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+    }
+
+    .next-ticker-reel > span {
+        height: 1em;
+    }
+
     .next-hero-mark-pulse {
         position: absolute;
         inset: -35%;
@@ -944,6 +969,10 @@
         .next-rail-progress {
             animation: none;
             transform: scaleX(1);
+        }
+
+        .next-ticker-reel {
+            transition: none;
         }
     }
 }
