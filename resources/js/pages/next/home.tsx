@@ -11,6 +11,7 @@ import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
 import { SantaHat } from '@/components/next/santa-hat';
 import { SeasonParticles } from '@/components/next/season-particles';
 import { StreamSection, type TwitchData } from '@/components/next/stream-section';
+import { TickerNumber } from '@/components/next/ticker-number';
 import { Reveal } from '@/components/reveal';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
 import { useInView } from '@/hooks/use-in-view';
@@ -66,10 +67,6 @@ const VALUES = [
     },
 ];
 
-function formatCount(value: number | undefined): string {
-    return typeof value === 'number' ? value.toLocaleString('en-US') : '—';
-}
-
 function SectionHeading({ eyebrow, title, children }: { eyebrow: string; title: ReactNode; children?: ReactNode }) {
     return (
         <div className="relative mx-auto mb-12 max-w-3xl text-center">
@@ -99,10 +96,10 @@ function Hero({
 }) {
     const openApply = useOpenApplyDialog();
     const stats = [
-        { value: `${years}`, label: 'Years strong' },
-        { value: `${divisionCount || '—'}`, label: 'Active divisions' },
-        { value: formatCount(discord?.total), label: 'On Discord' },
-        { value: formatCount(discord?.online), label: 'Online now', live: true },
+        { value: years, label: 'Years strong' },
+        { value: divisionCount || undefined, label: 'Active divisions' },
+        { value: discord?.total, label: 'On Discord' },
+        { value: discord?.online, label: 'Online now', live: true },
     ];
 
     return (
@@ -150,7 +147,7 @@ function Hero({
             </div>
 
             <dl className="next-hero-stats relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
-                {stats.map((stat) => (
+                {stats.map((stat, index) => (
                     <div
                         key={stat.label}
                         className="border-border px-4 py-5 [&:not(:last-child)]:border-r max-sm:[&:nth-child(-n+2)]:border-b max-sm:[&:nth-child(2)]:border-r-0"
@@ -159,7 +156,9 @@ function Hero({
                             {stat.live && <span className="next-live-dot" aria-hidden="true" />}
                             {stat.label}
                         </dt>
-                        <dd className="next-heading mt-1 text-3xl font-bold text-foreground sm:text-4xl">{stat.value}</dd>
+                        <dd className="next-heading mt-1 text-3xl font-bold text-foreground sm:text-4xl">
+                            <TickerNumber value={stat.value} delay={900 + index * 120} />
+                        </dd>
                     </div>
                 ))}
             </dl>
@@ -328,7 +327,9 @@ function Divisions() {
                                         <span className="next-heading block truncate text-xl font-bold text-foreground uppercase">
                                             {division.name}
                                         </span>
-                                        <span className="font-mono text-xs text-muted-foreground">{formatCount(division.members_count)} members</span>
+                                        <span className="font-mono text-xs text-muted-foreground">
+                                            <TickerNumber value={division.members_count} delay={Math.min(index, 8) * 50 + 150} /> members
+                                        </span>
                                     </span>
                                     <ArrowRight className="size-5 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
                                 </a>

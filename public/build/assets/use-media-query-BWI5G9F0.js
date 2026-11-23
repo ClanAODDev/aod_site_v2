@@ -1,0 +1,1 @@
+import{r as n}from"./app-CJ4ycbcV.js";function o(e){const[s,c]=n.useState(()=>typeof window>"u"?!1:window.matchMedia(e).matches);return n.useEffect(()=>{const t=window.matchMedia(e),a=()=>c(t.matches);return a(),t.addEventListener("change",a),()=>t.removeEventListener("change",a)},[e]),s}export{o as u};
