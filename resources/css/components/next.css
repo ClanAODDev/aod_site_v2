@@ -175,9 +175,18 @@
         font-family: 'Rajdhani', var(--font-display);
         font-size: 1rem;
         font-weight: 700;
-        color: #fff;
-        background: var(--primary);
-        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        position: relative;
+        color: var(--foreground);
+        isolation: isolate;
+    }
+
+    .next-apply-step::before {
+        content: '';
+        position: absolute;
+        inset: 15%;
+        z-index: -1;
+        border: 2px solid var(--primary);
+        transform: rotate(45deg);
     }
 
     .next-hero {
