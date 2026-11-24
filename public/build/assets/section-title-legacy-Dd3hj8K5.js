@@ -1,1 +1,0 @@
-System.register(["./app-legacy-C9uaizYZ.js","./footer-legacy-CLhMX4ZM.js"],(function(e,t){"use strict";var s,n;return{setters:[e=>{s=e.j},e=>{n=e.g}],execute:function(){e("S",(function({children:e,className:t,as:r="h2"}){return s.jsx(r,{className:n("font-display text-2xl font-medium uppercase md:text-4xl",t),children:e})}))}}}));

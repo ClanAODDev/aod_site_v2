@@ -130,8 +130,8 @@ function Hero({
                     Angels <span className="text-primary">of</span> Death
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-balance text-muted-foreground sm:text-xl">
-                    A multi-game community that has outlasted the games that made it. Built on respect and leadership, still adapting to whatever
-                    comes next.
+                    Games come and go, we stay. A multi-game community built on respect, guided by strong leadership, and ready for whatever plays
+                    next.
                 </p>
                 <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                     <button type="button" onClick={openApply} className="next-button next-button-lg">
