@@ -146,7 +146,7 @@ function Hero({
                 </div>
             </div>
 
-            <dl className="next-hero-stats relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 border border-border bg-background/60 backdrop-blur-sm sm:grid-cols-4">
+            <dl className="next-hero-stats relative z-10 mt-16 grid w-full max-w-4xl grid-cols-2 sm:grid-cols-4">
                 {stats.map((stat, index) => (
                     <div
                         key={stat.label}

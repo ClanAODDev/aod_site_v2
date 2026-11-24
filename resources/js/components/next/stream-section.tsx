@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { TwitchIcon } from '@/components/icons/twitch-icon';
 import { Reveal } from '@/components/reveal';
 import { useInView } from '@/hooks/use-in-view';
+import { usePageVisible } from '@/hooks/use-page-visible';
 import { loadTwitchEmbedApi, type TwitchPlayer } from '@/lib/twitch-embed-api';
 import { cn } from '@/lib/utils';
 
@@ -54,6 +55,8 @@ function LivePlayer({ channel }: { channel: string }) {
     const playerRef = useRef<TwitchPlayer | null>(null);
     const [ready, setReady] = useState(false);
     const { ref, inView, seen } = useInView<HTMLDivElement>({ rootMargin: '0px 0px -10% 0px' });
+    const visible = usePageVisible();
+    const playing = inView && visible;
 
     useEffect(() => {
         const el = embedRef.current;
@@ -101,12 +104,12 @@ function LivePlayer({ channel }: { channel: string }) {
             return;
         }
 
-        if (inView) {
+        if (playing) {
             player.play();
         } else {
             player.pause();
         }
-    }, [inView, ready]);
+    }, [playing, ready]);
 
     return (
         <div ref={ref} className="next-panel aspect-video overflow-hidden bg-black">
