@@ -1,5 +1,6 @@
 import { useInView } from '@/hooks/use-in-view';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { usePageVisible } from '@/hooks/use-page-visible';
 import { useYouTubeCoverVideo } from '@/hooks/use-youtube-cover-video';
 import { cn } from '@/lib/utils';
 
@@ -21,7 +22,8 @@ export function CoverVideo({ videoId, className }: CoverVideoProps) {
 
 function CoverVideoPlayer({ videoId, className }: { videoId: string; className?: string }) {
     const { ref, inView, seen } = useInView<HTMLDivElement>({ rootMargin: '200px 0px' });
-    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId, seen, inView);
+    const visible = usePageVisible();
+    const { containerRef, targetRef } = useYouTubeCoverVideo(videoId, seen, inView && visible);
 
     return (
         <div ref={ref} className={cn('next-cover-video', className)} aria-hidden="true">
