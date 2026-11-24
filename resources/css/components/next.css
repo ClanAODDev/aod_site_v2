@@ -186,6 +186,19 @@
         animation: next-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     }
 
+    .next-hero-stats {
+        background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(0, 0, 0, 0.55), transparent 75%);
+    }
+
+    .next-hero-stats > div {
+        border-color: rgba(255, 255, 255, 0.12);
+        border-bottom-color: transparent;
+    }
+
+    .next-hero-stats dd {
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
+    }
+
     .next-hero-stagger > :nth-child(2) {
         animation-delay: 0.15s;
     }
