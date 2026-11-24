@@ -272,13 +272,12 @@
         inset: 0;
         pointer-events: none;
         opacity: 0;
-        filter: saturate(0.55) contrast(1.1);
         animation: next-video-in 2.4s ease-out 1.2s forwards;
     }
 
     .next-cover-video iframe {
         pointer-events: none;
-        transform: scale(1.35);
+        transform: scale(2.7);
     }
 
     .next-cover-video::after {

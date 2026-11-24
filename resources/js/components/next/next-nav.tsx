@@ -44,7 +44,7 @@ export function NextNav() {
         <header
             className={cn(
                 'fixed inset-x-0 top-0 z-40 transition-colors duration-300',
-                scrolled || open ? 'border-b border-border bg-background/90 backdrop-blur-md' : 'bg-transparent',
+                scrolled || open ? 'border-b border-border bg-background/95' : 'bg-transparent',
             )}
         >
             <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">

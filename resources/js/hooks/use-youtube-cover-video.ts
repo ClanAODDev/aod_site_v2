@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { loadYouTubeIframeApi, type YouTubePlayer } from '@/lib/youtube-iframe-api';
 
 const ASPECT_RATIO = 16 / 9;
+const RENDER_SCALE = 0.5;
 
 /**
  * Mounts a muted, looping, autoplaying YouTube player that always covers its
@@ -106,8 +107,8 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true, p
                 width = containerHeight * ASPECT_RATIO;
             }
 
-            iframe.style.width = `${width}px`;
-            iframe.style.height = `${height}px`;
+            iframe.style.width = `${width * RENDER_SCALE}px`;
+            iframe.style.height = `${height * RENDER_SCALE}px`;
         };
 
         scale();
