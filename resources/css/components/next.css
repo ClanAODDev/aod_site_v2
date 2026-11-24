@@ -108,9 +108,14 @@
         border-radius: 9999px;
         color: #fff;
         background: rgba(188, 9, 19, 0.85);
-        box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.6);
-        animation: next-dot-pulse 2.2s ease-out infinite;
+        isolation: isolate;
         transition: transform 0.25s;
+    }
+
+    .next-intro-ring::after {
+        --pulse-color: rgb(188, 9, 19);
+        --pulse-scale: 1.4;
+        --pulse-duration: 2.2s;
     }
 
     .next-intro-button:hover .next-intro-ring {
@@ -358,9 +363,29 @@
         width: 0.5rem;
         height: 0.5rem;
         border-radius: 9999px;
+        position: relative;
         background: var(--success);
-        box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
-        animation: next-pulse 2s ease-out infinite;
+        isolation: isolate;
+    }
+
+    .next-live-dot::after {
+        --pulse-color: rgb(34, 211, 166);
+        --pulse-scale: 3.5;
+        --pulse-duration: 2s;
+    }
+
+    .next-intro-ring::after,
+    .next-live-dot::after,
+    .next-rail-stop.is-active .next-rail-dot::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        background: var(--pulse-color);
+        opacity: 0;
+        pointer-events: none;
+        animation: next-ring var(--pulse-duration) ease-out infinite;
     }
 
     .next-panel {
@@ -452,9 +477,15 @@
     }
 
     .next-rail-stop.is-active .next-rail-dot {
-        animation: next-dot-pulse 1.6s ease-out infinite;
         background: var(--primary);
         box-shadow: 0 0 14px var(--primary-glow);
+        isolation: isolate;
+    }
+
+    .next-rail-stop.is-active .next-rail-dot::after {
+        --pulse-color: rgb(188, 9, 19);
+        --pulse-scale: 2.8;
+        --pulse-duration: 1.6s;
     }
 
     .next-rail-stop.is-active::after {
@@ -519,6 +550,18 @@
         color: #fff;
         background: var(--next-ember);
         letter-spacing: 0.15em;
+        position: relative;
+        isolation: isolate;
+    }
+
+    .next-live-badge::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        box-shadow: 0 0 14px 2px rgba(210, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
         animation: next-glow 2s ease-in-out infinite;
     }
 
@@ -916,22 +959,24 @@
         }
     }
 
-    @keyframes next-dot-pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.7);
-        }
-        100% {
-            box-shadow: 0 0 0 10px rgba(188, 9, 19, 0);
-        }
-    }
-
     @keyframes next-glow {
         0%,
         100% {
-            box-shadow: 0 0 0 0 rgba(210, 0, 0, 0.5);
+            opacity: 0;
         }
         50% {
-            box-shadow: 0 0 14px 2px rgba(210, 0, 0, 0.45);
+            opacity: 1;
+        }
+    }
+
+    @keyframes next-ring {
+        from {
+            transform: scale(1);
+            opacity: 0.7;
+        }
+        to {
+            transform: scale(var(--pulse-scale));
+            opacity: 0;
         }
     }
 
@@ -945,24 +990,15 @@
         }
     }
 
-    @keyframes next-pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
-        }
-        100% {
-            box-shadow: 0 0 0 10px rgba(34, 211, 166, 0);
-        }
-    }
-
     @media (prefers-reduced-motion: reduce) {
         .next-triangles span,
-        .next-live-dot,
-        .next-live-badge,
+        .next-live-dot::after,
+        .next-live-badge::after,
         .next-era-enter,
         .next-chip-enter,
         .next-poem-line,
         .next-plaque:hover .next-candle,
-        .next-rail-stop.is-active .next-rail-dot,
+        .next-rail-stop.is-active .next-rail-dot::after,
         .next-apply-marquee-track,
         .next-hero-stagger > *,
         .next-hero-stats,
@@ -970,7 +1006,7 @@
             animation: none;
         }
 
-        .next-intro-ring {
+        .next-intro-ring::after {
             animation: none;
         }
 
