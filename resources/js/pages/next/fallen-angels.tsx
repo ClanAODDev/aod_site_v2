@@ -101,9 +101,11 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                         <div>
                             <p className="next-red-text mb-3 font-mono text-xs tracking-[0.3em] uppercase">The wall</p>
                             <h2 className="next-heading text-4xl font-bold text-foreground uppercase sm:text-5xl">Their names stay with us</h2>
-                            <p className="mt-3 text-muted-foreground">
-                                {fallen.length === 1 ? 'One angel' : `${fallen.length} angels`} remembered by the community since {foundedYear}.
-                            </p>
+                            {fallen.length > 0 && (
+                                <p className="mt-3 text-muted-foreground">
+                                    {fallen.length === 1 ? 'One angel' : `${fallen.length} angels`} remembered by the community since {foundedYear}.
+                                </p>
+                            )}
                         </div>
                         {fallen.length > 12 && (
                             <label className="relative block w-full max-w-xs">
