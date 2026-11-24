@@ -497,11 +497,21 @@
         --pulse-duration: 1.6s;
     }
 
-    .next-rail-progress {
+    .next-rail-stop.is-active::after {
+        content: '';
         position: absolute;
         top: 0.6rem;
         left: 0;
-        right: 0;
+        width: 1rem;
+        height: 2px;
+        background: var(--primary);
+    }
+
+    .next-rail-progress {
+        position: absolute;
+        top: 0.6rem;
+        left: calc(1rem + 11px);
+        right: -1rem;
         z-index: 1;
         height: 2px;
         background: var(--primary);
@@ -511,6 +521,10 @@
         animation-name: next-progress;
         animation-timing-function: linear;
         animation-fill-mode: forwards;
+    }
+
+    .next-rail-stop:last-child .next-rail-progress {
+        right: 0;
     }
 
     @keyframes next-progress {
