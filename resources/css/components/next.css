@@ -449,8 +449,7 @@
         transition: background-color 0.5s ease;
     }
 
-    .next-rail-stop.is-passed::before,
-    .next-rail-stop.is-active::before {
+    .next-rail-stop.is-passed::before {
         height: 2px;
         background: var(--primary);
     }
@@ -475,6 +474,7 @@
         left: 1rem;
         width: 11px;
         height: 11px;
+        z-index: 2;
         transform: rotate(45deg);
         background: var(--background);
         box-shadow: inset 0 0 0 2px var(--border-strong);
@@ -497,19 +497,9 @@
         --pulse-duration: 1.6s;
     }
 
-    .next-rail-stop.is-active::after {
-        content: '';
-        position: absolute;
-        bottom: -0.5rem;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: rgba(188, 9, 19, 0.2);
-    }
-
     .next-rail-progress {
         position: absolute;
-        bottom: -0.5rem;
+        top: 0.6rem;
         left: 0;
         right: 0;
         z-index: 1;
