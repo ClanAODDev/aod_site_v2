@@ -16,45 +16,6 @@ return [
         ['id' => 'halloween', 'start' => '10-20', 'end' => '10-31', 'effects' => ['embers']],
     ],
 
-    /**
-     * Highlighted Events
-     *
-     * Icons: https://fontawesome.com/search?o=r&m=free
-     * Video types: youtube, twitch
-     *
-     * Themes:
-     *   - holiday: Red/maroon gradient with diagonal stripes
-     *   - default: Dark neutral gradient
-     *   - esports: Dark blue/purple gradient
-     *   - community: Dark green gradient
-     */
-    'highlighted_events' => [
-        [
-            'id' => 'christmas-2025',
-            'show_snowflakes' => true,
-            'enabled' => true,
-            'start_date' => '12-01',
-            'end_date' => '01-05',
-            'theme' => 'holiday',
-            'badge' => [
-                'icon' => 'fas fa-snowflake',
-                'text' => 'Holiday Special',
-            ],
-            'title' => 'ClanAOD <strong>Christmas Podcast</strong> 2025',
-            'description' => 'Celebrate the season with the Angels of Death! Join us for our annual holiday podcast featuring community stories, gaming highlights, and festive fun.',
-            'video' => [
-                'type' => 'youtube',
-                'id' => 'cdVZmCGgTxs',
-                'title' => 'AOD Christmas Podcast 2025',
-            ],
-            /* 'cta' => [
-                'text' => 'Learn More',
-                'url' => 'https://',
-                'icon' => 'fas fa-arrow-right',
-            ],*/
-        ],
-    ],
-
     'merch' => [
         'store_url' => 'https://exclaim.gg/store/AODMerch',
         'image_base_url' => 'https://exclaim.gg/design-preview/',
