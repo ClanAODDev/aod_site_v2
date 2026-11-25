@@ -2,7 +2,7 @@
 
 The public Clan AOD website.
 
-**Tech Stack:** [Laravel](https://laravel.com/docs) 13 · PHP 8.5 (production on 8.4 until it moves) · React 19 + Inertia + TypeScript · Tailwind v4 · Stylus · Vite
+**Tech Stack:** [Laravel](https://laravel.com/docs) 13 · PHP 8.5 · React 19 + Inertia + TypeScript · Tailwind v4 · Stylus · Vite
 
 Division information (names, logos, page content, leadership) comes from the [AOD Tracker](https://github.com/ClanAODDev/tracker_v3) API, so the site needs a tracker API token to show divisions.
 
@@ -22,7 +22,7 @@ git clone https://github.com/clanaoddev/aod_site_v2
 # set up the environment file
 cp .env.example .env
 
-# install composer dependencies (needs PHP 8.4 and Composer 2)
+# install composer dependencies (needs PHP 8.5 and Composer 2)
 composer install
 
 # or without local PHP
