@@ -173,14 +173,13 @@ function Timeline({ years, videoId }: { years: number; videoId: string | null })
     const titleCount = useMemo(() => new Set(periods.flatMap((period) => period.tags.map((tag) => tag.label))).size, [periods]);
     const [active, setActive] = useState(0);
     const [cycle, setCycle] = useState(0);
-    const [hovered, setHovered] = useState(false);
     const [paused, setPaused] = useState(false);
     const calm = useMediaQuery('(prefers-reduced-motion: reduce)');
     const railRef = useRef<HTMLDivElement>(null);
     const { ref, inView } = useInView<HTMLDivElement>({ rootMargin: '0px 0px -20% 0px' });
     const period = periods[active];
     const last = periods.length - 1;
-    const playing = inView && !hovered && !paused && !calm;
+    const playing = inView && !paused && !calm;
 
     useEffect(() => {
         const rail = railRef.current;
@@ -204,7 +203,7 @@ function Timeline({ years, videoId }: { years: number; videoId: string | null })
                 Two founders became thousands of members across {titleCount} titles and counting. Pick an era.
             </SectionHeading>
 
-            <div ref={ref} className="relative mx-auto max-w-6xl" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            <div ref={ref} className="relative mx-auto max-w-6xl">
                 {!calm && (
                     <div className="mb-3 flex justify-end">
                         <button
