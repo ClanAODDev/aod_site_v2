@@ -174,7 +174,7 @@ export default function Ranks({ foundedYear, currentYear }: RanksProps) {
     const total = GROUPS.reduce((count, group) => count + group.ranks.length, 0);
 
     return (
-        <NextLayout title="Ranking Structure | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
+        <NextLayout title="Ranking Structure | Angels of Death" foundedYear={foundedYear} currentYear={currentYear}>
             <PageHero eyebrow="Ranking structure" title="Earned, not given">
                 <p>
                     Rank in AOD comes from tenure and service, not a title handed out for authority. {total} ranks form one continuous line, from a
@@ -234,7 +234,7 @@ export default function Ranks({ foundedYear, currentYear }: RanksProps) {
                 </div>
             </section>
 
-            <PageCta title="Every rank starts at Recruit" link={{ href: '/next/code-of-conduct', label: 'Read the code of conduct' }}>
+            <PageCta title="Every rank starts at Recruit" link={{ href: '/code-of-conduct', label: 'Read the code of conduct' }}>
                 And every member, at every rank, holds to the same code.
             </PageCta>
         </NextLayout>

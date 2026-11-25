@@ -4,15 +4,15 @@ describe('Canonical host redirect', function () {
     it('redirects a non-canonical host to www.clanaod.net in production', function () {
         app()->instance('env', 'production');
 
-        $response = $this->get('http://warthunder.clanaod.net/divisions');
+        $response = $this->get('http://warthunder.clanaod.net/ranks');
 
-        $response->assertRedirect('http://www.clanaod.net/divisions');
+        $response->assertRedirect('http://www.clanaod.net/ranks');
     });
 
     it('does not redirect the canonical www host', function () {
         app()->instance('env', 'production');
 
-        $response = $this->get('http://www.clanaod.net/divisions');
+        $response = $this->get('http://www.clanaod.net/ranks');
 
         $response->assertOk();
     });
@@ -20,7 +20,7 @@ describe('Canonical host redirect', function () {
     it('does not redirect the bare apex host', function () {
         app()->instance('env', 'production');
 
-        $response = $this->get('http://clanaod.net/divisions');
+        $response = $this->get('http://clanaod.net/ranks');
 
         $response->assertOk();
     });
@@ -29,20 +29,20 @@ describe('Canonical host redirect', function () {
         app()->instance('env', 'production');
 
         $response = $this->withHeaders(['X-Forwarded-Proto' => 'https'])
-            ->get('http://warthunder.clanaod.net/divisions');
+            ->get('http://warthunder.clanaod.net/ranks');
 
-        $response->assertRedirect('https://www.clanaod.net/divisions');
+        $response->assertRedirect('https://www.clanaod.net/ranks');
     });
 
     it('generates https urls for requests forwarded over https', function () {
         $response = $this->withHeaders(['X-Forwarded-Proto' => 'https'])
             ->get('http://www.clanaod.net/sitemap.xml');
 
-        $response->assertSee('<loc>https://www.clanaod.net/history</loc>', escape: false);
+        $response->assertSee('<loc>https://www.clanaod.net/ranks</loc>', escape: false);
     });
 
     it('does not redirect outside production', function () {
-        $response = $this->get('http://warthunder.clanaod.net/divisions');
+        $response = $this->get('http://warthunder.clanaod.net/ranks');
 
         $response->assertOk();
     });

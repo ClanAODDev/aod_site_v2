@@ -8,20 +8,12 @@ return [
     'modern_era_video_id' => env('HISTORY_MODERN_ERA_VIDEO_ID', 'XHgfL_Av_r4'),
 
     /**
-     * The redesign prototype at /next. It 404s unless an access key is set; opening
-     * /next?key=<key> once sets a cookie that lets that browser in until the key changes.
+     * Seasonal touches, by month-day (a range may wrap the new year). Effects:
+     * snow, embers (particles over the hero) and hat (a Santa hat on the hero's mark).
      */
-    'prototype' => [
-        'access_key' => env('PROTOTYPE_ACCESS_KEY'),
-
-        /**
-         * Seasonal touches, by month-day (a range may wrap the new year). Effects:
-         * snow, embers (particles over the hero) and hat (a Santa hat on the hero's mark).
-         */
-        'seasons' => [
-            ['id' => 'winter', 'start' => '12-01', 'end' => '01-05', 'effects' => ['snow', 'hat']],
-            ['id' => 'halloween', 'start' => '10-20', 'end' => '10-31', 'effects' => ['embers']],
-        ],
+    'seasons' => [
+        ['id' => 'winter', 'start' => '12-01', 'end' => '01-05', 'effects' => ['snow', 'hat']],
+        ['id' => 'halloween', 'start' => '10-20', 'end' => '10-31', 'effects' => ['embers']],
     ],
 
     /**

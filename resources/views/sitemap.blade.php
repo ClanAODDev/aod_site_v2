@@ -6,14 +6,14 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>{{ route('history') }}</loc>
+        <loc>{{ route('ranks') }}</loc>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>{{ route('division.index') }}</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <loc>{{ route('code-of-conduct') }}</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('fallen-angels') }}</loc>

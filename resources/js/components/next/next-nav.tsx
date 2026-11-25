@@ -15,16 +15,16 @@ interface NavLink {
 export const NEXT_LINKS: NavLink[] = [
     {
         label: 'Values',
-        href: '/next#values',
+        href: '/#values',
         children: [
-            { label: 'Code of Conduct', href: '/next/code-of-conduct', description: 'The standard every member agrees to.' },
-            { label: 'Ranking Structure', href: '/next/ranks', description: 'Every rank, from Recruit to Sergeant Major.' },
+            { label: 'Code of Conduct', href: '/code-of-conduct', description: 'The standard every member agrees to.' },
+            { label: 'Ranking Structure', href: '/ranks', description: 'Every rank, from Recruit to Sergeant Major.' },
         ],
     },
-    { label: 'History', href: '/next#timeline' },
-    { label: 'Divisions', href: '/next#divisions' },
-    { label: 'Stream', href: '/next#stream' },
-    { label: 'Fallen Angels', href: '/next/fallen-angels' },
+    { label: 'History', href: '/#timeline' },
+    { label: 'Divisions', href: '/#divisions' },
+    { label: 'Stream', href: '/#stream' },
+    { label: 'Fallen Angels', href: '/fallen-angels' },
     { label: 'Forums', href: 'https://www.clanaod.net/forums' },
 ];
 
@@ -48,15 +48,12 @@ export function NextNav() {
             )}
         >
             <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-                <a href="/next" className="flex items-center gap-3">
+                <a href="/" className="flex items-center gap-3">
                     <AodMark className="size-8" />
                     <span className="next-heading text-base font-bold tracking-[0.18em] whitespace-nowrap text-foreground uppercase sm:text-lg">
                         Angels of Death
                     </span>
                 </a>
-                <span className="next-red-text hidden rounded-sm border border-primary/50 px-2 py-0.5 font-mono text-[10px] tracking-widest uppercase sm:inline">
-                    Prototype
-                </span>
                 <nav className="ml-auto hidden items-center gap-6 lg:flex" aria-label="Main">
                     {NEXT_LINKS.map((link) =>
                         link.children ? (

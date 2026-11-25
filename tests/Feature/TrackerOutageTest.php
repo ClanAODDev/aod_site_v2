@@ -16,7 +16,7 @@ describe('Tracker outages', function () {
     it('renders pages with an empty division list when the tracker is unreachable', function () {
         $this->fakeHttp(['*' => Http::failedConnection()]);
 
-        $this->get(route('history'))
+        $this->get(route('ranks'))
             ->assertOk()
             ->assertInertia(fn (AssertableInertia $page) => $page->where('divisions', []));
     });
@@ -24,7 +24,7 @@ describe('Tracker outages', function () {
     it('does not cache an empty division list after a failed request', function () {
         $this->fakeHttp(['*/api/v1/divisions' => Http::response([], 500)]);
 
-        $this->get(route('history'))->assertOk();
+        $this->get(route('ranks'))->assertOk();
 
         expect(Cache::get(OnSiteDivisions::CACHE_KEY))->toBeNull();
     });
@@ -36,7 +36,7 @@ describe('Tracker outages', function () {
             ]], 200),
         ]);
 
-        $this->get(route('history'))->assertOk();
+        $this->get(route('ranks'))->assertOk();
         $cached = Cache::get(OnSiteDivisions::CACHE_KEY);
         expect($cached)->not->toBeEmpty();
 
@@ -46,7 +46,7 @@ describe('Tracker outages', function () {
         $this->withoutDefer();
         Log::spy();
 
-        $this->get(route('history'))
+        $this->get(route('ranks'))
             ->assertOk()
             ->assertInertia(fn (AssertableInertia $page) => $page->where('divisions', $cached));
 

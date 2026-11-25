@@ -32,7 +32,7 @@ interface SeasonInfo {
     effects: string[];
 }
 
-interface PrototypeProps {
+interface HomeProps {
     discord: DiscordStats | null;
     twitch: TwitchData;
     heroVideoId: string | null;
@@ -313,7 +313,7 @@ function Divisions() {
             {sorted.length === 0 ? (
                 <p className="text-center text-muted-foreground">Division data is unavailable right now.</p>
             ) : (
-                <ul className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {sorted.map((division, index) => (
                         <li key={division.href}>
                             <Reveal delay={Math.min(index, 8) * 50}>
@@ -361,10 +361,10 @@ function Values() {
                 ))}
             </div>
             <div className="relative mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-                <a href="/next/code-of-conduct" className="next-button-ghost">
+                <a href="/code-of-conduct" className="next-button-ghost">
                     Read the code of conduct <ArrowRight className="size-4" />
                 </a>
-                <a href="/next/ranks" className="next-button-ghost">
+                <a href="/ranks" className="next-button-ghost">
                     See the ranking structure <ArrowRight className="size-4" />
                 </a>
             </div>
@@ -380,7 +380,7 @@ function Remembrance() {
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
                 Some of the people who built this community are no longer with us. Their names stay on our wall.
             </p>
-            <a href="/next/fallen-angels" className="next-button-ghost mt-8 inline-flex">
+            <a href="/fallen-angels" className="next-button-ghost mt-8 inline-flex">
                 Honor the fallen <ArrowRight className="size-4" />
             </a>
         </section>
@@ -415,22 +415,12 @@ function JoinBand({ foundedYear }: { foundedYear: number }) {
     );
 }
 
-export default function PrototypeHome({
-    discord,
-    twitch,
-    heroVideoId,
-    introVideoId,
-    historyVideoId,
-    merch,
-    season,
-    foundedYear,
-    currentYear,
-}: PrototypeProps) {
+export default function Home({ discord, twitch, heroVideoId, introVideoId, historyVideoId, merch, season, foundedYear, currentYear }: HomeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const years = currentYear - foundedYear;
 
     return (
-        <NextLayout title="Angels of Death | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
+        <NextLayout title="Angels of Death Gaming Clan | Since 1999" foundedYear={foundedYear} currentYear={currentYear}>
             <Hero
                 years={years}
                 foundedYear={foundedYear}

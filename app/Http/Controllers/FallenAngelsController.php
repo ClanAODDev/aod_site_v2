@@ -17,7 +17,7 @@ class FallenAngelsController extends Controller
 
     public function __invoke(): Response
     {
-        return Inertia::render('fallen-angels', [
+        return Inertia::render('next/fallen-angels', [
             'fallen' => $this->fallen(),
         ])->withViewData([
             'metaTitle' => 'Fallen Angels | Angels of Death',

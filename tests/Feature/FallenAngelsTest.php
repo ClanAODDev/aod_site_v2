@@ -16,7 +16,7 @@ describe('Fallen Angels Page', function () {
         $this->get(route('fallen-angels'))
             ->assertOk()
             ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('fallen-angels')
+                ->component('next/fallen-angels')
                 ->has('fallen'));
     });
 
