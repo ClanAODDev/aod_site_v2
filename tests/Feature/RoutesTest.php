@@ -7,6 +7,8 @@ describe('Application Routes', function () {
                 '/' => 'home',
                 '/history' => 'history',
                 '/fallen-angels' => 'fallen-angels',
+                '/ranks' => 'ranks',
+                '/code-of-conduct' => 'code-of-conduct',
                 '/divisions' => 'division.index',
                 '/divisions/{division}' => 'division.show',
                 '/privacy-policy' => 'privacy-policy',

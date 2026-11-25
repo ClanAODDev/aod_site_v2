@@ -27,7 +27,7 @@ const RULES = [
 
 export default function CodeOfConduct({ foundedYear, currentYear }: CodeOfConductProps) {
     return (
-        <NextLayout title="Code of Conduct | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
+        <NextLayout title="Code of Conduct | Angels of Death" foundedYear={foundedYear} currentYear={currentYear}>
             <PageHero eyebrow="Code of conduct" title="An honor clan first">
                 <p>
                     The Code of Conduct is the face of our clan. It is more than a guideline for behavior: it says what kind of gamers we are, and who
@@ -64,7 +64,7 @@ export default function CodeOfConduct({ foundedYear, currentYear }: CodeOfConduc
                 </div>
             </section>
 
-            <PageCta title="Agreed on day one" link={{ href: '/next/ranks', label: 'See the ranking structure' }}>
+            <PageCta title="Agreed on day one" link={{ href: '/ranks', label: 'See the ranking structure' }}>
                 Every member agrees to the Code of Conduct when they are accepted into the clan, and upholds it at all times.{' '}
                 <strong className="text-foreground">Violating it means removal from AOD.</strong>
             </PageCta>

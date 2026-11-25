@@ -5,41 +5,25 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Support\DiscordStats;
+use App\Support\Season;
 use App\Support\TwitchStream;
-use Carbon\CarbonImmutable;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class HomeController extends Controller
 {
-    public function __construct(
-        private readonly DiscordStats $discordStats,
-        private readonly TwitchStream $twitchStream,
-    ) {}
+    private const MERCH_COUNT = 8;
 
-    public function __invoke(): Response
+    public function __invoke(DiscordStats $discord, TwitchStream $twitch, Season $season): Response
     {
-        $discord = $this->discordStats->get();
-        $twitch = $this->twitchStream->get();
-        $highlightedEvent = $this->getActiveHighlightedEvent();
-
-        $showTwitchLive = $twitch['is_live'] ?? false;
-        $showHighlightedEvent = ! $showTwitchLive && $highlightedEvent !== null;
-        $showVods = ! $showTwitchLive && ! $showHighlightedEvent && ! empty($twitch['vods']);
-
-        $merch = config('aod.merch');
-        $merch['items'] = collect($merch['items'])->shuffle()->values()->all();
-
-        return Inertia::render('home', [
-            'discord' => $discord,
-            'twitch' => $twitch,
-            'highlightedEvent' => $highlightedEvent,
-            'showTwitchLive' => $showTwitchLive,
-            'showHighlightedEvent' => $showHighlightedEvent,
-            'showVods' => $showVods,
+        return Inertia::render('next/home', [
+            'discord' => $discord->get(),
+            'twitch' => $twitch->get(),
+            'season' => $season->current(),
             'heroVideoId' => config('aod.hero_video_id'),
             'introVideoId' => config('aod.intro_video_id'),
-            'merch' => $merch,
+            'historyVideoId' => config('aod.modern_era_video_id'),
+            'merch' => $this->merch(),
         ])->withViewData([
             'metaTitle' => 'Angels of Death Gaming Clan | Since 1999',
             'metaDescription' => 'Angels of Death is a multi-game gaming community founded in 1999 with 1,200+ active members across 10 active divisions worldwide. Join us on PC, PlayStation, and Xbox.',
@@ -47,33 +31,18 @@ class HomeController extends Controller
         ]);
     }
 
-    private function getActiveHighlightedEvent(): ?array
+    private function merch(): array
     {
-        $events = config('aod.highlighted_events', []);
-        $now = now();
+        $merch = config('aod.merch');
 
-        foreach ($events as $event) {
-            if (! ($event['enabled'] ?? false)) {
-                continue;
-            }
-
-            $startDate = CarbonImmutable::createFromFormat('m-d', $event['start_date'])->year($now->year);
-            $endDate = CarbonImmutable::createFromFormat('m-d', $event['end_date'])->year($now->year);
-
-            if ($endDate->lt($startDate)) {
-                if ($now->month >= $startDate->month) {
-                    $endDate = $endDate->addYear();
-                } else {
-                    $startDate = $startDate->subYear();
-                }
-            }
-
-            if ($now->between($startDate, $endDate)) {
-                return $event;
-            }
-        }
-
-        return null;
+        return [
+            'storeUrl' => $merch['store_url'],
+            'items' => collect($merch['items'])->shuffle()->take(self::MERCH_COUNT)->map(fn (array $item) => [
+                'name' => $item['name'],
+                'href' => "{$merch['store_url']}/{$item['slug']}",
+                'image' => "{$merch['image_base_url']}{$item['image_id']}{$merch['image_suffix']}",
+            ])->values()->all(),
+        ];
     }
 
     private function structuredData(): array

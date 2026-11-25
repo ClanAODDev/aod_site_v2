@@ -9,4 +9,6 @@ export interface Division {
 export interface SharedPageProps {
     [key: string]: unknown;
     divisions: Division[];
+    foundedYear: number;
+    currentYear: number;
 }

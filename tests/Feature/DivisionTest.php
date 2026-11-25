@@ -6,12 +6,6 @@ use Inertia\Testing\AssertableInertia;
 
 describe('Division Pages', function () {
     describe('Division Index', function () {
-        it('loads successfully', function () {
-            $this->get(route('division.index'))
-                ->assertOk()
-                ->assertInertia(fn (AssertableInertia $page) => $page->component('division/index'));
-        });
-
         it('has correct route name', function () {
             expect(route('division.index'))->toBe(url('/divisions'));
         });
@@ -35,7 +29,7 @@ describe('Division Pages', function () {
                 ]]], 200),
             ]);
 
-            $response = $this->get(route('division.index'))->assertOk();
+            $response = $this->get(route('home'))->assertOk();
 
             $response->assertInertia(fn (AssertableInertia $page) => $page
                 ->where('divisions.0', fn ($division) => collect($division)->keys()->sort()->values()->all() === ['href', 'icon', 'members_count', 'name', 'slug']));
@@ -99,7 +93,7 @@ describe('Division Pages', function () {
             $response = $this->get(route('division.show', 'cod'))->assertOk();
 
             $response->assertInertia(fn (AssertableInertia $page) => $page
-                ->where('division', fn ($division) => collect($division)->keys()->sort()->values()->all() === ['headerImage', 'icon', 'name', 'screenshots', 'siteContentHtml'])
+                ->where('division', fn ($division) => collect($division)->keys()->sort()->values()->all() === ['abbreviation', 'backdrop', 'backdropPosition', 'heroImage', 'icon', 'leadership', 'membersCount', 'name', 'screenshots', 'siteContentHtml', 'slug'])
                 ->where('division.screenshots', [['url' => 'https://example.com/a.png', 'caption' => 'A']]));
 
             expect($response->getContent())
@@ -182,7 +176,7 @@ describe('Division Pages', function () {
             $this->get(route('division.show', 'cod'))
                 ->assertOk()
                 ->assertInertia(fn (AssertableInertia $page) => $page
-                    ->component('division/show')
+                    ->component('next/division')
                     ->has('division')
                     ->where('division.name', 'Jedi Knight'));
         });

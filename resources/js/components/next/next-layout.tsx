@@ -14,21 +14,19 @@ interface NextLayoutProps {
 }
 
 export function nextDivisionHref(href: string): string {
-    return href.replace(/^.*\/divisions\//, '/next/divisions/');
+    return href.replace(/^.*\/divisions\//, '/divisions/');
 }
 
 export function NextLayout({ title, foundedYear, currentYear, children }: NextLayoutProps) {
     return (
         <ApplyDialogProvider variant="next">
-            <Head title={title}>
-                <meta name="robots" content="noindex, nofollow" />
-            </Head>
+            <Head title={title} />
             <div className="next-root min-h-screen bg-background text-foreground">
                 <NextNav />
                 <main>{children}</main>
                 <footer className="border-t border-border px-4 py-10 sm:px-6">
                     <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
-                        <a href="/next" className="flex items-center gap-3 hover:text-foreground">
+                        <a href="/" className="flex items-center gap-3 hover:text-foreground">
                             <AodMark className="size-6" />
                             <span>
                                 Angels of Death · {foundedYear}–{currentYear}
@@ -51,12 +49,14 @@ export function NextLayout({ title, foundedYear, currentYear, children }: NextLa
                                 </li>
                             ))}
                         </ul>
-                        <p className="font-mono text-xs tracking-widest uppercase">
-                            Prototype ·{' '}
-                            <a href="/" className="next-red-text hover:underline">
-                                Back to the current site
+                        <nav className="flex items-center gap-4" aria-label="Policies">
+                            <a href="/privacy-policy" className="hover:text-foreground">
+                                Privacy
                             </a>
-                        </p>
+                            <a href="/terms-of-use" className="hover:text-foreground">
+                                Terms
+                            </a>
+                        </nav>
                     </div>
                 </footer>
             </div>

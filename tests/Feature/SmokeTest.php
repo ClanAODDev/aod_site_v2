@@ -5,8 +5,8 @@ describe('Smoke Tests', function () {
         $this->get($path)->assertOk();
     })->with([
         'home' => '/',
-        'history' => '/history',
-        'divisions' => '/divisions',
+        'ranks' => '/ranks',
+        'code-of-conduct' => '/code-of-conduct',
         'fallen-angels' => '/fallen-angels',
         'privacy-policy' => '/privacy-policy',
         'terms-of-use' => '/terms-of-use',
