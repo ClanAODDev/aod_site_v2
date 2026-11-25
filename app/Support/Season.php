@@ -10,7 +10,7 @@ class Season
 {
     public function current(): ?array
     {
-        $seasons = config('aod.prototype.seasons', []);
+        $seasons = config('aod.seasons', []);
 
         if (app()->environment('local') && is_string(request()->query('season'))) {
             return collect($seasons)->firstWhere('id', request()->query('season'));

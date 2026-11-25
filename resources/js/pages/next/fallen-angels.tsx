@@ -64,7 +64,7 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
     }, [fallen, query]);
 
     return (
-        <NextLayout title="Fallen Angels | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
+        <NextLayout title="Fallen Angels | Angels of Death" foundedYear={foundedYear} currentYear={currentYear}>
             <Head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
@@ -149,7 +149,7 @@ export default function FallenAngels({ fallen, foundedYear, currentYear }: Falle
                     <br />
                     The Fallen Angels, now rest their wings.
                 </p>
-                <a href="/next" className="next-button-ghost mt-10 inline-flex">
+                <a href="/" className="next-button-ghost mt-10 inline-flex">
                     Return home
                 </a>
             </section>

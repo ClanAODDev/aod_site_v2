@@ -2,13 +2,11 @@
 
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\FallenAngelsController;
-use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PrototypeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TrackerDivisionWebhookController;
 use App\Http\Middleware\HandleInertiaRequests;
-use App\Http\Middleware\RequirePrototypeAccess;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,18 +21,15 @@ Route::post('/webhooks/tracker/divisions', TrackerDivisionWebhookController::cla
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
-Route::get('/history', HistoryController::class)->name('history');
+Route::get('/history', fn () => redirect()->to(route('home') . '#timeline'))->name('history');
 
 Route::get('/fallen-angels', FallenAngelsController::class)->name('fallen-angels');
-Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
+Route::get('/ranks', [PageController::class, 'ranks'])->name('ranks');
+Route::get('/code-of-conduct', [PageController::class, 'codeOfConduct'])->name('code-of-conduct');
+Route::get('/divisions', fn () => redirect()->to(route('home') . '#divisions'))->name('division.index');
 Route::get('/divisions/{division}', [DivisionController::class, 'show'])->name('division.show');
 
-Route::prefix('next')->name('prototype.')->middleware(RequirePrototypeAccess::class)->controller(PrototypeController::class)->group(function () {
-    Route::get('/', 'home')->name('home');
-    Route::get('/fallen-angels', 'fallenAngels')->name('fallen-angels');
-    Route::get('/ranks', 'ranks')->name('ranks');
-    Route::get('/code-of-conduct', 'codeOfConduct')->name('code-of-conduct');
-    Route::get('/divisions/{division}', 'division')->name('division');
-});
+Route::get('/next/{path?}', fn (string $path = '') => redirect()->to(url('/' . $path)))
+    ->where('path', 'fallen-angels|ranks|code-of-conduct|divisions/[A-Za-z0-9-]+');
 
 require 'partials/policies.php';

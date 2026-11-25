@@ -1,12 +1,14 @@
 import { usePage } from '@inertiajs/react';
 import { ArrowLeft, ArrowRight, Shield, Users } from 'lucide-react';
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 import { ScreenshotGallery } from '@/components/division/screenshot-gallery';
 import { NextLayout, nextDivisionHref } from '@/components/next/next-layout';
+import { SectionLinks } from '@/components/next/section-links';
 import { Prose } from '@/components/prose';
 import { Reveal } from '@/components/reveal';
 import { useOpenApplyDialog } from '@/components/site/apply-dialog';
+import { useSectionLinks } from '@/hooks/use-section-links';
 import type { SharedPageProps } from '@/types';
 
 interface Leader {
@@ -35,23 +37,6 @@ interface DivisionProps {
     currentYear: number;
 }
 
-function useSectionLinks(html: string | null) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [links, setLinks] = useState<{ id: string; label: string }[]>([]);
-
-    useEffect(() => {
-        const headings = Array.from(ref.current?.querySelectorAll('h2') ?? []);
-        setLinks(
-            headings.map((heading, index) => {
-                heading.id ||= `section-${index}`;
-                return { id: heading.id, label: heading.textContent ?? '' };
-            }),
-        );
-    }, [html]);
-
-    return { ref, links };
-}
-
 function JoinButton({ className }: { className?: string }) {
     const openApply = useOpenApplyDialog();
 
@@ -68,7 +53,7 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
     const others = divisions.filter((entry) => entry.slug !== division.slug);
 
     return (
-        <NextLayout title={`${division.name} | Prototype`} foundedYear={foundedYear} currentYear={currentYear}>
+        <NextLayout title={`${division.name} Division | Angels of Death`} foundedYear={foundedYear} currentYear={currentYear}>
             <section className="next-division-hero relative overflow-hidden px-4 pt-40 pb-20 sm:px-6">
                 {division.backdrop ? (
                     <div
@@ -88,7 +73,7 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
                 <div className="next-scanlines" aria-hidden="true" />
                 <div className="relative z-10 mx-auto max-w-6xl">
                     <a
-                        href="/next#divisions"
+                        href="/#divisions"
                         className="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground uppercase hover:text-foreground"
                     >
                         <ArrowLeft className="size-4" /> All divisions
@@ -121,15 +106,7 @@ export default function DivisionPage({ division, foundedYear, currentYear }: Div
             <section className="border-t border-border px-4 py-16 sm:px-6">
                 <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_20rem]">
                     <div className="min-w-0">
-                        {links.length > 1 && (
-                            <nav aria-label="On this page" className="mb-8 flex flex-wrap gap-2">
-                                {links.map((link) => (
-                                    <a key={link.id} href={`#${link.id}`} className="next-button-ghost min-h-9 px-3 py-1 text-sm">
-                                        {link.label}
-                                    </a>
-                                ))}
-                            </nav>
-                        )}
+                        <SectionLinks links={links} />
                         <div ref={ref} className="next-prose">
                             {division.siteContentHtml ? (
                                 <Prose html={division.siteContentHtml} />
