@@ -2,7 +2,7 @@
 
 The public Clan AOD website.
 
-**Tech Stack:** [Laravel](https://laravel.com/docs) 13 · PHP 8.4 · React 19 + Inertia + TypeScript · Tailwind v4 · Stylus · Vite
+**Tech Stack:** [Laravel](https://laravel.com/docs) 13 · PHP 8.5 (production on 8.4 until it moves) · React 19 + Inertia + TypeScript · Tailwind v4 · Stylus · Vite
 
 Division information (names, logos, page content, leadership) comes from the [AOD Tracker](https://github.com/ClanAODDev/tracker_v3) API, so the site needs a tracker API token to show divisions.
 
