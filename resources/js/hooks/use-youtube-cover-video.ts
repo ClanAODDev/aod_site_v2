@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { loadYouTubeIframeApi, type YouTubePlayer } from '@/lib/youtube-iframe-api';
 
 const ASPECT_RATIO = 16 / 9;
+const RENDER_SCALE = 0.5;
 
 /**
  * Mounts a muted, looping, autoplaying YouTube player that always covers its
@@ -13,10 +14,12 @@ const ASPECT_RATIO = 16 / 9;
  *
  * Pass `enabled: false` to skip loading the API/mounting a player entirely
  * (e.g. showing a static poster on mobile instead of an autoplaying video).
+ * Pass `playing: false` to pause a mounted player, e.g. while it is off screen.
  */
-export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
+export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true, playing: boolean = true) {
     const containerRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
+    const playerRef = useRef<YouTubePlayer | null>(null);
     const [iframe, setIframe] = useState<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
@@ -55,7 +58,7 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
                 events: {
                     onReady: (event) => {
                         event.target.mute();
-                        event.target.playVideo();
+                        playerRef.current = event.target;
                         setIframe(container.querySelector('iframe'));
                     },
                     onStateChange: (event) => {
@@ -69,9 +72,24 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
 
         return () => {
             cancelled = true;
+            playerRef.current = null;
+            setIframe(null);
             player?.destroy();
         };
     }, [videoId, enabled]);
+
+    useEffect(() => {
+        const player = playerRef.current;
+        if (!player || !iframe) {
+            return;
+        }
+
+        if (playing) {
+            player.playVideo();
+        } else {
+            player.pauseVideo();
+        }
+    }, [playing, iframe]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -89,8 +107,8 @@ export function useYouTubeCoverVideo(videoId: string, enabled: boolean = true) {
                 width = containerHeight * ASPECT_RATIO;
             }
 
-            iframe.style.width = `${width}px`;
-            iframe.style.height = `${height}px`;
+            iframe.style.width = `${width * RENDER_SCALE}px`;
+            iframe.style.height = `${height * RENDER_SCALE}px`;
         };
 
         scale();

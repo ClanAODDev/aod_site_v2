@@ -61,7 +61,17 @@ interface HomeProps {
     };
 }
 
-export default function Home({ discord, twitch, highlightedEvent, showTwitchLive, showHighlightedEvent, showVods, heroVideoId, introVideoId, merch }: HomeProps) {
+export default function Home({
+    discord,
+    twitch,
+    highlightedEvent,
+    showTwitchLive,
+    showHighlightedEvent,
+    showVods,
+    heroVideoId,
+    introVideoId,
+    merch,
+}: HomeProps) {
     const { divisions } = usePage<SharedPageProps>().props;
     const onlineCount = discord ? discord.online + discord.idle + discord.dnd : null;
     const isChristmas = highlightedEvent?.theme === 'holiday';
@@ -82,7 +92,9 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
 
             <Nav startsUnstuck />
 
-            {showTwitchLive && twitch.stream && <TwitchLive channel={twitch.channel} title={twitch.stream.title} gameName={twitch.stream.game_name} />}
+            {showTwitchLive && twitch.stream && (
+                <TwitchLive channel={twitch.channel} title={twitch.stream.title} gameName={twitch.stream.game_name} />
+            )}
             {showHighlightedEvent && highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
             {showVods && twitch.vods.length > 0 && <TwitchVods vods={twitch.vods} channel={twitch.channel} divisions={divisions} />}
 
@@ -95,8 +107,8 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 <Reveal from="left" delay={150} className="mx-auto mt-5 max-w-2xl">
                     <p className="text-foreground/75">
                         From first-person shooters and survival games to the most well known massive-multiplayer games, you&apos;ll always have
-                        something to play. And there&apos;s no shortage of AOD members playing around the clock from Brisbane, Australia and
-                        Osaka, Japan crossing the likes of Norway, France, and Brazil, and dominating the time zones of North and South America.
+                        something to play. And there&apos;s no shortage of AOD members playing around the clock from Brisbane, Australia and Osaka,
+                        Japan crossing the likes of Norway, France, and Brazil, and dominating the time zones of North and South America.
                     </p>
                 </Reveal>
                 <Reveal from="bottom" delay={300} className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
@@ -117,7 +129,9 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                                 {division.name}
                             </span>
                             {division.members_count > 0 && (
-                                <span className="mt-1 font-mono text-[10px] text-foreground/50">{division.members_count.toLocaleString()} members</span>
+                                <span className="mt-1 font-mono text-[10px] text-foreground/50">
+                                    {division.members_count.toLocaleString()} members
+                                </span>
                             )}
                         </a>
                     ))}
@@ -133,12 +147,12 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                             and still growing!
                         </SectionTitle>
                         <p className="mt-5 text-foreground/85">
-                            The Angels of Death is a time-tested organization, supporting over 56 major gaming titles in the past 25 years
-                            including classics like Medal of Honor: Allied Assault, and Swat 3.
+                            The Angels of Death is a time-tested organization, supporting over 56 major gaming titles in the past 25 years including
+                            classics like Medal of Honor: Allied Assault, and Swat 3.
                         </p>
                         <p className="mt-4 text-foreground/85">
-                            We&apos;ve lasted this long because of the tireless efforts of people who love gaming, and our community is as
-                            diverse as the games we play. AOD is truly a family, and we&apos;ve never stopped growing.
+                            We&apos;ve lasted this long because of the tireless efforts of people who love gaming, and our community is as diverse as
+                            the games we play. AOD is truly a family, and we&apos;ve never stopped growing.
                         </p>
                         <a href="/history" className="mt-4 inline-block text-primary underline underline-offset-2 hover:text-primary/80">
                             Read the history of AOD
@@ -191,12 +205,7 @@ export default function Home({ discord, twitch, highlightedEvent, showTwitchLive
                 </Reveal>
             </section>
 
-            <MerchSection
-                items={merch.items}
-                storeUrl={merch.store_url}
-                imageBaseUrl={merch.image_base_url}
-                imageSuffix={merch.image_suffix}
-            />
+            <MerchSection items={merch.items} storeUrl={merch.store_url} imageBaseUrl={merch.image_base_url} imageSuffix={merch.image_suffix} />
 
             <section className="cta-hatch relative bg-[#030911] bg-[url('/images/apply-bg.jpg')] bg-top bg-no-repeat px-4 py-20 text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-primary/20" />

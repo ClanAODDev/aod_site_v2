@@ -158,8 +158,10 @@ function RankRow({ rank, delay }: { rank: Rank; delay: number }) {
                 <article className="next-panel p-5 sm:p-6">
                     <div className="flex flex-wrap items-center gap-3">
                         <span className="next-rank">{rank.abbr}</span>
-                        <h3 className="next-heading text-2xl font-bold uppercase tracking-wide text-foreground">{rank.name}</h3>
-                        {rank.divisionOptional && <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Division optional</span>}
+                        <h3 className="next-heading text-2xl font-bold tracking-wide text-foreground uppercase">{rank.name}</h3>
+                        {rank.divisionOptional && (
+                            <span className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">Division optional</span>
+                        )}
                     </div>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">{rank.duties}</p>
                 </article>
@@ -175,8 +177,8 @@ export default function Ranks({ foundedYear, currentYear }: RanksProps) {
         <NextLayout title="Ranking Structure | Prototype" foundedYear={foundedYear} currentYear={currentYear}>
             <PageHero eyebrow="Ranking structure" title="Earned, not given">
                 <p>
-                    Rank in AOD comes from tenure and service, not a title handed out for authority. {total} ranks form one continuous line, from a recruit's first day to the
-                    leadership of the clan.
+                    Rank in AOD comes from tenure and service, not a title handed out for authority. {total} ranks form one continuous line, from a
+                    recruit's first day to the leadership of the clan.
                 </p>
             </PageHero>
 
@@ -189,9 +191,9 @@ export default function Ranks({ foundedYear, currentYear }: RanksProps) {
                                     <span className="next-ladder-track" aria-hidden="true">
                                         <span className="next-ladder-group-node" />
                                     </span>
-                                    <div className="pb-4 pt-1">
-                                        <h2 className="next-heading text-3xl font-bold uppercase tracking-wide text-foreground">{group.label}</h2>
-                                        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{group.summary}</p>
+                                    <div className="pt-1 pb-4">
+                                        <h2 className="next-heading text-3xl font-bold tracking-wide text-foreground uppercase">{group.label}</h2>
+                                        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">{group.summary}</p>
                                     </div>
                                 </div>
                                 <ol>
@@ -204,27 +206,28 @@ export default function Ranks({ foundedYear, currentYear }: RanksProps) {
                     </ol>
 
                     <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
-                        <p className="font-mono text-xs uppercase tracking-[0.3em] next-red-text">Division roles</p>
+                        <p className="next-red-text font-mono text-xs tracking-[0.3em] uppercase">Division roles</p>
                         {ROLES.map((role) => (
                             <article key={role.abbr} className="next-panel p-5">
                                 <div className="flex items-baseline gap-3">
                                     <span className="next-heading text-3xl font-bold text-primary">{role.abbr}</span>
-                                    <h3 className="next-heading text-xl font-bold uppercase text-foreground">{role.label}</h3>
+                                    <h3 className="next-heading text-xl font-bold text-foreground uppercase">{role.label}</h3>
                                 </div>
                                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{role.body}</p>
-                                <p className="mt-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                                <p className="mt-3 font-mono text-xs tracking-widest text-muted-foreground uppercase">
                                     Minimum rank <span className="text-foreground">{role.minimum}</span>
                                 </p>
                             </article>
                         ))}
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Division roles carry authority inside one division, are independent of rank, and need nomination and approval by clan leadership.
+                            Division roles carry authority inside one division, are independent of rank, and need nomination and approval by clan
+                            leadership.
                         </p>
                         <div className="flex gap-3 border-l-2 border-primary bg-primary/5 p-4 text-sm leading-relaxed text-foreground/85">
                             <Info className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
                             <p>
-                                Only Sergeants and above may issue promotions or demotions, and only for good service to AOD. CO and XO appointments and every Sergeant-level promotion
-                                need approval from clan leadership.
+                                Only Sergeants and above may issue promotions or demotions, and only for good service to AOD. CO and XO appointments
+                                and every Sergeant-level promotion need approval from clan leadership.
                             </p>
                         </div>
                     </aside>

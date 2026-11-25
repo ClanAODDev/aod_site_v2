@@ -108,9 +108,14 @@
         border-radius: 9999px;
         color: #fff;
         background: rgba(188, 9, 19, 0.85);
-        box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.6);
-        animation: next-dot-pulse 2.2s ease-out infinite;
+        isolation: isolate;
         transition: transform 0.25s;
+    }
+
+    .next-intro-ring::after {
+        --pulse-color: rgb(188, 9, 19);
+        --pulse-scale: 1.4;
+        --pulse-duration: 2.2s;
     }
 
     .next-intro-button:hover .next-intro-ring {
@@ -128,9 +133,7 @@
     }
 
     .next-apply {
-        background:
-            radial-gradient(ellipse 80% 55% at 50% 0%, rgba(188, 9, 19, 0.22), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(188, 9, 19, 0.22), transparent 70%), var(--background);
         clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
     }
 
@@ -172,21 +175,42 @@
         font-family: 'Rajdhani', var(--font-display);
         font-size: 1rem;
         font-weight: 700;
-        color: #fff;
-        background: var(--primary);
-        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        position: relative;
+        color: var(--foreground);
+        isolation: isolate;
+    }
+
+    .next-apply-step::before {
+        content: '';
+        position: absolute;
+        inset: 15%;
+        z-index: -1;
+        border: 2px solid var(--primary);
+        transform: rotate(45deg);
     }
 
     .next-hero {
         background:
             radial-gradient(ellipse 60% 50% at 50% 42%, rgba(188, 9, 19, 0.28), transparent 70%),
-            radial-gradient(ellipse 90% 70% at 50% 110%, rgba(109, 2, 2, 0.45), transparent 70%),
-            var(--background);
+            radial-gradient(ellipse 90% 70% at 50% 110%, rgba(109, 2, 2, 0.45), transparent 70%), var(--background);
     }
 
     .next-hero-stagger > *,
     .next-hero-stats {
         animation: next-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .next-hero-stats {
+        background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(0, 0, 0, 0.55), transparent 75%);
+    }
+
+    .next-hero-stats > div {
+        border-color: rgba(255, 255, 255, 0.12);
+        border-bottom-color: transparent;
+    }
+
+    .next-hero-stats dd {
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
     }
 
     .next-hero-stagger > :nth-child(2) {
@@ -213,7 +237,39 @@
         animation-delay: 0.7s;
     }
 
-    .next-hero-mark {
+    .next-ticker {
+        display: inline-block;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+    }
+
+    .next-ticker-window {
+        display: inline-block;
+        height: 1em;
+        overflow: hidden;
+        vertical-align: bottom;
+    }
+
+    .next-ticker-reel {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(calc(var(--ticker-stop, 0) * -1em));
+        transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+    }
+
+    .next-ticker-reel > span {
+        height: 1em;
+    }
+
+    .next-hero-mark-pulse {
+        position: absolute;
+        inset: -35%;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(210, 0, 0, 0.32), rgba(188, 9, 19, 0.12) 45%, transparent 68%);
+        opacity: 0;
+        pointer-events: none;
+        will-change: opacity;
         animation: next-mark-breathe 6s ease-in-out 1s infinite;
     }
 
@@ -231,10 +287,10 @@
     @keyframes next-mark-breathe {
         0%,
         100% {
-            filter: drop-shadow(0 0 18px rgba(188, 9, 19, 0.55)) drop-shadow(0 0 48px rgba(188, 9, 19, 0.25));
+            opacity: 0;
         }
         50% {
-            filter: drop-shadow(0 0 24px rgba(210, 0, 0, 0.7)) drop-shadow(0 0 72px rgba(188, 9, 19, 0.35));
+            opacity: 1;
         }
     }
 
@@ -243,13 +299,12 @@
         inset: 0;
         pointer-events: none;
         opacity: 0;
-        filter: saturate(0.55) contrast(1.1);
         animation: next-video-in 2.4s ease-out 1.2s forwards;
     }
 
     .next-cover-video iframe {
         pointer-events: none;
-        transform: scale(1.35);
+        transform: scale(2.7);
     }
 
     .next-cover-video::after {
@@ -258,7 +313,7 @@
         inset: 0;
         background:
             radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 12, 12, 0.35), rgba(12, 12, 12, 0.9)),
-            linear-gradient(to bottom, rgba(27, 2, 2, 0.55), rgba(12, 12, 12, 0.95));
+            linear-gradient(to bottom, rgba(27, 2, 2, 0.55), rgba(12, 12, 12, 0.95)), linear-gradient(rgba(34, 30, 30, 0.35), rgba(34, 30, 30, 0.35));
     }
 
     .next-cover-video.is-faint {
@@ -317,9 +372,29 @@
         width: 0.5rem;
         height: 0.5rem;
         border-radius: 9999px;
+        position: relative;
         background: var(--success);
-        box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
-        animation: next-pulse 2s ease-out infinite;
+        isolation: isolate;
+    }
+
+    .next-live-dot::after {
+        --pulse-color: rgb(34, 211, 166);
+        --pulse-scale: 3.5;
+        --pulse-duration: 2s;
+    }
+
+    .next-intro-ring::after,
+    .next-live-dot::after,
+    .next-rail-stop.is-active .next-rail-dot::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        background: var(--pulse-color);
+        opacity: 0;
+        pointer-events: none;
+        animation: next-ring var(--pulse-duration) ease-out infinite;
     }
 
     .next-panel {
@@ -345,8 +420,6 @@
         gap: 0;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border);
     }
 
     .next-rail-stop {
@@ -371,11 +444,9 @@
         right: 0;
         height: 1px;
         background: var(--border-strong);
-        transition: background-color 0.5s ease;
     }
 
-    .next-rail-stop.is-passed::before,
-    .next-rail-stop.is-active::before {
+    .next-rail-stop.is-passed::before {
         height: 2px;
         background: var(--primary);
     }
@@ -400,6 +471,7 @@
         left: 1rem;
         width: 11px;
         height: 11px;
+        z-index: 2;
         transform: rotate(45deg);
         background: var(--background);
         box-shadow: inset 0 0 0 2px var(--border-strong);
@@ -411,26 +483,32 @@
     }
 
     .next-rail-stop.is-active .next-rail-dot {
-        animation: next-dot-pulse 1.6s ease-out infinite;
         background: var(--primary);
         box-shadow: 0 0 14px var(--primary-glow);
+        isolation: isolate;
+    }
+
+    .next-rail-stop.is-active .next-rail-dot::after {
+        --pulse-color: rgb(188, 9, 19);
+        --pulse-scale: 2.8;
+        --pulse-duration: 1.6s;
     }
 
     .next-rail-stop.is-active::after {
         content: '';
         position: absolute;
-        bottom: -0.5rem;
+        top: 0.6rem;
         left: 0;
-        right: 0;
+        width: 1rem;
         height: 2px;
-        background: rgba(188, 9, 19, 0.2);
+        background: var(--primary);
     }
 
     .next-rail-progress {
         position: absolute;
-        bottom: -0.5rem;
-        left: 0;
-        right: 0;
+        top: 0.6rem;
+        left: calc(1rem + 11px);
+        right: -1rem;
         z-index: 1;
         height: 2px;
         background: var(--primary);
@@ -440,6 +518,10 @@
         animation-name: next-progress;
         animation-timing-function: linear;
         animation-fill-mode: forwards;
+    }
+
+    .next-rail-stop:last-child .next-rail-progress {
+        right: 0;
     }
 
     @keyframes next-progress {
@@ -467,9 +549,7 @@
     }
 
     .next-stream {
-        background:
-            radial-gradient(ellipse 50% 60% at 85% 20%, rgba(188, 9, 19, 0.14), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 60% at 85% 20%, rgba(188, 9, 19, 0.14), transparent 70%), var(--background);
     }
 
     .next-live-badge {
@@ -480,6 +560,18 @@
         color: #fff;
         background: var(--next-ember);
         letter-spacing: 0.15em;
+        position: relative;
+        isolation: isolate;
+    }
+
+    .next-live-badge::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        box-shadow: 0 0 14px 2px rgba(210, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
         animation: next-glow 2s ease-in-out infinite;
     }
 
@@ -539,9 +631,7 @@
     }
 
     .next-memorial {
-        background:
-            radial-gradient(ellipse 50% 45% at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 45% at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%), var(--background);
     }
 
     .next-memorial-video {
@@ -554,9 +644,7 @@
         transform: translateX(-50%);
         opacity: 0.3;
         filter: grayscale(0.6);
-        mask-image:
-            linear-gradient(to bottom, #000 45%, transparent 88%),
-            linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        mask-image: linear-gradient(to bottom, #000 45%, transparent 88%), linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
         mask-composite: intersect;
     }
 
@@ -842,9 +930,7 @@
     }
 
     .next-remembrance {
-        background:
-            radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%),
-            var(--background);
+        background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%), var(--background);
     }
 
     .next-join {
@@ -883,22 +969,24 @@
         }
     }
 
-    @keyframes next-dot-pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(188, 9, 19, 0.7);
-        }
-        100% {
-            box-shadow: 0 0 0 10px rgba(188, 9, 19, 0);
-        }
-    }
-
     @keyframes next-glow {
         0%,
         100% {
-            box-shadow: 0 0 0 0 rgba(210, 0, 0, 0.5);
+            opacity: 0;
         }
         50% {
-            box-shadow: 0 0 14px 2px rgba(210, 0, 0, 0.45);
+            opacity: 1;
+        }
+    }
+
+    @keyframes next-ring {
+        from {
+            transform: scale(1);
+            opacity: 0.7;
+        }
+        to {
+            transform: scale(var(--pulse-scale));
+            opacity: 0;
         }
     }
 
@@ -912,32 +1000,23 @@
         }
     }
 
-    @keyframes next-pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.6);
-        }
-        100% {
-            box-shadow: 0 0 0 10px rgba(34, 211, 166, 0);
-        }
-    }
-
     @media (prefers-reduced-motion: reduce) {
         .next-triangles span,
-        .next-live-dot,
-        .next-live-badge,
+        .next-live-dot::after,
+        .next-live-badge::after,
         .next-era-enter,
         .next-chip-enter,
         .next-poem-line,
         .next-plaque:hover .next-candle,
-        .next-rail-stop.is-active .next-rail-dot,
+        .next-rail-stop.is-active .next-rail-dot::after,
         .next-apply-marquee-track,
         .next-hero-stagger > *,
         .next-hero-stats,
-        .next-hero-mark {
+        .next-hero-mark-pulse {
             animation: none;
         }
 
-        .next-intro-ring {
+        .next-intro-ring::after {
             animation: none;
         }
 
@@ -948,6 +1027,10 @@
         .next-rail-progress {
             animation: none;
             transform: scaleX(1);
+        }
+
+        .next-ticker-reel {
+            transition: none;
         }
     }
 }

@@ -13,6 +13,7 @@ interface UseInViewOptions extends IntersectionObserverInit {
 export function useInView<T extends Element>({ once, ...options }: UseInViewOptions = {}) {
     const ref = useRef<T>(null);
     const [inView, setInView] = useState(false);
+    const [seen, setSeen] = useState(false);
 
     useEffect(() => {
         const el = ref.current;
@@ -22,6 +23,9 @@ export function useInView<T extends Element>({ once, ...options }: UseInViewOpti
 
         const observer = new IntersectionObserver(([entry]) => {
             setInView(entry.isIntersecting);
+            if (entry.isIntersecting) {
+                setSeen(true);
+            }
             if (once && entry.isIntersecting) {
                 observer.disconnect();
             }
@@ -31,5 +35,5 @@ export function useInView<T extends Element>({ once, ...options }: UseInViewOpti
         return () => observer.disconnect();
     }, [once]);
 
-    return { ref, inView };
+    return { ref, inView, seen };
 }

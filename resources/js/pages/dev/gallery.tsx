@@ -57,8 +57,7 @@ export default function Gallery() {
             <div className="mx-auto max-w-4xl space-y-2 px-4 py-16">
                 <h1 className="text-2xl font-bold">aod_site_v2 pattern library</h1>
                 <p className="text-sm text-muted-foreground">
-                    Dev-only reference for the components/tokens built during the React/Inertia revamp. Not linked from anywhere in the real
-                    site nav.
+                    Dev-only reference for the components/tokens built during the React/Inertia revamp. Not linked from anywhere in the real site nav.
                 </p>
 
                 <Section title="Color tokens" id="colors">
@@ -119,7 +118,9 @@ export default function Gallery() {
                 </Section>
 
                 <Section title="Reveal (scroll into view once)" id="reveal">
-                    <p className="text-sm text-muted-foreground">Scroll this section out of view and back to see it replay isn&apos;t possible - it fires once.</p>
+                    <p className="text-sm text-muted-foreground">
+                        Scroll this section out of view and back to see it replay isn&apos;t possible - it fires once.
+                    </p>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                         <Reveal from="left">
                             <div className="rounded-lg border border-border bg-card p-4 text-sm">from=&quot;left&quot;</div>

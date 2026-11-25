@@ -59,7 +59,10 @@ export function ScreenshotGallery({ screenshots }: { screenshots: Screenshot[] }
             </div>
 
             <Dialog open={openIndex !== null} onOpenChange={(open) => setOpenIndex(open ? openIndex : null)}>
-                <DialogContent showCloseButton className="max-w-[calc(100%-2rem)] border-none bg-transparent p-0 shadow-none sm:max-w-[min(92vw,96rem)]">
+                <DialogContent
+                    showCloseButton
+                    className="max-w-[calc(100%-2rem)] border-none bg-transparent p-0 shadow-none sm:max-w-[min(92vw,96rem)]"
+                >
                     <DialogTitle className="sr-only">{current?.caption || 'Screenshot'}</DialogTitle>
                     {current && (
                         <div className="relative text-center">

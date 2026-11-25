@@ -1,6 +1,7 @@
 export interface YouTubePlayer {
     destroy(): void;
     mute(): void;
+    pauseVideo(): void;
     playVideo(): void;
 }
 

@@ -14,6 +14,12 @@ interface Particle {
     alpha: number;
 }
 
+const EMBER_SHADES = 16;
+const EMBER_COLORS = Array.from({ length: EMBER_SHADES }, (_, shade) => {
+    const flicker = 0.2 + (0.8 * shade) / (EMBER_SHADES - 1);
+    return `rgb(255, ${110 + Math.round(60 * flicker)}, 40)`;
+});
+
 function spawn(kind: Kind, width: number, height: number, anywhere: boolean): Particle {
     return {
         x: Math.random() * width,
@@ -41,6 +47,8 @@ export function SeasonParticles({ kind }: { kind: Kind }) {
         let height = 0;
         let particles: Particle[] = [];
         let frame = 0;
+        let running = false;
+        let onScreen = false;
 
         const resize = () => {
             const ratio = window.devicePixelRatio || 1;
@@ -67,32 +75,53 @@ export function SeasonParticles({ kind }: { kind: Kind }) {
                 context.beginPath();
                 context.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
                 if (kind === 'snow') {
-                    context.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
+                    context.fillStyle = '#fff';
+                    context.globalAlpha = particle.alpha;
                 } else {
                     const flicker = 0.6 + 0.4 * Math.sin(time / 300 + particle.phase);
-                    context.fillStyle = `rgba(255, ${110 + Math.round(60 * flicker)}, 40, ${particle.alpha * flicker})`;
+                    context.fillStyle = EMBER_COLORS[Math.round(((flicker - 0.2) / 0.8) * (EMBER_SHADES - 1))];
+                    context.globalAlpha = particle.alpha * flicker;
                 }
                 context.fill();
             }
-            frame = requestAnimationFrame(draw);
-        };
-
-        const onVisibility = () => {
-            cancelAnimationFrame(frame);
-            if (!document.hidden) {
+            context.globalAlpha = 1;
+            if (running) {
                 frame = requestAnimationFrame(draw);
             }
         };
 
+        const start = () => {
+            if (!running && onScreen && !document.hidden) {
+                running = true;
+                frame = requestAnimationFrame(draw);
+            }
+        };
+
+        const stop = () => {
+            running = false;
+            cancelAnimationFrame(frame);
+        };
+
+        const onVisibility = () => (document.hidden ? stop() : start());
+
         resize();
-        frame = requestAnimationFrame(draw);
-        const observer = new ResizeObserver(resize);
-        observer.observe(canvas);
+        const resizeObserver = new ResizeObserver(resize);
+        resizeObserver.observe(canvas);
+        const visibilityObserver = new IntersectionObserver(([entry]) => {
+            onScreen = entry.isIntersecting;
+            if (onScreen) {
+                start();
+            } else {
+                stop();
+            }
+        });
+        visibilityObserver.observe(canvas);
         document.addEventListener('visibilitychange', onVisibility);
 
         return () => {
-            cancelAnimationFrame(frame);
-            observer.disconnect();
+            stop();
+            resizeObserver.disconnect();
+            visibilityObserver.disconnect();
             document.removeEventListener('visibilitychange', onVisibility);
         };
     }, [kind, calm]);
