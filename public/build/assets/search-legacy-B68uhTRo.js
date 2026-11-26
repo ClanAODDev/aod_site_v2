@@ -1,0 +1,1 @@
+System.register(["./footer-legacy-DqcyTyDv.js"],function(e,t){"use strict";var r;return{setters:[e=>{r=e.q}],execute:function(){const t={name:"search",size:24,node:[["path",{d:"m21 21-4.34-4.34",key:"14j7rj"}],["circle",{cx:"11",cy:"11",r:"8",key:"4ej97u"}]]};e("S",r(t))}}});
