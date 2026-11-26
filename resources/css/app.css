@@ -22,9 +22,5 @@
 @import './utilities.css';
 
 @import './components/history.css';
-@import './components/fallen-angels.css';
-@import './components/division.css';
-@import './components/home.css';
-@import './components/legal.css';
 @import './components/site.css';
 @import './components/next.css';
