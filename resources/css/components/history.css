@@ -1,46 +1,7 @@
-/* History timeline — era background video/image fades, the location-pin
-   bullet's pulse, and the staggered card reveal on scroll. Reveal state is
-   driven by the `data-visible` attribute (set from IntersectionObserver in
-   TimelineBlock), not a CSS-only scroll trigger. */
-
-.era-background {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.era-background::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: color-mix(in srgb, var(--background) 55%, transparent);
-}
-
-[data-era-visible='true'] .era-background {
-    opacity: 1;
-}
-
-.era-video {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.era-video iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: none;
-    pointer-events: none;
-}
+/* History timeline — the location-pin bullet's pulse and the staggered card
+   reveal on scroll. Reveal state is driven by the `data-visible` attribute
+   (set from IntersectionObserver in TimelineBlock), not a CSS-only scroll
+   trigger. */
 
 .timeline-bullet {
     transition:
@@ -95,7 +56,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .era-background,
     .timeline-bullet,
     .timeline-content,
     .timeline-content-field {
