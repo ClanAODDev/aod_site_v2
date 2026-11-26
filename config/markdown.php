@@ -14,7 +14,6 @@ declare(strict_types=1);
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
-use League\CommonMark\Extension\Embed\Bridge\OscaroteroEmbedAdapter;
 use League\CommonMark\Extension\Embed\EmbedExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 
@@ -76,7 +75,6 @@ return [
     */
 
     'embed' => [
-        'adapter' => new OscaroteroEmbedAdapter,
         'allowed_domains' => ['youtube.com'],
         'fallback' => 'link',
     ],
