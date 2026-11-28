@@ -12,7 +12,7 @@ return [
      * snow, embers (particles over the hero) and hat (a Santa hat on the hero's mark).
      */
     'seasons' => [
-        ['id' => 'winter', 'start' => '12-01', 'end' => '01-05', 'effects' => ['snow', 'hat']],
+        ['id' => 'winter', 'start' => '11-28', 'end' => '01-05', 'effects' => ['snow', 'hat']],
         ['id' => 'halloween', 'start' => '10-20', 'end' => '10-31', 'effects' => ['embers']],
     ],
 
