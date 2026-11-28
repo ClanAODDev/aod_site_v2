@@ -126,10 +126,10 @@
 
     .next-santa-hat {
         position: absolute;
-        top: -17%;
+        top: -15%;
         left: 50%;
         width: 52%;
-        transform: translateX(-62%) rotate(-14deg);
+        transform: translateX(-62%) rotate(-8deg);
         filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
     }
 
